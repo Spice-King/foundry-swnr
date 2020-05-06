@@ -1,0 +1,8 @@
+* text=auto
+
+*.html text
+*.less text
+*.ts   text
+*.yml  text
+*.json text
+*.db   text
