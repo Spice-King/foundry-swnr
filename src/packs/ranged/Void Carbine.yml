@@ -1,0 +1,30 @@
+name: Void Carbine
+type: weapon
+data:
+  description: Void carbines are designed for vacuum and zero-gee use, and have essentially no recoil. Their rounds cannot penetrate ordinary ship equipment plating.
+  ab: 0
+  ammo:
+    burst: false
+    current: '10'
+    max: '10'
+    longReload: false
+    type: typeAPower
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 400
+  damage: 2d6
+  encumbrance: 2
+  range:
+    normal: 100
+    max: 300
+  stat: dex
+  tl: 4
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

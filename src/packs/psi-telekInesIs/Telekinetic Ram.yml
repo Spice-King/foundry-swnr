@@ -1,0 +1,17 @@
+name: Telekinetic Ram
+type: power
+data:
+  description: >-
+    <p>As a Main Action, the psychic can Commit Effort for the scene to target a
+    tremendous, uncontrolled burst of force at a single target within sight.
+    This burst requires some time to detonate, however, and will only go off at
+    the end of the next round. Targets of this technique are aware of an
+    oppressive, electrical tingling in the air and are apt to instinctively
+    move; this technique is thus generally useless against any target that is
+    not entirely immobile, as any movement of a chosen target disrupts the ram.
+    Once the ram detonates, however, it is sufficient to destroy any immobile
+    civilian vehicle, create a five-meter hole in anything short of hardened
+    military fortifications, or inflict 5d12 damage on anything else as if it
+    were struck by a Heavy weapon.</p>
+  level: 3
+  source: telekInesIs

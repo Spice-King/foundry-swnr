@@ -1,0 +1,10 @@
+name: Mastered Succor
+type: power
+data:
+  description: >-
+    <p>The biopsion has developed a sophisticated mastery of their core ability,
+    and they no longer need to Commit Effort to activate it, and may use it
+    whenever they wish. The use of additional techniques that augment
+    <em>Psychic Succor</em> might still require Effort to be Committed.</p>
+  level: 1
+  source: biopsionics

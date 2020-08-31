@@ -1,0 +1,10 @@
+name: Effortless Apportation
+type: power
+data:
+  description: >-
+    <p>The psychic does not need to Commit Effort to use <em>Personal
+    Apportation</em>. If the technique is augmented by other techniques that
+    come with their own extra or increased cost, however, this extra cost must
+    still be paid.</p>
+  level: 3
+  source: teleportation

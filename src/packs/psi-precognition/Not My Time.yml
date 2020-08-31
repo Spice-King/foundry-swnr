@@ -1,0 +1,15 @@
+name: Not My Time
+type: power
+data:
+  description: >-
+    <p>The precog instinctively wrenches the lines of probability away from
+    futures in which they are about to die. This technique triggers
+    automatically when the precog is about to die, provided they can Commit
+    Effort for the day. On triggering, random events somehow conspire to leave
+    the precog alive, even if outrageous coincidences and ridiculous luck are
+    required. Provided the precog doesn’t intentionally thrust herself back into
+    danger, their life is secured for the next few minutes at least, though
+    there’s no guarantee the psychic will survive intact in mind or body. This
+    technique can trigger no more often than once per week.</p>
+  level: 4
+  source: precognition

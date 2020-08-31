@@ -1,0 +1,9 @@
+name: Telekinetic Expertise
+type: power
+data:
+  description: >-
+    <p>The adept has become familiar enough with the manipulation of telekinetic
+    force that they may now use <em>Telekinetic Manipulation</em> without
+    Committing Effort.</p>
+  level: 2
+  source: telekInesIs

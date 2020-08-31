@@ -1,0 +1,11 @@
+name: Accelerated Succor
+type: power
+data:
+  description: >-
+    <p>The biopsion’s <em>Psychic Succor</em> now can be used as an On Turn
+    power, albeit only once per round. By Committing an additional Effort for
+    the day with each use, it can even be used as an Instant power, though it
+    still can only be used once per round. Any surcharges for augmenting the
+    succor apply normally, such as with <em>Tissue Integrity Field</em>.</p>
+  level: 3
+  source: biopsionics

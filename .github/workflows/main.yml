@@ -1,0 +1,41 @@
+name: swnr CI
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - name: npm install, build, and test
+      run: npm install
+    - name: Update Version
+      shell: bash
+      id: set-version
+      run: echo "::set-output name=version::$(node .github/workflows/set-version.js ${{ github.ref }})"
+    - run: gulp --series build package
+    - name: Create Release
+      id: create_versioned_release
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        name: Release ${{ steps.set-version.outputs.version }}
+        draft: false
+        prerelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: './dist/system.json,./package/*.zip'

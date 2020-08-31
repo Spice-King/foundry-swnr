@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "*.html": "handlebars",
+        "*.db": "json"
+    },
+    "i18n-ally.localesPaths": [
+        "src/lang"
+    ],
+    "i18n-ally.keystyle": "nested",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "cSpell.words": [
+        "Biopsionics",
+        "dtype",
+        "homeworld",
+        "metapsionics",
+        "psionic",
+        "shapeshifting",
+        "swnr"
+    ]
+}

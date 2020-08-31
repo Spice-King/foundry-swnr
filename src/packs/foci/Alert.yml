@@ -1,0 +1,19 @@
+name: Alert
+permission:
+  default: 0
+type: focus
+data:
+  description: >-
+    You are keenly aware of your surroundings and virtually impossible to take
+    unaware. You have an instinctive alacrity of response that helps you act
+    before less wary persons can think to move.
+  level1: >-
+    Gain Notice as a bonus skill. You cannot be surprised, nor can others use
+    the Execution Attack option on you. When you roll initiative, roll twice and
+    take the best result.
+  level2: >-
+    You always act first in a combat round unless someone else involved is also
+    this Alert.
+flags: {}
+img: icons/svg/mystery-man.svg
+_id: UxZ8V86y5RDDthCa

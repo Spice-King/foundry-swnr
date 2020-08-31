@@ -1,0 +1,144 @@
+name: swnr
+title: Stars Without Number Revised
+description: >-
+  BETA: Stars Without Number: Revised system. Early work with plans for full
+  coverage.
+version: 0.1.0
+author: Spice_King
+scripts: []
+initiative: 1d8+@stats.dex.mod
+esmodules:
+  - swnr.js
+styles:
+  - swnr.css
+packs:
+  - name: foci
+    label: Foci
+    system: swnr
+    module: swnr
+    path: packs/foci.db
+    entity: Item
+  - name: ranged
+    label: Ranged Weapons
+    system: swnr
+    module: swnr
+    path: packs/ranged.db
+    entity: Item
+  - name: ammo-and-power
+    label: Ammo and Power
+    system: swnr
+    module: swnr
+    path: packs/ammo-and-power.db
+    entity: Item
+  - name: armor
+    label: Armor
+    system: swnr
+    module: swnr
+    path: packs/armor.db
+    entity: Item
+  - name: communications
+    label: Communications
+    system: swnr
+    module: swnr
+    path: packs/communications.db
+    entity: Item
+  - name: computing-gear
+    label: Computing Gear
+    system: swnr
+    module: swnr
+    path: packs/computing-gear.db
+    entity: Item
+  - name: field-equipment
+    label: Field Equipment
+    system: swnr
+    module: swnr
+    path: packs/field-equipment.db
+    entity: Item
+  - name: heavy
+    label: Heavy Weapons
+    system: swnr
+    module: swnr
+    path: packs/heavy.db
+    entity: Item
+  - name: melee
+    label: Melee Weapons
+    system: swnr
+    module: swnr
+    path: packs/melee.db
+    entity: Item
+  - name: pharmaceuticals
+    label: Pharmaceuticals
+    system: swnr
+    module: swnr
+    path: packs/pharmaceuticals.db
+    entity: Item
+  - name: ranged
+    label: Ranged Weapons
+    system: swnr
+    module: swnr
+    path: packs/ranged.db
+    entity: Item
+  - name: ranged
+    label: Ranged Weapons
+    system: swnr
+    module: swnr
+    path: packs/ranged.db
+    entity: Item
+  - name: tools-and-medical
+    label: Tools And Medical
+    system: swnr
+    module: swnr
+    path: packs/tools-and-medical.db
+    entity: Item
+  - name: psi-biopsionics
+    label: Biopsionics
+    system: swnr
+    module: swnr
+    path: packs/psi-biopsionics.db
+    entity: Item
+  - name: psi-metapsionics
+    label: Metapsionics
+    system: swnr
+    module: swnr
+    path: packs/psi-metapsionics.db
+    entity: Item
+  - name: psi-precognition
+    label: Precognition
+    system: swnr
+    module: swnr
+    path: packs/psi-precognition.db
+    entity: Item
+  - name: psi-telekinesis
+    label: Telekinesis
+    system: swnr
+    module: swnr
+    path: packs/psi-telekinesis.db
+    entity: Item
+  - name: psi-telepathy
+    label: Telepathy
+    system: swnr
+    module: swnr
+    path: packs/psi-telepathy.db
+    entity: Item
+  - name: psi-teleportation
+    label: Teleportation
+    system: swnr
+    module: swnr
+    path: packs/psi-teleportation.db
+    entity: Item
+languages:
+  - lang: en
+    name: English
+    path: lang/en.json
+gridDistance: 1
+gridUnits: ''
+minimumCoreVersion: 0.6.0
+compatibleCoreVersion: 0.6.9
+url: 'https://github.com/Spice-King/foundry-swnr'
+manifest: >-
+  https://github.com/Spice-King/foundry-swnr/releases/latest/download/system.json
+download: ''
+license: 'https://github.com/Spice-King/foundry-swnr/blob/master/LICENSE.txt'
+readme: ''
+bugs: 'https://github.com/Spice-King/foundry-swnr/issues'
+changelog: ''

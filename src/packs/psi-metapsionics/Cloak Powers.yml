@@ -1,0 +1,14 @@
+name: Cloak Powers
+type: power
+data:
+  description: >-
+    <p>The metapsion can conceal their own psychic abilities from metapsionic
+    senses. They must Commit Effort for as long as they wish to cloak their
+    powers. While hidden, only a metapsion with equal or higher skill in
+    Metapsionics can detect their abilities with their level-0 or level-2
+    <em>Psychic Refinement</em> abilities. In such cases, an opposed
+    Wis/Metapsionics roll is made between the metapsion and the investigator. If
+    the investigator wins, the cloak is pierced, while if the metapsion wins,
+    the investigator’s <em>Psychic Refinement</em> remains oblivious.</p>
+  level: 1
+  source: metapsionics

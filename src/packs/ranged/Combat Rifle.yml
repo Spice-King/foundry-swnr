@@ -1,0 +1,30 @@
+name: Combat Rifle
+type: weapon
+data:
+  description: Combat rifles are favored by the militaries of tech level 3 worlds, trading some of the often-unnecessary range and penetration of a conventional rifle for a larger ammunition capacity and burst fire capabilities. On more strait-laced worlds such military weaponry is often illegal for civilians to possess.
+  ab: 0
+  ammo:
+    burst: true
+    current: '30'
+    max: '30'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 300
+  damage: 1d12
+  encumbrance: 2
+  range:
+    normal: 100
+    max: 300
+  stat: dex
+  tl: 3
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

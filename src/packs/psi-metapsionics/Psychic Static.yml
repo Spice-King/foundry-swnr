@@ -1,0 +1,16 @@
+name: Psychic Static
+type: power
+data:
+  description: >-
+    <p>As an Instant action, the metapsion may Commit Effort for the day to
+    negate a perceived psychic power. The psychic responsible for the effect
+    must Commit Effort for the day as an Instant action to resist this negation,
+    otherwise the power ends and any action used to trigger it is wasted. The PC
+    may then Commit Effort for the day again, with each spending and
+    counter-spending until one runs out of Effort or chooses to stop.
+    <em>Psychic Static</em> can be applied only once per round to any particular
+    power. The target of the <em>Psychic Static</em> automatically knows the
+    position of the interfering metapsion, though other onlookers do not have
+    any obvious way of identifying the metapsion.</p>
+  level: 2
+  source: metapsionics

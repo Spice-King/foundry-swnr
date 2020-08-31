@@ -1,0 +1,15 @@
+name: Flawless Mastery
+type: power
+data:
+  description: >-
+    <p>When this technique is learned, the adept may choose one technique from
+    any discipline they know. That technique no longer requires Effort to be
+    Committed in any way, though other techniques that augment it may still
+    exact a cost. Mastered <em>Psychic Static</em>, for example, can expend an
+    effectively unlimited amount of effort. If the technique has a duration
+    based on Committed Effort then it lasts until the metapsion chooses to end
+    it or is killed. This technique may only be mastered once, though the
+    perfected technique may be changed with a month of meditation and
+    practice.</p>
+  level: 4
+  source: metapsionics

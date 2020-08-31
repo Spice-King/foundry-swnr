@@ -1,0 +1,30 @@
+name: Semi-Auto Pistol
+type: weapon
+data:
+  description: Semi-automatic pistols trade some of the reliability of the revolver for a larger magazine size. They tend to be the favorite sidearm for locals on planets that lack the harsh conditions or uncertain maintenance opportunities of a frontier world.
+  ab: 0
+  ammo:
+    burst: false
+    current: '12'
+    max: '12'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 75
+  damage: 1d6+1
+  encumbrance: 1
+  range:
+    normal: 30
+    max: 100
+  stat: dex
+  tl: 3
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

@@ -1,0 +1,13 @@
+name: Organic Purification Protocols
+type: power
+data:
+  description: >-
+    <p>The biopsion’s <em>Psychic Succor</em> now cures any poisons or diseases
+    the subject may be suffering, albeit it requires Committing Effort for the
+    day as an additional surcharge. Biowarfare organisms, exceptionally virulent
+    diseases, or TL5 toxins may resist this curing, requiring a Wis/Biopsionics
+    skill check at a difficulty of at least 10. Failure means that the adept
+    cannot cure the target’s disease. This technique cannot cure congenital
+    illnesses.</p>
+  level: 1
+  source: biopsionics

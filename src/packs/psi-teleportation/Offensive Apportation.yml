@@ -1,0 +1,21 @@
+name: Offensive Apportation
+type: power
+data:
+  description: >-
+    <p>The psychic can use <em>Personal Apportation</em> as a Main Action to
+    teleport an unwilling target, provided the user can make physical contact
+    with them. Contact with an unsuspecting or incapacitated target is
+    automatic, while touching a resisting enemy requires a Punch hit roll with a
+    bonus equal to the psychic’s Teleportation skill. If the psychic does not
+    use the <em>Burdened Apportation</em> technique then only the target is
+    teleported; otherwise the user may go along with them. The psychic cannot
+    teleport a target to any location they could not teleport to, including
+    locations of imminent environmental danger, such as high in the air, into a
+    windowless tomb, or into the middle of a sea. A conscious, resisting target
+    can make a Mental saving throw to forcibly abort the teleportation, rolling
+    at a penalty equal to the psychic’s Teleportation skill. Use of this
+    technique adds to the cost of <em>Personal Apportation</em>, requiring the
+    psychic Commit an additional point of Effort for the day whether the touch
+    hits or not.</p>
+  level: 4
+  source: teleportation

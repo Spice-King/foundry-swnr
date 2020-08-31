@@ -1,0 +1,36 @@
+name: Heavy Machine Gun
+type: weapon
+data:
+  description: >-
+    Heavy machine guns represent a large family of air- or water-cooled
+    projectile weapons that are usually fed with belts of linked ammunition.
+    HMGs require a vehicle mounting or emplaced firing position for effective
+    results. An HMG magazine contains enough ammunition for 10 rounds of firing,
+    but each round of firing eats 25 credits worth of projectile ammunition.
+  ab: 0
+  ammo:
+    burst: false
+    current: 10
+    max: 10
+    longReload: false
+    type: special
+    suppress: true
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 5000
+  damage: 3d6
+  encumbrance: 3
+  range:
+    normal: 500
+    max: 2000
+  stat: Dex
+  secondStat: none
+  tl: 3
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

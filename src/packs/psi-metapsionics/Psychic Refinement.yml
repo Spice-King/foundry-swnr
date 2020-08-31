@@ -1,0 +1,24 @@
+name: Psychic Refinement
+type: power
+data:
+  description: >-
+    <p>The metapsion gains improved mastery over their own powers and an innate
+    sensitivity to the use of psionic abilities in their
+    presence.</p><p>Level-0: The adept can visually and audibly detect the use
+    of psychic powers. If both the source and target are visible to the
+    metapsion, they can tell who’s using the power, even if it’s normally
+    imperceptible. They gain a +2 bonus on any saving throw versus a psionic
+    power.</p><p>Level-1: The metapsion’s maximum Effort increases by an
+    additional point.</p><p>Level-2: The adept can determine whether or not a
+    person is a psychic or has latent psionic abilities through one round of
+    visual inspection. Their saving throw bonus against psionic powers increases
+    to +3.</p><p>Level-3: The metapsion’s maximum Effort increases by an
+    additional point.</p><p>Level-4: The metapsion can perform a slightly safer
+    version of torching. Instead of rolling the torching damage die, they simply
+    suffer 10 hit points of damage after torching is used. The damage occurs
+    after the fueled power activates, allowing a psychic at low hit points to
+    trigger a power before falling unconscious. This damage cannot be healed by
+    anything but natural bed rest, though a psychic can be stabilized if this
+    technique drops her to zero hit points.</p>
+  level: 0
+  source: metapsionics

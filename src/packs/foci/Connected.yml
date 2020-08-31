@@ -1,0 +1,22 @@
+name: Connected
+permission:
+  default: 0
+type: focus
+data:
+  description: >-
+    You’re remarkably gifted at making friends and forging ties with the people
+    around you. Wherever you go, you always seem to know somebody useful to your
+    ends.
+  level1: >-
+    Gain Connect as a bonus skill. If you’ve spent at least a week in a
+    not-entirely-hostile location, you’ll have built a web of contacts willing
+    to do favors for you that are no more than mildly illegal. You can call on
+    one favor per game day and the GM decides how far they’ll go for you.
+  level2: >-
+    Once per game session, if it’s not entirely implausible, you meet someone
+    you know who is willing to do modest favors for you. You can decide when and
+    where you want to meet this person, but the GM decides who they are and what
+    they can do for you.
+flags: {}
+img: icons/svg/mystery-man.svg
+_id: ijTgfsgMSPjE7gKW

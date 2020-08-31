@@ -1,0 +1,34 @@
+name: Anti-Vehicle Laser
+type: weapon
+data:
+  description: >-
+    Anti-vehicle lasers are less useful against soft targets, but excel at
+    penetrating vehicle armor. Against vehicles and other hard-skinned targets,
+    damage is rolled twice and the better result is used.
+  ab: 0
+  ammo:
+    burst: false
+    current: 15
+    max: 15
+    longReload: false
+    type: special
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 10000
+  damage: 3d10
+  encumbrance: 0
+  range:
+    normal: 2000
+    max: 4000
+  stat: Dex
+  secondStat: none
+  tl: 4
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

@@ -1,0 +1,16 @@
+name: Woven Body Armor
+type: armor
+data:
+  description: >-
+    Woven body armor represents the best armor that a TL3 world can manufacture,
+    or an up-armored version of security armor used by TL4 high-threat response
+    teams. The design is significantly more cumbersome, but allows for multiple
+    layers of protection.
+  cost: 400
+  encumbrance: 2
+  tl: 3
+  location: other
+  quality: stock
+  ac: 15
+  shield: false
+  use: false

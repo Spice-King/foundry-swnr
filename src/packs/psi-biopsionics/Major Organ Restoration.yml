@@ -1,0 +1,13 @@
+name: Major Organ Restoration
+type: power
+data:
+  description: >-
+    <p>The biopsion’s <em>Psychic Succor</em> can now cure congenital birth
+    defects and regrow missing limbs and organs. It can even be used to
+    stabilize targets that have been dropped by Heavy weapons, decapitated, or
+    otherwise dramatically dismembered, provided it’s used within one round per
+    level of Biopsionic skill. The best that can be done for such badly-mangled
+    targets is stabilization, after which they must rest for 24 hours before any
+    further hit points can be healed by Biopsionics, stims, or natural rest.</p>
+  level: 2
+  source: biopsionics

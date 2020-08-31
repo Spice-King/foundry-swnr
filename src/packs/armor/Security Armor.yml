@@ -1,0 +1,17 @@
+name: Security Armor
+type: armor
+data:
+  description: >-
+    An armored vacc suit has traded off some comfort and flexibility for
+    additional protective thickness. Aside from functioning as a normal vacc
+    suit, it has only half the usual chance to tear when hit by an edged weapon
+    or suit ripper. The choice between armored or standard suits is a common
+    debate in spacer bars.
+  cost: 700
+  encumbrance: 1
+  tl: 4
+  location: other
+  quality: stock
+  ac: 14
+  shield: false
+  use: false

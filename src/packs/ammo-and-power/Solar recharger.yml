@@ -1,0 +1,15 @@
+name: Solar recharger
+type:  item
+data:
+  description: >-
+    Solar recharger: This recharger unfolds into a 2 meter by 2 meter square
+    field of solar cells. Granted a primary star of roughly Earth-like
+    intensity, it can recharge one type A power cell per day.
+  cost: 500
+  encumbrance: 3
+  tl: 4
+  location: other
+  quality: stock
+  bundle:
+    bundled: false
+    amount: 1

@@ -1,0 +1,39 @@
+name: Wheatcutter Belt
+type: weapon
+data:
+  description: >-
+    Wheatcutter belts are one of several different antipersonnel measures often
+    installed on gravtanks and other fighting vehicles. When triggered, a belt
+    of explosives fires off a scything blast of shrapnel on any side of the
+    vehicle. All creatures within 10 meters of that side of the vehicle must
+    make an Evasion save for half damage. Those within 20 meters take half
+    damage, and can make an Evasion save to take none at all. Wheatcutter belts
+    do not ignore a vehicle’s Armor like other Heavy weapons do. Reloading a
+    wheatcutter belt costs 200 credits per round.
+  ab: 0
+  ammo:
+    burst: false
+    current: 5
+    max: 5
+    longReload: false
+    type: special
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 10000
+  damage: 2d12
+  encumbrance: 0
+  range:
+    normal: 10
+    max: 20
+  stat: Dex
+  secondStat: none
+  tl: 4
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

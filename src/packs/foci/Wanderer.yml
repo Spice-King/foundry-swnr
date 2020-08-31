@@ -1,0 +1,27 @@
+name: Wanderer
+permission:
+  default: 0
+type: focus
+data:
+  description: >-
+    Your hero gets around. As part of a life on the road, they’ve mastered a
+    number of tricks for ensuring their mobility and surviving the inevitable
+    difficulties of a vagabond existence.
+  level1: >-
+    Gain Survive as a bonus skill. You can convey basic ideas in all the common
+    languages of the sector. You can always find free transport to a desired
+    destination for yourself and a small group of your friends provided any
+    traffic goes to the place. Finding this transport takes no more than an
+    hour, but it may not be a strictly legitimate means of travel and may
+    require working passage.
+  level2: >-
+    You can forge, scrounge, or snag travel papers and identification for the
+    party with 1d6 hoursof work. These papers and permits will stand up to
+    ordinary scrutiny, but require an opposed Int/Administer versus Wis/Notice
+    check if examined by an official while the PC is actually wanted by the
+    state for some crime. When finding transport for the party, the
+    transportation always makes the trip at least as fast as a dedicated charter
+    would.
+flags: {}
+img: icons/svg/mystery-man.svg
+_id: UghJW9Hc13RzHF4W

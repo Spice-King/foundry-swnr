@@ -1,0 +1,9 @@
+name: Transmit Thought
+type: power
+data:
+  description: >-
+    <p>The telepath can send thoughts and images over a <em>Telepathic
+    Contact</em>, allowing two-way communication with a willing target as an
+    Instant action when desired.</p>
+  level: 1
+  source: telepathy

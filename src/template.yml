@@ -1,0 +1,156 @@
+---
+Actor:
+  types:
+    - character
+    - npc
+  templates:
+    living:
+      health:
+        value: 10
+        max: 10
+      baseAc: 10
+      ab: 0
+      systemStrain:
+        value: 0
+        permanent: 0
+      effort:
+        bonus: 0
+        current: 0
+        scene: 0
+        day: 0
+      encumbrance:
+        stowed:
+          value: number
+          max: number
+        ready:
+          value: number
+          max: number
+    stats:
+      stats:
+        str:
+          base: 10
+          bonus: 0
+          boost: 0
+        dex:
+          base: 10
+          bonus: 0
+          boost: 0
+        con:
+          base: 10
+          bonus: 0
+          boost: 0
+        int:
+          base: 10
+          bonus: 0
+          boost: 0
+        wis:
+          base: 10
+          bonus: 0
+          boost: 0
+        cha:
+          base: 10
+          bonus: 0
+          boost: 0
+  character:
+    templates:
+      - living
+      - stats
+    level:
+      value: 1
+      exp: 0
+      expToLevel: 3
+    goals: []
+    credits:
+      balance: 0
+      owed: 0
+  npc:
+    templates:
+      - living
+Item:
+  types:
+    - class
+    - armor
+    - weapon
+    # - background
+    - power
+    - focus
+    - item
+    # - modItem
+    # - modShip
+    - skill
+  templates:
+    modBase:
+      pretech:
+        cost: 0
+        perHull: false
+    baseItem:
+      encumbrance: 0
+      cost: 0
+      tl: 4
+      quality: stock
+      location: "other"
+    description:
+      description: ""
+  class: {}
+  armor:
+    templates:
+      - baseItem
+      - description
+    ac: 10
+    type: 'street'
+    use: false
+    shield: false
+  weapon:
+    templates:
+      - baseItem
+      - description
+    stat: dex
+    skill: ""
+    shock:
+      dmg: 0
+      ac: 15
+    ab: 0
+    ammo:
+      longReload: false
+      suppress: false
+      type: none
+      max: 0
+      current: 0
+      burst: false
+    range:
+      normal: 1
+      max: 2
+    damage: d4
+  power:
+    templates:
+      - description
+    source: ''
+    level: 0
+  item:
+    templates:
+      - baseItem
+      - description
+    bundle:
+        amount: 1
+        bundled: false
+    quantity: 1
+  focus:
+    templates:
+      - description
+    level1: ""
+    level2: ""
+  modItem:
+    templates:
+      - description
+      - modBase
+  modShip:
+    templates:
+      - description
+      - modBase
+  skill:
+    templates:
+      - description
+    rank: -1
+    defaultStat: ask
+    pool: 2D6
+    source: ""

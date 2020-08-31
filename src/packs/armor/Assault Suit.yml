@@ -1,0 +1,21 @@
+name: Assault Suit
+type: armor
+data:
+  description: >-
+    An assault suit represents the most sophisticated armor in common use among
+    TL4 worlds. An assault suit requires a type B power cell for 24 hours of
+    operation, and provides integral encrypted military comms, low-light and
+    infrared vision, and a built-in energy feed interface. The latter allows the
+    wearer to connect the suit to any one weapon or device that uses a type A
+    power cell as a Main Action. So long as the device remains connected to the
+    suit, it is treated as having unlimited ammunition or operation time. The
+    suit also functions as a vacc suit so long as it remains powered, one that
+    cannot be torn by edged weapons.
+  cost: 10000
+  encumbrance: 2
+  tl: 4
+  location: other
+  quality: stock
+  ac: 18
+  shield: false
+  use: false

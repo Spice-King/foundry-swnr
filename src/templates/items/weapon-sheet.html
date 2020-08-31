@@ -1,0 +1,66 @@
+<form class="{{cssClass}}">
+    {{> "systems/swnr/templates/items/fragments/desc.html"}}
+    {{> "systems/swnr/templates/items/fragments/item-base.html"}}
+    {{localize 'swnr.weapon.damageFormula'}}: <input type="text" name="data.damage" value="{{data.damage}}" />
+    {{localize 'swnr.weapon.attackBonus'}}: <input type="number" step="1" name="data.ab" step="1" data-dtype="Number"
+        value="{{data.ab}}" />
+    {{localize 'swnr.sheet.stats'}}: <select name="data.stat">
+        {{#select data.stat}}
+        <option value="str">{{localize 'swnr.stat.long.str'}}</option>
+        <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
+        <option value="con">{{localize 'swnr.stat.long.con'}}</option>
+        <option value="int">{{localize 'swnr.stat.long.int'}}</option>
+        <option value="wis">{{localize 'swnr.stat.long.wis'}}</option>
+        <option value="cha">{{localize 'swnr.stat.long.cha'}}</option>
+        <option value="str/dex">{{localize 'swnr.stat.short.str'}}/{{localize 'swnr.stat.short.dex'}}</option>
+        <option value="con/wis">{{localize 'swnr.stat.short.con'}}/{{localize 'swnr.stat.short.wis'}}</option>
+        {{/select}}
+    </select>
+    {{#if owner}}
+    <div>
+    <label for="data.skill">{{localize 'swnr.sheet.skill'}}:</label>
+    <select name="data.skill">
+        {{#select data.skill}}
+        <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#each actor.itemTypes.skill }}
+        <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+        {{/each}}
+        {{/select}}
+    </select>
+    </div>
+    {{/if}}
+    <div>
+        <h4>{{localize 'swnr.weapon.shock.label'}}</h4>
+        <label>{{localize 'swnr.weapon.shock.damage'}}: </label> <input type="number" name="data.shock.dmg"
+            value="{{data.shock.dmg}}" min="0" step="1">
+        <label>{{localize 'swnr.weapon.shock.ac'}}: </label> <input type="number" name="data.shock.ac"
+            value="{{data.shock.ac}}" min="10" step="1" {{#if (lte data.shock.dmg 0)}} disabled {{/if}}>
+    </div>
+    <div>
+        <h3>{{localize 'swnr.weapon.ammo'}}</h3>
+        <label>{{localize 'swnr.sheet.ammoType'}}:</label>
+        <select name="data.ammo.type">
+            {{#select data.ammo.type}}
+            <option value="none">{{localize 'swnr.ammo.none'}}</option>
+            <option value="typeAPower">{{localize 'swnr.ammo.typeAPower'}}</option>
+            <option value="typeBPower">{{localize 'swnr.ammo.typeBPower'}}</option>
+            <option value="ammo">{{localize 'swnr.ammo.ammo'}}</option>
+            <option value="missile">{{localize 'swnr.ammo.missile'}}</option>
+            <option value="special">{{localize 'swnr.ammo.special'}}</option>
+            <option value="infinite">{{localize 'swnr.ammo.infinite'}}</option>
+            {{/select}}
+        </select>
+        {{#if (ne data.ammo.type "none")}}
+        {{localize 'swnr.sheet.longReload'}} <input type="checkbox" name="data.ammo.longReload"
+            {{checked data.ammo.longReload}} />
+        {{localize 'swnr.sheet.burst'}} <input type="checkbox" name="data.ammo.burst" {{checked data.ammo.burst}} />
+        {{localize 'swnr.sheet.suppress'}} <input type="checkbox" name="data.ammo.suppress"
+            {{checked data.ammo.suppress}}>
+        {{#if (and (ne data.ammo.type "none") (ne data.ammo.type "infinite"))}}
+        {{localize 'swnr.sheet.magazine'}} <input type="number" name="data.ammo.current" value="{{data.ammo.current}}"
+            data-dtype="Number" step="1" min="0" />/<input type="number" name="data.ammo.max" value="{{data.ammo.max}}"
+            data-dtype="Number" step="1" min="0" />
+        {{/if}}
+        {{/if}}
+    </div>
+</form>

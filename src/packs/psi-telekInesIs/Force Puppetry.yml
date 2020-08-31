@@ -1,0 +1,21 @@
+name: Force Puppetry
+type: power
+data:
+  description: >-
+    <p>As a Main Action, the telekinetic can Commit Effort for the day to suborn
+    a visible target’s mobility, whether robotic, vehicular, or human, provided
+    it’s no larger than a ground car. A sapient victim can make a Mental saving
+    throw to resist the psychic onslaught; on a failure, they lose control of
+    their physical actions. If not piloted by the telekinetic, the target
+    remains motionless or continues on its current direction of travel. If the
+    telekinetic spends a Main Action to control them, they can be made to
+    perform any physical action that is not directly suicidal, using the
+    psychic’s skill levels and hit bonus for any attacks or skill checks they
+    might make. The puppetry lasts until the end of the scene, until the target
+    leaves the psychic’s sight, or until a sapient target believes that their
+    action or inaction is about to get them killed. The psychic’s control is
+    fine enough to achieve even very delicate physical motions, but it is not
+    good enough to control the target’s speech, though it can keep them
+    silent.</p>
+  level: 4
+  source: telekInesIs

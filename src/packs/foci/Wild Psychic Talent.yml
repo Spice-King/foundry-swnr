@@ -1,0 +1,36 @@
+name: Wild Psychic Talent
+permission:
+  default: 0
+type: focus
+data:
+  description: >-
+    Some men and women are born with a very limited form of MES, the mental
+    condition that allows for the use of psychic powers. While these people are
+    not true psychics, these “wild talents” can create one limited psychic
+    effect. Training is not always required to develop this ability, and their
+    MES is so mild that they don’t suffer the risk of madness or brain damage
+    that more developed psychics risk should they use their powers without
+    proper training. Wild talents are not treated as psychics for general
+    purposes and cannot “torch” their powers. When relevant, they are treated as
+    having one point of Effort. Psychics and Partial Psychics cannot take this
+    focus.
+  level1: >-
+    Pick a psychic discipline. You gain an ability equivalent to the level-0
+    core power of that discipline. Optionally, you may instead pick a level-1
+    technique from that discipline, but that technique must stand alone; you
+    can’t pick one that augments another technique or core ability. For example,
+    you could pick the Telekinetic Armory technique from Telekinesis, because
+    that ability does not require the use of any other Telekinesis power. You
+    could not pick the Mastered Succor ability from Biopsionics, because that
+    technique is meant to augment another power you don’t have.
+  level2: >-
+    You now have a maximum Effort of two points. You may pick a second ability
+    according to the guidelines above. This second does not need to be a
+    stand-alone technique if it augments the power you chose for level 1 of this
+    focus. Thus, if your first pick was gaining the level-0 power of Psychic
+    Succor, your second could be Mastered Succor. You still could not get the
+    level-1 core power of Psychic Succor, however, as you’re still restricted to
+    level-0.
+flags: {}
+img: icons/svg/mystery-man.svg
+_id: xc3MyY5vSvEgStR1

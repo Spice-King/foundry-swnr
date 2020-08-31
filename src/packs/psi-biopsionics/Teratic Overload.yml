@@ -1,0 +1,19 @@
+name: Teratic Overload
+type: power
+data:
+  description: >-
+    <p>This use of biopsionics inflicts potentially-lethal damage on a touched
+    target as a Main Action, and requires that the biopsion Commit Effort for
+    the scene. The target suffers 1d6 damage per level of the psychic’s
+    Biopsionics skill and must make a Physical saving throw. On a failure, the
+    damage is tripled and the target is now affected by an obvious, lethal
+    cancer that will kill them in 1d6 months. The cancer can be treated by a TL4
+    hospital or ship’s sick bay if managed within a month’s time. If the
+    biopsion Commits Effort for the day instead of the scene, they can control
+    the power sufficiently to do no hit point damage and create very subtle
+    tumors, leaving the cancer undetectable without a TL4 medical examination.
+    Such victims probably won’t even know they’ve been attacked by this power.
+    Whether a success or failure, this power cannot be used on the same target
+    more than once per scene.</p>
+  level: 3
+  source: biopsionics

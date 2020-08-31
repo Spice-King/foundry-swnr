@@ -1,0 +1,23 @@
+<form>
+    {{#if (and weapon.ammo.burst (ne 'none' weapon.ammo.type)) }}
+    <div>
+        <label for="burst">{{localize 'swnr.weapon.burst'}}: </label>
+        <input type="checkbox" name="burst" id="burst" {{#if burstFireHasAmmo}}checked{{else}}disabled{{/if}}>
+    </div>
+    {{/if}}
+    <div>
+        <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
+        <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}}>
+            {{#select weapon.skill}}
+            <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
+            {{#each actor.itemTypes.skill }}
+            <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+    </div>
+    <div>
+        <label for="modifier">{{localize  'swnr.chat.modifier'}}: </label>
+        <input name="modifier" type="number" step="1" value="0" />
+    </div>
+</form>

@@ -1,0 +1,30 @@
+name: Distortion Cannon
+type: weapon
+data:
+  description: Distortion cannons are among the most sophisticated man-portable weapons designed before the Scream. These two-handed energy weapons rely on the same principle as does a spike drive, manipulating the underlying fabric of space to disrupt a target. Provided the wielder can see a target within range or accurately fix its location within one meter, the distortion cannon can ignore up to one meter of solid cover between the gun and its target
+  ab: 0
+  ammo:
+    burst: false
+    current: '6'
+    max: '6'
+    longReload: false
+    type: typeAPower
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 1250
+  damage: 2d12
+  encumbrance: 2
+  range:
+    normal: 100
+    max: 300
+  stat: dex
+  tl: 5
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

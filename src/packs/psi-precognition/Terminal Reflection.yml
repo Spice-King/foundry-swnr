@@ -1,0 +1,13 @@
+name: Terminal Reflection
+type: power
+data:
+  description: >-
+    <p>The psychic’s <em>Oracle</em> power automatically triggers as an Instant
+    action moments before some unexpected danger or ambush, giving the precog a
+    brief vision of the impending hazard. This warning comes just in time to
+    avoid springing a trap or to negate combat surprise for the precog and their
+    companions. If the psychic does not immediately Commit Effort for the day,
+    this sense goes numb and this technique cannot be used for the rest of the
+    day.</p>
+  level: 1
+  source: precognition

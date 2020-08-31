@@ -1,0 +1,13 @@
+name: Facile Mind
+type: power
+data:
+  description: >-
+    <p>The telepath is practiced at opening a <em>Telepathic Contact</em>, and
+    need only Commit Effort for the scene to do so, instead of Committing Effort
+    for the day. If contacting an ally who has practiced the process with the
+    psychic for at least a week, opening the contact normally requires no Effort
+    at all. In both cases, if the telepath chooses to Commit Effort for the day,
+    they can open a <em>Telepathic Contact</em> as an Instant action rather than
+    a Main Action.</p>
+  level: 1
+  source: telepathy

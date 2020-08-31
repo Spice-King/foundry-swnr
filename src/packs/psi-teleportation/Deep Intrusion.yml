@@ -1,0 +1,14 @@
+name: Deep Intrusion
+type: power
+data:
+  description: >-
+    <p>The adept can use <em>Personal Apportation</em> to blind-teleport into a
+    building, structure, vehicle, or spaceship visible to them, including
+    spaceships close enough to engage in conventional ship-to-ship combat. They
+    intuitively seek out a space large enough to hold them and without immediate
+    environmental hazards, but cannot control their precise destination. Using
+    this technique in conjunction with <em>Personal Apportation</em> is very
+    draining to the psychic, and requires that they Commit an additional Effort
+    point for the day.</p>
+  level: 4
+  source: teleportation

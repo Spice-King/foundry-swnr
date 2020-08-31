@@ -1,0 +1,30 @@
+name: Musket
+type: weapon
+data:
+  description: Crude pistols and muskets represent the rawest and most primitive forms of gunpowder weaponry, usually makeshift weapons improvised by criminals or the desperate. Reloading a crude pistol or a musket requires two rounds instead of one. Revolvers are quite popular on frontier worlds, as the weapons are extremely reliable and can be repaired and manufactured even by primitive metallurgists. Some revolver variants are specially built to handle atmospheres that would destroy more fragile weapons.
+  ab: 0
+  ammo:
+    burst: false
+    current: '1'
+    max: '1'
+    longReload: true
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 30
+  damage: 1d12
+  encumbrance: 2
+  range:
+    normal: 25
+    max: 50
+  stat: dex
+  tl: 2
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

@@ -1,0 +1,27 @@
+name: Unique Gift
+permission:
+  default: 0
+type: focus
+data:
+  description: >-
+    Whether due to exotic technological augmentation, a unique transhuman
+    background, or a remarkable human talent, you have the ability to do
+    something that’s simply impossible for a normal human. This is a special
+    focus which serves as a catch-all for some novel power or background perk
+    that doesn’t have a convenient fit in the existing rules. A transhuman who
+    can function normally in lethal environments, a nanotech-laden experimental
+    subject with a head full of exotic sensors, or a brilliant gravitic
+    scientist who can fly thanks to their personal tech might all take this
+    focus to cover their special abilities. It’s up to the GM to decide what’s
+    reasonable and fair to be covered under this gift. If an ability is
+    particularly powerful, it might require the user to take System Strain to
+    use it, as described on page 32. As a general rule this ability should be
+    better than a piece of gear the PC could buy for credits. The player is
+    spending a very limited resource when they make this focus pick, so what
+    they get should be good enough that they can’t just duplicate it with a fat
+    bank account.
+  level1: ''
+  level2: ''
+flags: {}
+img: icons/svg/mystery-man.svg
+_id: GUFUulkn2Yku3N3y

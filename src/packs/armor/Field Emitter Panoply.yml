@@ -1,0 +1,19 @@
+name: Field Emitter Panoply
+type: armor
+data:
+  description: >-
+    A field emitter panoply is a heavy-duty pretech defensive system composed of
+    a half-dozen worn emitter nodes that sheath the wearer in a nimbus of
+    close-fitting damper fields. The FEP’s pale glow is obvious, but it provides
+    all the benefits of storm armor with no power source required. The FEP is
+    particularly effective at filtering radiation, and renders the wearer immune
+    to any dose that wouldn’t kill them in seconds. Many FEPs project
+    intimidating holographic skins over the wearer when in operation.
+  cost: 40000
+  encumbrance: 1
+  tl: 5
+  location: other
+  quality: stock
+  ac: 20
+  shield: false
+  use: false

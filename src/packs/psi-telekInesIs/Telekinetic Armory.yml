@@ -1,0 +1,16 @@
+name: Telekinetic Armory
+type: power
+data:
+  description: >-
+    <p>The adept may Commit Effort as an On Turn action to create both weapons
+    and armor out of telekinetic force. These weapons are treated as tech level
+    4 and act as a rifle or any advanced melee weapon. Attack rolls can use
+    either Dexterity, Wisdom, or Constitution modifiers, and may use the
+    Telekinesis skill as the combat skill.</p><p>Armor may be created as part of
+    this power, granting the psychic a base Armor Class equal to 15 plus their
+    Telekinesis skill level. This armor does not stack with conventional armor,
+    but Dexterity or shields modify it as usual. The gear continues to exist as
+    long as the psychic chooses to leave the Effort committed, and they may be
+    invisible or visible at the psychic’s discretion.</p>
+  level: 1
+  source: telekInesIs

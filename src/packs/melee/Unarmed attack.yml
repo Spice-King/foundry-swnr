@@ -1,0 +1,37 @@
+name: Unarmed attack
+type: weapon
+data:
+  description: >-
+    Unarmed attacks reflect ordinary kicks and punches. Unarmed attacks always
+    add the attacker’s Punch skill to damage rolls, unlike other weapons.
+    Kinesis wraps, spiked knuckles, and other small fist weapons may be treated
+    as small advanced or primitive weapons that use the Punch skill and add the
+    skill level to their rolled damage, but not to Shock. Such weapons do not
+    augment a hero with the Unarmed Combatant focus.
+  ab: 0
+  ammo:
+    burst: false
+    current: 0
+    max: 0
+    longReload: false
+    type: none
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 0
+  damage: 1d2
+  encumbrance: 0
+  range:
+    normal: 0
+    max: 0
+  stat: str
+  secondStat: dex
+  tl: 0
+  shock:
+    dmg: 0
+    ac: 15
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

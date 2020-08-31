@@ -1,0 +1,27 @@
+<form class="{{cssClass}}">
+    {{> "systems/swnr/templates/items/fragments/desc.html"}}
+    <select name="data.defaultStat">
+        {{#select data.defaultStat}}
+        <option value="ask">{{localize  'swnr.sheet.ask'}}</option>
+        {{#*inline "statline"}}
+        <option value="{{name}}">{{localize (concat 'swnr.stat.short.' name)}}</option>
+        {{/inline}}
+        {{> statline name="str"}}
+        {{> statline name="dex"}}
+        {{> statline name="con"}}
+        {{> statline name="int"}}
+        {{> statline name="wis"}}
+        {{> statline name="cha"}}
+        {{/select}}
+    </select>
+    <select name="data.pool">
+        {{#select data.pool}}
+        <option value="ask">{{localize  'swnr.sheet.ask'}}</option>
+        <option value="2d6">2D6</option>
+        <option value="3d6kh2">3D6</option>
+        <option value="4d6kh2">4D6</option>
+        {{/select}}
+    </select>
+    <input type="number" name="data.rank" min="-1" max="4" step="1" value="{{data.rank}}" />
+    <input type="text" name="data.source" value="{{data.source}}"/>
+</form>

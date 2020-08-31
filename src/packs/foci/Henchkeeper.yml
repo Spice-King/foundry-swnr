@@ -1,0 +1,34 @@
+name: Henchkeeper
+permission:
+  default: 0
+type: focus
+data:
+  description: >-
+    You have an distinct knack for picking up lost souls who willingly do your
+    bidding. You might induce them with promises of money, power, excitement,
+    sex, or some other prize that you may or may not eventually grant. A
+    henchman obtained with this focus will serve in loyal fashion until clearly
+    betrayed or placed in unacceptable danger. Henchmen are not “important”
+    people in their society, and are usually marginal sorts, outcasts, the
+    desperate, or other persons with few options. You can use more conventional
+    pay or inducements to acquire additional henchmen, but these extra hirelings
+    are no more loyal or competent than your pay and treatment can purchase.
+  level1: >-
+    Gain Lead as a bonus skill. You can acquire henchmen within 24 hours of
+    arriving in a community, assuming anyone is suitable hench material. These
+    henchmen will not fight except to save their own lives, but will escort you
+    on adventures and risk great danger to help you. Most henchmen will be
+    treated as Peaceful Humans from the Xenobestiary section of the book. You
+    can have one henchmen at a time for every three character levels you have,
+    rounded up. You can release henchmen with no hard feelings at any plausible
+    time and pick them back up later should you be without a current henchman.
+  level2: >-
+    Your henchmen are remarkably loyal and determined, and will fight for you
+    against anything but clearly overwhelming odds. Whether through natural
+    competence or their devotion to you, they’re treated as Martial Humans from
+    the Xenobestiary section. You can make faithful henchmen out of skilled and
+    highly-capable NPCs, but this requires that you actually have done them some
+    favor or help that would reasonably earn such fierce loyalty.
+flags: {}
+img: icons/svg/mystery-man.svg
+_id: crSYSK7H5Ml86lHN

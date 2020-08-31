@@ -1,0 +1,17 @@
+name: Toolkit/Pretech
+type:  item
+data:
+  description: >-
+    Toolkits/Pretech: Containing a wide range of necessary tools for a
+    particular skill set, toolkits can handle almost any job that doesn’t
+    require a full-scale shop or lab. These sophisticated pretech tools are
+    necessary for working on advanced TL5 artifacts, and the tools themselves
+    are very rare and difficult to obtain.
+  cost: 1000
+  encumbrance: 1
+  tl: 5
+  location: other
+  quality: stock
+  bundle:
+    bundled: false
+    amount: 1

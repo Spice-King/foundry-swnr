@@ -1,0 +1,19 @@
+name: 'Full plate, layered mail'
+type: armor
+data:
+  description: >-
+    Primitive armor is a catch-all covering all armor technology that lacks
+    access to advanced materials and processes. While such armor can be very
+    effective in protecting against primitive weaponry, it is useless against
+    advanced TL4 melee weapons and firearms of all kinds. Against these weapons,
+    it is treated as AC 10. Note that some planets have native flora or fauna
+    capable of naturally producing extremely effective armor materials, ones not
+    susceptible to this limitation
+  cost: 100
+  encumbrance: 2
+  tl: 1
+  location: other
+  quality: stock
+  ac: 17
+  shield: false
+  use: false

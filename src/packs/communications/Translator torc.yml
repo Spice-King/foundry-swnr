@@ -1,0 +1,19 @@
+name: Translator torc
+type:  item
+data:
+  description: >-
+    Translator torc: Each translator torc is keyed for two languages, and will
+    automatically translate what it hears in one into speech in the other. The
+    translations are eccentric in many cases, and there is always a
+    several-second delay between each statement and its translation. Any
+    attempts to exert social skills or Charisma through a translator torc suffer
+    a -2 skill check penalty. The torc is powered by one type A power cell,
+    which lasts for one week of regular use.
+  cost: 200
+  encumbrance: 0
+  tl: 4
+  location: other
+  quality: stock
+  bundle:
+    bundled: false
+    amount: 1

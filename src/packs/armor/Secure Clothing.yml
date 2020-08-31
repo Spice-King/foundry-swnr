@@ -1,0 +1,17 @@
+name: Secure Clothing
+type: armor
+data:
+  description: >-
+    Secure clothing comes in assorted styles and fashions ranging from casual
+    street wear to haute couture. Normal fabrics and components are replaced
+    with light, flexible armor components that are only slightly hindering to
+    the wearer. Only close tactile examination can distinguish secure clothing
+    from ordinary couture.
+  cost: 300
+  encumbrance: 1
+  tl: 4
+  location: other
+  quality: stock
+  ac: 13
+  shield: false
+  use: false

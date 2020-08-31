@@ -1,0 +1,30 @@
+name: Sniper Rifle
+type: weapon
+data:
+  description: Sniper rifles are designed to be exceptionally effective at dropping unsuspecting targets at long range. Aside from the additional effective range of a sniper rifle, any target it mortally wounds via an execution attack will die instantly, with no chance for stabilization. The execution attack must qualify according to the terms on page 52. If the rifle is used outside of such conditions, it has no special qualities.
+  ab: 0
+  ammo:
+    burst: false
+    current: '1'
+    max: '1'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 400
+  damage: 2d8
+  encumbrance: 2
+  range:
+    normal: 1000
+    max: 2000
+  stat: dex
+  tl: 3
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

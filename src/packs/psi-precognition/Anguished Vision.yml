@@ -1,0 +1,14 @@
+name: Anguished Vision
+type: power
+data:
+  description: >-
+    <p>The adept’s precognition is sophisticated enough to clearly foresee
+    several seconds into the future. As an Instant action, the psychic may
+    Commit Effort for the day and declare that what they have just done or seen
+    is a vision of the immediate future. Time rolls back to the start of the
+    initiative count in a combat turn, or six seconds earlier if out of combat.
+    Nothing that happened during that round has really come to pass
+    yet.</p><p>This ability is tremendously draining, and can be used only once
+    per day.</p>
+  level: 3
+  source: precognition

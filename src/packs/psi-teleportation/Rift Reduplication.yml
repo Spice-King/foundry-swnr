@@ -1,0 +1,20 @@
+name: Rift Reduplication
+type: power
+data:
+  description: >-
+    <p>Expert teleporters can be infuriatingly difficult to pin down. By
+    Committing an additional Effort for the day as an Instant action, the adept
+    can use <em>Personal Apportation</em> as an On Turn action, even if they’ve
+    already used it once this round. Apporting itself costs whatever Effort it
+    normally would, in addition to any techniques that augment it. <em>Rift
+    Reduplication</em> can only be triggered once per round. </p><p>If the adept
+    uses their powers to teleport into a location, perform an action, and then
+    use <em>Rift Reduplication</em> to teleport back out, onlookers in the area
+    will not have time to react to their action or attack the adept unless the
+    onlookers have held their action explicitly to counter the psychic. Enemies
+    who hold their action this way waste it entirely if the psychic does not
+    give them a chance to attack or otherwise interfere. Such a lightning strike
+    may be surprising to onlookers, but it doesn’t allow enough preparation time
+    to count as an Execution Attack as described on page 52.</p>
+  level: 3
+  source: teleportation

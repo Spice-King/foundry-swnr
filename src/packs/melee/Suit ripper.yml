@@ -1,0 +1,35 @@
+name: Suit ripper
+type: weapon
+data:
+  description: >-
+    Suit rippers are rods with fractal cutting surfaces designed to cripple vacc
+    suit auto-repair routines. Every hit with a suit ripper counts as a suit
+    tear on a vacc suit-wearing enemy. Unsurprisingly, these weapons are
+    strictly illegal in space environments.
+  ab: 0
+  ammo:
+    burst: false
+    current: 0
+    max: 0
+    longReload: false
+    type: none
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 75
+  damage: 1d6
+  encumbrance: 1
+  range:
+    normal: 0
+    max: 0
+  stat: str
+  secondStat: dex
+  tl: 4
+  shock:
+    dmg: 0
+    ac: 15
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

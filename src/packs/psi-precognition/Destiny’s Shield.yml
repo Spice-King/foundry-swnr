@@ -1,0 +1,14 @@
+name: Destiny’s Shield
+type: power
+data:
+  description: >-
+    <p>The precog observes an incoming injury and tries to find an alternate
+    future in which the attack misses. As an Instant action, the precog can
+    Commit Effort for the day to force an attacker to reroll a successful hit
+    roll. This technique only works on attacks against the psychic’s person, not
+    against attacks aimed at a vehicle they’re occupying or harm that doesn’t
+    involve an attack roll. If the rerolled attack still hits, however, the
+    damage done is maximized. This technique can be used only once per incoming
+    attack.</p>
+  level: 2
+  source: precognition

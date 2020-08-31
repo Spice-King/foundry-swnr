@@ -1,0 +1,10 @@
+name: Proficient Apportation
+type: power
+data:
+  description: >-
+    <p><em>Personal Apportation</em> now counts as a Move action, though it
+    still can be performed only once per round. Apportations of 10 meters or
+    less no longer require Effort to be Committed, though any augments to the
+    technique must still be paid for normally.</p>
+  level: 1
+  source: teleportation

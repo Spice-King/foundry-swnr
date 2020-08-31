@@ -1,0 +1,17 @@
+name: Thermokinesis
+type: power
+data:
+  description: >-
+    <p>Telekinetic power involves kinetic energy, but a sufficiently
+    sophisticated grip on motion can be used to agitate the molecules of an
+    inanimate object and cause it to melt or burst into flame. Similar focus can
+    chill or freeze such substances.</p><p>Applying <em>Thermokinesis</em> to a
+    target requires that the adept Commit Effort for the scene as a Main Action.
+    <em>Thermokinesis</em> cannot affect objects larger than the adept could
+    lift with their <em>Telekinetic Manipulation</em>.</p><p>As with other
+    telekinetic powers, this ability does not work on objects being held or used
+    by intelligent creatures. Non-sentient robots or other objects with hit
+    points take 1d12 damage per level of Telekinesis skill each time this
+    technique is applied to them.</p>
+  level: 2
+  source: telekInesIs

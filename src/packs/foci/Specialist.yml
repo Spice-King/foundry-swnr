@@ -1,0 +1,17 @@
+name: Specialist
+permission:
+  default: 0
+type: focus
+data:
+  description: >-
+    You are remarkably talented at a particular skill. Whether a marvelous cat
+    burglar, a world-famous athlete, a brilliant engineer, or some other savant,
+    your expertise is extremely reliable. You may take this focus more than once
+    for different skills.
+  level1: >-
+    Gain a non-combat, non-psychic skill as a bonus. Roll 3d6 and drop the
+    lowest die for all skill checks in this skill.
+  level2: Roll 4d6 and drop the two lowest dice for all skill checks in this skill.
+flags: {}
+img: icons/svg/mystery-man.svg
+_id: IAQTaOK2WdOD7Waw

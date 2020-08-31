@@ -1,0 +1,11 @@
+<h1 class="char-name"><input name="name" type="text" value="{{item.name}}"
+        placeholder="{{localize 'swnr.sheet.name'}}" /></h1>
+<div>
+    <div>
+        <h2>{{localize 'swnr.sheet.description'}}</h2>
+        <div class="swnr-wrapper">
+            {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable }}
+        </div>
+    </div>
+</div>

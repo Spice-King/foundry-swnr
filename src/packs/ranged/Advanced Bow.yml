@@ -1,0 +1,30 @@
+name: Advanced Bow
+type: weapon
+data:
+  description: Bows are uncommon weapons in the far future, though some lostworlder barbarians have nothing better. Some sophisticated “conversion bows” use special materials to convert the kinetic energy of the draw into a force field “glazing” around the arrow, improving penetration. Bows can be reloaded with a Move action, or faster if the Gunslinger focus is applied.
+  ab: 0
+  ammo:
+    burst: false
+    current: '1'
+    max: '1'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 50
+  damage: 1d6
+  encumbrance: 2
+  range:
+    normal: 100
+    max: 150
+  stat: dex
+  tl: 3
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

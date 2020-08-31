@@ -1,11 +1,16 @@
 {
 	"compilerOptions": {
 		"target": "ES2017",
-		"lib": [
-			"DOM",
-			"ES6",
-			"ES2017"
-		],
-		"types": ["foundry-pc-types"]
-	}
+		"lib": ["es2018", "DOM"],
+		"types": ["foundry-pc-types"],
+		"sourceMap": true,
+	"sourceRoot": "src"
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"dist/**",
+		"node_modules"
+	]
 }

@@ -1,0 +1,30 @@
+name: Combat Shotgun
+type: weapon
+data:
+  description: Combat shotguns are more complicated and temperamental versions of conventional shotguns. These weapons have substantially larger ammunition capacity and are capable of firing in burst mode. Combat shotguns can fire slug rounds just as normal shotguns.
+  ab: 0
+  ammo:
+    burst: true
+    current: '12'
+    max: '12'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 300
+  damage: 3d4
+  encumbrance: 2
+  range:
+    normal: 10
+    max: 30
+  stat: dex
+  tl: 3
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

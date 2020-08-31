@@ -1,0 +1,30 @@
+name: Submachine Gun
+type: weapon
+data:
+  description: Submachine guns take pistol ammunition but fire it at a high rate of speed. These weapons can fire in burst mode.
+  ab: 0
+  ammo:
+    burst: true
+    current: '20'
+    max: '20'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 200
+  damage: 1d8
+  encumbrance: 1
+  range:
+    normal: 30
+    max: 100
+  stat: dex
+  tl: 3
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

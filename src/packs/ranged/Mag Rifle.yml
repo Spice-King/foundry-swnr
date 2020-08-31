@@ -1,0 +1,30 @@
+name: Mag Rifle
+type: weapon
+data:
+  description: Mag weaponry involves the magnetic acceleration of metal flechettes, while spike throwers are the shotgun equivalents of these weapons. Mag ammunition is packaged with integral power supplies, so no additional power cells are necessary to fire these weapons.
+  ab: 0
+  ammo:
+    burst: false
+    current: '10'
+    max: '10'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 500
+  damage: 2d8+2
+  encumbrance: 2
+  range:
+    normal: 300
+    max: 600
+  stat: dex
+  tl: 4
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

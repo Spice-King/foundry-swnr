@@ -1,0 +1,10 @@
+name: Impact Sump
+type: power
+data:
+  description: >-
+    <p>The adept may Commit Effort for the day as an Instant action to negate a
+    single instance of physical damage. This ability is too taxing to be used
+    more than once per day, but as an Instant action, it can be triggered even
+    after damage is rolled.</p>
+  level: 2
+  source: telekInesIs

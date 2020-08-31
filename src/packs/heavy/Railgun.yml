@@ -1,0 +1,35 @@
+name: Railgun
+type: weapon
+data:
+  description: >-
+    Railguns are simply scaled-up versions of personal mag rifles. They
+    accelerate large metallic slugs along the weapon’s barrel, creating a steady
+    spray of hypervelocity rounds. Ammunition sufficient for one round of firing
+    costs 50 credits.
+  ab: 0
+  ammo:
+    burst: false
+    current: 20
+    max: 20
+    longReload: false
+    type: special
+    suppress: true
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 8000
+  damage: 3d8
+  encumbrance: 0
+  range:
+    normal: 4000
+    max: 8000
+  stat: Dex
+  secondStat: none
+  tl: 4
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

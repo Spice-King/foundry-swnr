@@ -1,0 +1,16 @@
+name: Shield
+type: armor
+data:
+  description: >-
+    Shields are an ancient yet extremely useful adjunct to body armor. Primitive
+    shields are usually of wood or stretched hide, while more modern riot
+    shields tend toward clear plastic. All shields require one free hand to use
+    effectively.
+  cost: 10
+  encumbrance: 2
+  tl: 0
+  location: other
+  quality: stock
+  ac: 13
+  shield: true
+  use: false

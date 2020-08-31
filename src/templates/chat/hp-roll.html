@@ -1,0 +1,14 @@
+<div class="hpRoll">
+    <div class="status">
+        <div class="oldHp">{{oldHp}}</div>
+        <div class="arrow">⇶</div>
+        <div class="newHp">{{newHp}}</div>
+    </div>
+    <div>
+        <ul class="dieRoll">
+            {{#each dice}}
+            <li class="{{this.classes}}">{{this.roll}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

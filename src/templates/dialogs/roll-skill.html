@@ -1,0 +1,30 @@
+<form>
+    <div>
+        {{! dice }}
+        <label for="">{{localize  'swnr.chat.dicepool'}}: </label>
+        <select name="dicepool" {{#if (ne skill.dice "ask")}} disabled{{/if}}>
+            {{#select skill.dice}}
+            <option value="2d6">2D6</option>
+            <option value="3d6kh2">3D6</option>
+            <option value="4d6kh2">4D6</option>
+            {{/select}}
+        </select>
+    </div>
+    <div>
+        {{! mod }}
+        <label for="modifier">{{localize  'swnr.chat.modifier'}}: </label>
+        <input name="modifier" type="number" step="1" value="0" />
+    </div>
+    <div>
+        {{! stat}}
+        <label for="stat">{{localize  'swnr.sheet.stats'}}: </label>
+        <select name="stat">
+            {{#select dicepool}}
+            {{#each data.data.stats as |box name |}}
+            <option value="{{name}}">{{localize (concat "swnr.stat.long." name)}}:
+                {{numberFormat box.mod decimals=0 sign=true}}</option>
+            {{/each}}
+            {{/select}}
+        </select>
+    </div>
+</form>

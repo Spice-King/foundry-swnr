@@ -1,0 +1,30 @@
+name: Rifle
+type: weapon
+data:
+  description: Rifles are the mainstays of most TL2 armies and hunters, thanks to their superior range and power.
+  ab: 0
+  ammo:
+    burst: false
+    current: '6'
+    max: '6'
+    longReload: false
+    type: ammo
+    suppress: false
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 75
+  damage: 1d10+2
+  encumbrance: 2
+  range:
+    normal: 200
+    max: 400
+  stat: dex
+  tl: 2
+  shock:
+    ac: 15
+    dmg: 0
+  location: other
+  quality: stock
+  quantity: 1
+  skill: ''

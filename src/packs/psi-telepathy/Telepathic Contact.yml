@@ -1,0 +1,36 @@
+name: Telepathic Contact
+type: power
+data:
+  description: >-
+    <p>The telepath can obtain a progressively-deeper understanding of a
+    sentient target’s thoughts. The target must be visible or otherwise
+    perceptible to the telepath’s unaided senses. Opening a contact requires the
+    telepath to Commit Effort for the day as a Main Action, and the contact
+    lasts for a scene at most unless augmented by other techniques.</p><p>The
+    depth of contact that can be made depends on the psychic’s Telepathy skill.
+    A single contact can use any or all of the effects permitted to a telepath
+    of the user’s skill level. Basic forms of contact do not allow for a saving
+    throw, though more advanced probes allow the target to make a Mental saving
+    throw to resist. On a successful save, no form of this technique that allows
+    a save can be used on them for the rest of the scene.</p><p>Level-0: Observe
+    emotional states in a target. Intense emotions provide a single word or
+    image related to the focus of the feelings.</p><p>Level-1: A shallow gestalt
+    with the target’s language centers allows the telepath to understand any
+    form of communication made by the target. If the psychic has the requisite
+    body parts to speak the target’s language, they can communicate with it in
+    turn.</p><p>Level-2: The psychic’s awareness of the target’s surface
+    cognition is sophisticated enough to read their current thoughts, though it
+    can’t pick up memories or non-obvious connections. The target gets a Mental
+    saving throw to resist this.</p><p>Level-3: The psychic can drill down into
+    the target’s memory to get a one or two-sentence answer to any single
+    question they ask, or receive a single answering vision of the target’s
+    recollections. The target can attempt a Mental saving throw to resist this
+    power, and whether or not it succeeds the contact is automatically ended. It
+    can be re-established, but only by activating this technique
+    again.</p><p>Level-4: The psychic instantly gets a full and nuanced
+    awareness of everything the target can remember about a particular topic.
+    The target can attempt a Mental saving throw to resist this power, and
+    whether or not it succeeds the contact is automatically ended afterwards. It
+    can be re-established, but only by activating this technique again.</p>
+  level: 0
+  source: telepathy

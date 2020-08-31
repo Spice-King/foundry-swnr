@@ -1,0 +1,16 @@
+name: Forced Outcome
+type: power
+data:
+  description: >-
+    <p>Through careful manipulation of probability, the adept can influence
+    random physical events in their vicinity. Triggering this technique requires
+    a Main Action and Committing Effort for the scene. Any simple, random
+    mechanical outcome can be completely controlled for the scene, such as a
+    roulette wheel or the order of a deck of shuffled cards. Any other physical
+    event in the area that seems not-entirely-implausible may be made to occur
+    by this technique, provided it doesn’t involve more than a few objects and
+    doesn’t require human involvement. The GM decides what random events are and
+    are not adequately possible. Anything more than one unusual coincidence or
+    chance per scene is likely impossible to produce.</p>
+  level: 3
+  source: precognition

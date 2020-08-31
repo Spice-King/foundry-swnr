@@ -1,0 +1,17 @@
+name: Comm server
+type:  item
+data:
+  description: >-
+    Comm server: A powerful base unit for providing communications without
+    comsats. The server provides service between up to three dozen compads
+    within 300 kilometers of the unit. Server usage can be locked to specific
+    compads, and all transmissions are heavily encrypted. A comm server can
+    function for several months on a type B cell.
+  cost: 1000
+  encumbrance: 3
+  tl: 4
+  location: other
+  quality: stock
+  bundle:
+    bundled: false
+    amount: 1

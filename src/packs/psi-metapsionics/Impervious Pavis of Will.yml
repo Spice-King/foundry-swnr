@@ -1,0 +1,14 @@
+name: Impervious Pavis of Will
+type: power
+data:
+  description: >-
+    <p>When this technique is learned, the metapsion must choose a discipline.
+    They then become entirely immune to unwanted powers from that discipline;
+    they and their abilities are simply not valid targets for purposes of that
+    discipline’s powers unless the adept chooses to be affected. By Committing
+    Effort for the day as an Instant action, they can extend this immunity for a
+    scene to all allies within 50 meters. This technique may be learned more
+    than once, and any shared protection applies to all disciplines negated by
+    the adept.</p>
+  level: 4
+  source: metapsionics
