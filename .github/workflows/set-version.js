@@ -12,5 +12,4 @@ if (!tagVersion || !tagVersion.startsWith('v')) {
   manifest.download = `https://github.com/Spice-King/foundry-swnr/releases/download/${tagVersion}/swnr-${tagVersion}.zip`
   fs.writeFileSync('src/system.yml', yaml.dump(manifest)); // pretty print JSON back to module.json
   console.log(tagVersion);
-  console.log(yaml.load(fs.readFileSync('src/system.yml', 'utf8')))
 }

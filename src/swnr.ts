@@ -88,9 +88,6 @@ Hooks.once('ready', function () {
 	// Do anything once the system is ready
 	// Reference a Compendium pack by it's collection ID
 	// packImport();
-	Hooks.on("renderActorSheet", nukeTemplates)
-	Hooks.on("renderItemSheet", nukeTemplates)
-	game.actors.getName("Test Guy").sheet.render(true)
 });
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function packImport() {

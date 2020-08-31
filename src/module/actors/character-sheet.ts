@@ -540,6 +540,3 @@ Hooks.on("renderChatMessage",
         }
     }
 );
-ChatMessage.create({
-
-})
