@@ -57,7 +57,7 @@
         {{localize 'swnr.sheet.suppress'}} <input type="checkbox" name="data.ammo.suppress"
             {{checked data.ammo.suppress}}>
         {{#if (and (ne data.ammo.type "none") (ne data.ammo.type "infinite"))}}
-        {{localize 'swnr.sheet.magazine'}} <input type="number" name="data.ammo.current" value="{{data.ammo.current}}"
+        {{localize 'swnr.sheet.magazine'}} <input type="number" name="data.ammo.value" value="{{data.ammo.value}}"
             data-dtype="Number" step="1" min="0" />/<input type="number" name="data.ammo.max" value="{{data.ammo.max}}"
             data-dtype="Number" step="1" min="0" />
         {{/if}}

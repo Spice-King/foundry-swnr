@@ -115,7 +115,7 @@ Item:
       suppress: false
       type: none
       max: 0
-      current: 0
+      value: 0
       burst: false
     range:
       normal: 1
