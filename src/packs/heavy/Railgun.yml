@@ -9,7 +9,7 @@ data:
   ab: 0
   ammo:
     burst: false
-    current: 20
+    value: 20
     max: 20
     longReload: false
     type: special

@@ -5,8 +5,8 @@ data:
   ab: 0
   ammo:
     burst: false
-    current: '5'
-    max: '5'
+    value: 5
+    max: 5
     longReload: false
     type: typeAPower
     suppress: false

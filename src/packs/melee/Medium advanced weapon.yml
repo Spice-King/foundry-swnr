@@ -14,7 +14,7 @@ data:
   ab: 0
   ammo:
     burst: false
-    current: 0
+    value: 0
     max: 0
     longReload: false
     type: none

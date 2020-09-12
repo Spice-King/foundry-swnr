@@ -5,8 +5,8 @@ data:
   ab: 0
   ammo:
     burst: false
-    current: '6'
-    max: '6'
+    value: 6
+    max: 6
     longReload: false
     type: ammo
     suppress: false
