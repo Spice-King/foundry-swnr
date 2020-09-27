@@ -2,3 +2,4 @@ node_modules
 foundryconfig.json
 dist
 package/
+foundry/
