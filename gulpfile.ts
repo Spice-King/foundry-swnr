@@ -1,35 +1,43 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const gulp = require("gulp");
-const fs = require("fs-extra");
-const path = require("path");
-const chalk = require("chalk");
-const archiver = require("archiver");
-const stringify = require("json-stringify-pretty-compact");
-const typescript = require("typescript");
-const os = require("os");
+import * as gulp from "gulp";
+import * as fs from "fs-extra";
+import * as path from "path";
+import * as chalk from "chalk";
+import * as archiver from "archiver";
+import * as typescript from "typescript";
+import * as os from "os";
 
-const ts = require("gulp-typescript");
-const less = require("gulp-less");
-const sass = require("gulp-sass");
-const git = require("gulp-git");
-const gyaml = require("gulp-yaml");
-const filelist = require("gulp-filelist");
-const rename = require("gulp-rename");
-const sourcemaps = require("gulp-sourcemaps");
-const mergeStream = require("merge-stream");
-const concat = require('gulp-concat');
-const yaml = require("js-yaml");
-const gap = require('gulp-append-prepend');
-const through2 = require('through2');
+import * as ts from "gulp-typescript";
+import * as less from "gulp-less";
+import * as sass from "gulp-sass";
+import * as gyaml from "gulp-yaml";
+import * as filelist from "gulp-filelist";
+import * as rename from "gulp-rename";
+import * as sourcemaps from "gulp-sourcemaps";
+import mergeStream = require("merge-stream");
+import * as concat from "gulp-concat";
+import * as yaml from "js-yaml";
 
-const argv = require("yargs").argv;
+import * as through2 from "through2";
 
-sass.compiler = require("sass");
+import * as yargs from "yargs";
+
+import * as glob from "glob";
+
+import { createHash } from "crypto";
+
+const argv = yargs.options("clean", {
+  alias: "c",
+  default: false,
+}).argv;
+
+import * as sassComp from "sass";
+(<{ compiler: unknown }>(<never>sass)).compiler = sassComp;
 
 function getConfig() {
   const configPath = path.resolve(process.cwd(), "foundryconfig.json");
-  let config;
+  let config: { dataPath: string };
 
   if (fs.existsSync(configPath)) {
     config = fs.readJSONSync(configPath);
@@ -40,39 +48,40 @@ function getConfig() {
 }
 
 function getManifest() {
-  const json = {};
+  let file: Record<string, unknown>;
+  let name: string;
+  let root: string;
 
   if (fs.existsSync("src")) {
-    json.root = "src";
+    root = "src";
   } else {
-    json.root = "dist";
+    root = "dist";
   }
 
-  const modulePath = path.join(json.root, "module.yml");
-  const systemPath = path.join(json.root, "system.yml");
+  const modulePath = path.join(root, "module.yml");
+  const systemPath = path.join(root, "system.yml");
 
   if (fs.existsSync(modulePath)) {
-    json.file = yaml.load(fs.readFileSync(modulePath));
-    json.name = "module.yml";
+    file = yaml.load(fs.readFileSync(modulePath, "utf-8"));
+    name = "module.yml";
   } else if (fs.existsSync(systemPath)) {
-    json.file = yaml.load(fs.readFileSync(systemPath));
-    json.name = "system.yml";
+    file = yaml.load(fs.readFileSync(systemPath, "utf-8"));
+    name = "system.yml";
   } else {
     return;
   }
 
-  return json;
+  return { name, file, root };
 }
 
 /**
  * TypeScript transformers
  * @returns {typescript.TransformerFactory<typescript.SourceFile>}
  */
-function createTransformer() {
-  /**
-   * @param {typescript.Node} node
-   */
-  function shouldMutateModuleSpecifier(node) {
+function createTransformer(): typescript.TransformerFactory<
+  typescript.SourceFile
+> {
+  function shouldMutateModuleSpecifier(node: typescript.Node) {
     if (
       !typescript.isImportDeclaration(node) &&
       !typescript.isExportDeclaration(node)
@@ -91,18 +100,14 @@ function createTransformer() {
 
   /**
    * Transforms import/export declarations to append `.js` extension
-   * @param {typescript.TransformationContext} context
    */
-  function importTransformer(context) {
-    return (node) => {
-      /**
-       * @param {typescript.Node} node
-       */
-      function visitor(node) {
+  function importTransformer(context: typescript.TransformationContext) {
+    return (node: typescript.SourceFile) => {
+      function visitor(node: typescript.Node) {
         if (shouldMutateModuleSpecifier(node)) {
           if (typescript.isImportDeclaration(node)) {
             const newModuleSpecifier = typescript.createLiteral(
-              `${node.moduleSpecifier.text}.js`
+              `${(<{ text: string }>(<unknown>node.moduleSpecifier)).text}.js`
             );
             return typescript.updateImportDeclaration(
               node,
@@ -113,14 +118,15 @@ function createTransformer() {
             );
           } else if (typescript.isExportDeclaration(node)) {
             const newModuleSpecifier = typescript.createLiteral(
-              `${node.moduleSpecifier.text}.js`
+              `${(<{ text: string }>(<unknown>node.moduleSpecifier)).text}.js`
             );
             return typescript.updateExportDeclaration(
               node,
               node.decorators,
               node.modifiers,
               node.exportClause,
-              newModuleSpecifier
+              newModuleSpecifier,
+              false
             );
           }
         }
@@ -136,7 +142,7 @@ function createTransformer() {
 
 const tsConfig = ts.createProject("tsconfig.json", {
   sourceMap: true,
-  getCustomTransformers: (_program) => ({
+  getCustomTransformers: () => ({
     after: [createTransformer()],
   }),
 });
@@ -149,33 +155,47 @@ const tsConfig = ts.createProject("tsconfig.json", {
  * Build Compendiums
  */
 function buildPack() {
-  const packFolders = fs.readdirSync("src/packs/").filter(function (file) {
+  const packFolders = fs
+    .readdirSync("src/packs/")
+    .filter(function (file: string) {
     return fs.statSync(path.join("src/packs", file)).isDirectory();
   });
-  function makeid(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
+  function makeId(length: number) {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
   }
 
-  var packs = packFolders.map(function (folder) {
-    return gulp.src(path.join("src/packs/", folder, '/**/*.yml'))
-    .pipe(through2.obj((file, enc, cb) => {
-      file.contents = Buffer.concat([Buffer.from(`_id: ${makeid(16)}\n`), file.contents])
-      cb(null, file)
-    }))
+  const packs = packFolders.map(function (folder: string) {
+    return gulp
+      .src(path.join("src/packs/", folder, "/**/*.yml"))
+      .pipe(
+        through2.obj(
+          (
+            file: { contents: Buffer | Uint8Array },
+            enc: unknown,
+            cb: (arg0: any, arg1: { contents: Buffer | Uint8Array }) => void
+          ) => {
+            file.contents = Buffer.concat([
+              Buffer.from(`_id: ${makeId(16)}\n`),
+              file.contents,
+            ]);
+            cb(null, file);
+          }
+        )
+      )
       .pipe(gyaml({ space: 0, safe: true, json: true }))
-      .pipe(concat(folder + '.json'))
-      .pipe(rename(folder + '.db'))
-      .pipe(gulp.dest('dist/packs'));
+      .pipe(concat(folder + ".json"))
+      .pipe(rename(folder + ".db"))
+      .pipe(gulp.dest("dist/packs"));
   });
-  return mergeStream.call(null, packs)
+  return mergeStream.call(null, packs);
 }
-
 
 /**
  * Build TypeScript
@@ -186,9 +206,7 @@ function buildTS() {
     .pipe(gulp.dest("dist"))
     .pipe(sourcemaps.init())
     .pipe(tsConfig())
-    .pipe(
-      sourcemaps.write(".", { sourceRoot: ".", includeContent: false })
-    )
+    .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
     .pipe(gulp.dest("dist"));
 }
 /**
@@ -210,12 +228,13 @@ function buildLess() {
  * Build template list
  */
 function buildTemplateList() {
-  const data = getManifest()
+  const data = getManifest();
   return gulp
     .src("src/**/*.html")
     .pipe(
-      rename(function (path) {
-        path.dirname = `${data.name.split('.')[0]}s/${data.file.name}/` + path.dirname;
+      rename(function (path: { dirname: string }) {
+        path.dirname =
+          `${data.name.split(".")[0]}s/${data.file.name}/` + path.dirname;
       })
     )
     .pipe(filelist("templates.json", { relative: true }))
@@ -231,9 +250,7 @@ function buildSASS() {
     .pipe(gulp.dest("dist"))
     .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError))
-    .pipe(
-      sourcemaps.write(".", { sourceRoot: ".", includeContent: false })
-    )
+    .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
     .pipe(gulp.dest("dist"));
 }
 
@@ -261,7 +278,11 @@ function buildWatch() {
   gulp.watch("src/**/*.ts", { ignoreInitial: false }, buildTS);
   gulp.watch("src/**/*.less", { ignoreInitial: false }, buildLess);
   gulp.watch("src/**/*.scss", { ignoreInitial: false }, buildSASS);
-  gulp.watch(["src/**/*.yml", "!src/packs/**/*.yml"], { ignoreInitial: false }, buildYaml);
+  gulp.watch(
+    ["src/**/*.yml", "!src/packs/**/*.yml"],
+    { ignoreInitial: false },
+    buildYaml
+  );
   gulp.watch("src/packs/**/*.yml", { ignoreInitial: false }, buildPack);
   gulp.watch(
     ["src/fonts", "src/templates", "src/sound"],
@@ -269,7 +290,6 @@ function buildWatch() {
     copyFiles
   );
   gulp.watch("src/**/*.html", { ignoreInitial: false }, buildTemplateList);
-
 }
 
 /********************/
@@ -307,7 +327,13 @@ async function clean() {
     fs.existsSync(path.join("src", `${name}.less`)) ||
     fs.existsSync(path.join("src", `${name}.scss`))
   ) {
-    files.push("fonts", `${name}.css`, `${name}.css.map`, `${name}.scss`, `${name}.less`);
+    files.push(
+      "fonts",
+      `${name}.css`,
+      `${name}.css.map`,
+      `${name}.scss`,
+      `${name}.less`
+    );
   }
 
   console.log(" ", chalk.yellow("Files to clean:"));
@@ -332,10 +358,10 @@ async function clean() {
  * Link build to User Data folder
  */
 async function linkUserData() {
-  const name = getManifest().file.name;
-  const config = fs.readJSONSync("foundryconfig.json");
+  const name = (<{ name: string }>getManifest().file).name;
+  const config = getConfig();
 
-  let destDir;
+  let destDir: string;
   try {
     if (
       fs.existsSync(path.resolve(".", "dist", "module.yml")) ||
@@ -355,7 +381,7 @@ async function linkUserData() {
       );
     }
 
-    let linkDir;
+    let linkDir: string;
     if (config.dataPath) {
       if (!fs.existsSync(path.join(config.dataPath, "Data")))
         throw Error("User Data path invalid, no Data directory found");
@@ -418,14 +444,14 @@ async function packageBuild() {
         return resolve();
       });
 
-      zip.on("error", (err) => {
+      zip.on("error", (err: unknown) => {
         throw err;
       });
 
       zip.pipe(zipFile);
 
       // Add the directory with the final code
-      zip.directory("dist/", manifest.file.name);
+      zip.directory("dist/", (<{ name: string }>manifest.file).name);
 
       zip.finalize();
     } catch (err) {
@@ -579,7 +605,6 @@ exports.link = linkUserData;
 exports.package = packageBuild;
 exports.update = updateManifest;
 exports.buildTemplateList = buildTemplateList;
-
 
 exports.publish = gulp.series(
   clean,
