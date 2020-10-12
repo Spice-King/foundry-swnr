@@ -43,14 +43,14 @@ export class CharacterActorSheet extends ActorSheet {
     }
     activateListeners(html: JQuery): void {
         super.activateListeners(html);
-        html.find(".statRoll").click(this._onStatsRoll.bind(this));
-        html.find(".skill").click(this._onSkillRoll.bind(this));
-        html.find(".save").click(this._onSaveThrow.bind(this));
-        html.find(".item-edit").click(this._onItemEdit.bind(this));
-        html.find(".item-delete").click(this._onItemDelete.bind(this));
-        html.find(".hp-label").click(limitConcurrency(this._onHpRoll.bind(this)));
-        html.find('.item.weapon .item-name').click(this._onWeaponRoll.bind(this));
-        html.find('.skill-load-button').click(this._onLoadSkills.bind(this));
+        html.find(".statRoll").on('click', this._onStatsRoll.bind(this));
+        html.find(".skill").on('click', this._onSkillRoll.bind(this));
+        html.find(".save").on('click', this._onSaveThrow.bind(this));
+        html.find(".item-edit").on('click', this._onItemEdit.bind(this));
+        html.find(".item-delete").on('click', this._onItemDelete.bind(this));
+        html.find(".hp-label").on('click', limitConcurrency(this._onHpRoll.bind(this)));
+        html.find('.item.weapon .item-name').on('click', this._onWeaponRoll.bind(this));
+        html.find('.skill-load-button').on('click', this._onLoadSkills.bind(this));
     }
     async _onLoadSkills(event: JQuery.ClickEvent): Promise<Application> {
         event.preventDefault();
