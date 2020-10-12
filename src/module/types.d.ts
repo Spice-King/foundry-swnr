@@ -1,15 +1,15 @@
 import { SWNRBaseItem } from "./items/base";
 
-type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
-interface SWNRStat {
+declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
+declare interface SWNRStat {
   base: number;
   mod: number;
   bonus: number;
   boost: number;
   total: number;
 }
-type SWNRItemTypes = '';
-interface SWNRCharacterData {
+declare type SWNRItemTypes = "";
+declare interface SWNRCharacterData {
   health: {
     value: number;
     max: number;
@@ -62,29 +62,32 @@ interface SWNRCharacterData {
   };
 }
 
-interface SWNRDecData {
+declare interface SWNRDecData {
   description: string;
 }
-interface SWNRBaseItemData extends SWNRDecData{
+
+declare interface SWNRBaseItemData extends SWNRDecData {
   encumbrance: number;
   cost: number;
   tl: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  location: "readied" | "stowed" | "other"
+  location: "readied" | "stowed" | "other";
   quality: "stock" | "masterwork" | "makeshift";
 }
-interface SWNRSkillData extends SWNRDecData {
+declare interface SWNRSkillData extends SWNRDecData {
   pool: "ask" | "2d6" | "3d6kh2" | "4d6kh2";
   rank: -1 | 0 | 1 | 2 | 3 | 4;
   defaultStat: "ask" | SWNRStats;
   source: string;
 }
-interface SWNRItemData extends SWNRBaseItemData {
-  quantity: number
+
+declare interface SWNRItemData extends SWNRBaseItemData {
+  quantity: number;
   bundle: {
-    bundled: boolean
-    amount: number
-  }
- }
+    bundled: boolean;
+    amount: number;
+  };
+}
+
 interface SWNRWeaponData extends SWNRBaseItemData {
   stat: SWNRStats;
   secondStat: "none" | SWNRStats;
@@ -108,9 +111,14 @@ interface SWNRWeaponData extends SWNRBaseItemData {
   };
   damage: string;
 }
-interface SWNRArmorData extends SWNRBaseItemData {
+
+declare interface SWNRArmorData extends SWNRBaseItemData {
   ac: number;
   shield: boolean;
   use: boolean;
 }
-type SWNRInventoryItemData = SWNRBaseItemData | SWNRWeaponData | SWNRArmorData;
+
+declare type SWNRInventoryItemData =
+  | SWNRBaseItemData
+  | SWNRWeaponData
+  | SWNRArmorData;
