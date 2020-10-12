@@ -88,16 +88,18 @@ Item:
       cost: 0
       tl: 4
       quality: stock
-      location: "other"
+      location: other
     description:
       description: ""
-  class: {}
+  class:
+    templates:
+      - description
   armor:
     templates:
       - baseItem
       - description
     ac: 10
-    type: 'street'
+    type: street
     use: false
     shield: false
   weapon:
@@ -124,7 +126,7 @@ Item:
   power:
     templates:
       - description
-    source: ''
+    source: ""
     level: 0
   item:
     templates:
