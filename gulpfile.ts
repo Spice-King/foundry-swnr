@@ -158,8 +158,8 @@ function buildPack() {
   const packFolders = fs
     .readdirSync("src/packs/")
     .filter(function (file: string) {
-    return fs.statSync(path.join("src/packs", file)).isDirectory();
-  });
+      return fs.statSync(path.join("src/packs", file)).isDirectory();
+    });
   function makeId(length: number) {
     let result = "";
     const characters =
