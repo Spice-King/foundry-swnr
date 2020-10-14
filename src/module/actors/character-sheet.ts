@@ -12,8 +12,6 @@ interface CharacterActorSheetData extends ActorSheetData {
     itemTypes: { [type: string]: Item[] };
 }
 export class CharacterActorSheet extends ActorSheet {
-    /** @override */
-    actor: SWNRCharacterActor;
     popUpDialog?: Dialog;
     constructor(...args: unknown[]) {
         super(...args);
