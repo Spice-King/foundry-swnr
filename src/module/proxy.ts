@@ -24,7 +24,7 @@ export default function proxy(
                 "Unsupported Entity type for create(): " + data.type
               );
             }
-            return new constructor(data, options);
+            return constructor.create(data, <never>options);
           };
 
         case Symbol.hasInstance:
