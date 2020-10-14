@@ -128,8 +128,6 @@ export class CharacterActorSheet extends ActorSheet {
                 hit: await hitRoll.render(),
                 damage: await damageRoll.render()
             };
-            const newAmmoTotal = weapon.data.data.ammo.value - 1 - burstFire;
-            await weapon.update({ 'data.ammo.value': newAmmoTotal }, {});
             const dialogData = {
                 actor: this.actor, weapon: weapon, skill: skill, hitRoll, stat, damageRoll,
                 burstFire, modifier, effectiveSkillRank: rollData.effectiveSkillRank, diceTooltip,
@@ -141,8 +139,12 @@ export class CharacterActorSheet extends ActorSheet {
             const formula = dice.map(d => (<any>d).formula).join(' + ');
             const results = dice.reduce((a, b) => a.concat(b.results), [])
             const diceData = { formula, results }
+            if (weapon.data.data.ammo.type !== 'none') {
+                const newAmmoTotal = weapon.data.data.ammo.value - 1 - burstFire;
+                await weapon.update({ 'data.ammo.value': newAmmoTotal }, {});
+                if (newAmmoTotal === 0) ui.notifications.warn(`Your ${weapon.name} is now out of ammo!`);
+            }
             // TODO: break up into two rolls and chain them?
-            if (newAmmoTotal === 0) ui.notifications.warn(`Your ${weapon.name} is now out of ammo!`);
             const promise = (game.dice3d) ? game.dice3d.show(diceData) : Promise.resolve();
             promise.then(() => {
                 CONFIG.ChatMessage.entityClass.create(
