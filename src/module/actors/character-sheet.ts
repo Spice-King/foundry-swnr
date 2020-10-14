@@ -93,7 +93,7 @@ export class CharacterActorSheet extends ActorSheet {
     }
     async _onWeaponRoll(event: JQuery.ClickEvent<HTMLElement>): Promise<Application> {
         event.preventDefault();
-        const itemId = event.target.parentElement.dataset.itemId;
+        const itemId = event.currentTarget.parentElement.dataset.itemId;
         const weapon = <SWNRBaseItem<SWNRWeaponData>>this.actor.getOwnedItem(itemId);
         const ammo = weapon.data.data.ammo;
         const burstFireHasAmmo = ammo.type !== 'none' && ammo.burst && ammo.value >= 3
