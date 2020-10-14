@@ -132,8 +132,8 @@ languages:
     path: lang/en.json
 gridDistance: 1
 gridUnits: ''
-minimumCoreVersion: 0.6.0
-compatibleCoreVersion: 0.6.9
+minimumCoreVersion: 0.7.4
+compatibleCoreVersion: 0.7.4
 url: 'https://github.com/Spice-King/foundry-swnr'
 manifest: >-
   https://github.com/Spice-King/foundry-swnr/releases/latest/download/system.json
