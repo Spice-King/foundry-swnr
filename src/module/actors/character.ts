@@ -1,22 +1,17 @@
 import { calculateStats } from "../utils";
 import { SWNRCharacterData, SWNRSkillData, SWNRInventoryItemData, SWNRItemData, SWNRArmorData } from "../types";
 import { SWNRBaseItem } from "../items/base";
+
 export default class SWNRCharacterActor extends Actor<SWNRCharacterData> {
     // data: 
-    prepareData(): void {
-        super.prepareData();
-        if (this.data.type == "character") this._prepareCharacterData(this.data.data);
-    }
     getRollData(): SWNRCharacterData {
         const data = super.getRollData();
         data.itemTypes = <SWNRCharacterData["itemTypes"]>this.itemTypes;
         return data;
     }
-    initialize(): void {
-        super.initialize();
-    }
-    _prepareCharacterData(data: SWNRCharacterData): void {
 
+    prepareBaseData(): void {
+        const data = this.data.data;
         calculateStats(data.stats);
         data.systemStrain.max = data.stats.con.base + data.stats.con.boost - data.systemStrain.permanent;
         if (!data.save) data.save = {};
@@ -26,9 +21,9 @@ export default class SWNRCharacterActor extends Actor<SWNRCharacterData> {
         save.evasion = Math.max(1, base - Math.max(data.stats.dex.mod, data.stats.int.mod));
         save.mental = Math.max(1, base - Math.max(data.stats.wis.mod, data.stats.cha.mod));
         save.luck = Math.max(1, base);
-
-        if (this.items == null) return;
-        
+    }
+    prepareDerivedData(): void {
+        const data = this.data.data
         // AC
         const armor = <Item<SWNRArmorData>[]>(this.items.filter(i => i.type === "armor" && (<Item<SWNRArmorData>>i).data.data.use))
         const shields = armor.filter(i => i.data.data.shield)
