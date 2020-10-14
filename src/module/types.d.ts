@@ -1,4 +1,4 @@
-import { SWNRBaseItem } from "./items/base";
+import { SWNRBaseItem } from "./base-item";
 
 declare type SWNRStats = "str" | "dex" | "con" | "int" | "wis" | "cha";
 declare interface SWNRStat {

@@ -3,3 +3,4 @@ foundryconfig.json
 dist
 package/
 foundry/
+src/module/entities.ts

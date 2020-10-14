@@ -209,6 +209,56 @@ function buildTS() {
     .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
     .pipe(gulp.dest("dist"));
 }
+
+/**
+ * Build list of entities
+ */
+async function buildEntities(cb: () => void) {
+  glob("src/module/{actor,item}s/**/*.ts", (e, fileNames) => {
+    const imports = [];
+    const adds = [];
+    fileNames
+      .map((e) => {
+        const filePath = path.posix.relative("./src/module", "./"+e);
+        const name = path.basename(e, ".ts");
+        const type = filePath.split("/")[0];
+        return {
+          name: name,
+          relative: path.dirname(filePath),
+          type: type.charAt(0).toUpperCase() + type.slice(1, -1),
+          sheet: name.endsWith("-sheet"),
+          hashedName: "_" + createHash("md4").update(e).digest("hex"),
+        };
+      })
+      .forEach((e) => {
+        imports.push(
+          `import * as ${e.hashedName} from './${e.relative}/${e.name}'`
+        );
+        adds.push(
+          e.sheet
+            ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, { makeDefault: true, types: ${e.hashedName}.types });`
+            : `${e.type.toLowerCase()}s[${e.hashedName}.name] = ${
+                e.hashedName
+              }.entity as typeof ${e.type}`
+        );
+      });
+    const mids = [
+      "//This file is auto generated, leave it alone!",
+      "import proxy from './proxy'",
+      "const items = <Record<string, typeof Item>>{}",
+      "const actors = <Record<string, typeof Actor>>{}",
+    ];
+    const ends = [
+      "export const SWNRItem = proxy(items, Item) as typeof Item",
+      "export const SWNRActor = proxy(actors, Actor) as typeof Actor",
+      "",
+    ];
+    const out = imports.concat(mids, adds, ends).join("\n");
+    // console.log(out);
+    fs.writeFile("src/module/entities.ts", out, cb);
+  });
+}
+
 /**
  * Build YAML to json
  */
@@ -275,6 +325,7 @@ async function copyFiles() {
  * Watch for changes for each build step
  */
 function buildWatch() {
+  gulp.watch("src/module/{actor,item}s/**/*.ts", { ignoreInitial: false }, buildEntities);
   gulp.watch("src/**/*.ts", { ignoreInitial: false }, buildTS);
   gulp.watch("src/**/*.less", { ignoreInitial: false }, buildLess);
   gulp.watch("src/**/*.scss", { ignoreInitial: false }, buildSASS);
@@ -461,7 +512,7 @@ async function packageBuild() {
 }
 
 const execBuild = gulp.parallel(
-  buildTS,
+  gulp.series(buildEntities, buildTS),
   buildLess,
   buildSASS,
   buildYaml,

@@ -11,12 +11,9 @@
  */
 
 // Import TypeScript modules
-import { registerSettings } from "./module/settings.js";
-import { preloadTemplates } from "./module/preloadTemplates.js";
-import { CharacterActorSheet } from "./module/actors/character-sheet";
-import SWNRCharacterActor from "./module/actors/character";
-import { SWNRBaseItem } from "./module/items/base";
-import { BaseSheet } from "./module/items/base-sheet";
+import { registerSettings } from "./module/settings";
+import { preloadTemplates } from "./module/preloadTemplates";
+import { SWNRActor, SWNRItem } from "./module/entities";
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -28,18 +25,16 @@ Hooks.once("init", async function () {
 
   // Register custom system settings
   registerSettings();
-  CONFIG.Actor.entityClass = <never>SWNRCharacterActor;
-  CONFIG.Item.entityClass = SWNRBaseItem;
+  CONFIG.Actor.entityClass = SWNRActor;
+  CONFIG.Item.entityClass = SWNRItem;
   // Preload Handlebars templates
   await preloadTemplates();
   game.i18n.localize("swnr.title");
 
-  // Register custom sheets (if any)
+  // Remove stock sheets
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("swnr", CharacterActorSheet, { makeDefault: true });
-
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("swnr", BaseSheet, { makeDefault: true });
+
   Handlebars.registerHelper("debug", function () {
     return JSON.stringify(this, null, 2);
   });

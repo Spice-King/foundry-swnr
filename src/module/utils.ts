@@ -1,4 +1,4 @@
-import SWNRCharacterActor from "./actors/character";
+import { SWNRCharacterActor } from "./actors/character";
 import { SWNRCharacterData } from "./types";
 
 export function calculateStats(stats: SWNRCharacterData["stats"]): void {

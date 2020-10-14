@@ -7,7 +7,7 @@ export class BaseSheet extends ItemSheet {
             tabs: []
         })
     }
-    _createEditor(target, editorOptions, initialContent) {
+    _createEditor(target, editorOptions, initialContent) : void {
         editorOptions.height = Math.max(editorOptions.height, 100)
         TextEditor.create(editorOptions, initialContent).then(mce => {
             const editor = mce[0];
@@ -27,3 +27,5 @@ export class BaseSheet extends ItemSheet {
         return data;
     }
 }
+export const sheet = BaseSheet
+export const types = []

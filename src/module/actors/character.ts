@@ -1,8 +1,8 @@
 import { calculateStats } from "../utils";
 import { SWNRCharacterData, SWNRSkillData, SWNRInventoryItemData, SWNRItemData, SWNRArmorData } from "../types";
-import { SWNRBaseItem } from "../items/base";
+import { SWNRBaseItem } from '../base-item'
 
-export default class SWNRCharacterActor extends Actor<SWNRCharacterData> {
+export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
     // data: 
     getRollData(): SWNRCharacterData {
         const data = super.getRollData();
@@ -63,3 +63,5 @@ export default class SWNRCharacterActor extends Actor<SWNRCharacterData> {
 }
 
 // canvas.tokens.controlled[0].actor.update({ data: { effort: { bonus: 0, value: 0, scene: 0, day: 0 } } })
+export const entity = SWNRCharacterActor;
+export const name = 'character'

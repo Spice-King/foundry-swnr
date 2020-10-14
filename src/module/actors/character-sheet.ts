@@ -1,8 +1,8 @@
-import SWNRCharacterActor from "./character";
+import { SWNRCharacterActor } from "./character";
 import { calculateStats, initSkills, limitConcurrency } from "../utils";
 import { ValidatedDialog, ButtonData } from "../ValidatedDialog";
-import { SWNRSkillData, SWNRWeaponData } from "../types";
-import { SWNRBaseItem } from "../items/base";
+import { SWNRCharacterData, SWNRSkillData, SWNRWeaponData } from "../types";
+import { SWNRBaseItem } from "../base-item";
 
 interface CharacterActorSheetData extends ActorSheetData {
     weapons?: Item[];
@@ -11,7 +11,7 @@ interface CharacterActorSheetData extends ActorSheetData {
     skills?: Item[];
     itemTypes: { [type: string]: Item[] };
 }
-export class CharacterActorSheet extends ActorSheet {
+export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRCharacterActor> {
     popUpDialog?: Dialog;
     constructor(...args: unknown[]) {
         super(...args);
@@ -31,8 +31,8 @@ export class CharacterActorSheet extends ActorSheet {
             ],
         });
     }
-    _createEditor(target, editorOptions, initialContent: string): void {
-        editorOptions.height = Math.max(editorOptions.height, 100);
+    _createEditor(target : never, editorOptions: Record<string, unknown>, initialContent: string): void {
+        editorOptions.height = Math.max(<number>editorOptions.height, 100);
         TextEditor.create(editorOptions, initialContent).then((mce) => {
             const editor = mce[0];
             editor.focus(false);
@@ -540,3 +540,5 @@ Hooks.on("renderChatMessage",
         }
     }
 );
+export const sheet = CharacterActorSheet
+export const types = ['character']
