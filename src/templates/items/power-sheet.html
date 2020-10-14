@@ -2,6 +2,6 @@
     {{> "systems/swnr/templates/items/fragments/desc.html"}}
     <div style="display: flex;">
         <div style="align-items: baseline; display:flex;flex-grow: 2;"><label for="data.source">{{localize 'swnr.sheet.source'}}: </label><input type="text" name="data.source" value="{{data.source}}"></div>
-        <div style="margin-right: 1rem;"><label for="">{{localize 'swnr.sheet.level'}}: </label><input type="number" name="data.level" step="1" min="0" max="5"></div>
+        <div style="margin-right: 1rem;"><label for="">{{localize 'swnr.sheet.level'}}: </label><input type="number" name="data.level" value="{{data.level}}" step="1" min="0" max="5"></div>
     </div>
 </form>
