@@ -53,11 +53,11 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
     async _onLoadSkills(event: JQuery.ClickEvent): Promise<Application> {
         event.preventDefault();
         const _addSkills = async (html: HTMLElement) => {
-            const elements = (<HTMLFormElement>html[0].children[0]).elements;
-            const skillList = <'revised' | 'classic' | 'none'>(<HTMLInputElement>elements.namedItem('skillList')).value;
-            const extra = <'spaceMagic' | 'psionic' | 'none'>(<HTMLInputElement>elements.namedItem('extra')).value;
-            initSkills(this.actor, skillList);
-            initSkills(this.actor, extra);
+            const form : HTMLFormElement = html[0].querySelector('form');
+            const skillList = <HTMLInputElement>form.querySelector('[name="skillList"]');
+            const extra = <HTMLInputElement>form.querySelector('[name="extra"]');
+            initSkills(this.actor,  <'revised' | 'classic' | 'none'>skillList.value);
+            initSkills(this.actor, <'spaceMagic' | 'psionic' | 'none'>extra.value);
             return
         }
         const template = "systems/swnr/templates/dialogs/add-bulk-skills.html";
@@ -104,10 +104,10 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
         const _doRoll = async (html: HTMLFormElement) => {
             const template = "systems/swnr/templates/chat/attack-roll.html";
 
-            const elements = (<HTMLFormElement>html[0].children[0]).elements;
-            const modifier = parseInt((<HTMLInputElement>elements.namedItem("modifier"))?.value)
-            const burstFire = (<HTMLInputElement>elements.namedItem("burst"))?.checked ? 2 : 0
-            const skillId = (<HTMLSelectElement>elements.namedItem("skill"))?.value || weapon.data.data.skill;
+            const form = <HTMLFormElement>html[0].querySelector('form');
+            const modifier = parseInt((<HTMLInputElement>form.querySelector('[name="modifier"]'))?.value)
+            const burstFire = (<HTMLInputElement>form.querySelector('[name="burstFire"]'))?.checked ? 2 : 0
+            const skillId = (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value || weapon.data.data.skill;
             const skill = this.actor.getOwnedItem(skillId);
             const stat = this.actor.data.data.stats[weapon.data.data.stat]
             // d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
@@ -202,11 +202,11 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
         const _doRoll = (html: HTMLFormElement) => {
             console.log(html);
             const rollMode = game.settings.get("core", "rollMode");
-            const elements = (<HTMLFormElement>html[0].children[0]).elements;
+            const form = <HTMLFormElement>html[0].querySelector('form');
             const formula = `d20cs>(@target - @modifier)`;
             const roll = new Roll(formula, {
                 modifier: parseInt(
-                    (<HTMLInputElement>elements.namedItem("modifier")).value
+                    (<HTMLInputElement>form.querySelector('[name="modifier"]')).value
                 ),
                 target: target,
             });
@@ -252,8 +252,8 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
         const _doRoll = async (html: HTMLFormElement) => {
             console.log(html);
             const rollMode = game.settings.get("core", "rollMode");
-            const elements = (<HTMLFormElement>html[0].children[0]).elements;
-            const dice = (<HTMLSelectElement>elements.namedItem("statpool")).value;
+            const elements = <HTMLFormElement>html[0].querySelector('form');
+            const dice = (<HTMLSelectElement>elements.querySelector('[name="statpool"]')).value;
             const formula = new Array(6).fill(dice).join("+");
             const roll = new Roll(formula);
             roll.roll();
@@ -321,7 +321,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
                 "systems/swnr/templates/chat/stat-block.html",
                 data
             );
-            // const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${game.i18n.localize("swnr.stat.short." + (<HTMLSelectElement>elements.namedItem("stat")).value)}/${skillName}`
+            // const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${game.i18n.localize("swnr.stat.short." + (<HTMLSelectElement>elements.querySelector('[name="stat"]')).value)}/${skillName}`
             let promise;
             if (game.dice3d) {
                 promise = game.dice3d.showForRoll(roll);
@@ -425,12 +425,12 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
         const _doRoll = (html: HTMLFormElement) => {
             console.log(html);
             const rollMode = game.settings.get("core", "rollMode");
-            const elements = (<HTMLFormElement>html[0].children[0]).elements;
-            const dice = (<HTMLSelectElement>elements.namedItem("dicepool")).value;
+            const form = <HTMLFormElement>html[0].querySelector('form');
+            const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]')).value;
             const stat = this.actor.data.data.stats[
-                (<HTMLSelectElement>elements.namedItem("stat")).value
+                (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
             ];
-            const modifier = (<HTMLInputElement>elements.namedItem("modifier")).value;
+            const modifier = (<HTMLInputElement>form.querySelector('[name="modifier"]')).value;
             const formula = `${dice} + @stat + @skill + @modifier`;
             const roll = new Roll(formula, {
                 skill: skillData.rank,
@@ -443,7 +443,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
                 "swnr.chat.skillCheck"
             )}: ${game.i18n.localize(
                 "swnr.stat.short." +
-                (<HTMLSelectElement>elements.namedItem("stat")).value
+                (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
             )}/${skillName}`;
             roll.toMessage(
                 {
