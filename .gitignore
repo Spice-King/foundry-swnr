@@ -4,3 +4,4 @@ dist
 package/
 foundry/
 src/module/entities.ts
+data/

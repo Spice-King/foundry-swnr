@@ -1,0 +1,71 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build:watch",
+			"group": "build",
+			"isBackground": true,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "dedicated",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [
+				{
+					"pattern": [
+					  {
+						"regexp": ".",
+						"file": 0,
+						"location": 0,
+						"message": 0
+					  }
+					],
+					"background": {
+					  "activeOnStart": true,
+					  "beginsPattern": ".",
+					  "endsPattern": ".",
+					}
+				  }
+			],
+			"label": "npm: build:watch",
+			"detail": "gulp link watch"
+		},
+		{
+			"type": "npm",
+			"script": "foundry",
+			"dependsOn": "npm: build:watch",
+			"isBackground": true,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "dedicated",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [
+				{
+					"pattern": [
+					  {
+						"regexp": ".",
+						"file": 0,
+						"location": 0,
+						"message": 0
+					  }
+					],
+					"background": {
+					  "activeOnStart": true,
+					  "beginsPattern": ".",
+					  "endsPattern": ".",
+					}
+				  }
+			],
+			"label": "npm: foundry",
+			"detail": "node foundry/resources/app/main.js --noupnp --dataPath=./data"
+		}
+	]
+}
