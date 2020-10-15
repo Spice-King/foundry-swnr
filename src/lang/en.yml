@@ -139,6 +139,168 @@ swnr:
         text: >-
           This is a catch-all skill for professions not represented by other
           skills. Roll it to work at a particular profession, art, or trade
+    wwn:
+      administer:
+        name: Administer
+        text: >-
+          Keep an organization running smoothly,
+          scribe things well, plan out logistics, identify 
+          incompetent or treacherous workers, analyze records
+          or archives, or otherwise do things that an executive
+          or middle-manager would need to do.
+      connect:
+        name: Connect
+        text: >-
+          Find or know people who are useful to your
+          purposes, make friendships or social acquaintances,
+          know who to talk to to get favors or services, and
+          call on the help or resources of organizations you
+          belong to. Connect covers your PC’s ability to find
+          the people you need, though convincing them to
+          help may require more than this.
+      convince:
+        name: Convince
+        text: >-
+          Persuade a listener that something you are
+          saying is true. Naturally, the more implausible the
+          claim or more emotionally repugnant it is to them,
+          the more difficult it is to persuade them. Furthermore,
+          how they act on their newfound conviction is
+          up to them and their motivations, and may not be
+          perfectly predictable.
+      craft:
+        name: Craft
+        text: >-
+          Craft or repair goods and technology appropriate to the PC’s background and society. The Craft
+          skill can be used for a wide range of artisan pursuits,
+          though a GM is within their rights to keep the PC
+          from building complex things that are too far away
+          from their past background and experience.
+      exert:
+        name: Exert
+        text: >-
+          Run, swim, climb, jump, labor for long periods,
+          throw things, or otherwise exert your physical
+          strength, stamina, and coordination. Even a PC
+          with poor physical attributes might have a good
+          Exert skill reflecting athletic training and expertise
+          in making the most of their available talents.
+      heal:
+        name: Heal
+        text: >-
+          Treat wounds, cure diseases, neutralize poisons,
+          diagnose psychological health issues,
+          and otherwise tend to the wounds of body and mind. The
+          Heal skill cannot cure lost hit points directly, but it’s
+          a vital skill in stabilizing Mortally Wounded allies
+          or ensuring clean recovery from grievous injuries.
+      know:
+        name: Know
+        text: >-
+          Know matters of history, geography, natural science, zoology,
+          and other academic fields appropriateto a sage or scholar. 
+          While some sages might specialize in particular fields,
+          most learned men and women in this age have a broad range of understanding,
+          and will rarely be unable to even attempt to answer
+          a question relevant to this skill.
+      lead:
+        name: Lead
+        text: >-
+          Inspire others to follow your lead and believe in
+          your plans and goals. Manage subordinates and
+          keep them focused, loyal, and motivated in the face
+          of danger or failure. A successful leader will keep
+          their subordinate’s faith and confidence even when
+          reason might make the leader’s plan appear questionable at best.
+      magic:
+        name: Magic
+        text: >-
+          Cast or analyze magic and know things about
+          famous mages or notable magical events. Classes
+          that can’t cast spells obtain only intellectual and
+          scholarly benefits from this skill.
+      notice:
+        name: Notice
+        text: >-
+          Notice small details, impending ambushes, hidden features, or concealed objects. Detect subtle
+          smells, sounds, or other sensory input. Notice cannot be used simply to detect a lie, but keen attention
+          can often discern a subject’s emotional state.
+      perform:
+        name: Perform
+        text: >-
+          Sing, act, dance, orate, or otherwise perform
+          impressively for an audience. Compose music, plays,
+          writings, or other works of performance art. Most
+          performers will have a particular field they excel
+          at, though polymaths might exist if the PC’s background is appropriate for such versatility.
+      pray:
+        name: Pray
+        text: >-
+          Perform the clerical rites of your religion, and be
+          familiar with the gods, demons, and taboos of major and minor faiths, and identify iconography and
+          persons of religious importance. Pray also helps you
+          know the state of local faiths and the important persons in their hierarchies.
+      punch:
+        name: Punch
+        text: >-
+          Fight unarmed or with natural body weaponry.
+          Punch, kick, grapple, or otherwise brawl without
+          the benefit of man-made tools. This mode of fighting
+          is inefficient at best without some special Focus
+          to improve it, but it’s reliably non-lethal.
+      ride:
+        name: Ride
+        text: >-
+          Ride an animal, drive a cart or carriage, or otherwise deal with land transportation. This skill also
+          includes competence at mount care and tending,
+          basic cart or carriage repair, judging good horse-flesh, and other skills appropriate to a beast-rider
+          of whatever society the PC comes from.
+      sail:
+        name: Sail
+        text: >-
+          Sail or repair a ship, build small craft, navigate by
+          the stars, read sea weather, manage sailors, and 
+          otherwise conduct the business of a professional mariner. 
+          This skill may apply to more esoteric means of
+          vehicular travel in some societies.
+      shoot:
+        name: Shoot
+        text: >-
+          Fire a bow or crossbow or throw a hurled weapon.
+          Maintain ranged weaponry and fletch arrows.
+      sneak:
+        name: Sneak
+        text: >-
+          Move silently, hide in shadows, avoid notice, pick
+          pockets, disguise yourself, pick locks, defeat traps,
+          or otherwise overcome security measures.
+      stab:
+        name: Stab
+        text: >-
+          Fight with melee weapons or throw a hurled weapon. Maintain and identify weaponry.
+      survive:
+        name: Survive
+        text: >-
+          Hunt, fish, navigate by the stars, mitigate environmental 
+          hazards, identify plants and wildlife, and
+          craft basic survival tools and shelter. A PC’s Survive
+          skill is most pertinent to the environments in their
+          background, but the basic principles can be applied
+          in all but the most alien environments.
+      trade:
+        name: Trade
+        text: >-
+          Buy and sell at a profit, identify the worth of
+          goods or treasures, deal with merchants and traders, 
+          find black-market goods and services, and know
+          laws regarding smuggling and contraband.
+      work:
+        name: Work
+        text: >-
+          This skill is a catch-all for any profession that
+          might not otherwise merit its own skill, such as a
+          painter, lawyer, farmer, or herdsman. The precise
+          skill it represents will vary with the PC’s background.
     spaceMagic:
       knowMagic:
         name: Know Magic

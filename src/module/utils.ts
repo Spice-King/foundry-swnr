@@ -122,5 +122,28 @@ const skills = {
         "telekinesis",
         "telepathy",
         "teleportation"
+    ],
+    "wwn": [
+        "administer",
+        "connect",
+        "convince",
+        "craft",
+        "exert",
+        "heal",
+        "know",
+        "lead",
+        "magic",
+        "notice",
+        "perform",
+        "pray",
+        "punch",
+        "ride",
+        "sail",
+        "shoot",
+        "sneak",
+        "stab",
+        "survive",
+        "trade",
+        "work"
     ]
 }

@@ -54,7 +54,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
         event.preventDefault();
         const _addSkills = async (html: HTMLElement) => {
             const elements = (<HTMLFormElement>html[0].children[0]).elements;
-            const skillList = <'revised' | 'classic' | 'none'>(<HTMLInputElement>elements.namedItem('skillList')).value;
+            const skillList = <'revised' | 'classic' | 'none' | 'wwn'>(<HTMLInputElement>elements.namedItem('skillList')).value;
             const extra = <'spaceMagic' | 'psionic' | 'none'>(<HTMLInputElement>elements.namedItem('extra')).value;
             initSkills(this.actor, skillList);
             initSkills(this.actor, extra);
