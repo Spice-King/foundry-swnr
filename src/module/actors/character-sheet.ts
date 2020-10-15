@@ -372,7 +372,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
         const data = {
             oldHp: health.max,
             newHp: newHP,
-            dice: roll._dice[0].results.map(die => {
+            dice: roll.dice[0].results.map(die => {
                 return {
                     roll: die,
                     classes: [
