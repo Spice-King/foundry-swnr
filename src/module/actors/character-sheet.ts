@@ -121,9 +121,9 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
                 skill: skill, hitRoll: (<number>undefined), burstFire, modifier,
                 effectiveSkillRank: skill.data.data.rank < 0 ? -2 : skill.data.data.rank
             };
-            const hitRoll = new Roll('d20 + @burst + @modifier + @actor.ab + @weapon.data.ab + @stat.mod + @effectiveSkillRank', rollData).roll();
+            const hitRoll = new Roll('d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank', rollData).roll();
             rollData.hitRoll = hitRoll._dice[0].rolls[0].roll;
-            const damageRoll = new Roll(weapon.data.data.damage + ' + @burstFire + @stat.mod + @weapon.data.ab', rollData).roll();
+            const damageRoll = new Roll(weapon.data.data.damage + ' + @burstFire + @stat.mod', rollData).roll();
             const diceTooltip = {
                 hit: await hitRoll.render(),
                 damage: await damageRoll.render()
