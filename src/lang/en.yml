@@ -340,6 +340,7 @@ swnr:
       weapons: Weapons
       inventory: Inventory
       armor: Armor
+      foci: Foci
       powers: Powers
     xp: XP
     delete-item: Delete Item
