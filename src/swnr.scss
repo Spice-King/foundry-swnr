@@ -56,11 +56,8 @@
             background-color: greenyellow;
         }
     }
-    .editor {
-        min-height: 100px;
-        .editor-content {
-            height: 100%;
-        }
+    .tab.biography .editor .editor-content {
+        min-height: 400px;
     }
     .core-stats {
         display: grid;

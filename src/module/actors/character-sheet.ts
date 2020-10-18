@@ -31,14 +31,6 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
             ],
         });
     }
-    _createEditor(target : never, editorOptions: Record<string, unknown>, initialContent: string): void {
-        editorOptions.height = Math.max(<number>editorOptions.height, 100);
-        TextEditor.create(editorOptions, initialContent).then((mce) => {
-            const editor = mce[0];
-            editor.focus(false);
-            editor.on("change", () => (this.editors[target].changed = true));
-        });
-    }
     activateListeners(html: JQuery): void {
         super.activateListeners(html);
         html.find(".statRoll").on('click', this._onStatsRoll.bind(this));
