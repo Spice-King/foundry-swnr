@@ -5,3 +5,4 @@ package/
 foundry/
 src/module/entities.ts
 data/
+.vscode/launch.json
