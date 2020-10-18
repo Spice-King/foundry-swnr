@@ -1,7 +1,7 @@
 import { SWNRCharacterActor } from "./character";
 import { calculateStats, initSkills, limitConcurrency } from "../utils";
 import { ValidatedDialog, ButtonData } from "../ValidatedDialog";
-import { SWNRCharacterData, SWNRSkillData, SWNRWeaponData } from "../types";
+import { SWNRCharacterData, SWNRSkillData, SWNRWeaponData, SWNRStats, SWNRStat } from "../types";
 import { SWNRBaseItem } from "../base-item";
 
 interface CharacterActorSheetData extends ActorSheetData {
@@ -250,57 +250,17 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
             const roll = new Roll(formula);
             roll.roll();
             console.log(roll.result);
-            // TODO: find a cleaver way to clean this up.
-            const stats = {
-                str: {
-                    dice: roll._dice[0].rolls,
-                    base: roll._dice[0].total,
+            const stats: {[p in SWNRStats]: SWNRStat&{dice:number[]}} = <never>{};
+            ["str" , "dex" , "con" , "int" , "wis" , "cha"].map((k, i) => {
+                stats[k] = {
+                    dice: roll.dice[i].results,
+                    base: roll.dice[i].total,
                     boost: 0,
                     mod: 0,
                     bonus: 0,
                     total: 0,
-                },
-                dex: {
-                    dice: roll._dice[1].rolls,
-                    base: roll._dice[1].total,
-                    boost: 0,
-                    mod: 0,
-                    bonus: 0,
-                    total: 0,
-                },
-                con: {
-                    dice: roll._dice[2].rolls,
-                    base: roll._dice[2].total,
-                    boost: 0,
-                    mod: 0,
-                    bonus: 0,
-                    total: 0,
-                },
-                int: {
-                    dice: roll._dice[3].rolls,
-                    base: roll._dice[3].total,
-                    boost: 0,
-                    mod: 0,
-                    bonus: 0,
-                    total: 0,
-                },
-                wis: {
-                    dice: roll._dice[4].rolls,
-                    base: roll._dice[4].total,
-                    boost: 0,
-                    mod: 0,
-                    bonus: 0,
-                    total: 0,
-                },
-                cha: {
-                    dice: roll._dice[5].rolls,
-                    base: roll._dice[5].total,
-                    boost: 0,
-                    mod: 0,
-                    bonus: 0,
-                    total: 0,
-                },
-            };
+                }
+            })
             calculateStats(stats);
             const data = {
                 actor: this.actor,
