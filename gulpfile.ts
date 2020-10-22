@@ -20,7 +20,7 @@ import * as concat from "gulp-concat";
 import * as yaml from "js-yaml";
 
 import * as through2 from "through2";
-
+import * as debug from "gulp-debug";
 import * as yargs from "yargs";
 
 import * as glob from "glob";
@@ -201,13 +201,14 @@ function buildPack() {
  * Build TypeScript
  */
 function buildTS() {
-  return gulp
-    .src("src/**/*.ts")
-    .pipe(gulp.dest("dist"))
+  let src = gulp.src("src/**/*.ts");
+  let processed = src
     .pipe(sourcemaps.init())
     .pipe(tsConfig())
     .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
     .pipe(gulp.dest("dist"));
+  let raw = src.pipe(gulp.dest("dist"));
+    return mergeStream(raw, processed)
 }
 
 /**
@@ -219,7 +220,7 @@ async function buildEntities(cb: () => void) {
     const adds = [];
     fileNames
       .map((e) => {
-        const filePath = path.posix.relative("./src/module", "./"+e);
+        const filePath = path.posix.relative("./src/module", "./" + e);
         const name = path.basename(e, ".ts");
         const type = filePath.split("/")[0];
         return {
