@@ -201,13 +201,12 @@ function buildPack() {
  * Build TypeScript
  */
 function buildTS() {
-  let src = gulp.src("src/**/*.ts");
-  let processed = src
+  let processed = gulp.src("src/**/*.ts")
     .pipe(sourcemaps.init())
     .pipe(tsConfig())
     .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
     .pipe(gulp.dest("dist"));
-  let raw = src.pipe(gulp.dest("dist"));
+  let raw = gulp.src("src/**/*.ts").pipe(gulp.dest("dist"));
     return mergeStream(raw, processed)
 }
 
