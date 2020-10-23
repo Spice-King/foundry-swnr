@@ -61,8 +61,7 @@
         list-style: none;
         flex-wrap: wrap;
         li.item.item {
-            width: calc(100% / 6);
-            margin-bottom: 1em;
+            margin: 1em;
         }
     }
     .tab.biography .editor .editor-content {
