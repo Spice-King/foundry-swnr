@@ -59,6 +59,9 @@
     .tab.biography .editor .editor-content {
         min-height: 400px;
     }
+    .editor .editor-content {
+        min-height: 200px;
+    }
     .core-stats {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

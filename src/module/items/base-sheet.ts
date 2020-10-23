@@ -7,14 +7,6 @@ export class BaseSheet extends ItemSheet {
             tabs: []
         })
     }
-    _createEditor(target, editorOptions, initialContent) : void {
-        editorOptions.height = Math.max(editorOptions.height, 100)
-        TextEditor.create(editorOptions, initialContent).then(mce => {
-            const editor = mce[0];
-            editor.focus(false);
-            editor.on('change', ev => this.editors[target].changed = true)
-        });
-    }
     /**
      * @override
      */
