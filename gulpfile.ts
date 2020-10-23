@@ -387,7 +387,7 @@ async function clean() {
       `${name}.less`
     );
   }
-
+  fs.unlinkSync('src/module/entities.ts')
   console.log(" ", chalk.yellow("Files to clean:"));
   console.log("   ", chalk.blueBright(files.join("\n    ")));
 
