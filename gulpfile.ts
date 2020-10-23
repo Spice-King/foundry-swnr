@@ -511,14 +511,17 @@ async function packageBuild() {
   });
 }
 
-const execBuild = gulp.parallel(
-  gulp.series(buildEntities, buildTS),
-  buildLess,
-  buildSASS,
-  buildYaml,
-  copyFiles,
-  buildTemplateList,
-  buildPack
+const execBuild = gulp.series(
+  buildEntities,
+  gulp.parallel(
+    buildLess,
+    buildSASS,
+    buildYaml,
+    copyFiles,
+    buildTemplateList,
+    buildPack
+  ),
+  buildTS
 );
 
 exports.build = gulp.series(clean, execBuild);
