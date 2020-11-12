@@ -114,7 +114,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
                 effectiveSkillRank: skill.data.data.rank < 0 ? -2 : skill.data.data.rank
             };
             const hitRoll = new Roll('d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank', rollData).roll();
-            rollData.hitRoll = hitRoll.dice[0].results[0];
+            rollData.hitRoll = hitRoll.dice[0].total;
             const damageRoll = new Roll(weapon.data.data.damage + ' + @burstFire + @stat.mod', rollData).roll();
             const diceTooltip = {
                 hit: await hitRoll.render(),
@@ -324,12 +324,12 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
         const data = {
             oldHp: health.max,
             newHp: newHP,
-            dice: roll.dice[0].results.map(die => {
+            dice: roll.dice[0].results.map((die:{result: number}) => {
                 return {
-                    roll: die,
+                    roll: die.result,
                     classes: [
-                        die === 6 ? "good" : null,
-                        die === 1 ? "bad" : null,
+                        die.result === 6 ? "good" : null,
+                        die.result === 1 ? "bad" : null,
                         "die"
                     ].filter(c => c).join(" ")
                 }
