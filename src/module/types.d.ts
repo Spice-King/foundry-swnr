@@ -9,14 +9,40 @@ declare interface SWNRStat {
   total: number;
 }
 declare type SWNRItemTypes = "";
-declare interface SWNRCharacterData {
+declare interface SWNRLiving {
   health: {
     value: number;
     max: number;
   };
-  ac: number;
   baseAc: number;
   ab: number;
+  systemStrain: {
+    value: number;
+    max: number;
+    permanent: number;
+  };
+  effort: {
+    bonus: number;
+    current: number;
+    scene: number;
+    day: number;
+    max: number;
+    value: number;
+  };
+}
+declare interface SWNREncumbrance {
+  encumbrance: {
+    stowed: {
+      value: number;
+      max: number;
+    };
+    ready: {
+      value: number;
+      max: number;
+    };
+  };
+}
+declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   itemTypes: {
     // class: SWNRBaseItem<any>[];
     armor: SWNRBaseItem<SWNRArmorData>[];
@@ -35,31 +61,9 @@ declare interface SWNRCharacterData {
     mental?: number;
     luck?: number;
   };
-  systemStrain: {
-    value: number;
-    max: number;
-    permanent: number;
-  };
+  ac: number;
   level: { value: number };
   stats: { [key in SWNRStats]: SWNRStat };
-  effort: {
-    bonus: number;
-    current: number;
-    scene: number;
-    day: number;
-    max: number;
-    value: number;
-  };
-  encumbrance: {
-    stowed: {
-      value: number;
-      max: number;
-    };
-    ready: {
-      value: number;
-      max: number;
-    };
-  };
 }
 
 declare interface SWNRDecData {
