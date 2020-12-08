@@ -3,7 +3,7 @@ title: 'Stars Without Number: Revised'
 description: >-
   BETA: Stars Without Number: Revised system. Early work with plans for full
   coverage.
-version: 0.2.1
+version: 0.2.2
 author: Spice_King
 scripts: []
 initiative: 1d8+@stats.dex.mod
@@ -133,7 +133,7 @@ languages:
 gridDistance: 1
 gridUnits: ''
 minimumCoreVersion: 0.7.4
-compatibleCoreVersion: 0.7.4
+compatibleCoreVersion: 0.7.8
 url: 'https://github.com/Spice-King/foundry-swnr'
 manifest: >-
   https://github.com/Spice-King/foundry-swnr/releases/latest/download/system.json
