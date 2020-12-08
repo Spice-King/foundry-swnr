@@ -23,7 +23,7 @@ data:
   range:
     normal: 1000
     max: 2000
-  stat: Dex
+  stat: dex
   secondStat: none
   tl: 5
   shock:
