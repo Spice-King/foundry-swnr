@@ -101,7 +101,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
             const burstFire = (<HTMLInputElement>form.querySelector('[name="burstFire"]'))?.checked ? 2 : 0
             const skillId = (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value || weapon.data.data.skill;
             const skill = this.actor.getOwnedItem(skillId);
-            const stat = this.actor.data.data.stats[weapon.data.data.stat]
+            const stat = this.actor.data.data.stats[weapon.data.data.stat] || {mod: 0}
             // 1d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
             // weapon dice + stat mod + skill if enabled or punch.
             // shock: damage + stat
