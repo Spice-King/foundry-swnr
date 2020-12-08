@@ -102,7 +102,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
             const skillId = (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value || weapon.data.data.skill;
             const skill = this.actor.getOwnedItem(skillId);
             const stat = this.actor.data.data.stats[weapon.data.data.stat]
-            // d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
+            // 1d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
             // weapon dice + stat mod + skill if enabled or punch.
             // shock: damage + stat
             // const skill = this.actor.items.filter(w => w.)
@@ -113,7 +113,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
                 skill: skill, hitRoll: (<number>undefined), burstFire, modifier,
                 effectiveSkillRank: skill.data.data.rank < 0 ? -2 : skill.data.data.rank
             };
-            const hitRoll = new Roll('d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank', rollData).roll();
+            const hitRoll = new Roll('1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank', rollData).roll();
             rollData.hitRoll = hitRoll.dice[0].total;
             const damageRoll = new Roll(weapon.data.data.damage + ' + @burstFire + @stat.mod', rollData).roll();
             const diceTooltip = {
@@ -195,7 +195,7 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
             console.log(html);
             const rollMode = game.settings.get("core", "rollMode");
             const form = <HTMLFormElement>html[0].querySelector('form');
-            const formula = `d20cs>(@target - @modifier)`;
+            const formula = `1d20cs>(@target - @modifier)`;
             const roll = new Roll(formula, {
                 modifier: parseInt(
                     (<HTMLInputElement>form.querySelector('[name="modifier"]')).value
