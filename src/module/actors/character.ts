@@ -3,9 +3,9 @@ import { SWNRCharacterData, SWNRSkillData, SWNRInventoryItemData, SWNRItemData, 
 import { SWNRBaseItem } from '../base-item'
 
 export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
-    // data: 
-    getRollData(): SWNRCharacterData {
-        const data = super.getRollData();
+
+    getRollData(): Record<string, any> {
+        const data = super.getRollData() as Record<string, any>;
         data.itemTypes = <SWNRCharacterData["itemTypes"]>this.itemTypes;
         return data;
     }
