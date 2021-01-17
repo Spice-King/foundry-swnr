@@ -1,5 +1,5 @@
 import { SWNRCharacterActor } from "./character";
-import { calculateStats, initSkills, limitConcurrency } from "../utils";
+import { calculateStats, combineRolls, initSkills, limitConcurrency } from "../utils";
 import { ValidatedDialog, ButtonData } from "../ValidatedDialog";
 import { SWNRCharacterData, SWNRSkillData, SWNRWeaponData, SWNRStats, SWNRStat } from "../types";
 import { SWNRBaseItem } from "../base-item";
@@ -125,19 +125,16 @@ export class CharacterActorSheet extends ActorSheet<SWNRCharacterData, SWNRChara
                 burstFire, modifier, effectiveSkillRank: rollData.effectiveSkillRank, diceTooltip,
                 ammoRatio: Math.clamped(Math.floor(weapon.data.data.ammo.value * 20 / weapon.data.data.ammo.max), 0, 20)
             }
-            const chatContent = await renderTemplate(template, dialogData);
             const rollMode = game.settings.get("core", "rollMode");
-            const dice = hitRoll.dice.concat(damageRoll.dice)
-            const formula = dice.map(d => (<any>d).formula).join(' + ');
-            const results = dice.reduce((a, b) => a.concat(b.results), [])
-            const diceData = { formula, results }
+            const diceData = combineRolls([hitRoll, damageRoll]);
             if (weapon.data.data.ammo.type !== 'none') {
                 const newAmmoTotal = weapon.data.data.ammo.value - 1 - burstFire;
                 await weapon.update({ 'data.ammo.value': newAmmoTotal }, {});
                 if (newAmmoTotal === 0) ui.notifications.warn(`Your ${weapon.name} is now out of ammo!`);
             }
+            const chatContent = await renderTemplate(template, dialogData);
             // TODO: break up into two rolls and chain them?
-            const promise = (game.dice3d) ? game.dice3d.show(diceData) : Promise.resolve();
+            const promise = (game.dice3d) ? game.dice3d.showForRoll(diceData) : Promise.resolve();
             promise.then(() => {
                 CONFIG.ChatMessage.entityClass.create(
                     {
