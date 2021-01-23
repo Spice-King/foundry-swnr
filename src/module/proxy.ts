@@ -16,15 +16,21 @@ export default function proxy(
       switch (prop) {
         case "create":
           //Calling the class' create() static function
-          return function (data: EntityData, options: unknown) {
-            const constructor = entities[data.type];
+          return function (data: EntityData | EntityData[], options: unknown) {
+            const entitiesData = data instanceof Array ? data : [data];
+            const results = entitiesData.map((data) => {
+              const constructor = entities[data.type];
 
-            if (!constructor) {
-              throw new Error(
-                "Unsupported Entity type for create(): " + data.type
-              );
-            }
-            return constructor.create(data, <never>options);
+              if (!constructor) {
+                console.log({ target, prop, data, options });
+
+                throw new Error(
+                  "Unsupported Entity type for create(): " + data.type
+                );
+              }
+              return constructor.create(data, <never>options);
+            });
+            return entitiesData.length === 1 ? results[0] : results;
           };
 
         case Symbol.hasInstance:
