@@ -355,6 +355,11 @@ swnr:
     skill: Skill
     employer: Employer
     source: Source
+    faction: Faction
+    movement: Movement
+    base-ac: Base AC
+    vs: vs
+    rollables: Rollables
   settings:
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: 'Uses 16 - Level for the save, no modifiers, just pure luck'
@@ -413,6 +418,7 @@ swnr:
     day: Day
     scene: Scene
     title: Effort
+    max: Max
   dialog:
     attackRoll: '{actorName} attacking with {weaponName}?'
     add-skills: Add Skills
@@ -429,3 +435,27 @@ swnr:
     innateArmorClass: Innate Armor Class
     equipped: Equipped
     shield: Counts as a shield
+  npc:
+    reaction:
+      unknown: Unknown
+      hostile: Hostile
+      negative: Negative
+      neutral: Neutral
+      positive: Positive
+      friendly: Friendly
+    morale-check: Morale Check
+    trained-skill: Trained Skill
+    attacks-per-turn: Attacks Per Turn
+    attack-bonus-hit: Attack Bonus Hit
+    attack-bonus-damage: Attack Bonus Damage
+    abilities: Abilities
+    combat: Combat
+    equipment: Equipment
+    skilled-with-weapon: Skilled with Weapon
+    morale:
+      failure: Fails their Moral Check!
+      success: Succeeds in their Moral Check!
+    skill:
+      trained: '{actor} uses their trained skill.'
+      untrained: '{actor} uses their untrained skill.'
+    unarmed: Unarmed

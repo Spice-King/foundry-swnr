@@ -68,6 +68,26 @@ Actor:
   npc:
     templates:
       - living
+    skillBonus: 0
+    attacks:
+      bonusDamage: 0
+      number: 1
+    armorType: "street"
+    speed: 10
+    moralScore: 6
+    effort:
+      value: 0
+      max: 0
+    reaction: "unknown"
+    homeworld: ""
+    faction: ""
+    notes:
+      left:
+        label: Goals
+        contents: ""
+      right:
+        label: Bio/Notes
+        contents: ""
 Item:
   types:
     - class

@@ -5,6 +5,7 @@
         <input type="checkbox" name="burstFire" id="burstFire" {{#if burstFireHasAmmo}}checked{{else}}disabled{{/if}}>
     </div>
     {{/if}}
+    {{#if (eq actor.type 'character')}}
     <div>
         <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
         <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}}>
@@ -16,6 +17,12 @@
             {{/select}}
         </select>
     </div>
+    {{else}}
+    <div>
+        <label for="skilled">{{localize 'swnr.npc.skilled-with-weapon'}}:</label>
+        <input type="checkbox" name="skilled" id="skilled" checked >
+    </div>
+    {{/if}}
     <div>
         <label for="modifier">{{localize  'swnr.chat.modifier'}}: </label>
         <input name="modifier" type="number" step="1" value="0" />

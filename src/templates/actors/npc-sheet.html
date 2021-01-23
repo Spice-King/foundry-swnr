@@ -1,0 +1,295 @@
+<form class="{{cssClass}}">
+  <div class="sheetHeader">
+    <div class="header-row">
+      <img
+        class="profile-image"
+        src="{{actor.img}}"
+        height="75"
+        width="75"
+        title="{{actor.name}}"
+        data-edit="img"
+      />
+      <div style="display: flex; flex-wrap: wrap">
+        <h2 style="flex-basis: 50%" class="char-name">
+          <input name="name" type="text" value="{{actor.name}}"
+          placeholder="{{localize "swnr.sheet.name"}}"/>
+        </h2>
+        <h2 style="flex-basis: 50%; display: flex; grid-gap: 0.5rem">
+          <select name="actor.data.reaction" style="flex-grow: 1">
+            {{#select actor.data.reaction}}
+            <option value="unknown">
+              {{localize 'swnr.npc.reaction.unknown'}}
+            </option>
+            <option value="hostile">
+              {{localize 'swnr.npc.reaction.hostile'}}
+            </option>
+            <option value="negative">
+              {{localize 'swnr.npc.reaction.negative'}}
+            </option>
+            <option value="neutral">
+              {{localize 'swnr.npc.reaction.neutral'}}
+            </option>
+            <option value="positive">
+              {{localize 'swnr.npc.reaction.positive'}}
+            </option>
+            <option value="friendly">
+              {{localize 'swnr.npc.reaction.friendly'}}
+            </option>
+            {{/select}}
+          </select>
+          <a class="reaction">
+            <i class="fa fa-dice-d6"></i>
+          </a>
+        </h2>
+        <h4 style="flex-basis: 33.333%" class="char-race">
+          <input name="data.species" type="text" value="{{actor.data.species}}"
+          placeholder="{{localize "swnr.sheet.species"}}" />
+        </h4>
+        <h4 style="flex-basis: 33.333%" class="char-homeworld">
+          <input
+            name="data.homeworld"
+            value="{{actor.data.homeworld}}"
+            placeholder="{{localize 'swnr.sheet.homeworld'}}"
+            type="text"
+          />
+        </h4>
+        <h4 style="flex-basis: 33.333%" class="char-faction">
+          <input name="data.faction" value="{{actor.data.faction}}"
+          placeholder="{{localize "swnr.sheet.faction"}}" type="text" />
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      border-width: 1px;
+      border-color: black;
+      border-style: solid;
+      padding: 2px;
+      gap: 0.5rem;
+    "
+  >
+    <div>
+      <h3>{{localize 'swnr.sheet.stats'}}</h3>
+      <div>
+        {{localize 'swnr.sheet.hp'}}:
+        <input
+          type="number"
+          name="data.health.value"
+          min="0"
+          step="1"
+          value="{{data.health.value}}"
+        />/<input
+          type="number"
+          name="data.health.max"
+          min="0"
+          step="1"
+          value="{{data.health.max}}"
+        />
+      </div>
+      <div>
+        {{localize 'swnr.sheet.armor-class'}}:
+        <input
+          type="number"
+          name="data.baseAc"
+          min="0"
+          step="1"
+          value="{{data.baseAc}}"
+        />
+      </div>
+      <div>
+        {{localize 'swnr.armor.type.label'}}:
+        <select name="data.armorType">
+          {{#select data.armorType}}
+          <option value="primitive">
+            {{localize 'swnr.armor.type.primitive'}}
+          </option>
+          <option value="street">{{localize 'swnr.armor.type.street'}}</option>
+          <option value="combat">{{localize 'swnr.armor.type.combat'}}</option>
+          <option value="powered">
+            {{localize 'swnr.armor.type.powered'}}
+          </option>
+          {{/select}}
+        </select>
+      </div>
+      <div>
+        {{localize 'swnr.sheet.movement'}}:
+        <input
+          type="number"
+          name="data.speed"
+          min="0"
+          step="1"
+          value="{{data.speed}}"
+        />
+      </div>
+    </div>
+    <div>
+      <h3>{{localize 'swnr.sheet.rollables'}}</h3>
+      <div>
+        <a class="morale">
+          <i class="fa fa-dice-d6"></i>
+          {{localize 'swnr.npc.morale-check'}} {{localize 'swnr.sheet.vs'}}
+        </a>
+        <input
+          type="number"
+          name="data.moralScore"
+          min="0"
+          step="1"
+          value="{{data.moralScore}}"
+        />
+      </div>
+      <div>
+        <a class="skill" data-skill-type="untrained">
+          <i class="fa fa-dice-d6"></i>
+          {{localize 'swnr.sheet.skill'}}: -1
+        </a>
+      </div>
+      <div>
+        <a class="skill" data-skill-type="trained">
+          <i class="fa fa-dice-d6"></i>
+          {{localize 'swnr.npc.trained-skill'}}:
+        </a>
+        <input
+          type="number"
+          name="data.skillBonus"
+          min="0"
+          step="1"
+          value="{{data.skillBonus}}"
+        />
+      </div>
+    </div>
+    <div class="effort">
+      <h3>{{localize 'swnr.effort.title'}}</h3>
+      <div>
+        {{localize 'swnr.effort.max'}}:
+        <input
+          type="number"
+          name="data.effort.max"
+          min="0"
+          step="1"
+          value="{{data.effort.max}}"
+        />
+      </div>
+      <div>
+        {{localize 'swnr.effort.current'}}:
+        <input
+          type="number"
+          name="data.effort.current"
+          min="0"
+          step="1"
+          max="{{concat data.effort.current data.effort.value}}"
+          value="{{data.effort.current}}"
+        />
+      </div>
+      <div>
+        {{localize 'swnr.effort.scene'}}:
+        <input
+          type="number"
+          name="data.effort.scene"
+          min="0"
+          step="1"
+          max="{{concat data.effort.scene data.effort.value}}"
+          value="{{data.effort.scene}}"
+        />
+      </div>
+      <div>
+        {{localize 'swnr.effort.day'}}:
+        <input
+          type="number"
+          name="data.effort.day"
+          min="0"
+          step="1"
+          max="{{concat data.effort.day data.effort.value}}"
+          value="{{data.effort.day}}"
+        />
+      </div>
+      <div>
+        {{data.effort.value}}/{{data.effort.max}}
+        <div class="meter">
+          <div
+            class="meterInner"
+            style="width: min(calc(100% * {{data.effort.value}}/{{data.effort.max}}));"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between">
+    <div style="flex-grow: 1">
+      <h3>{{localize 'swnr.npc.combat'}}</h3>
+      <div>
+        {{localize 'swnr.npc.attacks-per-turn'}}:
+        <input
+          type="number"
+          name="data.attacks.number"
+          min="0"
+          step="1"
+          value="{{data.attacks.number}}"
+        />
+      </div>
+      <div>
+        {{localize 'swnr.npc.attack-bonus-hit'}}:
+        <input
+          type="number"
+          name="data.ab"
+          min="0"
+          step="1"
+          value="{{data.ab}}"
+        />
+      </div>
+      <div>
+        {{localize 'swnr.npc.attack-bonus-damage'}}:
+        <input
+          type="number"
+          name="data.attacks.bonusDamage"
+          min="0"
+          step="1"
+          value="{{data.attacks.bonusDamage}}"
+        />
+      </div>
+      <ul>
+        {{#each itemTypes.weapon as |i|}} {{>
+        "systems/swnr/templates/actors/fragments/weapon.html" item=i
+        type=actor.data.type}} {{/each}}
+      </ul>
+    </div>
+    <div style="flex-grow: 1">
+      <h3>{{localize 'swnr.npc.abilities'}}</h3>
+      <ul>
+        {{#each abilities}} {{> (concat
+        "systems/swnr/templates/actors/fragments/" (concat this.type '.html'))
+        item=this type=actor.data.type }} {{/each}}
+      </ul>
+    </div>
+    <div style="flex-grow: 1">
+      <h3>{{localize 'swnr.npc.equipment'}}</h3>
+      <ul>
+        {{#each equipment}} {{> "systems/swnr/templates/actors/fragments/item.html"
+        item=this type=actor.data.type }} {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div style="display: flex; gap: 0.5rem">
+    <div style="flex-grow: 1">
+      <input
+        type="text"
+        name="data.notes.left.label"
+        value="{{data.notes.left.label}}"
+      />
+      <!-- prettier-ignore  -->
+      <textarea name="data.notes.left.contents" id="" cols="30" rows="10">{{data.notes.left.contents}}</textarea>
+    </div>
+    <div style="flex-grow: 1">
+      <input
+        type="text"
+        name="data.notes.right.label"
+        value="{{data.notes.right.label}}"
+      />
+      <!-- prettier-ignore  -->
+      <textarea name="data.notes.right.contents" id="" cols="30" rows="10">{{data.notes.right.contents}}</textarea>
+    </div>
+  </div>
+</form>

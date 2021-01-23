@@ -66,6 +66,34 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   stats: { [key in SWNRStats]: SWNRStat };
 }
 
+declare interface SWNRNPCData extends SWNRLiving {
+  armorType: "powered" | "combat" | "street" | "primitive";
+  skillBonus: number;
+  attacks: {
+    baseAttack: string;
+    damage: string;
+    bonusDamage: number;
+    number: number;
+  };
+  speed: number;
+  moralScore: number;
+  reaction:
+    | "unknown"
+    | "hostile"
+    | "negative"
+    | "neutral"
+    | "positive"
+    | "friendly";
+  homeworld: string;
+  faction: string;
+  notes: {
+    [key in "left" | "right"]: {
+      label: string;
+      contents: string;
+    };
+  };
+}
+
 declare interface SWNRDecData {
   description: string;
 }
