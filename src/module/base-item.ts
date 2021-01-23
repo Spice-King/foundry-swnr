@@ -1,2 +1,1 @@
-export class SWNRBaseItem<D> extends Item<D> {
-}
+export class SWNRBaseItem<D> extends Item<D> {}

@@ -1,3 +1,3 @@
-import { SWNRBaseItem } from './../base-item'
+import { SWNRBaseItem } from "./../base-item";
 export const entity = SWNRBaseItem;
-export const name = 'class'
+export const name = "class";
