@@ -472,7 +472,7 @@ async function linkUserData() {
 async function packageBuild() {
   const manifest = getManifest();
 
-  return new Promise((resolve, reject) => {
+  return new Promise<void>((resolve, reject) => {
     try {
       // Remove the package dir without doing anything else
       if (argv.clean || argv.c) {
