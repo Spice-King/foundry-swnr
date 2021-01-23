@@ -45,8 +45,10 @@ Hooks.once("init", async function () {
     return a + b;
   });
 });
-declare let _templateCache: { [key: string]: (data: any) => string };
-function limiter(fn: (...any: any[]) => any, wait: number) {
+declare let _templateCache: {
+  [key: string]: (data: Record<string, unknown>) => string;
+};
+function limiter(fn: (...any: unknown[]) => unknown, wait: number) {
   let isCalled = false;
 
   return function () {
@@ -59,7 +61,7 @@ function limiter(fn: (...any: any[]) => any, wait: number) {
     }
   };
 }
-const nukeTemplates = limiter(async function nukeTemplates() {
+export const nukeTemplates = limiter(async function nukeTemplates() {
   Object.keys(_templateCache)
     .filter((e) => e.startsWith("systems/swnr"))
     .forEach((element) => {
