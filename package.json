@@ -31,11 +31,13 @@
     "@types/sass": "^1.16.0",
     "@types/through2": "^2.0.36",
     "@types/yargs": "^15.0.9",
-    "@typescript-eslint/eslint-plugin": "^4.5.0",
-    "@typescript-eslint/parser": "^4.5.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
     "archiver": "^5.0.2",
     "chalk": "^4.1.0",
-    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint": "^7.15.0",
     "foundry-pc-types": "gitlab:spice_king/foundry-pc-types",
     "fs-extra": "^9.0.1",
     "gulp": "^4.0.2",
@@ -52,6 +54,7 @@
     "gulp-yaml": "^2.0.4",
     "json-stringify-pretty-compact": "^2.0.0",
     "merge-stream": "^2.0.0",
+    "prettier": "^2.2.1",
     "sass": "^1.27.0",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
@@ -59,7 +62,5 @@
     "typescript": "^4.1",
     "yargs": "^16.1.0"
   },
-  "dependencies": {
-    "eslint-config-prettier": "^6.14.0"
-  }
+  "dependencies": {}
 }
