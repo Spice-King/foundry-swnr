@@ -1,7 +1,9 @@
 <form class="{{cssClass}}">
-    {{> "systems/swnr/templates/items/fragments/desc.html"}}
-    <h3>{{localize 'swnr.foci.level1'}}</h3>
-    {{editor content=data.level1 target="data.level1" button=true owner=owner editable=editable }}
-    <h3>{{localize 'swnr.foci.level2'}}</h3>
-    {{editor content=data.level2 target="data.level2" button=true owner=owner editable=editable }}
+  {{> "systems/swnr/templates/items/fragments/desc.html"}}
+  <h3>{{localize 'swnr.foci.level1'}}</h3>
+  {{editor content=data.level1 target="data.level1" button=true owner=owner
+  editable=editable }}
+  <h3>{{localize 'swnr.foci.level2'}}</h3>
+  {{editor content=data.level2 target="data.level2" button=true owner=owner
+  editable=editable }}
 </form>

@@ -1,7 +1,7 @@
 <li class="item" data-item-id="{{item._id}}">
   <div class="item-name">{{item.name}}</div>
   <div>{{item.type}}</div>
-  <div style="display: flex;">
+  <div style="display: flex">
     {{#if (eq item.type "item")}}
     <div>
       <input
@@ -12,8 +12,7 @@
         value="{{item.data.data.quantity}}"
       />
     </div>
-    {{/if}}
-    {{#if (eq type 'character')}}
+    {{/if}} {{#if (eq type 'character')}}
     <div>
       <select name="items.{{item._id}}.data.location">
         {{#select item.data.data.location}}

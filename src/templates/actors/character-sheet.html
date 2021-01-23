@@ -1,258 +1,463 @@
 <form class="{{cssClass}}">
-    <div class="sheetHeader">
-        <div class="header-row">
-            <img class="profile-image" src="{{actor.img}}" height="150" width="150" title="{{actor.name}}"
-                data-edit="img" />
-            <div style="flex: 1;display:flex; flex-wrap: wrap;">
-
-                <h1 style="flex-basis: 100%;" class="char-name"><input name="name" type="text" value="{{actor.name}}"
-                        placeholder="{{localize 'swnr.sheet.name'}}" /></h1>
-                <h2 style="flex-basis: 50%;" class="char-class"><input name="data.class" value="{{actor.data.class}}"
-                        placeholder="{{localize 'swnr.sheet.class'}}" type="text" /></h2>
-                <h2 style="flex-basis: 50%;" class="char-race"><input name="data.species" type="text"
-                        value="{{actor.data.species}}" placeholder="{{localize 'swnr.sheet.species'}}" /></h2>
-                <h2 style="flex-basis: 50%;" class="char-homeworld"><input name="data.homeworld"
-                        value="{{actor.data.homeworld}}" placeholder="{{localize 'swnr.sheet.homeworld'}}"
-                        type="text" /></h2>
-                <h2 style="flex-basis: 50%;" class="char-background"><input name="data.background"
-                        value="{{actor.data.background}}" placeholder="{{localize 'swnr.sheet.background'}}"
-                        type="text" /></h2>
-                <h2 style="flex-basis: 50%;" class="char-employer"><input name="data.employer"
-                        value="{{actor.data.employer}}" placeholder="{{localize 'swnr.sheet.employer'}}" type="text" />
-                </h2>
-                <h2 style="flex-basis: 50%;">{{localize  'swnr.sheet.level'}}<input type="number" min="1" step="1"
-                        name="data.level.value" value="{{actor.data.level.value}}" data-dtype="Number" /></h2>
-            </div>
-            <div class="saves" style="display: flex; flex-direction: column;">
-                <div class="save physical">
-                    <div class="save-number">v{{actor.data.save.physical}} <i class="fas fa-dice-d20"></i></div>
-                    <div class="save-label">{{localize 'swnr.sheet.saves.physical'}}</div>
-                </div>
-                <div class="save evasion">
-                    <div class="save-number">v{{actor.data.save.evasion}} <i class="fas fa-dice-d20"></i></div>
-                    <div class="save-label">{{localize 'swnr.sheet.saves.evasion'}}</div>
-                </div>
-                <div class="save mental">
-                    <div class="save-number">v{{actor.data.save.mental}} <i class="fas fa-dice-d20"></i></div>
-                    <div class="save-label">{{localize 'swnr.sheet.saves.mental'}}</div>
-                </div>
-                {{#if useHomebrewLuckSave}}
-                <div class="save luck">
-                    <div class="save-number">v{{actor.data.save.luck}} <i class="fas fa-dice-d20"></i></div>
-                    <div class="save-label">{{localize 'swnr.sheet.saves.luck'}}</div>
-                </div>
-                {{/if}}
-            </div>
+  <div class="sheetHeader">
+    <div class="header-row">
+      <img
+        class="profile-image"
+        src="{{actor.img}}"
+        height="150"
+        width="150"
+        title="{{actor.name}}"
+        data-edit="img"
+      />
+      <div style="flex: 1; display: flex; flex-wrap: wrap">
+        <h1 style="flex-basis: 100%" class="char-name">
+          <input
+            name="name"
+            type="text"
+            value="{{actor.name}}"
+            placeholder="{{localize 'swnr.sheet.name'}}"
+          />
+        </h1>
+        <h2 style="flex-basis: 50%" class="char-class">
+          <input
+            name="data.class"
+            value="{{actor.data.class}}"
+            placeholder="{{localize 'swnr.sheet.class'}}"
+            type="text"
+          />
+        </h2>
+        <h2 style="flex-basis: 50%" class="char-race">
+          <input
+            name="data.species"
+            type="text"
+            value="{{actor.data.species}}"
+            placeholder="{{localize 'swnr.sheet.species'}}"
+          />
+        </h2>
+        <h2 style="flex-basis: 50%" class="char-homeworld">
+          <input
+            name="data.homeworld"
+            value="{{actor.data.homeworld}}"
+            placeholder="{{localize 'swnr.sheet.homeworld'}}"
+            type="text"
+          />
+        </h2>
+        <h2 style="flex-basis: 50%" class="char-background">
+          <input
+            name="data.background"
+            value="{{actor.data.background}}"
+            placeholder="{{localize 'swnr.sheet.background'}}"
+            type="text"
+          />
+        </h2>
+        <h2 style="flex-basis: 50%" class="char-employer">
+          <input
+            name="data.employer"
+            value="{{actor.data.employer}}"
+            placeholder="{{localize 'swnr.sheet.employer'}}"
+            type="text"
+          />
+        </h2>
+        <h2 style="flex-basis: 50%">
+          {{localize 'swnr.sheet.level'}}<input
+            type="number"
+            min="1"
+            step="1"
+            name="data.level.value"
+            value="{{actor.data.level.value}}"
+            data-dtype="Number"
+          />
+        </h2>
+      </div>
+      <div class="saves" style="display: flex; flex-direction: column">
+        <div class="save physical">
+          <div class="save-number">
+            v{{actor.data.save.physical}} <i class="fas fa-dice-d20"></i>
+          </div>
+          <div class="save-label">{{localize 'swnr.sheet.saves.physical'}}</div>
         </div>
-        <div class="header-row">
-            <div style="flex: 3;" class="stats">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="statRoll">{{localize  'swnr.sheet.stats'}} <i class="fas fa-dice-d20"></i> </th>
-                            <th>{{localize  'swnr.sheet.base'}}</th>
-                            <th>{{localize  'swnr.sheet.boosts'}}</th>
-                            <th>{{localize  'swnr.sheet.bonus'}}</th>
-                            <th>{{localize  'swnr.sheet.modifier'}}</th>
-                        </tr>
-                    </thead>
-                    {{#each actor.data.stats as |stat key|}}
-                    <tr>
-                        <td>
-                            <label for="data.stats.{{key}}.base"
-                                class="resource-label flex1">{{localize (concat 'swnr.stat.long.' key)}}</label>
-                        </td>
-                        <td>
-                            <input type="number" min="3" max="18" step="1" name="data.stats.{{key}}.base"
-                                value="{{stat.base}}" data-dtype="Number" /></td>
-                        <td>
-                            <input type="number" min="0" max="5" step="1" name="data.stats.{{key}}.boost"
-                                value="{{stat.boost}}" data-dtype="Number" /></td>
-                        <td>
-                            <input type="number" min="0" max="3" step="1" name="data.stats.{{key}}.bonus"
-                                value="{{stat.bonus}}" data-dtype="Number" /></td>
-                        <td><span class="stat-mod">{{numberFormat stat.mod decimals=0 sign=true}}</span></td>
-                    </tr>
-                    {{/each}}
-                </table>
-            </div>
-            <div style="flex: 3;" class="core-stats">
-                <div class="hp"><input type="number" step="1" name="data.health.value" value="{{data.health.value}}"
-                        data-dtype="Number" min="0">/<input type="number" name="data.health.max"
-                        value="{{data.health.max}}" step="1" min="1" data-dtype="Number" />
-                </div>
-                <div class="hp-label">{{localize  'swnr.sheet.hp'}} <i class="fas fa-dice-d20"></i></div>
-                <div class="system"><input type="number" name="data.systemStrain.value"
-                        value="{{data.systemStrain.value}}" data-dtype="Number">/{{data.systemStrain.max}}</div>
-                <div class="system-label">{{localize  'swnr.sheet.system-strain'}}</div>
-                <div class="perm-sys"><input type="number" min="0" name="data.systemStrain.permanent"
-                        value="{{data.systemStrain.permanent}}"></div>
-                <div class="perm-sys-label">{{localize  'swnr.sheet.permanent-strain'}}</div>
-                <div class="exp">
-                    <input type="number" step="1" name="data.level.exp" min="0" data-dtype="Number"
-                        value="{{data.level.exp}}" />/<input type="number" step="1" name="data.level.expToLevel" min="0"
-                        data-dtype="Number" value="{{data.level.expToLevel}}" /></div>
-                <div class="exp-label">{{localize  'swnr.sheet.xp'}}</div>
-                <div class="ac">{{data.ac}}</div>
-                <div class="ac-label">{{localize  'swnr.sheet.armor-class'}}</div>
-                <div class="ab"><input type="number" step="1" name="data.ab" min="-9" max="99" data-dtype="Number"
-                        value="{{data.ab}}"></div>
-                <div class="ab-label">{{localize  'swnr.sheet.attack-bonus'}}</div>
-            </div>
-            <div style="flex: 1;" class="effort">
-                <h3>{{localize 'swnr.effort.title'}}</h3>
-                <div>
-                    <label for="data.effort.bonus">{{localize 'swnr.effort.bonus'}}: </label>
-                    <input type="number" step="1" name="data.effort.bonus" value="{{data.effort.bonus}}"
-                        data-dtype="Number" />
-                </div>
-                <div>
-                    <label for="data.effort.current">{{localize 'swnr.effort.current'}}: </label>
-                    <input type="number" min="0" step="1" max="{{concat data.effort.current data.effort.value}}"
-                        name="data.effort.current" value="{{data.effort.current}}" data-dtype="Number" />
-                </div>
-                <div>
-                    <label for="data.effort.scene">{{localize 'swnr.effort.scene'}}: </label>
-                    <input type="number" min="0" step="1" max="{{concat data.effort.scene data.effort.value}}"
-                        name="data.effort.scene" value="{{data.effort.scene}}" data-dtype="Number" />
-                </div>
-                <div>
-                    <label for="data.effort.day">{{localize 'swnr.effort.day'}}: </label>
-                    <input type="number" min="0" step="1" max="{{concat data.effort.day data.effort.value}}"
-                        name="data.effort.day" value="{{data.effort.day}}" data-dtype="Number" />
-                </div>
-                <div>
-                    {{data.effort.value}} / {{data.effort.max}}
-                    <div class="meter">
-                        <div class="meterInner"
-                            style="width: min(calc(100% * {{data.effort.value}}/{{data.effort.max}}));">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="save evasion">
+          <div class="save-number">
+            v{{actor.data.save.evasion}} <i class="fas fa-dice-d20"></i>
+          </div>
+          <div class="save-label">{{localize 'swnr.sheet.saves.evasion'}}</div>
         </div>
+        <div class="save mental">
+          <div class="save-number">
+            v{{actor.data.save.mental}} <i class="fas fa-dice-d20"></i>
+          </div>
+          <div class="save-label">{{localize 'swnr.sheet.saves.mental'}}</div>
+        </div>
+        {{#if useHomebrewLuckSave}}
+        <div class="save luck">
+          <div class="save-number">
+            v{{actor.data.save.luck}} <i class="fas fa-dice-d20"></i>
+          </div>
+          <div class="save-label">{{localize 'swnr.sheet.saves.luck'}}</div>
+        </div>
+        {{/if}}
+      </div>
     </div>
+    <div class="header-row">
+      <div style="flex: 3" class="stats">
+        <table>
+          <thead>
+            <tr>
+              <th class="statRoll">
+                {{localize 'swnr.sheet.stats'}} <i class="fas fa-dice-d20"></i>
+              </th>
+              <th>{{localize 'swnr.sheet.base'}}</th>
+              <th>{{localize 'swnr.sheet.boosts'}}</th>
+              <th>{{localize 'swnr.sheet.bonus'}}</th>
+              <th>{{localize 'swnr.sheet.modifier'}}</th>
+            </tr>
+          </thead>
+          {{#each actor.data.stats as |stat key|}}
+          <tr>
+            <td>
+              <label for="data.stats.{{key}}.base" class="resource-label flex1">
+                {{localize (concat 'swnr.stat.long.' key)}}
+              </label>
+            </td>
+            <td>
+              <input
+                type="number"
+                min="3"
+                max="18"
+                step="1"
+                name="data.stats.{{key}}.base"
+                value="{{stat.base}}"
+                data-dtype="Number"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                max="5"
+                step="1"
+                name="data.stats.{{key}}.boost"
+                value="{{stat.boost}}"
+                data-dtype="Number"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                max="3"
+                step="1"
+                name="data.stats.{{key}}.bonus"
+                value="{{stat.bonus}}"
+                data-dtype="Number"
+              />
+            </td>
+            <td>
+              <span class="stat-mod">
+                {{numberFormat stat.mod decimals=0 sign=true}}
+              </span>
+            </td>
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+      <div style="flex: 3" class="core-stats">
+        <div class="hp">
+          <input
+            type="number"
+            step="1"
+            name="data.health.value"
+            value="{{data.health.value}}"
+            data-dtype="Number"
+            min="0"
+          />/<input
+            type="number"
+            name="data.health.max"
+            value="{{data.health.max}}"
+            step="1"
+            min="1"
+            data-dtype="Number"
+          />
+        </div>
+        <div class="hp-label">
+          {{localize 'swnr.sheet.hp'}} <i class="fas fa-dice-d20"></i>
+        </div>
+        <div class="system">
+          <input
+            type="number"
+            name="data.systemStrain.value"
+            value="{{data.systemStrain.value}}"
+            data-dtype="Number"
+          />/{{data.systemStrain.max}}
+        </div>
+        <div class="system-label">{{localize 'swnr.sheet.system-strain'}}</div>
+        <div class="perm-sys">
+          <input
+            type="number"
+            min="0"
+            name="data.systemStrain.permanent"
+            value="{{data.systemStrain.permanent}}"
+          />
+        </div>
+        <div class="perm-sys-label">
+          {{localize 'swnr.sheet.permanent-strain'}}
+        </div>
+        <div class="exp">
+          <input
+            type="number"
+            step="1"
+            name="data.level.exp"
+            min="0"
+            data-dtype="Number"
+            value="{{data.level.exp}}"
+          />/<input
+            type="number"
+            step="1"
+            name="data.level.expToLevel"
+            min="0"
+            data-dtype="Number"
+            value="{{data.level.expToLevel}}"
+          />
+        </div>
+        <div class="exp-label">{{localize 'swnr.sheet.xp'}}</div>
+        <div class="ac">{{data.ac}}</div>
+        <div class="ac-label">{{localize 'swnr.sheet.armor-class'}}</div>
+        <div class="ab">
+          <input
+            type="number"
+            step="1"
+            name="data.ab"
+            min="-9"
+            max="99"
+            data-dtype="Number"
+            value="{{data.ab}}"
+          />
+        </div>
+        <div class="ab-label">{{localize 'swnr.sheet.attack-bonus'}}</div>
+      </div>
+      <div style="flex: 1" class="effort">
+        <h3>{{localize 'swnr.effort.title'}}</h3>
+        <div>
+          <label for="data.effort.bonus">
+            {{localize 'swnr.effort.bonus'}}:
+          </label>
+          <input
+            type="number"
+            step="1"
+            name="data.effort.bonus"
+            value="{{data.effort.bonus}}"
+            data-dtype="Number"
+          />
+        </div>
+        <div>
+          <label for="data.effort.current">
+            {{localize 'swnr.effort.current'}}:
+          </label>
+          <input
+            type="number"
+            min="0"
+            step="1"
+            max="{{concat data.effort.current data.effort.value}}"
+            name="data.effort.current"
+            value="{{data.effort.current}}"
+            data-dtype="Number"
+          />
+        </div>
+        <div>
+          <label for="data.effort.scene">
+            {{localize 'swnr.effort.scene'}}:
+          </label>
+          <input
+            type="number"
+            min="0"
+            step="1"
+            max="{{concat data.effort.scene data.effort.value}}"
+            name="data.effort.scene"
+            value="{{data.effort.scene}}"
+            data-dtype="Number"
+          />
+        </div>
+        <div>
+          <label for="data.effort.day">{{localize 'swnr.effort.day'}}: </label>
+          <input
+            type="number"
+            min="0"
+            step="1"
+            max="{{concat data.effort.day data.effort.value}}"
+            name="data.effort.day"
+            value="{{data.effort.day}}"
+            data-dtype="Number"
+          />
+        </div>
+        <div>
+          {{data.effort.value}} / {{data.effort.max}}
+          <div class="meter">
+            <div
+              class="meterInner"
+              style="width: min(calc(100% * {{data.effort.value}}/{{data.effort.max}}));"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="biography">{{localize 'swnr.sheet.tabs.biography'}}</a>
-        <a class="item" data-tab="weapons">{{localize 'swnr.sheet.tabs.weapons'}}</a>
-        <a class="item" data-tab="armor">{{localize 'swnr.sheet.tabs.armor'}}</a>
-        <a class="item" data-tab="inventory">{{localize 'swnr.sheet.tabs.inventory'}}</a>
-        <a class="item" data-tab="skills">{{localize 'swnr.sheet.tabs.skills'}}</a>
-        <a class="item" data-tab="foci">{{localize 'swnr.sheet.tabs.foci'}}</a>
-        <a class="item" data-tab="powers">{{localize 'swnr.sheet.tabs.powers'}}</a>
-    </nav>
-    <section class="sheet-body">
-        <div class="tab biography" data-group="primary" data-tab="biography">
-            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="biography">
+      {{localize 'swnr.sheet.tabs.biography'}}
+    </a>
+    <a class="item" data-tab="weapons">
+      {{localize 'swnr.sheet.tabs.weapons'}}
+    </a>
+    <a class="item" data-tab="armor">{{localize 'swnr.sheet.tabs.armor'}}</a>
+    <a class="item" data-tab="inventory">
+      {{localize 'swnr.sheet.tabs.inventory'}}
+    </a>
+    <a class="item" data-tab="skills">{{localize 'swnr.sheet.tabs.skills'}}</a>
+    <a class="item" data-tab="foci">{{localize 'swnr.sheet.tabs.foci'}}</a>
+    <a class="item" data-tab="powers">{{localize 'swnr.sheet.tabs.powers'}}</a>
+  </nav>
+  <section class="sheet-body">
+    <div class="tab biography" data-group="primary" data-tab="biography">
+      {{editor content=data.biography target="data.biography" button=true
+      owner=owner editable=editable}}
+    </div>
+    <div class="tab weapons" data-group="primary" data-tab="weapons">
+      <ul>
+        {{#each itemTypes.weapon as |item id|}}
+        {{> "systems/swnr/templates/actors/fragments/weapon.html" item=item type=actor.data.type}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="tab armor" data-group="primary" data-tab="armor">
+      <ul>
+        <li class="item armor">
+          <h4>{{localize 'swnr.armor.innateArmorClass'}}</h4>
+          <input
+            type="number"
+            min="1"
+            step="1"
+            name="data.baseAc"
+            value="{{actor.data.baseAc}}"
+            data-dtype="Number"
+          />
+        </li>
+        {{#each itemTypes.armor as |item id|}}
+        {{> "systems/swnr/templates/actors/fragments/armor.html" item=item type=actor.data.type}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="tab inventory" data-group="primary" data-tab="inventory">
+      <div>
+        <div class="invReadied">
+          <span>
+            {{localize 'swnr.item.locationReadied'}}:
+            {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}
+          </span>
+          <div class="meter">
+            <div
+              class="meterInner"
+              style="width: min(calc(100% * {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}));"
+            ></div>
+          </div>
         </div>
-        <div class="tab weapons" data-group="primary" data-tab="weapons">
-            <ul>
-                {{#each itemTypes.weapon as |item id|}}
-                    {{> "systems/swnr/templates/actors/fragments/weapon.html" item=item type=actor.data.type}}
-                {{/each}}
-            </ul>
+        <div class="invStowed">
+          <span>
+            {{localize 'swnr.item.locationStowed'}}:
+            {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}
+          </span>
+          <div class="meter">
+            <div
+              class="meterInner"
+              style="width: min(100%, calc(100% * {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}));"
+            ></div>
+          </div>
         </div>
-        <div class="tab armor" data-group="primary" data-tab="armor">
-            <ul>
-                <li class="item armor">
-                    <h4>{{localize 'swnr.armor.innateArmorClass'}}</h4>
-                    <input type="number" min="1" step="1" name="data.baseAc" value="{{actor.data.baseAc}}"
-                        data-dtype="Number">
-                </li>
-                {{#each itemTypes.armor as |item id|}}
-                {{> "systems/swnr/templates/actors/fragments/armor.html" item=item type=actor.data.type}} 
-                {{/each}}
-            </ul>
-        </div>
-        <div class="tab inventory" data-group="primary" data-tab="inventory">
-            <div>
-                <div class="invReadied">
-                    <span>{{localize 'swnr.item.locationReadied'}}:
-                        {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}</span>
-                    <div class="meter">
-                        <div class="meterInner"
-                            style="width: min(calc(100% * {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}));">
-                        </div>
-                    </div>
-                </div>
-                <div class="invStowed">
-                    <span>{{localize 'swnr.item.locationStowed'}}:
-                        {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}</span>
-                    <div class="meter">
-                        <div class="meterInner"
-                            style="width: min(100%, calc(100% * {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}));">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ul>
-                {{#*inline "inventoryLine"}}
-                <li class="item" data-item-id="{{item._id}}">
-                    <div class="item-name">{{item.name}}</div>
-                    <div>{{item.type}}</div>
-                    {{#if (eq item.type "item")}}
-                    <div>
-                        <input type="number" name="items.{{item._id}}.data.quantity" min="0" step="1"
-                            value="{{item.data.data.quantity}}">
-                    </div>
-                    {{/if}}
-                    <div>
-                        <select name="items.{{item._id}}.data.location">
-                            {{#select item.data.data.location}}
-                            <option value="readied">{{localize 'swnr.item.locationReadied'}}</option>
-                            <option value="stowed">{{localize 'swnr.item.locationStowed'}}</option>
-                            <option value="other">{{localize 'swnr.item.locationOther'}}</option>
-                            {{/select}}
-                        </select>
-                    </div>
-                    <div class="item-controls">
-                        <a class="item-control item-edit" title="{{localize  'swnr.sheet.edit-item'}}"><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title="{{localize  'swnr.sheet.delete-item'}}"><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/inline}}
-                {{#each itemTypes.weapon as |item id|}}
-                {{> inventoryLine item=item id=id}}
-                {{/each}}
-                {{#each itemTypes.armor as |item id|}}
-                {{> inventoryLine item=item id=id}}
-                {{/each}}
-                {{#each itemTypes.item as |item id|}}
-                {{> inventoryLine item=item id=id}}
-                {{/each}}
-            </ul>
-        </div>
-        <div class="tab skills" data-group="primary" data-tab="skills">
-            {{#if (ne itemTypes.skill.length 0)}}
-            <ul>
-                {{#each itemTypes.skill as |item id|}}
-                {{> "systems/swnr/templates/actors/fragments/skill.html" item=item type=actor.data.type}}
-                {{/each}}
-            </ul>
-            {{else}}
-            <button class="skill-load-button" style="margin-top: 3em;">
-                No skills? Click here to add some!
-            </button>
-            {{/if}}
-        </div>
-        <div class="tab foci" data-group="primary" data-tab="foci">
-                        <ul>
-                {{#each itemTypes.focus as |item id|}}
-                {{> "systems/swnr/templates/actors/fragments/focus.html" item=item type=actor.data.type}}
-                {{/each}}
-            </ul>
-        </div>
-        <div class="tab powers" data-group="primary" data-tab="powers">
-            <ul>
-                {{#each itemTypes.power as |item id|}}
-                {{> "systems/swnr/templates/actors/fragments/power.html" item=item type=actor.data.type}}
-                {{/each}}
-            </ul>
-        </div>
-    </section>
+      </div>
+      <ul>
+        {{#*inline "inventoryLine"}}
+        <li class="item" data-item-id="{{item._id}}">
+          <div class="item-name">{{item.name}}</div>
+          <div>{{item.type}}</div>
+          {{#if (eq item.type "item")}}
+          <div>
+            <input
+              type="number"
+              name="items.{{item._id}}.data.quantity"
+              min="0"
+              step="1"
+              value="{{item.data.data.quantity}}"
+            />
+          </div>
+          {{/if}}
+          <div>
+            <select name="items.{{item._id}}.data.location">
+              {{#select item.data.data.location}}
+              <option value="readied">
+                {{localize 'swnr.item.locationReadied'}}
+              </option>
+              <option value="stowed">
+                {{localize 'swnr.item.locationStowed'}}
+              </option>
+              <option value="other">
+                {{localize 'swnr.item.locationOther'}}
+              </option>
+              {{/select}}
+            </select>
+          </div>
+          <div class="item-controls">
+            <a
+              class="item-control item-edit"
+              title="{{localize  'swnr.sheet.edit-item'}}"
+            >
+              <i class="fas fa-edit"></i>
+            </a>
+            <a
+              class="item-control item-delete"
+              title="{{localize  'swnr.sheet.delete-item'}}"
+            >
+              <i class="fas fa-trash"></i>
+            </a>
+          </div>
+        </li>
+        {{/inline}}
+        {{#each itemTypes.weapon as |item id|}}
+        {{> inventoryLine item=item id=id}}
+        {{/each}}
+        {{#each itemTypes.armor as |item id|}}
+        {{> inventoryLine item=item id=id}}
+        {{/each}}
+        {{#each itemTypes.item as |item id|}}
+        {{> inventoryLine item=item id=id}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="tab skills" data-group="primary" data-tab="skills">
+      {{#if (ne itemTypes.skill.length 0)}}
+      <ul>
+        {{#each itemTypes.skill as |item id|}}
+        {{> "systems/swnr/templates/actors/fragments/skill.html" item=item type=actor.data.type}}
+        {{/each}}
+      </ul>
+      {{else}}
+      <button class="skill-load-button" style="margin-top: 3em">
+        No skills? Click here to add some!
+      </button>
+      {{/if}}
+    </div>
+    <div class="tab foci" data-group="primary" data-tab="foci">
+      <ul>
+        {{#each itemTypes.focus as |item id|}}
+        {{> "systems/swnr/templates/actors/fragments/focus.html" item=item type=actor.data.type}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="tab powers" data-group="primary" data-tab="powers">
+      <ul>
+        {{#each itemTypes.power as |item id|}}
+        {{> "systems/swnr/templates/actors/fragments/power.html" item=item type=actor.data.type}}
+        {{/each}}
+      </ul>
+    </div>
+  </section>
 </form>

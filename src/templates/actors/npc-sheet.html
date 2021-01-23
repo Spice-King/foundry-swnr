@@ -11,8 +11,12 @@
       />
       <div style="display: flex; flex-wrap: wrap">
         <h2 style="flex-basis: 50%" class="char-name">
-          <input name="name" type="text" value="{{actor.name}}"
-          placeholder="{{localize "swnr.sheet.name"}}"/>
+          <input
+            name="name"
+            type="text"
+            value="{{actor.name}}"
+            placeholder="{{localize 'swnr.sheet.name'}}"
+          />
         </h2>
         <h2 style="flex-basis: 50%; display: flex; grid-gap: 0.5rem">
           <select name="actor.data.reaction" style="flex-grow: 1">
@@ -42,8 +46,12 @@
           </a>
         </h2>
         <h4 style="flex-basis: 33.333%" class="char-race">
-          <input name="data.species" type="text" value="{{actor.data.species}}"
-          placeholder="{{localize "swnr.sheet.species"}}" />
+          <input
+            name="data.species"
+            type="text"
+            value="{{actor.data.species}}"
+            placeholder="{{localize 'swnr.sheet.species'}}"
+          />
         </h4>
         <h4 style="flex-basis: 33.333%" class="char-homeworld">
           <input
@@ -54,8 +62,12 @@
           />
         </h4>
         <h4 style="flex-basis: 33.333%" class="char-faction">
-          <input name="data.faction" value="{{actor.data.faction}}"
-          placeholder="{{localize "swnr.sheet.faction"}}" type="text" />
+          <input
+            name="data.faction"
+            value="{{actor.data.faction}}"
+            placeholder="{{localize 'swnr.sheet.faction'}}"
+            type="text"
+          />
         </h4>
       </div>
     </div>
@@ -267,8 +279,9 @@
     <div style="flex-grow: 1">
       <h3>{{localize 'swnr.npc.equipment'}}</h3>
       <ul>
-        {{#each equipment}} {{> "systems/swnr/templates/actors/fragments/item.html"
-        item=this type=actor.data.type }} {{/each}}
+        {{#each equipment}} {{>
+        "systems/swnr/templates/actors/fragments/item.html" item=this
+        type=actor.data.type }} {{/each}}
       </ul>
     </div>
   </div>

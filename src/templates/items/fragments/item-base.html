@@ -1,47 +1,88 @@
 <div>
-    <div>
-        {{localize 'swnr.item.encumbrance'}} :
-        <input type="number" step="1" name="data.encumbrance" min="0" data-dtype="Number" </
-            value="{{data.encumbrance}}" />
-    </div>
-    {{#if (eq "item" item.type)}}
-    <div>
-        {{localize 'swnr.item.quantity'}}:
-        <input type="number" name="data.quantity" min="0" step="1" value="{{data.quantity}}">
-    </div>
-    <div>
-        {{localize 'swnr.item.bundledCount'}}
-        <input type="number" step="1" name="data.bundle.amount" min="1" data-dtype="Number"
-            value="{{data.bundle.amount}}" /> <input type="checkbox" name="data.bundle.bundled"
-            {{checked data.bundle.bundled}} />
-    </div>
-    {{/if}}
-    <div>
-        {{localize 'swnr.item.location'}}: 
-        <select name="data.location">
-            {{#select data.location}}
-            <option value="readied">{{localize 'swnr.item.locationReadied'}}</option>
-            <option value="stowed">{{localize 'swnr.item.locationStowed'}}</option>
-            <option value="other">{{localize 'swnr.item.locationOther'}}</option>
-            {{/select}}
-        </select>
-    </div>
-    <div>
-        {{localize 'swnr.item.techlevel'}}: 
-        <input type="number" step="1" name="data.tl" min="0" data-dtype="Number" value="{{data.tl}}" />
-    </div>
-    <div>
-        {{localize 'swnr.item.cost'}}: 
-        <input type="number" step="1" name="data.cost" min="0" data-dtype="Number" value="{{data.cost}}" />
-    </div>
-    <div>
-        {{localize 'swnr.item.quality.label'}}: 
-        <select name="data.quality">
-            {{#select data.quality}}
-            <option value="juryRigged">{{localize 'swnr.item.quality.juryRigged'}}</option>
-            <option value="stock">{{localize 'swnr.item.quality.stock'}}</option>
-            <option value="mastercrafted">{{localize 'swnr.item.quality.mastercrafted'}}</option>
-            {{/select}}
-        </select>
-    </div>
+  <div>
+    {{localize 'swnr.item.encumbrance'}} :
+    <input
+      type="number"
+      step="1"
+      name="data.encumbrance"
+      min="0"
+      data-dtype="Number"
+      value="{{data.encumbrance}}"
+    />
+  </div>
+  {{#if (eq "item" item.type)}}
+  <div>
+    {{localize 'swnr.item.quantity'}}:
+    <input
+      type="number"
+      name="data.quantity"
+      min="0"
+      step="1"
+      value="{{data.quantity}}"
+    />
+  </div>
+  <div>
+    {{localize 'swnr.item.bundledCount'}}
+    <input
+      type="number"
+      step="1"
+      name="data.bundle.amount"
+      min="1"
+      data-dtype="Number"
+      value="{{data.bundle.amount}}"
+    />
+    <input
+      type="checkbox"
+      name="data.bundle.bundled"
+      {{checked
+      data.bundle.bundled}}
+    />
+  </div>
+  {{/if}}
+  <div>
+    {{localize 'swnr.item.location'}}:
+    <select name="data.location">
+      {{#select data.location}}
+      <option value="readied">{{localize 'swnr.item.locationReadied'}}</option>
+      <option value="stowed">{{localize 'swnr.item.locationStowed'}}</option>
+      <option value="other">{{localize 'swnr.item.locationOther'}}</option>
+      {{/select}}
+    </select>
+  </div>
+  <div>
+    {{localize 'swnr.item.techlevel'}}:
+    <input
+      type="number"
+      step="1"
+      name="data.tl"
+      min="0"
+      data-dtype="Number"
+      value="{{data.tl}}"
+    />
+  </div>
+  <div>
+    {{localize 'swnr.item.cost'}}:
+    <input
+      type="number"
+      step="1"
+      name="data.cost"
+      min="0"
+      data-dtype="Number"
+      value="{{data.cost}}"
+    />
+  </div>
+  <div>
+    {{localize 'swnr.item.quality.label'}}:
+    <select name="data.quality">
+      {{#select data.quality}}
+      <option value="juryRigged">
+        {{localize 'swnr.item.quality.juryRigged'}}
+      </option>
+      <option value="stock">{{localize 'swnr.item.quality.stock'}}</option>
+      <option value="mastercrafted">
+        {{localize 'swnr.item.quality.mastercrafted'}}
+      </option>
+      {{/select}}
+    </select>
+  </div>
 </div>

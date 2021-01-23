@@ -1,30 +1,32 @@
 <table>
-    <tbody>
-        {{#each stats as |stat name|}}
-        <tr class="statChat stat-{{name}}">
-            <td>{{localize (concat 'swnr.stat.long.' name)}}</td>
-            <td>
-                <ul class="dieRoll">
-                    {{#each stat.dice}}
-                    <li
-                        class="die{{#if this.discarded}} flop{{/if}}{{#if (eq 6 this.roll)}} good{{/if}}{{#if (eq 1 this.roll)}} bad{{/if}}">
-                        {{this.roll}}</li>
-                    {{/each}}
-                </ul>
-            </td>
-            <td class="statBase">{{stat.base}}</td>
-            <td class="statMod">{{numberFormat stat.mod decimals=0 sign=true}}</td>
-        </tr>
-        {{/each}}
-        <tr>
-            <td>{{localize 'swnr.chat.totalModifier'}}</td>
-            <td></td>
-            <td></td>
-            <td>{{numberFormat totalMod decimals=0 sign=true}}</td>
-        </tr>
-    </tbody>
+  <tbody>
+    {{#each stats as |stat name|}}
+    <tr class="statChat stat-{{name}}">
+      <td>{{localize (concat 'swnr.stat.long.' name)}}</td>
+      <td>
+        <ul class="dieRoll">
+          {{#each stat.dice}}
+          <li class="die{{#if this.discarded}} flop{{/if}}{{#if (eq 6 this.roll)}} good{{/if}}{{#if (eq 1 this.roll)}} bad{{/if}}"          >
+            {{this.roll}}
+          </li>
+          {{/each}}
+        </ul>
+      </td>
+      <td class="statBase">{{stat.base}}</td>
+      <td class="statMod">{{numberFormat stat.mod decimals=0 sign=true}}</td>
+    </tr>
+    {{/each}}
+    <tr>
+      <td>{{localize 'swnr.chat.totalModifier'}}</td>
+      <td></td>
+      <td></td>
+      <td>{{numberFormat totalMod decimals=0 sign=true}}</td>
+    </tr>
+  </tbody>
 </table>
 <div class="statApplyButton">
-    <button>{{formatMessage (localize 'swnr.chat.statApply') name=actor.name}}</button>
+  <button>
+    {{formatMessage (localize 'swnr.chat.statApply') name=actor.name}}
+  </button>
 </div>
 {{!--<pre>{{stringify @root}}</pre> --}}
