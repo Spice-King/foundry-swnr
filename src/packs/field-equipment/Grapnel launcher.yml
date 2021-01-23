@@ -1,5 +1,5 @@
 name: Grapnel launcher
-type:  item
+type: item
 data:
   description: >-
     Grapnel launcher: This launcher fires a rope up to forty meters. The rope

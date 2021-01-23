@@ -1,5 +1,5 @@
 name: Telekinetic generator
-type:  item
+type: item
 data:
   description: >-
     Telekinetic generator: While this device assumes the presence of a trained

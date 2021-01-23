@@ -1,5 +1,5 @@
 name: swnr
-title: 'Stars Without Number: Revised'
+title: "Stars Without Number: Revised"
 description: >-
   BETA: Stars Without Number: Revised system. Early work with plans for full
   coverage.
@@ -131,14 +131,14 @@ languages:
     name: English
     path: lang/en.json
 gridDistance: 1
-gridUnits: ''
+gridUnits: ""
 minimumCoreVersion: 0.7.4
 compatibleCoreVersion: 0.7.9
-url: 'https://github.com/Spice-King/foundry-swnr'
+url: "https://github.com/Spice-King/foundry-swnr"
 manifest: >-
   https://github.com/Spice-King/foundry-swnr/releases/latest/download/system.json
-download: ''
-license: 'https://github.com/Spice-King/foundry-swnr/blob/master/LICENSE.txt'
-readme: ''
-bugs: 'https://github.com/Spice-King/foundry-swnr/issues'
-changelog: ''
+download: ""
+license: "https://github.com/Spice-King/foundry-swnr/blob/master/LICENSE.txt"
+readme: ""
+bugs: "https://github.com/Spice-King/foundry-swnr/issues"
+changelog: ""

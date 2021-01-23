@@ -1,5 +1,5 @@
 name: Comm server
-type:  item
+type: item
 data:
   description: >-
     Comm server: A powerful base unit for providing communications without

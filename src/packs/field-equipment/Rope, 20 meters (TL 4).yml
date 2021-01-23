@@ -1,5 +1,5 @@
-name: 'Rope, 20 meters (TL 4)'
-type:  item
+name: "Rope, 20 meters (TL 4)"
+type: item
 data:
   description: >-
     Rope: Light and sturdy. A metatool can be used to cut and join the

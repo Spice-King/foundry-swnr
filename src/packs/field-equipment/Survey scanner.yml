@@ -1,5 +1,5 @@
 name: Survey scanner
-type:  item
+type: item
 data:
   description: >-
     Survey scanner: A multipurpose scanner that can take atmospheric and

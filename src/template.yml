@@ -155,8 +155,8 @@ Item:
       - baseItem
       - description
     bundle:
-        amount: 1
-        bundled: false
+      amount: 1
+      bundled: false
     quantity: 1
   focus:
     templates:

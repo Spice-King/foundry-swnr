@@ -28,7 +28,7 @@ data:
   range:
     normal: 20
     max: 40
-  stat: '-'
+  stat: "-"
   secondStat: none
   tl: 3
   shock:
@@ -37,4 +37,4 @@ data:
   location: other
   quality: stock
   quantity: 1
-  skill: ''
+  skill: ""

@@ -1,7 +1,7 @@
 name: Binoculars (TL 3)
-type:  item
+type: item
 data:
-  description: 'Binoculars (TL 3): Standard 7x50 binoculars.'
+  description: "Binoculars (TL 3): Standard 7x50 binoculars."
   cost: 20
   encumbrance: 1
   tl: 3

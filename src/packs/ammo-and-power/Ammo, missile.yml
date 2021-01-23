@@ -1,5 +1,5 @@
-name: 'Ammo, missile'
-type:  item
+name: "Ammo, missile"
+type: item
 data:
   description: >-
     Ammunition, missile: Some characters might have reason to pack along a

@@ -1,5 +1,5 @@
-name: 'Power cell, type A'
-type:  item
+name: "Power cell, type A"
+type: item
 data:
   description: >-
     Power cells: One of the few standardized artifacts inherited from before the

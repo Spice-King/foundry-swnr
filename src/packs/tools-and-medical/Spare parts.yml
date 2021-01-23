@@ -1,5 +1,5 @@
 name: Spare parts
-type:  item
+type: item
 data:
   description: >-
     Spare parts: This is a general category for a number of small TL4 components

@@ -1,5 +1,5 @@
 swnr:
-  title: 'Stars Without Number: Revised'
+  title: "Stars Without Number: Revised"
   CharacterActorSheet: Basic Sheet
   stat:
     long:
@@ -142,149 +142,149 @@ swnr:
     spaceMagic:
       knowMagic:
         name: Know Magic
-        text: ''
+        text: ""
       useMagic:
         name: Use Magic
-        text: ''
+        text: ""
       sunblade:
         name: Sunblade
-        text: ''
+        text: ""
       fight:
         name: Fight
-        text: ''
+        text: ""
     classic:
       artist:
         name: Artist
-        text: ''
+        text: ""
       athletics:
         name: Athletics
-        text: ''
+        text: ""
       bureaucracy:
         name: Bureaucracy
-        text: ''
+        text: ""
       business:
         name: Business
-        text: ''
+        text: ""
       combat-energy:
         name: Combat/Energy
-        text: ''
+        text: ""
       combat-gunnery:
         name: Combat/Gunnery
-        text: ''
+        text: ""
       combat-primitive:
         name: Combat/Primitive
-        text: ''
+        text: ""
       combat-projectile:
         name: Combat/Projectile
-        text: ''
+        text: ""
       combat-psitech:
         name: Combat/Psitech
-        text: ''
+        text: ""
       combat-unarmed:
         name: Combat/Unarmed
-        text: ''
+        text: ""
       computer:
         name: Computer
-        text: ''
+        text: ""
       culture-alien:
         name: Culture/Alien/
-        text: ''
+        text: ""
       culture-criminal:
         name: Culture/Criminal
-        text: ''
+        text: ""
       culture-spacer:
         name: Culture/Spacer
-        text: ''
+        text: ""
       culture-traveller:
         name: Culture/Traveller
-        text: ''
+        text: ""
       culture:
         name: Culture/
-        text: ''
+        text: ""
       exosuit:
         name: Exosuit
-        text: ''
+        text: ""
       gambling:
         name: Gambling
-        text: ''
+        text: ""
       history:
         name: History
-        text: ''
+        text: ""
       instructor:
         name: Instructor
-        text: ''
+        text: ""
       language:
         name: Language
-        text: ''
+        text: ""
       leadership:
         name: Leadership
-        text: ''
+        text: ""
       navigation:
         name: Navigation
-        text: ''
+        text: ""
       perception:
         name: Perception
-        text: ''
+        text: ""
       persuade:
         name: Persuade
-        text: ''
+        text: ""
       profession:
         name: Profession/
-        text: ''
+        text: ""
       religion:
         name: Religion
-        text: ''
+        text: ""
       science:
         name: Science
-        text: ''
+        text: ""
       security:
         name: Security
-        text: ''
+        text: ""
       stealth:
         name: Stealth
-        text: ''
+        text: ""
       steward:
         name: Steward
-        text: ''
+        text: ""
       survival:
         name: Survival
-        text: ''
+        text: ""
       tactics:
         name: Tactics
-        text: ''
+        text: ""
       tech-astronautic:
         name: Tech/Astronautic
-        text: ''
+        text: ""
       tech-maltech:
         name: Tech/Maltech
-        text: ''
+        text: ""
       tech-medical:
         name: Tech/Medical
-        text: ''
+        text: ""
       tech-postech:
         name: Tech/Postech
-        text: ''
+        text: ""
       tech-pretech:
         name: Tech/Pretech
-        text: ''
+        text: ""
       tech-psitech:
         name: Tech/Psitech
-        text: ''
+        text: ""
       vehicle-air:
         name: Vehicle/Air
-        text: ''
+        text: ""
       vehicle-grav:
         name: Vehicle/Grav
-        text: ''
+        text: ""
       vehicle-land:
         name: Vehicle/Land
-        text: ''
+        text: ""
       vehicle-space:
         name: Vehicle/Space
-        text: ''
+        text: ""
       vehicle-water:
         name: Vehicle/Water
-        text: ''
+        text: ""
     psionic:
       biopsionics:
         name: Biopsionics
@@ -346,7 +346,7 @@ swnr:
     delete-item: Delete Item
     edit-item: Edit Item
     ask: Ask
-    description: 'Description:'
+    description: "Description:"
     ammoType: Ammo Type
     longReload: Long Reload
     burst: Burst Fire
@@ -362,7 +362,7 @@ swnr:
     rollables: Rollables
   settings:
     useHomebrewLuckSave: Use Homebrew Luck saves?
-    useHomebrewLuckSaveHint: 'Uses 16 - Level for the save, no modifiers, just pure luck'
+    useHomebrewLuckSaveHint: "Uses 16 - Level for the save, no modifiers, just pure luck"
   chat:
     dicepool: Dice Pool
     difficulty: Difficulty
@@ -371,7 +371,7 @@ swnr:
     cancel: Cancel
     skillCheck: Skill Check
     savingThrow: Saving Throw
-    statApply: 'Apply stats to {name}'
+    statApply: "Apply stats to {name}"
     totalModifier: Total Modifier
     statRoll: Roll stats
   ammo:
@@ -383,8 +383,8 @@ swnr:
     typeBPower: Type B Power Cell
     infinite: Infinite
   foci:
-    level2: 'Level 2:'
-    level1: 'Level 1:'
+    level2: "Level 2:"
+    level1: "Level 1:"
   item:
     bundledCount: Bundle Count
     cost: Cost
@@ -411,7 +411,7 @@ swnr:
     noSetSkill: No Skill Set
     burst: Use Burst Fire
   titles:
-    savingThrow: '{throwType} Saving Throw'
+    savingThrow: "{throwType} Saving Throw"
   effort:
     bonus: Bonus
     current: Current
@@ -420,9 +420,9 @@ swnr:
     title: Effort
     max: Max
   dialog:
-    attackRoll: '{actorName} attacking with {weaponName}?'
+    attackRoll: "{actorName} attacking with {weaponName}?"
     add-skills: Add Skills
-    add-bulk-skills: 'Add Bulk Skills to {actor}'
+    add-bulk-skills: "Add Bulk Skills to {actor}"
   roll:
     skillNeeded: Hey! You need to pick a skill!
   armor:
@@ -456,6 +456,6 @@ swnr:
       failure: Fails their Moral Check!
       success: Succeeds in their Moral Check!
     skill:
-      trained: '{actor} uses their trained skill.'
-      untrained: '{actor} uses their untrained skill.'
+      trained: "{actor} uses their trained skill."
+      untrained: "{actor} uses their untrained skill."
     unarmed: Unarmed

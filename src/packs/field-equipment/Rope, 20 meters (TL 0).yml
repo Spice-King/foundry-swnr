@@ -1,7 +1,7 @@
-name: 'Rope, 20 meters (TL 0)'
-type:  item
+name: "Rope, 20 meters (TL 0)"
+type: item
 data:
-  description: 'Rope: Light and sturdy. 40 meters in a bundle.'
+  description: "Rope: Light and sturdy. 40 meters in a bundle."
   cost: 4
   encumbrance: 2
   tl: 0

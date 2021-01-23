@@ -1,5 +1,5 @@
 name: Pressure tent
-type:  item
+type: item
 data:
   description: >-
     Pressure tent: This tent maintains a breathable atmosphere, tolerable

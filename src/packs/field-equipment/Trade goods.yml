@@ -1,5 +1,5 @@
 name: Trade goods
-type:  item
+type: item
 data:
   description: >-
     Trade goods: Glowbugs, ceramic fire lighters, antibiotics, ceraplast tools,

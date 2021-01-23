@@ -1,5 +1,5 @@
 name: Thermal flare
-type:  item
+type: item
 data:
   description: >-
     Thermal flare: If triggered in one mode, the flare burns with a bright white

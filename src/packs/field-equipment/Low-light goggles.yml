@@ -1,5 +1,5 @@
 name: Low-light goggles
-type:  item
+type: item
 data:
   description: >-
     Low-light goggles: These goggles provide a monochrome but serviceable view

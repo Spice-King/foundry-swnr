@@ -1,5 +1,5 @@
-name: 'Ammo, 20 rounds'
-type:  item
+name: "Ammo, 20 rounds"
+type: item
 data:
   description: >-
     Ammunition: A few worlds are too primitive or too resource-poor to

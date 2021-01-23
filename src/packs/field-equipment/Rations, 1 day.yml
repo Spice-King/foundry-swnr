@@ -1,5 +1,5 @@
-name: 'Rations, 1 day'
-type:  item
+name: "Rations, 1 day"
+type: item
 data:
   description: >-
     Rations: Dried or otherwise preserved foodstuffs sufficient for one day. If

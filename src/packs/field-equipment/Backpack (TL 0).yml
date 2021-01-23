@@ -1,5 +1,5 @@
 name: Backpack (TL 0)
-type:  item
+type: item
 data:
   description: >-
     Backpack (TL 0): A worn backpack counts as a readied item, though objects
