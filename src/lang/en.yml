@@ -317,7 +317,7 @@ swnr:
     homeworld: Home world
     species: Species/Gender
     level: Level
-    stats: Stat
+    stats: Stats
     base: Base
     boosts: Boosts
     bonus: Bonus
