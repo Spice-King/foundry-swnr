@@ -78,9 +78,7 @@ function getManifest() {
  * TypeScript transformers
  * @returns {typescript.TransformerFactory<typescript.SourceFile>}
  */
-function createTransformer(): typescript.TransformerFactory<
-  typescript.SourceFile
-> {
+function createTransformer(): typescript.TransformerFactory<typescript.SourceFile> {
   function shouldMutateModuleSpecifier(node: typescript.Node) {
     if (
       !typescript.isImportDeclaration(node) &&
@@ -201,13 +199,14 @@ function buildPack() {
  * Build TypeScript
  */
 function buildTS() {
-  let processed = gulp.src("src/**/*.ts")
+  const processed = gulp
+    .src("src/**/*.ts")
     .pipe(sourcemaps.init())
     .pipe(tsConfig())
     .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
     .pipe(gulp.dest("dist"));
-  let raw = gulp.src("src/**/*.ts").pipe(gulp.dest("dist"));
-    return mergeStream(raw, processed)
+  const raw = gulp.src("src/**/*.ts").pipe(gulp.dest("dist"));
+  return mergeStream(raw, processed);
 }
 
 /**
@@ -282,7 +281,7 @@ function buildTemplateList() {
   return gulp
     .src("src/**/*.html")
     .pipe(
-      rename(function (path: { dirname: string }) {
+      rename(function (path: rename.ParsedPath): void {
         path.dirname =
           `${data.name.split(".")[0]}s/${data.file.name}/` + path.dirname;
       })
@@ -325,7 +324,11 @@ async function copyFiles() {
  * Watch for changes for each build step
  */
 function buildWatch() {
-  gulp.watch("src/module/{actor,item}s/**/*.ts", { ignoreInitial: false }, buildEntities);
+  gulp.watch(
+    "src/module/{actor,item}s/**/*.ts",
+    { ignoreInitial: false },
+    buildEntities
+  );
   gulp.watch("src/**/*.ts", { ignoreInitial: false }, buildTS);
   gulp.watch("src/**/*.less", { ignoreInitial: false }, buildLess);
   gulp.watch("src/**/*.scss", { ignoreInitial: false }, buildSASS);
@@ -386,7 +389,7 @@ async function clean() {
       `${name}.less`
     );
   }
-  fs.remove('src/module/entities.ts')
+  fs.remove("src/module/entities.ts");
   console.log(" ", chalk.yellow("Files to clean:"));
   console.log("   ", chalk.blueBright(files.join("\n    ")));
 
