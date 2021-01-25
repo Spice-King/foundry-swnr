@@ -62,6 +62,12 @@ Actor:
       exp: 0
       expToLevel: 3
     goals: []
+    class: ""
+    species: ""
+    homeworld: ""
+    background: ""
+    employer: ""
+    biography: ""
     credits:
       balance: 0
       owed: 0
