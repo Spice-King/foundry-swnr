@@ -43,6 +43,7 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
       stat,
       burstFire,
       modifier,
+      damageBonus,
       effectiveSkillRank: skillMod < 0 ? -2 : skillMod,
     };
     console.log(rollData);
@@ -53,7 +54,7 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
     ).roll();
     rollData.hitRoll = hitRoll.dice[0].total;
     const damageRoll = new Roll(
-      this.data.data.damage + " + @burstFire + @stat.mod",
+      this.data.data.damage + " + @burstFire + @stat + @damageBonus",
       rollData
     ).roll();
     const diceTooltip = {
