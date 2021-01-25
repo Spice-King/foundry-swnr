@@ -75,7 +75,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       const skill =
         html.find('[name="skilled"]').val() === "on"
           ? this.actor.data.data.skillBonus
-          : -1;
+          : 0;
       const modifier = parseInt(html.find('[name="modifier"]').val() as string);
       const burstMode = html.find('[name="burstFire"]')?.val() == "on" ?? false;
       const attackBonus = this.actor.data.data.ab;
@@ -190,7 +190,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     event.preventDefault();
     event.stopPropagation();
     const trained = event.target.dataset.skillType === "trained";
-    const skill = trained ? this.actor.data.data.skillBonus : -1;
+    const skill = trained ? this.actor.data.data.skillBonus : 0;
 
     const roll = new Roll("2d6 + @skill", { skill }).roll();
     const flavor = game.i18n.format(
