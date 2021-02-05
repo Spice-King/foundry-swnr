@@ -218,7 +218,7 @@ export class CharacterActorSheet extends ActorSheet<
       weaponName: weapon.name,
     });
     const dialogData = {
-      actor: this.actor.getRollData(),
+      actor: this.actor.data,
       weapon: weapon.data.data,
       stat: this.actor.data.data.stats[weapon.data.data.stat],
       skill: weapon.data.data.skill,

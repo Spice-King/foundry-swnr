@@ -69,7 +69,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
 
     const template = await renderTemplate(
       "systems/swnr/templates/dialogs/roll-attack.html",
-      { weapon, burstFireHasAmmo: weapon.canBurstFire }
+      { actor: this.actor.data, weapon, burstFireHasAmmo: weapon.canBurstFire }
     );
     const doRoll = async (html: JQuery<HTMLElement>) => {
       const skill =
