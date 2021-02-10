@@ -12,7 +12,7 @@
     <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}}>
       {{#select weapon.skill}}
       <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
-      {{#each actor.itemTypes.skill }}
+      {{#each skills }}
       <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
       {{/each}}
       {{/select}}

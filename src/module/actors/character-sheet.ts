@@ -220,6 +220,7 @@ export class CharacterActorSheet extends ActorSheet<
     const dialogData = {
       actor: this.actor.data,
       weapon: weapon.data.data,
+      skills: this.actor.itemTypes.skill,
       stat: this.actor.data.data.stats[weapon.data.data.stat],
       skill: weapon.data.data.skill,
       burstFireHasAmmo,
