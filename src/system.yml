@@ -130,8 +130,8 @@ languages:
   - lang: en
     name: English
     path: lang/en.json
-gridDistance: 1
-gridUnits: ""
+gridDistance: 2
+gridUnits: "m"
 minimumCoreVersion: 0.7.4
 compatibleCoreVersion: 0.7.9
 url: "https://github.com/Spice-King/foundry-swnr"
