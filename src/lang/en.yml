@@ -311,6 +311,11 @@ swnr:
         name: Teleportation
         text: Master the arts of physical translocation of yourself and allies.
     original: {}
+    labels:
+      spaceMagic: Space Magic
+      classic: Classic
+      revised: Revised
+      psionic: Psionic
   sheet:
     background: Background
     class: Class

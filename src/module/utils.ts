@@ -59,7 +59,7 @@ export function initSkills(
         rank: -1,
         pool: "ask",
         description: game.i18n.localize(skillRoot + "text"),
-        source: "Revised",
+        source: game.i18n.localize("swnr.skills.labels." + skillSet),
         dice: "2d6",
       },
     };
