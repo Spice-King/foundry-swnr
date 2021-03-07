@@ -65,9 +65,9 @@ export class CharacterActorSheet extends ActorSheet<
     const _addSkills = async (html: HTMLElement) => {
       const form: HTMLFormElement = html[0].querySelector("form");
       const skillList = <HTMLInputElement>(
-        form.querySelector('[name="skillList"]')
+        form.querySelector('[name="skillList"]:checked')
       );
-      const extra = <HTMLInputElement>form.querySelector('[name="extra"]');
+      const extra = <HTMLInputElement>form.querySelector('[name=extra]:checked');
       initSkills(this.actor, <"revised" | "classic" | "none">skillList.value);
       initSkills(this.actor, <"spaceMagic" | "psionic" | "none">extra.value);
       return;
