@@ -12,6 +12,7 @@
 
 // Import TypeScript modules
 import { registerSettings } from "./module/settings";
+import migrations from "./migrations/index";
 import { preloadTemplates } from "./module/preloadTemplates";
 import { SWNRActor, SWNRItem } from "./module/entities";
 
@@ -85,6 +86,7 @@ Hooks.once("ready", function () {
   // Do anything once the system is ready
   // Reference a Compendium pack by it's collection ID
   // packImport();
+  migrations();
 });
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function packImport() {

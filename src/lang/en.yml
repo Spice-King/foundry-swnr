@@ -459,3 +459,8 @@ swnr:
       trained: "{actor} uses their trained skill."
       untrained: "{actor} uses their untrained skill."
     unarmed: Unarmed
+  migration:
+    start: >-
+      SWNR: Starting migration from {oldVersion} to {newVersion}. Please let
+      this finish before closing.
+    done: 'SWNR: Done Migration to {newVersion}'
