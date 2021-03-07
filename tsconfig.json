@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-		"target": "ES2017",
-		"lib": ["es2018", "DOM"],
+		"target": "ES2019",
+		"lib": ["es2019", "DOM"],
 		"types": ["foundry-pc-types"],
 		"sourceMap": true,
 	"sourceRoot": "src"
