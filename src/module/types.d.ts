@@ -75,6 +75,7 @@ declare interface SWNRNPCData extends SWNRLiving {
     bonusDamage: number;
     number: number;
   };
+  saves: number;
   speed: number;
   moralScore: number;
   reaction:

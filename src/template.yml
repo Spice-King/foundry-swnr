@@ -81,6 +81,7 @@ Actor:
     armorType: "street"
     speed: 10
     moralScore: 6
+    saves: 15
     effort:
       value: 0
       max: 0
