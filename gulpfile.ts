@@ -338,7 +338,7 @@ function buildWatch() {
   );
   gulp.watch("src/packs/**/*.yml", { ignoreInitial: false }, buildPack);
   gulp.watch(
-    ["src/fonts", "src/templates", "src/sound"],
+    ["src/fonts", "src/templates", "src/assets"],
     { ignoreInitial: false },
     copyFiles
   );
