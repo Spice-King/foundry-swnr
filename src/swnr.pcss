@@ -1,10 +1,36 @@
-@use "sass:color";
-@use "sass:math";
-.swnr {
+.swnr .window-content {
+  /* &,
+  *:not(.far, .fa, .fas, option) {
+    all: initial;
+  }
+  all: initial; */
+  @tailwind base;
+}
+section.window-content {
+  @apply bg-white;
+}
+input[type="text"], input[type="number"], input[type="password"], input[type="date"], input[type="time"], select, textarea { 
+  @appy focus:shadow-none focus:outline-none;
+}
+input, select, textarea {
+  @apply bg-white rounded-none placeholder-gray-500 focus:shadow-none;
+}
+:-moz-focusring {
+  @apply outline-none;
+}
+a:hover {
+  text-shadow: unset;
+}
+div.editor .editor-content{
+  min-height: 200px;
+}
+.window-app.swnr {
   .swnr-wrapper {
     min-height: 100px;
   }
-  .sheetHeader {
+  
+
+  /* .sheetHeader {
     .header-row {
       display: flex;
       & > div {
@@ -19,12 +45,12 @@
     margin: 0;
     height: initial;
     width: initial;
-    background-color: rgba($color: #000000, $alpha: 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid #7a7971;
     border-radius: 3px;
   }
   input[type="number"] {
-    background-color: rgba($color: #000000, $alpha: 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid #7a7971;
     border-radius: 3px;
     width: 40px;
@@ -115,9 +141,11 @@
   }
   .saves {
     display: flex;
-  }
-}
+  }*/
+  @tailwind components;
 
+  @tailwind utilities;
+}
 .dieRoll {
   list-style-type: none;
   margin: 0px;
@@ -134,7 +162,7 @@
   }
   .die.bad {
     color: red;
-  }
+  } 
 }
 .hpRoll {
   .status {
@@ -143,7 +171,7 @@
     }
   }
 }
-.tab.skills ul {
+/* .tab.skills ul {
   display: flex;
   list-style: none;
   flex-wrap: wrap;
@@ -151,7 +179,7 @@
     width: calc(100% / 6);
     margin-bottom: 1em;
   }
-}
+} */
 .failed-validation {
   color: red;
   select,
@@ -160,9 +188,8 @@
     color: red;
   }
 }
-
 $highColor: white;
-$shadowColor: invert($highColor);
+$shadowColor: black;
 @keyframes lowAmmoFlash {
   $glowColor: red;
   $glowSize: 6px;
@@ -180,28 +207,28 @@ $shadowColor: invert($highColor);
   }
 }
 
-@for $i from 0 through 20 {
-  .ammo-#{$i} {
+@for $i from 0 to 20 {
+  .ammo-$i {
     text-shadow: 0 -1px $shadowColor, -1px 0 $shadowColor, 1px 0 $shadowColor,
       0 1px $shadowColor;
     @if $i <= 3 {
-      $time: (($i + 1) * 0.2s);
+      $time: math(($i + 1) * 0.2);
       color: #ff0000;
       animation-name: lowAmmoFlash;
-      animation-duration: $time;
-      animation-iteration-count: math.round(15s / $time);
+      animation-duration: $(time) s;
+      animation-iteration-count: math(round(15 / $time));
     }
     @if $i >= 3 and $i <= 5 {
       $mix: percentage(($i - 2)/4);
-      color: color.mix(#ffc000, #ff0000, $mix);
+      color: mix(#ffc000, #ff0000, $mix);
     }
     @if $i >= 6 and $i <= 10 {
       $mix: percentage(($i - 5)/5);
-      color: color.mix(#cccf36, #ffc000, $mix);
+      color: mix(#cccf36, #ffc000, $mix);
     }
     @if $i >= 11 and $i <=16 {
       $mix: percentage(($i - 10)/6);
-      color: color.mix($highColor, #cccf36, $mix);
+      color: mix($highColor, #cccf36, $mix);
     }
     @if $i >= 17 {
       color: $highColor;

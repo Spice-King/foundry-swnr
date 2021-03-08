@@ -11,6 +11,7 @@ import * as os from "os";
 import * as ts from "gulp-typescript";
 import * as less from "gulp-less";
 import * as sass from "gulp-sass";
+import * as postcss from "gulp-postcss";
 import * as gyaml from "gulp-yaml";
 import * as filelist from "gulp-filelist";
 import * as rename from "gulp-rename";
@@ -302,6 +303,18 @@ function buildSASS() {
     .pipe(gulp.dest("dist"));
 }
 
+function buildPostCSS() {
+  return gulp
+    .src("./src/*.pcss")
+    .pipe(postcss())
+    .pipe(
+      rename({
+        extname: ".css",
+      })
+    )
+    .pipe(gulp.dest("./dist"));
+}
+
 /**
  * Copy static files
  */
@@ -331,6 +344,11 @@ function buildWatch() {
   gulp.watch("src/**/*.ts", { ignoreInitial: false }, buildTS);
   gulp.watch("src/**/*.less", { ignoreInitial: false }, buildLess);
   gulp.watch("src/**/*.scss", { ignoreInitial: false }, buildSASS);
+  gulp.watch(
+    ["src/**/*.pcss", "/tailwind.config.js", "tailwind/**/*.js"],
+    { ignoreInitial: false },
+    buildPostCSS
+  );
   gulp.watch(
     ["src/**/*.yml", "!src/packs/**/*.yml"],
     { ignoreInitial: false },
@@ -517,7 +535,7 @@ const execBuild = gulp.series(
   buildEntities,
   gulp.parallel(
     buildLess,
-    buildSASS,
+    buildPostCSS,
     buildYaml,
     copyFiles,
     buildTemplateList,

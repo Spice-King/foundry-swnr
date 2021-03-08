@@ -1,0 +1,11 @@
+map: false
+plugins:
+  tailwindcss:
+  autoprefixer:
+  postcss-nested:
+  postcss-initial:
+  postcss-for:
+  postcss-simple-vars:
+  postcss-color-mix:
+  postcss-jsmath:
+  postcss-conditionals:

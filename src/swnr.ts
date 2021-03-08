@@ -15,6 +15,7 @@ import { registerSettings } from "./module/settings";
 import migrations from "./migrations/index";
 import { preloadTemplates } from "./module/preloadTemplates";
 import { SWNRActor, SWNRItem } from "./module/entities";
+import "./module/containerQueries";
 
 /* ------------------------------------ */
 /* Initialize system					*/

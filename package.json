@@ -35,9 +35,9 @@
     "@typescript-eslint/parser": "^4.9.0",
     "archiver": "^5.0.2",
     "chalk": "^4.1.0",
+    "eslint": "^7.15.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.2.0",
-    "eslint": "^7.15.0",
     "foundry-pc-types": "gitlab:spice_king/foundry-pc-types",
     "fs-extra": "^9.0.1",
     "gulp": "^4.0.2",
@@ -62,5 +62,18 @@
     "typescript": "^4.1",
     "yargs": "^16.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/resize-observer-browser": "^0.1.5",
+    "autoprefixer": "^10.2.3",
+    "gulp-postcss": "^9.0.0",
+    "postcss": "^8.2.4",
+    "postcss-color-mix": "^1.1.0",
+    "postcss-conditionals": "^2.1.0",
+    "postcss-for": "^2.1.1",
+    "postcss-initial": "^4.0.0",
+    "postcss-jsmath": "0.0.83",
+    "postcss-nested": "^5.0.3",
+    "postcss-simple-vars": "^6.0.2",
+    "tailwindcss": "^2.0.2"
+  }
 }
