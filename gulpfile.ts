@@ -19,7 +19,7 @@ import * as concat from "gulp-concat";
 import * as yaml from "js-yaml";
 
 import * as through2 from "through2";
-import * as debug from "gulp-debug";
+// import * as debug from "gulp-debug";
 import * as yargs from "yargs";
 
 import * as glob from "glob";
@@ -30,7 +30,6 @@ const argv = yargs.options("clean", {
   alias: "c",
   default: false,
 }).argv;
-
 
 function getConfig() {
   const configPath = path.resolve(process.cwd(), "foundryconfig.json");
@@ -173,7 +172,7 @@ function buildPack() {
           (
             file: { contents: Buffer | Uint8Array },
             enc: unknown,
-            cb: (arg0: any, arg1: { contents: Buffer | Uint8Array }) => void
+            cb: (arg0: unknown, arg1: { contents: Buffer | Uint8Array }) => void
           ) => {
             file.contents = Buffer.concat([
               Buffer.from(`_id: ${makeId(16)}\n`),
