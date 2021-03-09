@@ -16,6 +16,7 @@ import migrations from "./migrations/index";
 import { preloadTemplates } from "./module/preloadTemplates";
 import { SWNRActor, SWNRItem } from "./module/entities";
 import "./module/containerQueries";
+import registerHelpers from "./module/handlebar-helpers";
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -36,16 +37,7 @@ Hooks.once("init", async function () {
   // Remove stock sheets
   Actors.unregisterSheet("core", ActorSheet);
   Items.unregisterSheet("core", ItemSheet);
-
-  Handlebars.registerHelper("debug", function () {
-    return JSON.stringify(this, null, 2);
-  });
-  Handlebars.registerHelper("stringify", function (obj) {
-    return JSON.stringify(obj, null, 2);
-  });
-  Handlebars.registerHelper("concat", function (a, b) {
-    return a + b;
-  });
+  registerHelpers();
 });
 declare let _templateCache: {
   [key: string]: (data: Record<string, unknown>) => string;
