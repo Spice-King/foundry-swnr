@@ -30,6 +30,12 @@ export class CharacterActorSheet extends ActorSheet<
   constructor(...args: unknown[]) {
     super(...args);
   }
+  
+  _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
+    html.find(".window-content").addClass(["cq", "overflow-y-scroll", "relative"]);
+    super._injectHTML(html, options);
+  }
+
   static get defaultOptions(): FormApplicationOptions {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "character", "test broken"],
@@ -38,7 +44,7 @@ export class CharacterActorSheet extends ActorSheet<
       height: 600,
       tabs: [
         {
-          navSelector: ".sheet-tabs",
+          navSelector: ".pc-sheet-tabs",
           contentSelector: ".sheet-body",
           initial: "biography",
         },

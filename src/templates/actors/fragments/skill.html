@@ -1,18 +1,21 @@
-<li class="item skill skillRoll" data-item-id="{{item._id}}">
-  <a class="item-name">
-    {{item.name}}
+<li class="item skill skillRoll w-32 flex-grow space-y-1" data-item-id="{{item._id}}">
+  <a class="inline-flex flex-wrap gap-1 p-1 rounded-md border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors">
+    <div class="flex-shrink">
+    {{zeroWidthBreaker item.name}}
+    {{numberFormat item.data.data.rank decimals=0 sign=true}}
+    </div>
     <i class="fas fa-dice-d20"></i>
   </a>
+
   <div class="item-controls">
-    <output> {{numberFormat item.data.data.rank decimals=0 sign=true}} </output>
     <a
-      class="item-control item-edit"
+      class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors"
       title="{{localize 'swnr.sheet.edit-item'}}"
     >
       <i class="fas fa-edit"></i>
     </a>
     <a
-      class="item-control item-delete"
+      class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors"
       title="{{localize 'swnr.sheet.delete-item'}}"
     >
       <i class="fas fa-trash"></i>

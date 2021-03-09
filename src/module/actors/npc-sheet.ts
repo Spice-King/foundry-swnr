@@ -4,6 +4,12 @@ import { SWNRWeapon } from "../items/weapon";
 
 export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
   popUpDialog?: Dialog;
+
+  _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
+    html.find(".window-content").addClass(["cq", "overflow-y-scroll", "relative"]);
+    super._injectHTML(html, options);
+  }
+
   getData(): ActorSheetData<SWNRNPCData> {
     const data = super.getData();
     return mergeObject(data, {
@@ -35,6 +41,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     html.find(".reaction").on("click", this._onReaction.bind(this));
     html.find(".morale").on("click", this._onMorale.bind(this));
     html.find(".skill").on("click", this._onSkill.bind(this));
+    html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {
@@ -183,6 +190,21 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       roll.results[0] > this.actor.data.data.moralScore
         ? game.i18n.localize("swnr.npc.morale.failure")
         : game.i18n.localize("swnr.npc.morale.success");
+    roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
+  }
+
+  _onSavingThrow(event: JQuery.ClickEvent): void {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const roll = new Roll("1d20").roll();
+    const flavor = game.i18n.format(
+      parseInt(roll.result) >= this.actor.data.data.saves
+        ? game.i18n.localize("swnr.npc.saving.success")
+        : game.i18n.localize("swnr.npc.saving.failure"),
+      { actor: this.actor.name }
+    );
+
     roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
   }
 
