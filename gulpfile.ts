@@ -9,8 +9,6 @@ import * as typescript from "typescript";
 import * as os from "os";
 
 import * as ts from "gulp-typescript";
-import * as less from "gulp-less";
-import * as sass from "gulp-sass";
 import * as postcss from "gulp-postcss";
 import * as gyaml from "gulp-yaml";
 import * as filelist from "gulp-filelist";
@@ -33,8 +31,6 @@ const argv = yargs.options("clean", {
   default: false,
 }).argv;
 
-import * as sassComp from "sass";
-(<{ compiler: unknown }>(<never>sass)).compiler = sassComp;
 
 function getConfig() {
   const configPath = path.resolve(process.cwd(), "foundryconfig.json");
@@ -267,12 +263,7 @@ function buildYaml() {
     .pipe(gyaml({ space: 2, safe: true }))
     .pipe(gulp.dest("dist"));
 }
-/**
- * Build Less
- */
-function buildLess() {
-  return gulp.src("src/**/*.less").pipe(less()).pipe(gulp.dest("dist"));
-}
+
 /**
  * Build template list
  */
@@ -287,19 +278,6 @@ function buildTemplateList() {
       })
     )
     .pipe(filelist("templates.json", { relative: true }))
-    .pipe(gulp.dest("dist"));
-}
-
-/**
- * Build SASS
- */
-function buildSASS() {
-  return gulp
-    .src("src/*.scss")
-    .pipe(gulp.dest("dist"))
-    .pipe(sourcemaps.init())
-    .pipe(sass().on("error", sass.logError))
-    .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
     .pipe(gulp.dest("dist"));
 }
 
@@ -342,8 +320,6 @@ function buildWatch() {
     buildEntities
   );
   gulp.watch("src/**/*.ts", { ignoreInitial: false }, buildTS);
-  gulp.watch("src/**/*.less", { ignoreInitial: false }, buildLess);
-  gulp.watch("src/**/*.scss", { ignoreInitial: false }, buildSASS);
   gulp.watch(
     ["src/**/*.pcss", "/tailwind.config.js", "tailwind/**/*.js"],
     { ignoreInitial: false },
@@ -534,7 +510,6 @@ async function packageBuild() {
 const execBuild = gulp.series(
   buildEntities,
   gulp.parallel(
-    buildLess,
     buildPostCSS,
     buildYaml,
     copyFiles,
