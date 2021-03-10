@@ -1,12 +1,12 @@
-name: "Rope, 20 meters (TL 0)"
-type: item
 data:
-  description: "Rope: Light and sturdy. 40 meters in a bundle."
+  bundle:
+    amount: 1
+    bundled: false
   cost: 4
+  description: 'Rope: Light and sturdy. 40 meters in a bundle.'
   encumbrance: 2
-  tl: 0
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 0
+name: 'Rope, 20 meters (TL 0)'
+type: item

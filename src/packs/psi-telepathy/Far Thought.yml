@@ -1,5 +1,3 @@
-name: Far Thought
-type: power
 data:
   description: >-
     <p>Once a telepath has made a <em>Telepathic Contact</em> with a target,
@@ -11,3 +9,5 @@ data:
     through it that would allow the target a saving throw to resist.</p>
   level: 2
   source: telepathy
+name: Far Thought
+type: power

@@ -1,5 +1,3 @@
-name: Invincible Stand
-type: power
 data:
   description: >-
     <p>The biopsion has mastered techniques of emergency tissue reinforcement
@@ -13,3 +11,5 @@ data:
     target, regardless of this technique.</p>
   level: 2
   source: biopsionics
+name: Invincible Stand
+type: power

@@ -1,6 +1,8 @@
-name: Telekinetic generator
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 250
   description: >-
     Telekinetic generator: While this device assumes the presence of a trained
     telekinetic, it isn’t strictly psitech, as its operation is quite simple. A
@@ -17,11 +19,9 @@ data:
     or have local conditions that preclude easy wireless communication. Other
     times, the PCs have reason to avoid leaving call logs that might come back
     to haunt them.
-  cost: 250
   encumbrance: 2
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Telekinetic generator
+type: item

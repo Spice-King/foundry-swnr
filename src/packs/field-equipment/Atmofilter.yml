@@ -1,15 +1,15 @@
-name: Atmofilter
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
   description: >-
     Atmofilter: This face mask can filter out most atmospheric toxins. Attaching
     a standard vacc suit oxygen bottle to a belt-mounted feed will also supply a
     breathable atmosphere for up to six hours.
-  cost: 100
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Atmofilter
+type: item

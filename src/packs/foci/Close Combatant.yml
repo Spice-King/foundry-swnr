@@ -1,7 +1,4 @@
-name: Close Combatant
-permission:
-  default: 0
-type: focus
+_id: 3bSfP80HUNikyofN
 data:
   description: >-
     You’ve had all too much practice at close-in fighting and desperate
@@ -19,4 +16,7 @@ data:
     for you and can be performed freely.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: 3bSfP80HUNikyofN
+name: Close Combatant
+permission:
+  default: 0
+type: focus

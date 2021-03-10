@@ -1,12 +1,12 @@
-name: Binoculars (TL 3)
-type: item
 data:
-  description: "Binoculars (TL 3): Standard 7x50 binoculars."
+  bundle:
+    amount: 1
+    bundled: false
   cost: 20
+  description: 'Binoculars (TL 3): Standard 7x50 binoculars.'
   encumbrance: 1
-  tl: 3
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 3
+name: Binoculars (TL 3)
+type: item

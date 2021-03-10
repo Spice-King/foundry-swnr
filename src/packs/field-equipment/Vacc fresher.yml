@@ -1,6 +1,8 @@
-name: Vacc fresher
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 400
   description: >-
     Vacc fresher: This three-kilo tube filters and compresses atmosphere to
     refill vacc suit oxygen tanks. It can extract oxygen from any atmosphere
@@ -8,11 +10,9 @@ data:
     vacc suit tank requires ten minutes of operation and consumes one type A
     power cell. Most vacc freshers are also equipped with an emergency hand
     crank power source, though it requires at least two hours of cranking.
-  cost: 400
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Vacc fresher
+type: item

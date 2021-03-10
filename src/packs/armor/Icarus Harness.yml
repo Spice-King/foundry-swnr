@@ -1,17 +1,17 @@
-name: Icarus Harness
-type: armor
 data:
+  ac: 16
+  cost: 8000
   description: >-
     The Icarus harness is a CFU upgrade for paratroopers, and replaces a
     conventional parachute with a crude gravity damper that allows the wearer to
     fall an unlimited distance without harm. Each fall over 3 meters drains a
     type A power cell. The suit also functions as a vacc suit for up to 30
     minutes per vacc refresh.
-  cost: 8000
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  ac: 16
   shield: false
+  tl: 4
   use: false
+name: Icarus Harness
+type: armor

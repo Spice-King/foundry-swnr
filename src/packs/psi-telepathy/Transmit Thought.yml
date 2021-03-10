@@ -1,5 +1,3 @@
-name: Transmit Thought
-type: power
 data:
   description: >-
     <p>The telepath can send thoughts and images over a <em>Telepathic
@@ -7,3 +5,5 @@ data:
     Instant action when desired.</p>
   level: 1
   source: telepathy
+name: Transmit Thought
+type: power

@@ -1,5 +1,3 @@
-name: Cursed Luck
-type: power
 data:
   description: >-
     <p>Negative probabilities are woven tightly around a visible animate target,
@@ -13,3 +11,5 @@ data:
     power.</p>
   level: 3
   source: precognition
+name: Cursed Luck
+type: power

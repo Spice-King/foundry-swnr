@@ -1,12 +1,8 @@
-name: Shocking Assault
-permission:
-  default: 0
-type: focus
+_id: Lr36R0zmSyXlh24U
 data:
   description: >-
     You’re extremely dangerous to enemies around you. The ferocity of your melee
-    attacks stresses and distractsenemies even when your blows don’t draw
-    blood.
+    attacks stresses and distractsenemies even when your blows don’t draw blood.
   level1: >-
     Gain Punch or Stab as a bonus skill. The Shock damage of your weapon treats
     all targets as if they were AC 10, assuming your weapon is capable of
@@ -17,4 +13,7 @@ data:
     Shock would do on a miss.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: Lr36R0zmSyXlh24U
+name: Shocking Assault
+permission:
+  default: 0
+type: focus

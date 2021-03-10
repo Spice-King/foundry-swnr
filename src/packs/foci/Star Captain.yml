@@ -1,7 +1,4 @@
-name: Star Captain
-permission:
-  default: 0
-type: focus
+_id: avEpcXk3hfer2lws
 data:
   description: >-
     You have a tremendous natural talent for ship combat, and can make any
@@ -19,4 +16,7 @@ data:
     as an Instant action by explaining how your leadership resolves the problem.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: avEpcXk3hfer2lws
+name: Star Captain
+permission:
+  default: 0
+type: focus

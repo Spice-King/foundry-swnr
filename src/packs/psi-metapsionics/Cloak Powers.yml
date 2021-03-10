@@ -1,5 +1,3 @@
-name: Cloak Powers
-type: power
 data:
   description: >-
     <p>The metapsion can conceal their own psychic abilities from metapsionic
@@ -12,3 +10,5 @@ data:
     the investigator’s <em>Psychic Refinement</em> remains oblivious.</p>
   level: 1
   source: metapsionics
+name: Cloak Powers
+type: power

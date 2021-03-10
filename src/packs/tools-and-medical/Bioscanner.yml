@@ -1,6 +1,8 @@
-name: Bioscanner
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 300
   description: >-
     Bioscanner: While an untrained user can use this tool to discern internal
     bleeding, gross physical distress, or toxins in a plant or animal, it
@@ -8,11 +10,9 @@ data:
     use the bioscanner for a full spectrum of diagnosis and DNA sequencing
     achievable in minutes. One type A power cell will power it for up to
     twenty-four hours of regular usage.
-  cost: 300
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Bioscanner
+type: item

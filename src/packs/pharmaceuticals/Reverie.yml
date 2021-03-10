@@ -1,6 +1,8 @@
-name: Reverie
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
   description: >-
     Reverie (Heal-1): This very dangerous combat drug completely subdues the
     subject’s fear centers and adrenaline production, leaving them perfectly
@@ -14,11 +16,9 @@ data:
     for the weapon. The target’s Armor Class is ignored. Melee attacks made
     under Reverie always hit. Reverie lasts for ten minutes and adds 2 System
     Strain to the target.
-  cost: 100
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Reverie
+type: item

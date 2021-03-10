@@ -1,5 +1,3 @@
-name: Spatial Synchrony Mandala
-type: power
 data:
   description: >-
     <p>The psychic imprints a particular object or person on their psionic
@@ -13,3 +11,5 @@ data:
     in mass to be effectively tracked.</p>
   level: 2
   source: teleportation
+name: Spatial Synchrony Mandala
+type: power

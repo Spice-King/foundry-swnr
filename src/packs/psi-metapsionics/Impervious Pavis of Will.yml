@@ -1,5 +1,3 @@
-name: Impervious Pavis of Will
-type: power
 data:
   description: >-
     <p>When this technique is learned, the metapsion must choose a discipline.
@@ -12,3 +10,5 @@ data:
     the adept.</p>
   level: 4
   source: metapsionics
+name: Impervious Pavis of Will
+type: power

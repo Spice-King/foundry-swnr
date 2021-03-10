@@ -1,6 +1,6 @@
-name: Storm Armor
-type: armor
 data:
+  ac: 19
+  cost: 20000
   description: >-
     Storm armor is a more advanced form of assault suit, one that can be
     fabricated only by those worlds that have retained some degree of
@@ -14,11 +14,11 @@ data:
     normally die from an untreated mortal wound, they can make a Physical save
     to self-stabilize. Storm armor requires the same type B power cell as an
     assault suit, and each cell powers it for 24 hours.
-  cost: 20000
   encumbrance: 2
-  tl: 5
   location: other
   quality: stock
-  ac: 19
   shield: false
+  tl: 5
   use: false
+name: Storm Armor
+type: armor

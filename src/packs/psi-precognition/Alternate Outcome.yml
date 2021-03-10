@@ -1,5 +1,3 @@
-name: Alternate Outcome
-type: power
 data:
   description: >-
     <p>The precog can sense impending failure and attempt to salvage the action.
@@ -10,3 +8,5 @@ data:
     any given target more than once a day.</p>
   level: 2
   source: precognition
+name: Alternate Outcome
+type: power

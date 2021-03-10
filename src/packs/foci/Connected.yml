@@ -1,7 +1,4 @@
-name: Connected
-permission:
-  default: 0
-type: focus
+_id: ijTgfsgMSPjE7gKW
 data:
   description: >-
     You’re remarkably gifted at making friends and forging ties with the people
@@ -19,4 +16,7 @@ data:
     they can do for you.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: ijTgfsgMSPjE7gKW
+name: Connected
+permission:
+  default: 0
+type: focus

@@ -1,5 +1,3 @@
-name: Stutterjump
-type: power
 data:
   description: >-
     <p>The psychic can instinctively micro-teleport away from incoming danger.
@@ -15,3 +13,5 @@ data:
     area-effect attacks.</p>
   level: 3
   source: teleportation
+name: Stutterjump
+type: power

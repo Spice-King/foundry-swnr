@@ -1,5 +1,3 @@
-name: Effortless Apportation
-type: power
 data:
   description: >-
     <p>The psychic does not need to Commit Effort to use <em>Personal
@@ -8,3 +6,5 @@ data:
     still be paid.</p>
   level: 3
   source: teleportation
+name: Effortless Apportation
+type: power

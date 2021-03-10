@@ -1,5 +1,3 @@
-name: Telekinetic Manipulation
-type: power
 data:
   description: >-
     <p>The adept may Commit Effort for the scene as a Main Action to direct
@@ -26,3 +24,5 @@ data:
     Main Action.</p>
   level: 0
   source: telekInesIs
+name: Telekinetic Manipulation
+type: power

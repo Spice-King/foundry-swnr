@@ -1,6 +1,17 @@
-name: Hydra Array
-type: weapon
 data:
+  ab: 0
+  ammo:
+    burst: false
+    longReload: false
+    max: 10
+    suppress: true
+    type: special
+    value: 10
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 20000
+  damage: 3d6
   description: >-
     Hydra arrays sequence a number of missile launchers to fire at once. The
     gunner designates up to three targets and can then make three rolls to hit
@@ -9,30 +20,19 @@ data:
     Thus, if all three volleys were aimed at a single target and two of them
     hit, the gunner would roll damage twice and apply the best result. A volley
     from the array costs 150 credits.
-  ab: 0
-  ammo:
-    burst: false
-    value: 10
-    max: 10
-    longReload: false
-    type: special
-    suppress: true
-  bundle:
-    amount: 1
-    bundled: false
-  cost: 20000
-  damage: 3d6
   encumbrance: 0
-  range:
-    normal: 4000
-    max: 8000
-  stat: dex
-  secondStat: none
-  tl: 4
-  shock:
-    ac: 15
-    dmg: 0
   location: other
   quality: stock
   quantity: 1
-  skill: ""
+  range:
+    max: 8000
+    normal: 4000
+  secondStat: none
+  shock:
+    ac: 15
+    dmg: 0
+  skill: ''
+  stat: dex
+  tl: 4
+name: Hydra Array
+type: weapon

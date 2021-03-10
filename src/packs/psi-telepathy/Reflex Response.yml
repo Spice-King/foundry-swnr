@@ -1,5 +1,3 @@
-name: Reflex Response
-type: power
 data:
   description: >-
     <p>As a Main Action, the telepath can Commit Effort for the day to force a
@@ -12,3 +10,5 @@ data:
     rationalize it as their choice.</p>
   level: 3
   source: telepathy
+name: Reflex Response
+type: power

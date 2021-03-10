@@ -1,7 +1,4 @@
-name: Authority
-permission:
-  default: 0
-type: focus
+_id: UEJdPNjUUWTIE7tu
 data:
   description: >-
     You have an uncanny kind of charisma about you, one that makes others
@@ -22,4 +19,7 @@ data:
     interests unless under extreme pressure.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: UEJdPNjUUWTIE7tu
+name: Authority
+permission:
+  default: 0
+type: focus

@@ -1,6 +1,8 @@
-name: Lazarus patch
-type: item
 data:
+  bundle:
+    amount: 3
+    bundled: false
+  cost: 30
   description: >-
     Lazarus patch: A vital tool for adventurers, the lazarus patch is a heavy
     compress laced with antibiotics, coagulants, system stabilizers, plasma, and
@@ -16,11 +18,9 @@ data:
     weapons or similar trauma. Only one patch can be applied to a victim.
     Revived victims are critically wounded until sufficient medical help has
     been tendered; see the Systems chapter for details.
-  cost: 30
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 3
+  tl: 4
+name: Lazarus patch
+type: item

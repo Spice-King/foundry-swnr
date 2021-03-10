@@ -1,30 +1,37 @@
-name: Thunder Gun
-type: weapon
 data:
-  description: Thunder guns are named for the basso vibrations caused by their operation, a sound that can be felt as far as thirty meters away from an operator. This two-handed weapon uses grav plates to create rapid, randomized disruptions in a target that increase the chance of complete structural collapse. If a thunder gun hits a target with an unmodified hit roll of 16 or higher an extra 1d10 damage is rolled. This bonus damage always applies to inanimate targets.
   ab: 0
   ammo:
     burst: false
-    value: 6
-    max: 6
     longReload: false
-    type: typeAPower
+    max: 6
     suppress: false
+    type: typeAPower
+    value: 6
   bundle:
     amount: 1
     bundled: false
   cost: 1000
-  damage: (@hitRoll>15?3:2)d10
+  damage: '(@hitRoll>15?3:2)d10'
+  description: >-
+    Thunder guns are named for the basso vibrations caused by their operation, a
+    sound that can be felt as far as thirty meters away from an operator. This
+    two-handed weapon uses grav plates to create rapid, randomized disruptions
+    in a target that increase the chance of complete structural collapse. If a
+    thunder gun hits a target with an unmodified hit roll of 16 or higher an
+    extra 1d10 damage is rolled. This bonus damage always applies to inanimate
+    targets.
   encumbrance: 2
-  range:
-    normal: 100
-    max: 300
-  stat: dex
-  tl: 5
-  shock:
-    ac: 15
-    dmg: 0
   location: other
   quality: stock
   quantity: 1
-  skill: ""
+  range:
+    max: 300
+    normal: 100
+  shock:
+    ac: 15
+    dmg: 0
+  skill: ''
+  stat: dex
+  tl: 5
+name: Thunder Gun
+type: weapon

@@ -1,30 +1,34 @@
-name: Shotgun
-type: weapon
 data:
-  description: Shotguns are cheaper and more easily manufactured than rifles, and are popular weapons for home defense on the frontier. The statistics given are for shot ammunition. Slug rounds do 2d6 damage and have ranges of 50/75 meters.
   ab: 0
   ammo:
     burst: false
-    value: 2
-    max: 2
     longReload: false
-    type: ammo
+    max: 2
     suppress: false
+    type: ammo
+    value: 2
   bundle:
     amount: 1
     bundled: false
   cost: 50
   damage: 3d4
+  description: >-
+    Shotguns are cheaper and more easily manufactured than rifles, and are
+    popular weapons for home defense on the frontier. The statistics given are
+    for shot ammunition. Slug rounds do 2d6 damage and have ranges of 50/75
+    meters.
   encumbrance: 2
-  range:
-    normal: 10
-    max: 30
-  stat: dex
-  tl: 2
-  shock:
-    ac: 15
-    dmg: 0
   location: other
   quality: stock
   quantity: 1
-  skill: ""
+  range:
+    max: 30
+    normal: 10
+  shock:
+    ac: 15
+    dmg: 0
+  skill: ''
+  stat: dex
+  tl: 2
+name: Shotgun
+type: weapon

@@ -1,6 +1,8 @@
-name: Field radio
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 200
   description: >-
     Field Radio: On worlds too primitive to have a comm grid, adventurers often
     fall back on these headset-mounted field radios. A single type A cell powers
@@ -9,11 +11,9 @@ data:
     Someone with at least Program-0 skill can use the radio’s shortwave
     functionality to communicate with a prepared target at continental distances
     if given ten minutes for tuning.
-  cost: 200
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Field radio
+type: item

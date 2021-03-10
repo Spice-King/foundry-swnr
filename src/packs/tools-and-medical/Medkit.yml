@@ -1,6 +1,8 @@
-name: Medkit
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
   description: >-
     Medkit: Containing a broad supply of pharmaceuticals, spray bandages, glue
     sutures, and a succinct handbook of injury care, the medkit is designed for
@@ -9,11 +11,9 @@ data:
     characters. After each day of granting long-term recuperative care, roll 2d6
     per patient treated; on a 12, the kit has run out of some vital
     pharmaceutical and has become useless.
-  cost: 100
   encumbrance: 2
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Medkit
+type: item

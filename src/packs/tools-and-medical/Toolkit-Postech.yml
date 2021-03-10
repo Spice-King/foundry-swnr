@@ -1,16 +1,16 @@
-name: Toolkit/Postech
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 300
   description: >-
     Toolkits/Postech: Containing a wide range of necessary tools for a
     particular skill set, toolkits can handle almost any job that doesn’t
     require a full-scale shop or lab. A standard postech toolkit can handle
     electronics, small welding jobs, and basic repair on ordinary TL4 goods.
-  cost: 300
   encumbrance: 3
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Toolkit/Postech
+type: item

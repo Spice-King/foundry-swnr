@@ -1,5 +1,3 @@
-name: Sense the Need
-type: power
 data:
   description: >-
     <p>At some point in the recent past, the psychic had a vague but intense
@@ -13,3 +11,5 @@ data:
     loaded laser pistol.</p>
   level: 1
   source: precognition
+name: Sense the Need
+type: power

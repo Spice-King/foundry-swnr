@@ -1,6 +1,6 @@
-name: Warpaint
-type: armor
 data:
+  ac: 12
+  cost: 300
   description: >-
     Warpaint is the common term for the bizarre combat fashions and scrap-built
     street harness of gangers, cult enforcers, street toughs, and other marginal
@@ -12,11 +12,11 @@ data:
     gains a +1 Morale bonus. Most warpaint is either pieced together over years
     or taken from the dead. Actually purchasing a finished suit comes at the
     listed price, assuming someone can be found willing to part with theirs.
-  cost: 300
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  ac: 12
   shield: false
+  tl: 4
   use: false
+name: Warpaint
+type: armor

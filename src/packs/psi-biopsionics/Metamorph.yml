@@ -1,5 +1,3 @@
-name: Metamorph
-type: power
 data:
   description: >-
     <p>The biopsion can now shape their own or another willing target’s physical
@@ -17,3 +15,5 @@ data:
     one hundred kilometers away.</p>
   level: 3
   source: biopsionics
+name: Metamorph
+type: power

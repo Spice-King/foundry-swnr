@@ -1,6 +1,8 @@
-name: Storage unit
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 500
   description: >-
     Storage unit: While conventional dataslabs have ample space to hold any
     reasonable amount of data, sometimes a party needs to store or acquire a
@@ -11,11 +13,9 @@ data:
     been carefully compressed and optimized for it. If the user is simply
     ripping a database off a network and stuffing it into the unit, it can
     absorb up to a small corporation’s complete files.
-  cost: 500
   encumbrance: 3
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Storage unit
+type: item

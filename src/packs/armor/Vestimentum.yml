@@ -1,6 +1,6 @@
-name: Vestimentum
-type: armor
 data:
+  ac: 18
+  cost: 15000
   description: >-
     A “vestimentum” is a catch-all term for one of the many ancient Mandate
     ceremonial armors meant chiefly for parade guards, ritual officiants,
@@ -8,11 +8,11 @@ data:
     While these outfits often look wildly unmilitary, their hyper-advanced
     components and micronized force fields give them the same protection against
     primitive weapons as any other powered armor.
-  cost: 15000
   encumbrance: 0
-  tl: 5
   location: other
   quality: stock
-  ac: 18
   shield: false
+  tl: 5
   use: false
+name: Vestimentum
+type: armor

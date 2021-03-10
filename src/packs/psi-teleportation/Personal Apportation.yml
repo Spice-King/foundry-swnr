@@ -1,5 +1,3 @@
-name: Personal Apportation
-type: power
 data:
   description: >-
     <p>The teleporter can translocate to another location they have either
@@ -28,3 +26,5 @@ data:
     surface or near orbit.</p>
   level: 0
   source: teleportation
+name: Personal Apportation
+type: power

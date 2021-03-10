@@ -1,5 +1,3 @@
-name: Kinetic Transversal
-type: power
 data:
   description: >-
     <p>The adept may Commit Effort as an On Turn action to move freely over
@@ -9,3 +7,5 @@ data:
     long as the Effort is committed.</p>
   level: 1
   source: telekInesIs
+name: Kinetic Transversal
+type: power

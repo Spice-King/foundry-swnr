@@ -1,5 +1,3 @@
-name: Surge Momentum
-type: power
 data:
   description: >-
     <p>The metapsion’s abilities can be reinforced with a degree of
@@ -13,3 +11,5 @@ data:
     up, they automatically fail their saving throw.</p>
   level: 3
   source: metapsionics
+name: Surge Momentum
+type: power

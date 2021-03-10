@@ -1,5 +1,3 @@
-name: Mastered Succor
-type: power
 data:
   description: >-
     <p>The biopsion has developed a sophisticated mastery of their core ability,
@@ -8,3 +6,5 @@ data:
     <em>Psychic Succor</em> might still require Effort to be Committed.</p>
   level: 1
   source: biopsionics
+name: Mastered Succor
+type: power

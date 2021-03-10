@@ -1,5 +1,3 @@
-name: Perceptive Dislocation
-type: power
 data:
   description: >-
     <p>Commit Effort for the day to sense any location the psychic could
@@ -7,3 +5,5 @@ data:
     fifteen minutes at most.</p>
   level: 2
   source: teleportation
+name: Perceptive Dislocation
+type: power

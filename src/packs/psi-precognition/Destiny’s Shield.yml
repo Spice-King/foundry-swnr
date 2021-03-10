@@ -1,5 +1,3 @@
-name: Destiny’s Shield
-type: power
 data:
   description: >-
     <p>The precog observes an incoming injury and tries to find an alternate
@@ -12,3 +10,5 @@ data:
     attack.</p>
   level: 2
   source: precognition
+name: Destiny’s Shield
+type: power

@@ -1,6 +1,8 @@
-name: Stiletto charge
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 0
   description: >-
     Stiletto charge: These ancient Mandate-era polymorphic intrusion charges
     were originally made to allow Mandate agents to easily overcome primitive
@@ -13,11 +15,9 @@ data:
     unavailable for conventional purchase. Favors to the right people and the
     looting of Mandate remnants are the only normal ways to acquire these
     devices.
-  cost: 0
   encumbrance: 1
-  tl: 5
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 5
+name: Stiletto charge
+type: item

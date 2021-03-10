@@ -1,7 +1,4 @@
-name: Unarmed Combatant
-permission:
-  default: 0
-type: focus
+_id: Bg0nnrrsWwRJNiNw
 data:
   description: >-
     Your empty hands are more dangerous than knives and guns in the grip of the
@@ -21,4 +18,7 @@ data:
     armors. Even on a miss with a Punch attack, you do an unmodified 1d6 damage.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: Bg0nnrrsWwRJNiNw
+name: Unarmed Combatant
+permission:
+  default: 0
+type: focus

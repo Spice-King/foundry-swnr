@@ -1,6 +1,8 @@
-name: Spare parts
-type: item
 data:
+  bundle:
+    amount: 3
+    bundled: false
+  cost: 50
   description: >-
     Spare parts: This is a general category for a number of small TL4 components
     and repair materials. While a simple toolkit or metatool is often enough to
@@ -12,11 +14,9 @@ data:
     uncomplicated tool or weapon from the equipment list with ten or fifteen
     minutes of assembly and at least Fix-0 skill. Such bodged devices rarely
     last longer than one scene.
-  cost: 50
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 3
+  tl: 4
+name: Spare parts
+type: item

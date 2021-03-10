@@ -1,5 +1,3 @@
-name: Not My Time
-type: power
 data:
   description: >-
     <p>The precog instinctively wrenches the lines of probability away from
@@ -13,3 +11,5 @@ data:
     technique can trigger no more often than once per week.</p>
   level: 4
   source: precognition
+name: Not My Time
+type: power

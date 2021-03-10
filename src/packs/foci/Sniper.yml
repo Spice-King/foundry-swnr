@@ -1,7 +1,4 @@
-name: Sniper
-permission:
-  default: 0
-type: focus
+_id: LQVPR5Y4atOG2Smf
 data:
   description: >-
     You are an expert at placing a bullet or beam on an unsuspecting target.
@@ -17,4 +14,7 @@ data:
     attack.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: LQVPR5Y4atOG2Smf
+name: Sniper
+permission:
+  default: 0
+type: focus

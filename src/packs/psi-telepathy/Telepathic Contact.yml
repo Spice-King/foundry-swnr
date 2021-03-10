@@ -1,5 +1,3 @@
-name: Telepathic Contact
-type: power
 data:
   description: >-
     <p>The telepath can obtain a progressively-deeper understanding of a
@@ -34,3 +32,5 @@ data:
     can be re-established, but only by activating this technique again.</p>
   level: 0
   source: telepathy
+name: Telepathic Contact
+type: power

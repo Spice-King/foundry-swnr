@@ -1,5 +1,3 @@
-name: Quintessential Reconstruction
-type: power
 data:
   description: >-
     <p>The biopsion becomes extremely difficult to kill, encoding their mind in
@@ -14,3 +12,5 @@ data:
     permanent attribute loss in an attribute of the biopsion’s choice.</p>
   level: 4
   source: biopsionics
+name: Quintessential Reconstruction
+type: power

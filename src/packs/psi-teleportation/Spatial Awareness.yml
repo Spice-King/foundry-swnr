@@ -1,5 +1,3 @@
-name: Spatial Awareness
-type: power
 data:
   description: >-
     <p>The psychic may Commit Effort as an On Turn action to gain an intuitive
@@ -10,3 +8,5 @@ data:
     lasts as long as the Effort remains Committed to the technique.</p>
   level: 1
   source: teleportation
+name: Spatial Awareness
+type: power

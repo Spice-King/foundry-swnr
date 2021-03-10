@@ -1,6 +1,8 @@
-name: Squeal
-type: item
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 300
   description: >-
     Squeal (Heal-1): This “truth serum” is unreliable but still one of the best
     available options for field interrogations. The subject must be immobilized
@@ -12,11 +14,9 @@ data:
     can simply refuse to speak about one particular topic of their choice.
     Targets pass out for 1d6 hours after the drug wears off and are immune to it
     for a week thereafter.
-  cost: 300
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Squeal
+type: item

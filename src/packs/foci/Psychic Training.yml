@@ -1,7 +1,4 @@
-name: Psychic Training
-permission:
-  default: 0
-type: focus
+_id: jP1y8wGKPBhCWzC4
 data:
   description: >-
     You’ve had special training in a particular psychic discipline. You must be
@@ -22,4 +19,7 @@ data:
     game.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: jP1y8wGKPBhCWzC4
+name: Psychic Training
+permission:
+  default: 0
+type: focus

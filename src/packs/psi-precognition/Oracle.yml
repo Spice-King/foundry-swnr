@@ -1,5 +1,3 @@
-name: Oracle
-type: power
 data:
   description: >-
     <p>The precog gains a progressively-greater intuitive understanding of their
@@ -33,3 +31,5 @@ data:
     year into the future.</p>
   level: 0
   source: precognition
+name: Oracle
+type: power

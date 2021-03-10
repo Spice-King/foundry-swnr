@@ -1,5 +1,3 @@
-name: Telekinetic Expertise
-type: power
 data:
   description: >-
     <p>The adept has become familiar enough with the manipulation of telekinetic
@@ -7,3 +5,5 @@ data:
     Committing Effort.</p>
   level: 2
   source: telekInesIs
+name: Telekinetic Expertise
+type: power

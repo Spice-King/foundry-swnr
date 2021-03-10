@@ -1,5 +1,3 @@
-name: Reactive Telekinesis
-type: power
 data:
   description: >-
     <p>As an Instant action, the psychic can Commit Effort for the scene
@@ -10,3 +8,5 @@ data:
     possible.</p>
   level: 3
   source: telekInesIs
+name: Reactive Telekinesis
+type: power

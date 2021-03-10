@@ -1,5 +1,3 @@
-name: Facile Mind
-type: power
 data:
   description: >-
     <p>The telepath is practiced at opening a <em>Telepathic Contact</em>, and
@@ -11,3 +9,5 @@ data:
     a Main Action.</p>
   level: 1
   source: telepathy
+name: Facile Mind
+type: power

@@ -1,17 +1,17 @@
-name: Armored Undersuit
-type: armor
 data:
+  ac: 13
+  cost: 600
   description: >-
     An armored undersuit is a skin-tight bodysuit woven of advanced TL4 fibers
     with exceptional shock-activated rigidity and impact dispersion
     capabilities. Transparent panels allow for it to be worn with almost any
     outfit without drawing notice or being detected without a close tactile
     examination.
-  cost: 600
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  ac: 13
   shield: false
+  tl: 4
   use: false
+name: Armored Undersuit
+type: armor
