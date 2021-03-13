@@ -39,7 +39,7 @@ function getConfig() {
     config = fs.readJSONSync(configPath);
     return config;
   } else {
-    return;
+    throw new Error("foundryconfig.json file missing.");
   }
 }
 
@@ -64,7 +64,7 @@ function getManifest() {
     file = yaml.load(fs.readFileSync(systemPath, "utf-8"));
     name = "system.yml";
   } else {
-    return;
+    throw new Error("Can't find package file.");
   }
 
   return { name, file, root };
@@ -209,8 +209,8 @@ function buildTS() {
  */
 async function buildEntities(cb: () => void) {
   glob("src/module/{actor,item}s/**/*.ts", (e, fileNames) => {
-    const imports = [];
-    const adds = [];
+    const imports = [] as string[];
+    const adds = [] as string[];
     fileNames
       .map((e) => {
         const filePath = path.posix.relative("./src/module", "./" + e);
@@ -348,7 +348,7 @@ function buildWatch() {
  */
 async function clean() {
   const name = getManifest().file.name;
-  const files = [];
+  const files = [] as string[];
 
   // If the project uses TypeScript
   if (fs.existsSync(path.join("src", `${name}.ts`))) {
@@ -448,7 +448,7 @@ async function linkUserData() {
       await fs.symlink(
         path.resolve("./dist"),
         linkDir,
-        os.platform() === "win32" ? "junction" : null
+        os.platform() === "win32" ? "junction" : undefined
       );
     }
     return Promise.resolve();

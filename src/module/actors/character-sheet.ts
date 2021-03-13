@@ -30,9 +30,11 @@ export class CharacterActorSheet extends ActorSheet<
   constructor(...args: unknown[]) {
     super(...args);
   }
-  
+
   _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
-    html.find(".window-content").addClass(["cq", "overflow-y-scroll", "relative"]);
+    html
+      .find(".window-content")
+      .addClass(["cq", "overflow-y-scroll", "relative"]);
     super._injectHTML(html, options);
   }
 
@@ -73,7 +75,9 @@ export class CharacterActorSheet extends ActorSheet<
       const skillList = <HTMLInputElement>(
         form.querySelector('[name="skillList"]:checked')
       );
-      const extra = <HTMLInputElement>form.querySelector('[name=extra]:checked');
+      const extra = <HTMLInputElement>(
+        form.querySelector("[name=extra]:checked")
+      );
       initSkills(this.actor, <"revised" | "classic" | "none">skillList.value);
       initSkills(this.actor, <"spaceMagic" | "psionic" | "none">extra.value);
       return;
@@ -102,7 +106,7 @@ export class CharacterActorSheet extends ActorSheet<
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getOwnedItem(wrapper.data("itemId"));
-    item.sheet.render(true);
+    item?.sheet.render(true);
   }
   _onItemDelete(event: JQuery.ClickEvent): void {
     event.preventDefault();
@@ -113,7 +117,7 @@ export class CharacterActorSheet extends ActorSheet<
   }
   async _onWeaponRoll(
     event: JQuery.ClickEvent<HTMLElement>
-  ): Promise<Application> {
+  ): Promise<Application | undefined> {
     event.preventDefault();
     const itemId = event.currentTarget.parentElement.dataset.itemId;
     const weapon = <SWNRBaseItem<SWNRWeaponData>>(
@@ -141,7 +145,9 @@ export class CharacterActorSheet extends ActorSheet<
       const skillId =
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         weapon.data.data.skill;
-      const skill = this.actor.getOwnedItem(skillId);
+      const skill = this.actor.getOwnedItem(
+        skillId
+      ) as SWNRBaseItem<SWNRSkillData>;
       const stat = this.actor.data.data.stats[weapon.data.data.stat] || {
         mod: 0,
       };
@@ -156,7 +162,7 @@ export class CharacterActorSheet extends ActorSheet<
         weapon: weapon.data.data,
         stat,
         skill: skill,
-        hitRoll: <number>undefined,
+        hitRoll: <number | undefined>undefined,
         burstFire,
         modifier,
         effectiveSkillRank:
@@ -444,7 +450,7 @@ export class CharacterActorSheet extends ActorSheet<
     const target = <HTMLElement>event.currentTarget;
     const dataset = target.dataset;
     const template = "systems/swnr/templates/dialogs/roll-skill.html";
-    const skillID = dataset.itemId;
+    const skillID = dataset.itemId as string;
     const skill = <SWNRBaseItem<SWNRSkillData>>this.actor.getOwnedItem(skillID);
     const skillData = skill.data.data;
     const skillName = skill.name;

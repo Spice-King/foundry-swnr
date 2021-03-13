@@ -6,7 +6,9 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
   popUpDialog?: Dialog;
 
   _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
-    html.find(".window-content").addClass(["cq", "overflow-y-scroll", "relative"]);
+    html
+      .find(".window-content")
+      .addClass(["cq", "overflow-y-scroll", "relative"]);
     super._injectHTML(html, options);
   }
 
@@ -49,7 +51,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getOwnedItem(wrapper.data("itemId"));
-    item.sheet.render(true);
+    item?.sheet.render(true);
   }
   _onItemDelete(event: JQuery.ClickEvent): void {
     event.preventDefault();

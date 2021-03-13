@@ -38,9 +38,9 @@ export class ValidatedDialog extends Dialog {
         const elementGood = markedRequired || (checkValid && blankValue);
         // TODO: add some basic error messages
         if (elementGood) {
-          e.parentElement.classList.remove("failed-validation");
+          e.parentElement?.classList.remove("failed-validation");
         } else {
-          e.parentElement.classList.add("failed-validation");
+          e.parentElement?.classList.add("failed-validation");
         }
         return elementGood;
       })
