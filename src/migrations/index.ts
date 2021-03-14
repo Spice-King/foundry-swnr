@@ -4,9 +4,11 @@ const VERSION_KEY = "systemMigrationVersion";
 let newVersion: VersionString = "0.0";
 Hooks.on("init", () => (newVersion = game.system.data.version));
 
-async function getCurrentVersion(): Promise<string> {
-  if (game.settings.get("swnr", VERSION_KEY) === "") await setCurrentVersion();
-  return game.settings.get("swnr", VERSION_KEY);
+function getCurrentVersion(): VersionString {
+  const version = game.settings.get("swnr", VERSION_KEY);
+  if (version !== "") return version;
+  setCurrentVersion();
+  return newVersion;
 }
 
 async function setCurrentVersion() {
