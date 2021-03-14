@@ -1,5 +1,7 @@
+type VersionString = `${number}.${number}${"" | number}${"" | `-${string}`}`;
+
 const VERSION_KEY = "systemMigrationVersion";
-let newVersion = "";
+let newVersion: VersionString = "0.0";
 Hooks.on("init", () => (newVersion = game.system.data.version));
 
 async function getCurrentVersion(): Promise<string> {
