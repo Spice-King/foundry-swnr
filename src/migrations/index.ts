@@ -42,6 +42,9 @@ export default async function checkAndRunMigrations(): Promise<void> {
       newVersion,
     })
   );
+  for await (const migration of migrations) {
+    await applyMigration(migration);
+  }
   await setCurrentVersion();
   ui.notifications.info(
     game.i18n.format(game.i18n.localize("swnr.migration.done"), { newVersion })
@@ -73,4 +76,42 @@ export function orderedMigrations(): readonly MigrationData<Entity<unknown>>[] {
     }
     return 0;
   });
+}
+
+async function applyMigration(migration: MigrationData<Entity<unknown>>) {
+  const collections = Object.values(game).filter(
+    // Block compendiums for now.
+    (v) => v instanceof Collection && v.constructor !== Collection
+  ) as Collection<Entity<unknown>>[];
+  for await (const type of collections) {
+    for await (const entity of type.values()) {
+      await applyMigrationTo(entity, undefined, migration);
+    }
+  }
+}
+
+async function applyMigrationTo(
+  target: Entity<unknown>,
+  updateData = { _id: target._id } as UpdateData,
+  migration: MigrationData<Entity<unknown>>
+) {
+  if (target instanceof migration.type) {
+    migration.func(target, updateData);
+  }
+  if (!(target instanceof Entity)) {
+    return updateData;
+  }
+  const embeddedEntities =
+    (target.constructor as typeof Entity)?.config?.embeddedEntities ?? {};
+  for await (const [cName, location] of Object.entries(embeddedEntities)) {
+    const updates = [] as UpdateData[];
+    const collection = target[location] ?? target.getEmbeddedCollection(cName);
+
+    for await (const embedded of collection) {
+      const eUpdate = await applyMigrationTo(embedded, undefined, migration);
+      if (Object.keys(eUpdate).length > 1) updates.push(eUpdate);
+    }
+    target.updateEmbeddedEntity(cName, updates);
+  }
+  return updateData;
 }
