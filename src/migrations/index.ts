@@ -56,3 +56,19 @@ export function registerMigration<T extends Entity<unknown>>(
     throw new TypeError(`${type.name} is not a Entity of some sort!`);
   _allMigrations.push({ type, version, sort, func });
 }
+
+export function orderedMigrations(): readonly MigrationData<Entity<unknown>>[] {
+  return _allMigrations.sort((left, right) => {
+    //Version sort, lowest first
+    if (left.version !== right.version)
+      return isNewerVersion(left.version, right.version) ? 1 : -1;
+    //Sort No. order, lowest first
+    if (left.sort !== right.sort) return left.sort - right.sort;
+    //Prototype sort, if parent, sorted first.
+    if (left.type !== right.type) {
+      if (Object.prototype.isPrototypeOf.call(left.type, right.type)) return -1;
+      if (Object.prototype.isPrototypeOf.call(right.type, left.type)) return 1;
+    }
+    return 0;
+  });
+}
