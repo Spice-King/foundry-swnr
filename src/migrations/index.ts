@@ -31,9 +31,11 @@ async function setCurrentVersion() {
 }
 
 export default async function checkAndRunMigrations(): Promise<void> {
+  const migrations = orderedMigrations().filter((m) =>
+    isNewerVersion(m.version, getCurrentVersion())
+  );
+  if (migrations.length === 0) return await setCurrentVersion();
   const oldVersion = await getCurrentVersion();
-  let updates = false;
-  if (newVersion === oldVersion) return;
   ui.notifications.warn(
     game.i18n.format(game.i18n.localize("swnr.migration.start"), {
       oldVersion,
