@@ -45,3 +45,14 @@ export default async function checkAndRunMigrations(): Promise<void> {
     game.i18n.format(game.i18n.localize("swnr.migration.done"), { newVersion })
   );
 }
+
+export function registerMigration<T extends Entity<unknown>>(
+  type: Constructor<T>,
+  version: VersionString,
+  sort: number,
+  func: MigrationFunction<T>
+): void {
+  if (!Object.prototype.isPrototypeOf.call(Entity, type))
+    throw new TypeError(`${type.name} is not a Entity of some sort!`);
+  _allMigrations.push({ type, version, sort, func });
+}
