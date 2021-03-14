@@ -1,8 +1,23 @@
 type VersionString = `${number}.${number}${"" | number}${"" | `-${string}`}`;
+// eslint-disable-next-line @typescript-eslint/ban-types
+type Constructor<T> = Function & { prototype: T };
+type MidMigrationError = { type: string; entity: string; error: unknown };
+type UpdateData = { _id: string; [index: string]: unknown };
+type MigrationFunction<T extends Entity<unknown>> = (
+  entity: T,
+  pastUpdates: UpdateData
+) => UpdateData;
+type MigrationData<T extends Entity<unknown>> = {
+  type: Constructor<T>;
+  version: VersionString;
+  sort: number;
+  func: MigrationFunction<T>;
+};
 
 const VERSION_KEY = "systemMigrationVersion";
 let newVersion: VersionString = "0.0";
 Hooks.on("init", () => (newVersion = game.system.data.version));
+const _allMigrations = new Array<MigrationData<Entity<unknown>>>();
 
 function getCurrentVersion(): VersionString {
   const version = game.settings.get("swnr", VERSION_KEY);
