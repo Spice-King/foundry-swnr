@@ -19,6 +19,17 @@ let newVersion: VersionString = "0.0";
 Hooks.on("init", () => (newVersion = game.system.data.version));
 const _allMigrations = new Array<MigrationData<Entity<unknown>>>();
 
+class MigrationError extends Error {
+  constructor(
+    public migration: MigrationData<Entity<unknown>>,
+    public capturedErrors: MidMigrationError[]
+  ) {
+    super(
+      `Migration failed, ${capturedErrors.length} exceptions thrown for type ${migration.type.name}, version "${migration.version}", sort ${migration.sort}`
+    );
+  }
+}
+
 function getCurrentVersion(): VersionString {
   const version = game.settings.get("swnr", VERSION_KEY);
   if (version !== "") return version;
@@ -43,7 +54,12 @@ export default async function checkAndRunMigrations(): Promise<void> {
     })
   );
   for await (const migration of migrations) {
-    await applyMigration(migration);
+    const errors = await applyMigration(migration);
+    if (errors.length > 0) {
+      const error = new MigrationError(migration, errors);
+      ui.notifications.error(error.message);
+      console.error(error);
+    }
   }
   await setCurrentVersion();
   ui.notifications.info(
@@ -83,11 +99,21 @@ async function applyMigration(migration: MigrationData<Entity<unknown>>) {
     // Block compendiums for now.
     (v) => v instanceof Collection && v.constructor !== Collection
   ) as Collection<Entity<unknown>>[];
+  const errors = [] as MidMigrationError[];
   for await (const type of collections) {
     for await (const entity of type.values()) {
-      await applyMigrationTo(entity, undefined, migration);
+      try {
+        await applyMigrationTo(entity, undefined, migration);
+      } catch (e) {
+        errors.push({
+          type: type.constructor.name,
+          entity: entity.constructor.name,
+          error: e,
+        });
+      }
     }
   }
+  return errors;
 }
 
 async function applyMigrationTo(
