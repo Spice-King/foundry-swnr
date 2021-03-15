@@ -38,7 +38,7 @@ function getCurrentVersion(): VersionString {
 }
 
 async function setCurrentVersion() {
-  await game.settings.set("swnr", VERSION_KEY, newVersion);
+  if (game.user.isGM) await game.settings.set("swnr", VERSION_KEY, newVersion);
 }
 
 export default async function checkAndRunMigrations(): Promise<void> {
