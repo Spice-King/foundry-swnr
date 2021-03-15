@@ -12,7 +12,7 @@
 
 // Import TypeScript modules
 import { registerSettings } from "./module/settings";
-import migrations from "./migrations/index";
+import migrations from "./migration";
 import { preloadTemplates } from "./module/preloadTemplates";
 import { SWNRActor, SWNRItem } from "./module/entities";
 import "./module/containerQueries";
