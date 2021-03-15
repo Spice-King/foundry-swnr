@@ -15,11 +15,12 @@ import {
 } from "../types";
 import { SWNRBaseItem } from "../base-item";
 
-interface CharacterActorSheetData extends ActorSheetData {
+interface CharacterActorSheetData extends ActorSheet.Data<SWNRCharacterData> {
   weapons?: Item[];
   armor?: Item[];
   gear?: Item[];
   skills?: Item[];
+  useHomebrewLuckSave: boolean;
   itemTypes: { [type: string]: Item[] };
 }
 export class CharacterActorSheet extends ActorSheet<
@@ -515,14 +516,12 @@ export class CharacterActorSheet extends ActorSheet<
     return this.popUpDialog.render(true);
   }
   /** @override */
-  getData(): ActorSheetData {
-    const sheetData = <CharacterActorSheetData>super.getData();
-    sheetData["useHomebrewLuckSave"] = game.settings.get(
-      "swnr",
-      "useHomebrewLuckSave"
-    );
-    sheetData.itemTypes = this.actor.itemTypes;
-    return sheetData;
+  getData(): CharacterActorSheetData {
+    return {
+      ...super.getData(),
+      useHomebrewLuckSave: !!game.settings.get("swnr", "useHomebrewLuckSave"),
+      itemTypes: this.actor.itemTypes,
+    };
   }
   /** @override */
   async _updateObject(
