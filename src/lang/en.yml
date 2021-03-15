@@ -473,3 +473,6 @@ swnr:
       SWNR: Starting migration from {oldVersion} to {newVersion}. Please let
       this finish before closing.
     done: "SWNR: Done Migration to {newVersion}"
+    needsGM: >-
+      SWNR: A GM needs to log in to do run {count} migrations from {oldVersion}
+      to {newVersion}!

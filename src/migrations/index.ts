@@ -47,6 +47,14 @@ export default async function checkAndRunMigrations(): Promise<void> {
   );
   if (migrations.length === 0) return await setCurrentVersion();
   const oldVersion = await getCurrentVersion();
+  if (!game.user.isGM)
+    return ui.notifications.error(
+      game.i18n.format(game.i18n.localize("swnr.migration.needsGM"), {
+        count: migrations.length,
+        oldVersion,
+        newVersion,
+      })
+    );
   ui.notifications.warn(
     game.i18n.format(game.i18n.localize("swnr.migration.start"), {
       oldVersion,
