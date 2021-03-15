@@ -12,7 +12,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     super._injectHTML(html, options);
   }
 
-  getData(): ActorSheetData<SWNRNPCData> {
+  getData(): ActorSheet.Data<SWNRNPCData> {
     const data = super.getData();
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
@@ -24,7 +24,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       ),
     } as never);
   }
-  static get defaultOptions(): FormApplicationOptions {
+  static get defaultOptions(): FormApplication.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "npc"],
       template: "systems/swnr/templates/actors/npc-sheet.html",

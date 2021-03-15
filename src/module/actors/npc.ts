@@ -9,10 +9,9 @@ export class SWNRNPCActor extends Actor<SWNRNPCData> {
   _onCreate(
     data: Parameters<Entity["_onCreate"]>[0],
     options: Parameters<Entity["_onCreate"]>[1],
-    userId: string,
-    context: Parameters<Entity["_onCreate"]>[3]
+    userId: string
   ): void {
-    super._onCreate(data, options, userId, context);
+    super._onCreate(data, options, userId);
     if ((this.data as any).items.length || game.userId !== userId) return;
 
     this.createOwnedItem({

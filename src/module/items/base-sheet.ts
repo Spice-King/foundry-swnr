@@ -1,5 +1,5 @@
 export class BaseSheet extends ItemSheet {
-  static get defaultOptions(): FormApplicationOptions {
+  static get defaultOptions(): FormApplication.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "item"],
       width: 520,

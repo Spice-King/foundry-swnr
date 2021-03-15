@@ -10,15 +10,15 @@ interface ValidatedDialogData extends DialogData {
 declare class Dialog extends Application {
   static confirm(
     { title, content, yes, no, defaultYes }?: ConfirmDialog,
-    options?: ApplicationOptions
+    options?: Application.Options
   ): Promise<void>;
-  constructor(dialogData: DialogData, options?: ApplicationOptions);
+  constructor(dialogData: DialogData, options?: Application.Options);
   submit(button);
 }
 type InputElements = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 export class ValidatedDialog extends Dialog {
   failCallback: ValidatedDialogData["failCallback"];
-  constructor(dialogData: ValidatedDialogData, options?: ApplicationOptions) {
+  constructor(dialogData: ValidatedDialogData, options?: Application.Options) {
     super(dialogData, options);
     this.failCallback = dialogData.failCallback;
   }

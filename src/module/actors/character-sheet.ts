@@ -38,7 +38,7 @@ export class CharacterActorSheet extends ActorSheet<
     super._injectHTML(html, options);
   }
 
-  static get defaultOptions(): FormApplicationOptions {
+  static get defaultOptions(): FormApplication.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "character", "test broken"],
       template: "systems/swnr/templates/actors/character-sheet.html",
