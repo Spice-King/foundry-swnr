@@ -1,9 +1,11 @@
-type VersionString = `${number}.${number}${"" | number}${"" | `-${string}`}`;
+export type VersionString = `${number}.${number}${"" | number}${
+  | ""
+  | `-${string}`}`;
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Constructor<T> = Function & { prototype: T };
 type MidMigrationError = { type: string; entity: string; error: unknown };
-type UpdateData = { _id: string; [index: string]: unknown };
-type MigrationFunction<T extends Entity<unknown>> = (
+export type UpdateData = { _id: string; [index: string]: unknown };
+export type MigrationFunction<T extends Entity<unknown>> = (
   entity: T,
   pastUpdates: UpdateData
 ) => UpdateData;
