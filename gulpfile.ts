@@ -221,30 +221,31 @@ async function buildEntities(cb: () => void) {
           relative: path.dirname(filePath),
           type: type.charAt(0).toUpperCase() + type.slice(1, -1),
           sheet: name.endsWith("-sheet"),
-          hashedName: "_" + createHash("md4").update(e).digest("hex"),
+          hashedName:
+            "_" + createHash("md4").update(e).digest("hex").slice(0, 16),
         };
       })
       .forEach((e) => {
         imports.push(
-          `import * as ${e.hashedName} from './${e.relative}/${e.name}'`
+          `import * as ${e.hashedName} from "./${e.relative}/${e.name}";`
         );
         adds.push(
           e.sheet
-            ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, { makeDefault: true, types: ${e.hashedName}.types });`
+            ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, {\n  makeDefault: true,\n  types: ${e.hashedName}.types,\n});`
             : `${e.type.toLowerCase()}s[${e.hashedName}.name] = ${
                 e.hashedName
-              }.entity as typeof ${e.type}`
+              }.entity as typeof ${e.type};`
         );
       });
     const mids = [
       "//This file is auto generated, leave it alone!",
-      "import proxy from './proxy'",
-      "const items = <Record<string, typeof Item>>{}",
-      "const actors = <Record<string, typeof Actor>>{}",
+      'import proxy from "./proxy";',
+      "const items = <Record<string, typeof Item>>{};",
+      "const actors = <Record<string, typeof Actor>>{};",
     ];
     const ends = [
-      "export const SWNRItem = proxy(items, Item) as typeof Item",
-      "export const SWNRActor = proxy(actors, Actor) as typeof Actor",
+      "export const SWNRItem = proxy(items, Item) as typeof Item;",
+      "export const SWNRActor = proxy(actors, Actor) as typeof Actor;",
       "",
     ];
     const out = imports.concat(mids, adds, ends).join("\n");
