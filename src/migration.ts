@@ -44,6 +44,7 @@ async function setCurrentVersion() {
 }
 
 export default async function checkAndRunMigrations(): Promise<void> {
+  await loadMigrations();
   const migrations = orderedMigrations().filter((m) =>
     isNewerVersion(m.version, getCurrentVersion())
   );
@@ -75,6 +76,12 @@ export default async function checkAndRunMigrations(): Promise<void> {
   ui.notifications.info(
     game.i18n.format(game.i18n.localize("swnr.migration.done"), { newVersion })
   );
+}
+
+export async function loadMigrations(): Promise<void> {
+  const files = await (await fetch("systems/swnr/migrations.json")).json();
+  await Promise.all(files.map((f) => import(f)));
+  console.log("migrations: ", files);
 }
 
 export function registerMigration<T extends Entity<unknown>>(
