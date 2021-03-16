@@ -134,7 +134,7 @@ function createTransformer(): typescript.TransformerFactory<typescript.SourceFil
   return importTransformer;
 }
 
-const tsConfig = ts.createProject("tsconfig.json", {
+const tsConfig = ts.createProject("src/tsconfig.json", {
   sourceMap: true,
   getCustomTransformers: () => ({
     after: [createTransformer()],

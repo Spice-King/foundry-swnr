@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "ES2019",
+		"lib": [
+			"es2019",
+			"DOM"
+		],
+		"types": [
+			"foundry-pc-types"
+		],
+		"outDir": "../dist",
+		"sourceMap": true,
+		"strictNullChecks": true,
+		"module": "esnext",
+		"rootDir": "../",
+		"sourceRoot": "../",
+		"noEmit": false,
+		"composite": true
+	}
+}
