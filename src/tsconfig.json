@@ -8,7 +8,6 @@
 		"types": [
 			"foundry-pc-types"
 		],
-		"outDir": "../dist",
 		"sourceMap": true,
 		"strictNullChecks": true,
 		"module": "esnext",
