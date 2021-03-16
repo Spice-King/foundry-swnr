@@ -255,6 +255,23 @@ async function buildEntities(cb: () => void) {
 }
 
 /**
+ * Build Migration list
+ */
+function buildMigrationList(cb: () => void) {
+  glob("src/migrations/**/*.ts", (e, fileNames) => {
+    const out = JSON.stringify(
+      fileNames.map((f) => {
+        const filename = path.posix.relative("./src", "./" + f);
+        const name = path.basename(filename, ".ts") + ".js";
+        const dirname = path.dirname(filename);
+        return "./" + path.join(dirname, name);
+      })
+    );
+    fs.writeFile("dist/migrations.json", out, cb);
+  });
+}
+
+/**
  * Build YAML to json
  */
 function buildYaml() {
@@ -337,6 +354,11 @@ function buildWatch() {
     copyFiles
   );
   gulp.watch("src/**/*.html", { ignoreInitial: false }, buildTemplateList);
+  gulp.watch(
+    "src/migrations/**/*.ts",
+    { ignoreInitial: false },
+    buildMigrationList
+  );
 }
 
 /********************/
@@ -514,6 +536,7 @@ const execBuild = gulp.series(
     buildYaml,
     copyFiles,
     buildTemplateList,
+    buildMigrationList,
     buildPack
   ),
   buildTS
