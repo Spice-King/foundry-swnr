@@ -81,7 +81,6 @@ export default async function checkAndRunMigrations(): Promise<void> {
 export async function loadMigrations(): Promise<void> {
   const files = await (await fetch("systems/swnr/migrations.json")).json();
   await Promise.all(files.map((f) => import(f)));
-  console.log("migrations: ", files);
 }
 
 export function registerMigration<T extends Entity<unknown>>(

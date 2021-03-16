@@ -136,6 +136,7 @@ Item:
       - baseItem
       - description
     stat: dex
+    secondStat: none
     skill: ""
     shock:
       dmg: 0

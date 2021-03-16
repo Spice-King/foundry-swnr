@@ -21,12 +21,17 @@
     <option value="int">{{localize 'swnr.stat.long.int'}}</option>
     <option value="wis">{{localize 'swnr.stat.long.wis'}}</option>
     <option value="cha">{{localize 'swnr.stat.long.cha'}}</option>
-    <option value="str/dex">
-      {{localize 'swnr.stat.short.str'}}/{{localize 'swnr.stat.short.dex'}}
-    </option>
-    <option value="con/wis">
-      {{localize 'swnr.stat.short.con'}}/{{localize 'swnr.stat.short.wis'}}
-    </option>
+    {{/select}}
+  </select>
+  <select name="data.secondStat">
+    {{#select data.secondStat}}
+    <option value="none">{{localize 'swnr.ammo.none'}}</option>
+    <option value="str">{{localize 'swnr.stat.long.str'}}</option>
+    <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
+    <option value="con">{{localize 'swnr.stat.long.con'}}</option>
+    <option value="int">{{localize 'swnr.stat.long.int'}}</option>
+    <option value="wis">{{localize 'swnr.stat.long.wis'}}</option>
+    <option value="cha">{{localize 'swnr.stat.long.cha'}}</option>
     {{/select}}
   </select>
   {{#if owner}}
