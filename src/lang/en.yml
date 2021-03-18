@@ -416,6 +416,7 @@ swnr:
     ammo: Ammo
     noSetSkill: No Skill Set
     burst: Use Burst Fire
+    skillAddDamage: Skill adds to damage
   titles:
     savingThrow: "{throwType} Saving Throw"
   effort:

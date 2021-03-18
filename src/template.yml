@@ -138,6 +138,7 @@ Item:
     stat: dex
     secondStat: none
     skill: ""
+    skillBoostsDamage: false
     shock:
       dmg: 0
       ac: 15

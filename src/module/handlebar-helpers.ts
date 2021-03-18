@@ -26,12 +26,12 @@ export default function registerHelpers(): void {
       weapon: SWNRWeapon,
       forDamage = false
     ): number => {
-      // if (forDamage && weapon.data.data.skillBoostsDamage === true) return 0;
-      const stat = weapon.data.data.stat;
+      if (forDamage && weapon.data.data.skillBoostsDamage === false) return 0;
       const stats = actor.data.data.stats;
-      // if (stat === "str/dex") return Math.max(stats.str.mod, stats.dex.mod);
-      // if (stat === "con/wis") return Math.max(stats.con.mod, stats.wis.mod);
-      return stats[stat].mod;
+      const statsToCheck = [stats[weapon.data.data.stat].mod];
+      if (weapon.data.data.secondStat !== "none")
+        statsToCheck.push(stats[weapon.data.data.secondStat]?.mod || 0);
+      return Math.max(...statsToCheck);
     }
   );
 }

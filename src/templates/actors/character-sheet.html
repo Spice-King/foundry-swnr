@@ -455,8 +455,8 @@
               <ul class="space-y-2">
                 {{#each itemTypes.weapon as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
-                damageBonus=(getPCStatModForWeapon actor item false)
-                type=actor.data.type actor=actor}} {{/each}}
+                damageBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item true))
+                type=actor.data.type actor=actor }} {{/each}}
               </ul>
             </div>
             <div class="flex-grow">
