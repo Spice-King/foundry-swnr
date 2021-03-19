@@ -23,12 +23,14 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
     - name: npm install, build, and test
-      run: npm install
+      run: npx npm@7 install
+    - name: fump
+      run: find node_modules/foundry-pc-types
     - name: Update Version
       shell: bash
       id: set-version
       run: echo "::set-output name=version::$(node .github/workflows/set-version.js ${{ github.ref }})"
-    - run: gulp --series build package
+    - run: npx gulp --series build package
     - name: Create Release
       id: create_versioned_release
       uses: ncipollo/release-action@v1
