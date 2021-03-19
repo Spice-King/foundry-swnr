@@ -446,7 +446,7 @@ export class CharacterActorSheet extends ActorSheet<
     const dialogData = {
       title: title,
       skillName: skillName,
-      skill: skill,
+      skill: skillData,
       data: this.actor.data,
     };
     const html = await renderTemplate(template, dialogData);
