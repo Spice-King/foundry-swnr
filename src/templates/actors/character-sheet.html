@@ -103,8 +103,8 @@
         <table>
           <thead>
             <tr>
-              <th class="statRoll">
-                {{localize 'swnr.sheet.stats'}} <i class="fas fa-dice-d20"></i>
+              <th>
+                <a class="statRoll">{{localize 'swnr.sheet.stats'}} <i class="fas fa-dice-d20"></i></a>
               </th>
               <th>{{localize 'swnr.sheet.base'}}</th>
               <th>{{localize 'swnr.sheet.boosts'}}</th>
@@ -179,8 +179,10 @@
             data-dtype="Number"
           />
         </div>
-        <div class="hp-label">
-          {{localize 'swnr.sheet.hp'}} <i class="fas fa-dice-d20"></i>
+        <div>
+          <a class="hp-label">
+            {{localize 'swnr.sheet.hp'}} <i class="fas fa-dice-d20"></i>
+          </a>
         </div>
         <div class="system">
           <input
