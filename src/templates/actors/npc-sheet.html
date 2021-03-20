@@ -172,6 +172,19 @@
           value="{{data.skillBonus}}"
         />
       </div>
+      <div>
+        <a class="saves">
+          <i class="fa fa-dice-d6"></i>
+          {{localize 'swnr.npc.generic-saving-throw'}};
+        </a>
+        <input
+          type="number"
+          name="data.saves"
+          min="0"
+          step="1"
+          value="{{data.saves}}"
+        />
+      </div>
     </div>
     <div class="effort">
       <h3>{{localize 'swnr.effort.title'}}</h3>
