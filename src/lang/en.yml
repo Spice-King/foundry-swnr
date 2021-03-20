@@ -450,6 +450,7 @@ swnr:
       friendly: Friendly
     morale-check: Morale Check
     trained-skill: Trained Skill
+    generic-saving-throw: Saving Throw
     attacks-per-turn: Attacks Per Turn
     attack-bonus-hit: Attack Bonus Hit
     attack-bonus-damage: Attack Bonus Damage
@@ -463,6 +464,9 @@ swnr:
     skill:
       trained: "{actor} uses their trained skill."
       untrained: "{actor} uses their untrained skill."
+    generic-saves:
+      failure: Fails their Saving Throw!
+      success: Succeeds in their Saving Throw!
     unarmed: Unarmed
   migration:
     start: >-
