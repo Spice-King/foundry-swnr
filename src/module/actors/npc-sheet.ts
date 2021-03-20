@@ -35,6 +35,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     html.find(".reaction").on("click", this._onReaction.bind(this));
     html.find(".morale").on("click", this._onMorale.bind(this));
     html.find(".skill").on("click", this._onSkill.bind(this));
+    html.find(".saves").on("click", this._onSaves.bind(this));
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {
@@ -184,6 +185,19 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
         ? game.i18n.localize("swnr.npc.morale.failure")
         : game.i18n.localize("swnr.npc.morale.success");
     roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
+  }
+
+  _onSaves(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const roll = new Roll("1d20").roll();
+    console.log(roll);
+    const flavor =
+      roll.results[0] > this.actor.data.data.saves
+        ? games.i18n.localize("swnr.npc.generic-saves.failure")
+        : games.i18n.localize("swnr.npc.generic-saves.success");
+    roll.toMessage({ flavor, speaker: {actor: this.actor._id} });
   }
 
   _onSkill(event: JQuery.ClickEvent): void {
