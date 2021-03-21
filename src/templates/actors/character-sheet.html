@@ -77,36 +77,6 @@
           {{/if}}
         </div>
       </div>
-      {{!--
-      <div class="saves flex-shrink-0 flex flex-col justify-between py-1">
-        <div
-          class="save physicalflex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
-        >
-          v{{actor.data.save.physical}} {{localize 'swnr.sheet.saves.physical'}}
-          <i class="fas fa-dice-d20"></i>
-        </div>
-        <div
-          class="save evasion flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
-        >
-          v{{actor.data.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
-          <i class="fas fa-dice-d20"></i>
-        </div>
-        <div
-          class="save mental flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
-        >
-          v{{actor.data.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
-          <i class="fas fa-dice-d20"></i>
-        </div>
-        {{#if useHomebrewLuckSave}}
-        <div
-          class="save luck flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
-        >
-          v{{actor.data.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
-          <i class="fas fa-dice-d20"></i>
-        </div>
-        {{/if}}
-      </div>
-      --}}
     </div>
   </div>
   <div class="flex gap-2">
@@ -299,12 +269,6 @@
           <label for="data.credits.owed">Owed</label>
         </div>
         <div></div>
-        {{!--
-        <div class="col-span-3">I have space, what can I stick here?</div>
-        <div class="col-span-3">I have space, what can I stick here?</div>
-        <div class="col-span-3">I have space, what can I stick here?</div>
-        <div class="col-span-3">I have space, what can I stick here?</div>
-        --}}
       </div>
       <div class="flex-col flex gap-1">
         <h3>{{localize 'swnr.effort.title'}}</h3>
@@ -392,15 +356,6 @@
         <a class="item" data-tab="combat">
           {{localize 'swnr.sheet.tabs.combat'}}
         </a>
-        {{!--
-        <a class="item" data-tab="weapons">
-          {{localize 'swnr.sheet.tabs.weapons'}}
-        </a>
-        --}} {{!--
-        <a class="item" data-tab="armor">
-          {{localize 'swnr.sheet.tabs.armor'}}
-        </a>
-        --}}
         <a class="item" data-tab="inventory">
           {{localize 'swnr.sheet.tabs.inventory'}}
         </a>
@@ -408,11 +363,6 @@
           {{localize 'swnr.sheet.tabs.skills'}}
         </a>
         <a class="item" data-tab="foci">{{localize 'swnr.sheet.tabs.foci'}}</a>
-        {{!--
-        <a class="item" data-tab="powers">
-          {{localize 'swnr.sheet.tabs.powers'}}
-        </a>
-        --}}
       </nav>
       <section class="sheet-body">
         <div
@@ -493,34 +443,6 @@
             </div>
           </div>
         </div>
-        {{!--
-        <div class="tab weapons" data-group="primary" data-tab="weapons">
-          <ul class="space-y-2">
-            {{#each itemTypes.weapon as |item id|}} {{>
-            "systems/swnr/templates/actors/fragments/weapon.html" item=item
-            damageBonus=(getPCStatModForWeapon actor item false)
-            type=actor.data.type actor=actor}} {{/each}}
-          </ul>
-        </div>
-        <div class="tab armor" data-group="primary" data-tab="armor">
-          <ul>
-            <li class="item armor">
-              <h4>{{localize 'swnr.armor.innateArmorClass'}}</h4>
-              <input
-                type="number"
-                min="1"
-                step="1"
-                name="data.baseAc"
-                value="{{actor.data.baseAc}}"
-                data-dtype="Number"
-              />
-            </li>
-            {{#each itemTypes.armor as |item id|}} {{>
-            "systems/swnr/templates/actors/fragments/armor.html" item=item
-            type=actor.data.type}} {{/each}}
-          </ul>
-        </div>
-        --}}
         <div class="tab inventory" data-group="primary" data-tab="inventory">
           <div class="grid grid-cols-2 gap-1 p-1">
             <div class="text-center text-base">
@@ -585,15 +507,6 @@
             type=actor.data.type}} {{/each}}
           </div>
         </div>
-        {{!--
-        <div class="tab powers" data-group="primary" data-tab="powers">
-          <ul>
-            {{#each itemTypes.power as |item id|}} {{>
-            "systems/swnr/templates/actors/fragments/power.html" item=item
-            type=actor.data.type}} {{/each}}
-          </ul>
-        </div>
-        --}}
       </section>
     </div>
   </div>
