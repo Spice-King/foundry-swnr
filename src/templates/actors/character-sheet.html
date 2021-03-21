@@ -522,30 +522,30 @@
         </div>
         --}}
         <div class="tab inventory" data-group="primary" data-tab="inventory">
-          <div>
-            <div class="invReadied">
-              <span>
-                {{localize 'swnr.item.locationReadied'}}:
-                {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}
-              </span>
-              <div class="meter">
-                <div
-                  class="meterInner"
-                  style="width: min(calc(100% * {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}));"
-                ></div>
-              </div>
+          <div class="grid grid-cols-2 gap-1 p-1">
+            <div class="text-center text-base">
+              {{localize 'swnr.item.locationReadied'}}:
+              {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}
             </div>
-            <div class="invStowed">
-              <span>
-                {{localize 'swnr.item.locationStowed'}}:
-                {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}
-              </span>
-              <div class="meter">
-                <div
-                  class="meterInner"
-                  style="width: min(100%, calc(100% * {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}));"
-                ></div>
-              </div>
+            <div
+              class="w-full border border-green-600 bg-green-200 rounded-full row-start-2"
+            >
+              <div
+                class="h-2 bg-green-400 rounded-full"
+                style="width: min(100%, calc(100% * {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}));"
+              ></div>
+            </div>
+            <div class="text-center text-base">
+              {{localize 'swnr.item.locationStowed'}}:
+              {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}
+            </div>
+            <div
+              class="w-full border border-yellow-600 bg-yellow-200 rounded-full"
+            >
+              <div
+                class="h-2 bg-yellow-400 rounded-full"
+                style="width: min(100%, calc(100% * {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}));"
+              ></div>
             </div>
           </div>
           <ul>
