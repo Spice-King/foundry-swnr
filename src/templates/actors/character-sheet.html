@@ -452,18 +452,18 @@
               <h4 class="text-lg underline text-center">
                 {{localize 'swnr.sheet.tabs.weapons'}}
               </h4>
-              <ul class="space-y-2">
+              <div class="space-y-2">
                 {{#each itemTypes.weapon as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
                 damageBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item true))
                 type=actor.data.type actor=actor }} {{/each}}
-              </ul>
+              </div>
             </div>
             <div class="flex-grow">
               <h4 class="text-lg underline text-center">
                 {{localize 'swnr.sheet.tabs.armor'}}
               </h4>
-              <ul class="flex gap-1 flex-col">
+              <div class="flex gap-1 flex-col">
                 <li class="item armor text-center flex items-center gap-1">
                   <h4>{{localize 'swnr.armor.innateArmorClass'}}</h4>
                   <input
@@ -479,17 +479,17 @@
                 {{#each itemTypes.armor as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/armor.html" item=item
                 type=actor.data.type}} {{/each}}
-              </ul>
+              </div>
             </div>
             <div class="flex-grow">
               <h4 class="text-lg underline text-center">
                 {{localize 'swnr.sheet.tabs.powers'}}
               </h4>
-              <ul class="flex gap-1 flex-col">
+              <div class="flex gap-1 flex-col">
                 {{#each itemTypes.power as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/power.html" item=item
                 type=actor.data.type}} {{/each}}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -548,7 +548,7 @@
               ></div>
             </div>
           </div>
-          <ul class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2">
             {{#each itemTypes.weapon as |item id|}}
             <div class="w-36 flex-grow">
             {{> "systems/swnr/templates/actors/fragments/item.html" type="character" item=item id=id}}
@@ -563,15 +563,15 @@
             {{> "systems/swnr/templates/actors/fragments/item.html" type="character"  item=item id=id}}
             </div>
             {{/each}}
-          </ul>
+          </div>
         </div>
         <div class="tab skills" data-group="primary" data-tab="skills">
           {{#if (ne itemTypes.skill.length 0)}}
-          <ul class="flex gap-2 pt-1 flex-wrap">
+          <div class="flex gap-2 pt-1 flex-wrap">
             {{#each itemTypes.skill as |item id|}} {{>
             "systems/swnr/templates/actors/fragments/skill.html" item=item
             type=actor.data.type}} {{/each}}
-          </ul>
+          </div>
           {{else}}
           <button class="skill-load-button" style="margin-top: 3em">
             No skills? Click here to add some!
@@ -579,11 +579,11 @@
           {{/if}}
         </div>
         <div class="tab foci" data-group="primary" data-tab="foci">
-          <ul>
+          <div class="flex flex-wrap gap-2">
             {{#each itemTypes.focus as |item id|}} {{>
             "systems/swnr/templates/actors/fragments/focus.html" item=item
             type=actor.data.type}} {{/each}}
-          </ul>
+          </div>
         </div>
         {{!--
         <div class="tab powers" data-group="primary" data-tab="powers">
