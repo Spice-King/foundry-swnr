@@ -1,4 +1,4 @@
-<li class="item flex gap-1 flex-wrap h-7 items-center" data-item-id="{{item._id}}">
+<li class="item flex gap-1 flex-wrap items-center" data-item-id="{{item._id}}">
   <object class="w-5 h-5" data="systems/swnr/assets/icons/game-icons.net/item-icons/{{item.type}}.svg" type="image/svg+xml"></object>
   <div class="item-name">{{item.name}}</div>
   <div class="flex gap-1 items-baseline">
@@ -15,7 +15,7 @@
     </div>
     {{/if}} {{#if (eq type 'character')}}
     <div>
-      <select name="items.{{item._id}}.data.location">
+      <select class="rounded-md" name="items.{{item._id}}.data.location">
         {{#select item.data.data.location}}
         <option value="readied">
           {{localize 'swnr.item.locationReadied'}}
