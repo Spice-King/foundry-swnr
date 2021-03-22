@@ -7,6 +7,14 @@ export class BaseSheet extends ItemSheet {
       tabs: [],
     });
   }
+
+  _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
+    html
+      .find(".window-content")
+      .addClass(["cq", "overflow-y-scroll", "relative"]);
+    super._injectHTML(html, options);
+  }
+
   _createEditor(target, editorOptions, initialContent): void {
     editorOptions.height = Math.max(editorOptions.height, 100);
     TextEditor.create(editorOptions, initialContent).then((mce) => {
