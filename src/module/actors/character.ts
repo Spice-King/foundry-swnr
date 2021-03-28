@@ -63,7 +63,8 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
       this.items.filter(
         (i) =>
           i.type === "skill" &&
-          (<Item<SWNRSkillData>>i).data.data.source === "psychic"
+          (<Item<SWNRSkillData>>i).data.data.source.toLocaleLowerCase() ===
+            game.i18n.localize("swnr.skills.labels.psionic").toLocaleLowerCase()
       )
     );
     const effort = data.effort;
