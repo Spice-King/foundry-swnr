@@ -49,27 +49,31 @@
           class="saves col-span-3 flex-shrink-0 flex flex-row justify-between py-1 flex-wrap gap-2"
         >
           <div
-            class="save physicalflex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            data-save-type="physical"
+            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
           >
             v{{actor.data.save.physical}} {{localize
             'swnr.sheet.saves.physical'}}
             <i class="fas fa-dice-d20"></i>
           </div>
           <div
-            class="save evasion flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            data-save-type="evasion"
+            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
           >
             v{{actor.data.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
             <i class="fas fa-dice-d20"></i>
           </div>
           <div
-            class="save mental flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            data-save-type="mental"
+            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
           >
             v{{actor.data.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
             <i class="fas fa-dice-d20"></i>
           </div>
           {{#if useHomebrewLuckSave}}
           <div
-            class="save luck flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            data-save-type="luck"
+            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
           >
             v{{actor.data.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
             <i class="fas fa-dice-d20"></i>

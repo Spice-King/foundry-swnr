@@ -262,7 +262,7 @@ export class CharacterActorSheet extends ActorSheet<
     event.preventDefault();
     console.log(event);
     const e = <HTMLDivElement>event.currentTarget;
-    const save = e.className.replace("save ", "");
+    const save = e.dataset.saveType;
     const target = <number>this.actor.data.data.save[save];
     const template = "systems/swnr/templates/dialogs/roll-save.html";
     const title = game.i18n.format("swnr.titles.savingThrow", {
