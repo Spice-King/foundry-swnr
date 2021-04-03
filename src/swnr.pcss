@@ -21,6 +21,12 @@ input, select, textarea {
 a:hover {
   text-shadow: unset;
 }
+.tabs .item {
+  @apply transition-text-shadow text-shadow text-shadow-transparent hover:text-shadow-gray-600;
+}
+.tabs .item.active {
+  @apply text-shadow-gray-600;
+}
 div.editor .editor-content{
   min-height: 200px;
 }
