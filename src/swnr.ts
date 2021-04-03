@@ -79,7 +79,5 @@ Hooks.once("ready", function () {
   // Do anything once the system is ready
   // Reference a Compendium pack by it's collection ID
   // packImport();
-  game.actors.getName("Test Guy")?.sheet.render(true);
-  game.actors.getName("Test NPC")?.sheet.render(true);
   migrations();
 });
