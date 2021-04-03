@@ -207,6 +207,14 @@ $shadowColor: black;
   }
 }
 
+.dialog-buttons {
+  @apply -m-2 p-2 mt-0 pt-0 bg-gray-200;
+}
+
+button {
+  @apply border border-gray-700 rounded-md p-1 bg-gray-300;
+}
+
 @for $i from 0 to 20 {
   .ammo-$i {
     text-shadow: 0 -1px $shadowColor, -1px 0 $shadowColor, 1px 0 $shadowColor,

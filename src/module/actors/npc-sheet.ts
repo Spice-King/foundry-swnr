@@ -94,20 +94,23 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       await weapon.rollAttack(damageBonus, 0, skill, modifier, burstMode);
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new Dialog({
-      title: game.i18n.format("swnr.dialog.attackRoll", {
-        actorName: this.actor.name,
-        weaponName: weapon.name,
-      }),
-      content: template,
-      buttons: {
-        roll: {
-          label: "Roll",
-          icon: '<i class="fa fa-dice-d20"></i>',
-          callback: doRoll,
+    this.popUpDialog = new Dialog(
+      {
+        title: game.i18n.format("swnr.dialog.attackRoll", {
+          actorName: this.actor.name,
+          weaponName: weapon.name,
+        }),
+        content: template,
+        buttons: {
+          roll: {
+            label: "Roll",
+            icon: '<i class="fa fa-dice-d20"></i>',
+            callback: doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     this.popUpDialog.render(true);
   }
 

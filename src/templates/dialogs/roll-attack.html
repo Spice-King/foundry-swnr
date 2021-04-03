@@ -1,15 +1,15 @@
-<form>
+<form class="bg-gray-200 -m-2 p-2 pb-4 flex gap-1 justify-between">
   {{#if (and weapon.ammo.burst (ne 'none' weapon.ammo.type)) }}
-  <div>
+  <div class="flex flex-col">
     <label for="burstFire">{{localize 'swnr.weapon.burst'}}: </label>
-    <input type="checkbox" name="burstFire" id="burstFire" {{#if
-    burstFireHasAmmo}}checked{{else}}disabled{{/if}}>
+    <input type="checkbox" name="burstFire" id="burstFire" {{checked burstFireHasAmmo}}>
   </div>
   {{/if}}
   {{#if (eq actor.type 'character')}}
-  <div>
+  <div class="flex flex-col">
     <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
-    <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}}>
+    <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}} 
+                class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
       {{#select weapon.skill}}
       <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
       {{#each skills }}
@@ -19,13 +19,14 @@
     </select>
   </div>
   {{else}}
-  <div>
+  <div class="flex flex-col">
     <label for="skilled">{{localize 'swnr.npc.skilled-with-weapon'}}:</label>
     <input type="checkbox" name="skilled" id="skilled" checked />
   </div>
   {{/if}}
-  <div>
+  <div class="flex flex-col">
     <label for="modifier">{{localize 'swnr.chat.modifier'}}: </label>
-    <input name="modifier" type="number" step="1" value="0" />
+    <input name="modifier" type="number" step="1" value="0" 
+                class="w-10 text-center px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"/>
   </div>
 </form>

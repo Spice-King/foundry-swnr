@@ -87,19 +87,22 @@ export class CharacterActorSheet extends ActorSheet<
     const html = await renderTemplate(template, {});
     this.popUpDialog?.close();
 
-    this.popUpDialog = new Dialog({
-      title: game.i18n.format("swnr.dialog.add-bulk-skills", {
-        actor: this.actor.name,
-      }),
-      content: html,
-      default: "addSkills",
-      buttons: {
-        addSkills: {
-          label: game.i18n.localize("swnr.dialog.add-skills"),
-          callback: _addSkills,
+    this.popUpDialog = new Dialog(
+      {
+        title: game.i18n.format("swnr.dialog.add-bulk-skills", {
+          actor: this.actor.name,
+        }),
+        content: html,
+        default: "addSkills",
+        buttons: {
+          addSkills: {
+            label: game.i18n.localize("swnr.dialog.add-skills"),
+            callback: _addSkills,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
   _onItemEdit(event: JQuery.ClickEvent): void {
@@ -242,20 +245,23 @@ export class CharacterActorSheet extends ActorSheet<
     const html = await renderTemplate(template, dialogData);
     this.popUpDialog?.close();
 
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: (button: ButtonData): void => {
-        ui.notifications.error(game.i18n.localize("swnr.roll.skillNeeded"));
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: (button: ButtonData): void => {
+          ui.notifications.error(game.i18n.localize("swnr.roll.skillNeeded"));
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
   async _onSaveThrow(event: JQuery.ClickEvent): Promise<Application> {
@@ -293,20 +299,23 @@ export class CharacterActorSheet extends ActorSheet<
       return roll;
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: () => {
-        return;
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: () => {
+          return;
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
   async _onStatsRoll(event: JQuery.ClickEvent): Promise<Application> {
@@ -377,20 +386,23 @@ export class CharacterActorSheet extends ActorSheet<
       return roll;
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: () => {
-        return;
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: () => {
+          return;
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
   async _onHpRoll(event: JQuery.ClickEvent): Promise<Application> {
@@ -499,20 +511,25 @@ export class CharacterActorSheet extends ActorSheet<
       return roll;
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: () => {
-        return;
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: () => {
+          return;
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      {
+        classes: ["swnr"],
+      }
+    );
     return this.popUpDialog.render(true);
   }
   /** @override */
