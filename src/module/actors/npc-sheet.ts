@@ -81,12 +81,12 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       { actor: this.actor.data, weapon, burstFireHasAmmo: weapon.canBurstFire }
     );
     const doRoll = async (html: JQuery<HTMLElement>) => {
-      const skill =
-        html.find('[name="skilled"]').val() === "on"
-          ? this.actor.data.data.skillBonus
-          : 0;
+      const skill = html.find('[name="skilled"]').prop("checked")
+        ? this.actor.data.data.skillBonus
+        : 0;
       const modifier = parseInt(html.find('[name="modifier"]').val() as string);
-      const burstMode = html.find('[name="burstFire"]')?.val() == "on" ?? false;
+      const burstMode =
+        html.find('[name="burstFire"]')?.prop("checked") ?? false;
       const attackBonus = this.actor.data.data.ab;
       const damageBonus = this.actor.data.data.attacks.bonusDamage;
       console.log({ skill, modifier, burstMode, attackBonus, damageBonus });
