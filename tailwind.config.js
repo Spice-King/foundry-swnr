@@ -7,6 +7,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      transitionProperty: {
+        ["text-shadow"]: "text-shadow",
+      },
       colors: {
         blueGray: colors.blueGray,
         coolGray: colors.coolGray,

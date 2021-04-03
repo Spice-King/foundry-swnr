@@ -8,7 +8,7 @@ module.exports = plugin(
     const colors = theme("colors");
     const defaultShadowColor = "rgb(107, 114, 128)";
     const textShadows = {
-      none: { "text-shadown": "unset" },
+      [".text-shadow-none"]: { "text-shadow": "unset" },
     };
     Object.entries(themeTextShadows).forEach(([rawKey, rawValue]) => {
       const key =
