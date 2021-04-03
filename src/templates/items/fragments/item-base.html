@@ -1,8 +1,9 @@
-<div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 text-center">
   <div>
-    {{localize 'swnr.item.encumbrance'}} :
+    {{localize 'swnr.item.encumbrance'}}:
     <input
       type="number"
+      class="w-10 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       step="1"
       name="data.encumbrance"
       min="0"
@@ -11,37 +12,44 @@
     />
   </div>
   {{#if (eq "item" item.type)}}
-  <div>
+  <div class="flex flex-col items-center">
     {{localize 'swnr.item.quantity'}}:
     <input
       type="number"
+      class="w-10 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       name="data.quantity"
       min="0"
       step="1"
       value="{{data.quantity}}"
     />
   </div>
-  <div>
-    {{localize 'swnr.item.bundledCount'}}
-    <input
-      type="number"
-      step="1"
-      name="data.bundle.amount"
-      min="1"
-      data-dtype="Number"
-      value="{{data.bundle.amount}}"
-    />
-    <input
-      type="checkbox"
-      name="data.bundle.bundled"
-      {{checked
-      data.bundle.bundled}}
-    />
+  <div class="flex flex-wrap gap-2 justify-around">
+    {{localize 'swnr.item.bundledCount'}}:
+    <div class="flex gap-2 items-center">
+      <input
+        type="checkbox"
+        name="data.bundle.bundled"
+        {{checked
+        data.bundle.bundled}}
+      />
+      <input
+        type="number"
+        class="w-10 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1"
+        name="data.bundle.amount"
+        min="1"
+        data-dtype="Number"
+        value="{{data.bundle.amount}}"
+      />
+    </div>
   </div>
   {{/if}}
   <div>
     {{localize 'swnr.item.location'}}:
-    <select name="data.location">
+    <select
+      class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+      name="data.location"
+    >
       {{#select data.location}}
       <option value="readied">{{localize 'swnr.item.locationReadied'}}</option>
       <option value="stowed">{{localize 'swnr.item.locationStowed'}}</option>
@@ -49,10 +57,11 @@
       {{/select}}
     </select>
   </div>
-  <div>
+  <div class="flex flex-col items-center">
     {{localize 'swnr.item.techlevel'}}:
     <input
       type="number"
+      class="w-6 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       step="1"
       name="data.tl"
       min="0"
@@ -60,10 +69,11 @@
       value="{{data.tl}}"
     />
   </div>
-  <div>
+  <div class="flex flex-col items-center">
     {{localize 'swnr.item.cost'}}:
     <input
       type="number"
+      class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       step="1"
       name="data.cost"
       min="0"
@@ -73,7 +83,10 @@
   </div>
   <div>
     {{localize 'swnr.item.quality.label'}}:
-    <select name="data.quality">
+    <select
+      class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+      name="data.quality"
+    >
       {{#select data.quality}}
       <option value="juryRigged">
         {{localize 'swnr.item.quality.juryRigged'}}

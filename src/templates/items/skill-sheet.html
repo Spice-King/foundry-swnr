@@ -1,36 +1,57 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
   {{> "systems/swnr/templates/items/fragments/desc.html"}}
-  <select name="data.defaultStat">
-    {{#select data.defaultStat}}
-    <option value="ask">{{localize 'swnr.sheet.ask'}}</option>
-    {{#*inline "statline"}}
-    <option value="{{name}}">
-      {{localize (concat 'swnr.stat.short.' name)}}
-    </option>
-    {{/inline}}
-    {{> statline name="str"}}
-    {{> statline name="dex"}}
-    {{> statline name="con"}}
-    {{> statline name="int"}}
-    {{> statline name="wis"}}
-    {{> statline name="cha"}}
-    {{/select}}
-  </select>
-  <select name="data.pool">
-    {{#select data.pool}}
-    <option value="ask">{{localize 'swnr.sheet.ask'}}</option>
-    <option value="2d6">2D6</option>
-    <option value="3d6kh2">3D6</option>
-    <option value="4d6kh2">4D6</option>
-    {{/select}}
-  </select>
-  <input
-    type="number"
-    name="data.rank"
-    min="-1"
-    max="4"
-    step="1"
-    value="{{data.rank}}"
-  />
-  <input type="text" name="data.source" value="{{data.source}}" />
+  <div class="flex gap-2 justify-between">
+    <div>
+      <div>Stat:</div>
+      <select
+        name="data.defaultStat"
+        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+      >
+        {{#select data.defaultStat}}
+        <option value="ask">{{localize 'swnr.sheet.ask'}}</option>
+        {{#*inline "statline"}}
+        <option value="{{name}}">
+          {{localize (concat 'swnr.stat.short.' name)}}
+        </option>
+        {{/inline}} {{> statline name="str"}} {{> statline name="dex"}} {{>
+        statline name="con"}} {{> statline name="int"}} {{> statline
+        name="wis"}} {{> statline name="cha"}} {{/select}}
+      </select>
+    </div>
+    <div>
+      <div>Die Pool:</div>
+      <select
+        name="data.pool"
+        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+      >
+        {{#select data.pool}}
+        <option value="ask">{{localize 'swnr.sheet.ask'}}</option>
+        <option value="2d6">2D6</option>
+        <option value="3d6kh2">3D6</option>
+        <option value="4d6kh2">4D6</option>
+        {{/select}}
+      </select>
+    </div>
+    <div>
+      <div>Skill Level:</div>
+      <input
+        type="number"
+        class="px-1 text-center w-8 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.rank"
+        min="-1"
+        max="4"
+        step="1"
+        value="{{data.rank}}"
+      />
+    </div>
+    <div>
+      <div>Source:</div>
+      <input
+        type="text"
+        name="data.source"
+        value="{{data.source}}"
+        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+      />
+    </div>
+  </div>
 </form>

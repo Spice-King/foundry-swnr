@@ -1,14 +1,20 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
   {{> "systems/swnr/templates/items/fragments/desc.html"}}
-  <div style="display: flex">
-    <div style="align-items: baseline; display: flex; flex-grow: 2">
-      <label for="data.source">{{localize 'swnr.sheet.source'}}: </label
-      ><input type="text" name="data.source" value="{{data.source}}" />
+  <div class="flex gap-1">
+    <div>
+      <label for="data.source">{{localize 'swnr.sheet.source'}}: </label>
+      <input
+        type="text"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
+        name="data.source"
+        value="{{data.source}}"
+      />
     </div>
-    <div style="margin-right: 1rem">
-      <label for="">{{localize 'swnr.sheet.level'}}: </label
-      ><input
+    <div>
+      <label for="">{{localize 'swnr.sheet.level'}}: </label>
+      <input
         type="number"
+        class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-opacity-75 rounded-md"
         name="data.level"
         value="{{data.level}}"
         step="1"
