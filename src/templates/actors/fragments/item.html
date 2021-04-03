@@ -15,7 +15,7 @@
     </div>
     {{/if}} {{#if (eq type 'character')}}
     <div>
-      <select class="rounded-md" name="items.{{item._id}}.data.location">
+      <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="items.{{item._id}}.data.location">
         {{#select item.data.data.location}}
         <option value="readied">
           {{localize 'swnr.item.locationReadied'}}
