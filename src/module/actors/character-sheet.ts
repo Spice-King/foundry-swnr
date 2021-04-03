@@ -264,11 +264,14 @@ export class CharacterActorSheet extends ActorSheet<
     );
     return this.popUpDialog.render(true);
   }
-  async _onSaveThrow(event: JQuery.ClickEvent): Promise<Application> {
+  async _onSaveThrow(
+    event: JQuery.ClickEvent
+  ): Promise<Application | undefined> {
     event.preventDefault();
     console.log(event);
     const e = <HTMLDivElement>event.currentTarget;
     const save = e.dataset.saveType;
+    if (!save) return;
     const target = <number>this.actor.data.data.save[save];
     const template = "systems/swnr/templates/dialogs/roll-save.html";
     const title = game.i18n.format("swnr.titles.savingThrow", {
