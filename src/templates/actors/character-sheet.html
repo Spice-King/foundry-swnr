@@ -397,8 +397,10 @@
               type="text"
             />
           </div>
-          {{editor content=data.biography target="data.biography" button=true
-          owner=owner editable=editable}}
+          <div class="bg-gray-300 border border-gray-700 rounded-md p-2 mt-4">
+            {{editor content=data.biography target="data.biography" button=true
+            owner=owner editable=editable}}
+          </div>
         </div>
         <div class="tab combat" data-group="primary" data-tab="combat">
           <div class="flex gap-1">
