@@ -69,6 +69,7 @@ Actor:
     employer: ""
     biography: ""
     credits:
+      debt: 0
       balance: 0
       owed: 0
   npc:

@@ -255,11 +255,22 @@
             class="w-20 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             type="number"
             step="1"
+            name="data.credits.debt"
+            data-dtype="Number"
+            value="{{data.credits.debt}}"
+          />
+          <label for="data.credits.debt">{{localize 'swnr.credits.debts'}}</label>
+        </div>
+        <div class="flex flex-col items-center">
+          <input
+            class="w-20 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+            type="number"
+            step="1"
             name="data.credits.balance"
             data-dtype="Number"
             value="{{data.credits.balance}}"
           />
-          <label for="data.credits.balance">Credits</label>
+          <label for="data.credits.balance">{{localize "swnr.credits.balance"}}</label>
         </div>
         <div class="flex flex-col items-center">
           <input
@@ -270,7 +281,7 @@
             data-dtype="Number"
             value="{{data.credits.owed}}"
           />
-          <label for="data.credits.owed">Owed</label>
+          <label for="data.credits.owed">{{localize "swnr.credits.owed"}}</label>
         </div>
         <div></div>
       </div>
@@ -411,8 +422,8 @@
               <div class="space-y-2">
                 {{#each itemTypes.weapon as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
-                damageBonus=(concat actor.data.data.ab (getPCStatModForWeapon actor item true))
-                type=actor.data.type actor=actor }} {{/each}}
+                damageBonus=(concat actor.data.data.ab (getPCStatModForWeapon
+                actor item true)) type=actor.data.type actor=actor }} {{/each}}
               </div>
             </div>
             <div class="flex-grow">
