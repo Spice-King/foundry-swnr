@@ -257,7 +257,7 @@ async function buildEntities(cb: () => void) {
 /**
  * Build Migration list
  */
-function buildMigrationList(cb: () => void) {
+function buildMigrationList(cb: (error: unknown) => void) {
   glob("src/migrations/**/*.ts", (e, fileNames) => {
     const out = JSON.stringify(
       fileNames.map((f) => {
@@ -267,7 +267,10 @@ function buildMigrationList(cb: () => void) {
         return "./" + path.join(dirname, name);
       })
     );
-    fs.writeFile("dist/migrations.json", out, cb);
+    fs.mkdir("dist", { recursive: true }, (error) => {
+      if (error) return cb(error);
+      fs.writeFile("dist/migrations.json", out, cb);
+    });
   });
 }
 
