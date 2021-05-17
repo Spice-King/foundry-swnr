@@ -1,0 +1,17 @@
+_id: t5OVvBgo6zZ0x1Gz
+data:
+  ac: 12
+  cost: 2500
+  description: >-
+    Sleeper drones are built to tarry on station for long periods. They have the
+    Stationkeeping fitting as an integral part of their design, and when
+    hovering their power use slows to a trickle. One day of hovering draws only
+    five minutes worth of power from its cell.
+  encumbrance: 2
+  fittings: 4
+  hp: 8
+  speed: 30
+  tl: 4
+  range: 100
+name: Sleeper
+type: droneModel

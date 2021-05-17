@@ -1,0 +1,16 @@
+_id: 7oUZIVgxIOIJ161m
+data:
+  ac: 12
+  cost: 250
+  description: >-
+    Primitive drones represent the best flying portable drone technology for TL3
+    worlds. While fragile, weak, and short-ranged, they are also relatively
+    cheap.
+  encumbrance: 2
+  fittings: 1
+  hp: 1
+  speed: 30
+  tl: 3
+  range: 0.5
+name: Primitive Drone
+type: droneModel

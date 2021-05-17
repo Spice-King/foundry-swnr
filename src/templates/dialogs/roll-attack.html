@@ -5,20 +5,37 @@
     <input type="checkbox" name="burstFire" id="burstFire" {{checked burstFireHasAmmo}}>
   </div>
   {{/if}}
-  {{#if (eq actor.type 'character')}}
+  {{#if (or
+    (eq actor.type 'character')
+    (and (eq actor.type 'drone') (getActor actor.data.operator) (eq (getActorProp actor.data.operator 'data.type') 'character')))}}
   <div class="flex flex-col">
+    {{#if (eq actor.type 'character')}}
     <label for="skill">{{localize 'swnr.sheet.skill'}}: </label>
-    <select name="skill" {{#if weapon.data.data.skill}} disabled {{else}} required {{/if}} 
+    {{else}}
+    <label for="operator-skill">{{localize 'swnr.drone.operator-skill'}}: </label>
+    {{/if}}
+    <select name="skill" required
                 class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
-      {{#select weapon.skill}}
-      <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
-      {{#each skills }}
-      <option value="{{this.id}}">{{this.name}} {{this.data.data.rank}}</option>
+      {{#select skill}}
+      <option value="">{{localize 'swnr.weapon.noSetSkill'}}</option>
+      {{#if (eq actor.type 'character')}}
+      {{#each skills}}
+      <option value="{{this.id}}">
+        {{this.name}} {{this.data.data.rank}}
+      </option>
       {{/each}}
+      {{else}}
+      {{#each (getActorProp actor.data.operator "itemTypes.skill")}}
+      <option value="{{this.id}}">
+        {{this.name}} {{this.data.data.rank}}
+      </option>
+      {{/each}}
+      {{/if}}
       {{/select}}
     </select>
   </div>
-  {{else}}
+  {{/if}}
+  {{#if (eq actor.type 'npc')}}
   <div class="flex flex-col">
     <label for="skilled">{{localize 'swnr.npc.skilled-with-weapon'}}:</label>
     <input type="checkbox" name="skilled" id="skilled" checked />

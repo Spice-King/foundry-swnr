@@ -1,0 +1,222 @@
+<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+  {{> "systems/swnr/templates/items/fragments/name.html"}}
+  {{> "systems/swnr/templates/fragments/desc.html"}}
+  {{> "systems/swnr/templates/items/fragments/item-base.html"}}
+  <div class="grid m-2 p-2 border border-black grid-cols-2 hidden">
+    <div class="bg-yellow-400">Damage</div>
+    <div>Shock</div>
+    <div>stats/skills</div>
+    <div>ammo</div>
+    <div>quirks</div>
+  </div>
+  <div class="grid grid-cols-2">
+    <div class="flex flex-wrap gap-1">
+      <h3 class="text-base w-full">Damage:</h3>
+      <div>
+        {{!-- <div>{{localize 'swnr.weapon.damageFormula'}}:</div> --}}
+        <div>Formula:</div>
+        <input
+          class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="text"
+          name="data.damage"
+          value="{{data.damage}}"
+        />
+      </div>
+      <div>
+        <div>{{localize 'swnr.weapon.attackBonus'}}:</div>
+        <input
+          type="number"
+          class="w-10 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.ab"
+          step="1"
+          data-dtype="Number"
+          value="{{data.ab}}"
+        />
+      </div>
+    </div>
+    {{#if (ne item.type "droneWeapon")}}
+    <div class="grid md:grid-cols-2 gap-1">
+      <h3 class="text-base w-full md:col-span-2">
+        {{localize 'swnr.weapon.shock.label'}}:
+      </h3>
+      <div>
+        <div>{{localize 'swnr.weapon.shock.damage'}}:</div>
+        <input
+          type="number"
+          class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          name="data.shock.dmg"
+          value="{{data.shock.dmg}}"
+          min="0"
+          step="1"
+        />
+      </div>
+      <div>
+        <div>{{localize 'swnr.weapon.shock.ac'}}:</div>
+        <input class="w-8 text-center px-1.5 py-3 border border-gray-800
+        bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75
+        rounded-md" type="number" name="data.shock.ac" value="{{data.shock.ac}}"
+        min="10" step="1" {{#if (lte data.shock.dmg 0)}} disabled {{/if}}>
+      </div>
+    </div>
+    <div>
+      <div>{{localize 'swnr.sheet.stats'}}:</div>
+      <select
+        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.stat"
+      >
+        {{#select data.stat}}
+        <option value="str">{{localize 'swnr.stat.long.str'}}</option>
+        <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
+        <option value="con">{{localize 'swnr.stat.long.con'}}</option>
+        <option value="int">{{localize 'swnr.stat.long.int'}}</option>
+        <option value="wis">{{localize 'swnr.stat.long.wis'}}</option>
+        <option value="cha">{{localize 'swnr.stat.long.cha'}}</option>
+        {{/select}}
+      </select>
+      <select
+        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.secondStat"
+      >
+        {{#select data.secondStat}}
+        <option value="none">{{localize 'swnr.ammo.none'}}</option>
+        <option value="str">{{localize 'swnr.stat.long.str'}}</option>
+        <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
+        <option value="con">{{localize 'swnr.stat.long.con'}}</option>
+        <option value="int">{{localize 'swnr.stat.long.int'}}</option>
+        <option value="wis">{{localize 'swnr.stat.long.wis'}}</option>
+        <option value="cha">{{localize 'swnr.stat.long.cha'}}</option>
+        {{/select}}
+      </select>
+    </div>
+    {{/if}}
+    {{#if (and owner (or (ne item.type "droneWeapon") (getActor actor.data.data.operator)))}}
+    <div>
+      {{#if (ne item.type "droneWeapon")}}
+      <div>{{localize 'swnr.sheet.skill'}}:</div>
+      {{else}}
+      <div>{{localize 'swnr.drone.operator-skill'}}:</div>
+      {{/if}}
+      <select
+        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        name="data.skill"
+      >
+        {{#select data.skill}}
+        <option value="">{{localize 'swnr.weapon.noSetSkill'}}</option>
+        {{#if (ne item.type "droneWeapon")}}
+        {{#each actor.itemTypes.skill}}
+        <option value="{{this.id}}">
+          {{this.name}} {{this.data.data.rank}}
+        </option>
+        {{/each}}
+        {{else}}
+        {{#each (getActorProp actor.data.data.operator "itemTypes.skill")}}
+        <option value="{{this.id}}">
+          {{this.name}} {{this.data.data.rank}}
+        </option>
+        {{/each}}
+        {{/if}}
+        {{/select}}
+      </select>
+    </div>
+    {{/if}}
+    <div class="flex flex-wrap gap-1">
+      <h3 class="text-base w-full">{{localize 'swnr.weapon.ammo'}}:</h3>
+      <div>
+        <div> {{localize 'swnr.sheet.ammoType'}}: </div>
+        <select
+          class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="data.ammo.type"
+        >
+          {{#select data.ammo.type}}
+          <option value="none">{{localize 'swnr.ammo.none'}}</option>
+          <option value="typeAPower">
+            {{localize 'swnr.ammo.typeAPower'}}
+          </option>
+          <option value="typeBPower">
+            {{localize 'swnr.ammo.typeBPower'}}
+          </option>
+          <option value="ammo">{{localize 'swnr.ammo.ammo'}}</option>
+          <option value="missile">{{localize 'swnr.ammo.missile'}}</option>
+          <option value="special">{{localize 'swnr.ammo.special'}}</option>
+          <option value="infinite">{{localize 'swnr.ammo.infinite'}}</option>
+          {{/select}}
+        </select>
+      </div>
+      {{#if (and (ne data.ammo.type "none") (ne data.ammo.type "infinite"))}}
+      <div class="pl-2">
+        {{localize 'swnr.sheet.magazine'}}:
+        <div class="flex gap-1 items-center">
+          <div
+            class="flex border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md items-center"
+          >
+            <input
+              type="number"
+              class="w-10 text-right bg-transparent"
+              name="data.ammo.value"
+              max="{{data.ammo.max}}"
+              value="{{data.ammo.value}}"
+              data-dtype="Number"
+              step="1"
+              min="0"
+            />
+            <span>/</span>
+            <input
+              type="number"
+              class="w-10 text-left bg-transparent"
+              name="data.ammo.max"
+              value="{{data.ammo.max}}"
+              data-dtype="Number"
+              step="1"
+              min="0"
+            />
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    <div class="-flex grid grid-cols-2 flex-wrap gap-1">
+      <div class="w-full text-base col-span-2">Quirks:</div>
+      {{#if (ne data.ammo.type "none")}}
+      <label class="flex items-center gap-1">
+        <input
+          type="checkbox"
+          name="data.ammo.longReload"
+          {{checked
+          data.ammo.longReload}}
+        />
+        <div>{{localize 'swnr.sheet.longReload'}}</div>
+      </label>
+      <label class="flex items-center gap-1">
+        <input
+          type="checkbox"
+          name="data.ammo.burst"
+          {{checked
+          data.ammo.burst}}
+        />
+        <div>{{localize 'swnr.sheet.burst'}}</div>
+      </label>
+
+      <label class="flex items-center gap-1">
+        <input
+          type="checkbox"
+          name="data.ammo.suppress"
+          {{checked
+          data.ammo.suppress}}
+        />
+        <div>{{localize 'swnr.sheet.suppress'}}</div>
+      </label>
+      {{/if}}
+      {{#if (ne item.type "droneWeapon")}}
+      <label class="flex items-center gap-1">
+        <input
+          type="checkbox"
+          name="data.skillBoostsDamage"
+          {{checked
+          data.skillBoostsDamage}}
+      />
+        <div>{{localize 'swnr.weapon.skillAddDamage'}}</div>
+      </label>
+      {{/if}}
+    </div>
+  </div>
+</form>

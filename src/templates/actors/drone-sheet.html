@@ -1,0 +1,267 @@
+<form class="{{cssClass}} bg-gray-200 -m-2 p-2 space-y-2">
+  <div>
+    <div class="flex gap-2">
+      <div class="flex-shrink-0 h-16 hidden md:block md:w-16">
+        <img
+          class="shadow-md bg-gray-100 h-full w-full object-contain"
+          src="{{actor.img}}"
+          title="{{actor.name}}"
+          data-edit="img"
+        />
+      </div>
+      <div class="flex-grow grid grid-cols-1 lg:grid-cols-2 items-center gap-2">
+        <input
+          class="text-2xl px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          name="name"
+          type="text"
+          value="{{actor.name}}"
+          placeholder="{{localize "swnr.sheet.name"}}"
+        />
+        <h2 class="flex items-center gap-2">
+          <select
+            class="model-select flex-grow w-full border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+            name="data.model"
+          >
+          {{#select data.model}}
+          {{#each modelIndex as | model | }}
+            <option value="{{model._id}}">
+              {{model.name}}
+            </option>
+          {{/each}}
+            <option value="other">
+              {{localize "swnr.drone.other"}}
+            </option>
+          {{/select}}
+          </select>
+        </h2>
+        <div class="flex flex-row col-span-2">
+          <span class="hidden sm:block m-auto align-middle whitespace-nowrap">
+            {{localize "swnr.drone.operated"}}&nbsp;
+          </span>
+          <select
+            class="operator-select flex-grow w-full border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+            name="data.operator"
+          >
+            {{#select data.operator}}
+            {{#unless (or (eq data.operator "expertSystem") (eq data.operator "vi") (getActor data.operator))}}
+            <option>
+              {{localize "swnr.drone.operator.unknown"}}
+            </option>
+            {{/unless}}
+            <option value="expertSystem">
+              {{localize "swnr.drone.operator.expertSystem"}}
+            </option>
+            <option value="vi">
+              {{localize "swnr.drone.operator.vi"}}
+            </option>
+            {{#each (game "actors") as |otherActor|}}
+              {{#unless (eq otherActor.data.type "drone")}}
+              <option value="{{otherActor.data._id}}">
+                {{otherActor.data.name}}
+              </option>
+              {{/unless}}
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
+      </div>
+      <div class="flex-shrink-0 h-16 hidden md:block md:w-16">
+        {{#if (eq data.operator "expertSystem")}}
+        <img
+          class="shadow-md bg-gray-100 h-full w-full object-contain"
+          src="systems/swnr/assets/icons/game-icons.net/item-icons/expertSystem.svg"
+          title="Expert System"
+        />
+        {{else if (eq data.operator "vi")}}
+        <img
+          class="shadow-md bg-gray-100 h-full w-full object-contain"
+          src="systems/swnr/assets/icons/game-icons.net/item-icons/expertSystem.svg"
+          title="VI"
+        />
+        {{else}}
+          {{#if (getActor data.operator)}}
+          <img
+            class="shadow-md bg-gray-100 h-full w-full object-contain"
+            src="{{getActorProp data.operator "img"}}"
+            title="{{getActorProp data.operator "name"}}"
+          />
+          {{else}}
+          <img
+            class="shadow-md bg-gray-100 h-full w-full object-contain"
+            src="systems/swnr/assets/icons/game-icons.net/item-icons/unknown.svg"
+            title="unknown"
+          />
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 justify-between w-full border p-1 gap-2 bg-coolGray-300 border-coolGray-600 rounded-md">
+    <div class="flex flex-col gap-1">
+      <h3 class="text-lg">{{localize "swnr.sheet.stats"}}</h3>
+      <div>
+        {{localize "swnr.sheet.hp"}}:
+        <input
+          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          type="number"
+          name="data.health.value"
+          min="0"
+          step="1"
+          value="{{data.health.value}}"
+        />/<input
+          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          type="number"
+          name="data.health.max"
+          min="0"
+          step="1"
+          value="{{data.health.max}}"
+        />
+      </div>
+      <div>
+        {{localize "swnr.sheet.armor-class"}}:
+        <input
+          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          type="number"
+          name="data.baseAc"
+          min="0"
+          step="1"
+          value="{{data.baseAc}}"
+        />
+      </div>
+      <div>
+        {{localize "swnr.drone.fittings"}}:
+        <input
+          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+          type="number"
+          name="data.fittings"
+          min="0"
+          step="1"
+          value="{{data.fittings}}"
+        />
+      </div>
+      <div class="flex gap-1">
+        <span class="my-auto">
+          {{localize "swnr.sheet.movement"}}:
+        </span>
+        <div class="flex w-16">
+          <input
+            class="border border-r-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-l-md text-right"
+            type="number"
+            name="data.speed"
+            min="0"
+            step="1"
+            value="{{data.speed}}"
+          />
+          <div
+            class="border border-l-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
+          >
+            {{localize "swnr.units.meters"}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-1">
+      <h3 class="text-lg">{{localize 'swnr.drone.operational'}}</h3>
+      <div class="flex gap-1">
+        <span class="my-auto">
+          {{localize "swnr.item.cost"}}:
+        </span>
+        <div class="flex w-28">
+          <input
+            class="border border-r-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-l-md text-right"
+            type="number"
+            name="data.cost"
+            min="0"
+            step="1"
+            value="{{data.cost}}"
+          />
+          <div
+            class="border border-l-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
+          >
+            {{localize "swnr.units.credits"}}
+          </div>
+        </div>
+      </div>
+      <div>
+        {{localize "swnr.drone.encumbrance"}}:
+        <input
+          class="border border-gray-800 px-1 text-center bg-gray-400 bg-opacity-75 rounded-md w-8"
+          type="number"
+          name="data.encumbrance"
+          min="0"
+          step="1"
+          value="{{data.encumbrance}}"
+        />
+      </div>
+      <div class="flex gap-1">
+        <span class="my-auto">
+          {{localize "swnr.drone.range"}}:
+        </span>
+        <div class="flex w-20">
+          <input
+            class="border border-r-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-l-md text-right"
+            type="number"
+            name="data.range"
+            min="0"
+            step="1"
+            value="{{data.range}}"
+          />
+          <div
+            class="border border-l-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
+          >
+            {{localize "swnr.units.kilometers"}}
+          </div>
+        </div>
+      </div>
+      <div>
+        {{localize "swnr.drone.tl"}}:
+        <input
+          class="border border-gray-800 px-1 text-center bg-gray-400 bg-opacity-75 rounded-md w-8"
+          type="number"
+          name="data.tl"
+          min="0"
+          step="1"
+          value="{{data.tl}}"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 justify-between w-full border p-1 gap-2 bg-trueGray-300 border-trueGray-600 rounded-md">
+    <div class="flex flex-col gap-1">
+      <div class="flex flex-col md:flex-row">
+        <h3 class="text-lg">{{localize "swnr.drone.fittings"}}:&nbsp{{itemTypes.droneFitting.length}}/{{data.fittings}}&nbsp</h3>
+        <div class="w-full m-auto border border-yellow-600 bg-yellow-200 rounded-full">
+          <div
+            class="h-2 bg-yellow-400 rounded-full"
+            style="width: min(100%, calc(100% * {{itemTypes.droneFitting.length}}/{{data.fittings}}));"
+          ></div>
+        </div>
+      </div>
+      <ul class="flex flex-col gap-0.5">
+        {{#each itemTypes.droneFitting as |item|}}
+        {{> "systems/swnr/templates/actors/fragments/item.html" type=actor.data.type item=item}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="flex flex-col gap-1">
+      <div class="flex flex-col md:flex-row">
+        <h3 class="text-lg">{{localize "swnr.drone.weapons"}}:&nbsp{{reduceNum
+                              itemTypes.droneWeapon "data.data.encumbrance"}}/{{filterLength
+                              itemTypes.droneFitting (localize "swnr.drone.weaponFitting") "name"}}&nbsp</h3>
+        <div class="w-full m-auto border border-green-600 bg-green-200 rounded-full">
+          <div
+            class="h-2 bg-green-400 rounded-full"
+            style="width: min(100%, calc(100% * {{reduceNum itemTypes.droneWeapon "data.data.encumbrance"}}/{{filterLength itemTypes.droneFitting "Weapon Fitting" "name"}}));"
+          ></div>
+        </div>
+      </div>
+      <ul class="flex flex-col gap-0.5">
+        {{#each itemTypes.droneWeapon as |item|}}
+        {{> "systems/swnr/templates/actors/fragments/weapon.html" item=item damageBonus=0 type=actor.data.type actor=actor}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  </div>
+  {{> "systems/swnr/templates/fragments/desc.html"}}
+</form>

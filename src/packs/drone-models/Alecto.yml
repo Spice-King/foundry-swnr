@@ -1,0 +1,19 @@
+_id: xHntUVDsElBuBz6b
+data:
+  ac: 18
+  cost: 50000
+  description: >-
+    The Alecto model of drone examples one way that pretech scientists attempted
+    to sidestep the limits of quantum ECM on the modern battlefield. Every
+    Alecto is a full-fledged VI, an expert system so sophisticated as to seem
+    almost sentient. Its self-reinforcing cognition allows it to operate even
+    when cut off from external signals by quantum ECM. Salvaged Alectos have all
+    exhibited "female" personalities.
+  encumbrance: 4
+  fittings: 4
+  hp: 30
+  speed: 30
+  tl: 5
+  range: 5000
+name: Alecto
+type: droneModel

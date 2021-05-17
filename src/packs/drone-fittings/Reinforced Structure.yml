@@ -1,0 +1,9 @@
+_id: 5jre97nTWo4yp7hD
+data:
+  cost: 1000
+  description: >-
+    The drone is equipped with heavier plating and a sturdier internal frame.
+    Its hit points are increased by 50%, rounded up.
+  tl: 4
+name: Reinforced Structure
+type: droneFitting

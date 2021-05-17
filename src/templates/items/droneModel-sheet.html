@@ -1,0 +1,120 @@
+<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+  {{> "systems/swnr/templates/items/fragments/name.html"}}
+  {{> "systems/swnr/templates/fragments/desc.html"}}
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 text-center">
+    <div>
+      {{localize 'swnr.item.encumbrance'}}:
+      <input
+        type="number"
+        class="w-10 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1"
+        name="data.encumbrance"
+        min="0"
+        data-dtype="Number"
+        value="{{data.encumbrance}}"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.item.techlevel'}}:
+      <input
+        type="number"
+        class="w-6 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1"
+        name="data.tl"
+        min="0"
+        data-dtype="Number"
+        value="{{data.tl}}"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.item.cost'}}:
+      <div class="flex w-28">
+        <input
+          class="border border-r-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-l-md text-right"
+          type="number"
+          name="data.cost"
+          min="0"
+          step="1"
+          value="{{data.cost}}"
+        />
+        <div
+          class="border border-l-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
+        >
+          {{localize "swnr.units.credits"}}
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.armor-class'}}:
+      <input
+        type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1"
+        name="data.ac"
+        min="0"
+        data-dtype="Number"
+        value="{{data.ac}}"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.drone.fittings'}}:
+      <input
+        type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1"
+        name="data.fittings"
+        min="0"
+        data-dtype="Number"
+        value="{{data.fittings}}"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.hp'}}:
+      <input
+        type="number"
+        class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        step="1"
+        name="data.hp"
+        min="0"
+        data-dtype="Number"
+        value="{{data.hp}}"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.sheet.movement'}}:
+      <div class="flex w-16">
+        <input
+          class="border border-r-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-l-md text-right"
+          type="number"
+          name="data.speed"
+          min="0"
+          step="1"
+          value="{{data.speed}}"
+        />
+        <div
+          class="border border-l-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
+        >
+          {{localize "swnr.units.meters"}}
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center">
+      {{localize 'swnr.drone.range'}}:
+        <div class="flex w-20">
+        <input
+          class="border border-r-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-l-md text-right"
+          type="number"
+          name="data.range"
+          min="0"
+          step="1"
+          value="{{data.range}}"
+        />
+        <div
+          class="border border-l-0 border-gray-800 bg-gray-400 bg-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
+        >
+          {{localize "swnr.units.kilometers"}}
+        </div>
+      </div> 
+    </div>
+  </div>
+</form>

@@ -430,6 +430,9 @@ swnr:
     attackRoll: "{actorName} attacking with {weaponName}?"
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
+    cancel: Cancel
+    reconfigureDroneModel: Reconfigure model for {actor}?
+    ok: Ok
   roll:
     skillNeeded: Hey! You need to pick a skill!
   armor:
@@ -442,6 +445,26 @@ swnr:
     innateArmorClass: Innate Armor Class
     equipped: Equipped
     shield: Counts as a shield
+  drone:
+    operator:
+      expertSystem: Expert System
+      vi: VI (Alecto, etc)
+      unknown: Unknown
+    operated: Operated By
+    fittings: Fittings
+    weapon-fitting: Weapon Fitting
+    operational: Operational
+    encumbrance: Encumbrance
+    range: Range
+    tl: TL
+    weapons: Weapons
+    drone: Drone
+    control-unit:
+      name: Drone Control Unit
+      text: >-
+        A handheld control unit that comes with a drone.
+    operator-skill: Operator Skill
+    other: Other
   npc:
     reaction:
       unknown: Unknown
@@ -483,3 +506,7 @@ swnr:
     owed: Owed
   deleteTitle: Delete {name}?
   deleteContent: Are you sure you want to delete {name} from the actor {actor}?
+  units:
+    meters: m
+    kilometers: km
+    credits: credits

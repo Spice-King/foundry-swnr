@@ -1,4 +1,5 @@
 import { SWNRCharacterActor } from "./character";
+import { SWNRDroneActor } from "./drone";
 import {
   calculateStats,
   combineRolls,
@@ -591,6 +592,29 @@ export class CharacterActorSheet extends ActorSheet<
         this.actor.updateEmbeddedEntity("OwnedItem", element);
       }
     }
+  }
+
+  /** @override */
+  async _onDropItemCreate(
+    itemData: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    // reject drone fittings and models
+    if ((itemData.type as string).startsWith("drone")) return false;
+    else return super._onDropItemCreate(itemData);
+  }
+
+  /** @override */
+  async _onDropActor(
+    event: Event,
+    data: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    const actor = game.actors.get(data.id as string);
+    if ((await super._onDropActor(event, data)) == false) return false;
+    else if (actor.data.type == "drone")
+      return Promise.all([
+        this.actor.createOwnedItem(SWNRDroneActor.makeDroneItem(actor)),
+        this.actor.createOwnedItem(SWNRDroneActor.makeDroneControlUnit(actor)),
+      ]);
   }
 }
 Hooks.on(

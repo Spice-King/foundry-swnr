@@ -1,0 +1,15 @@
+_id: Khg4KeoUHFv0xORa
+data:
+  ac: 13
+  cost: 1000
+  description: >-
+    Stalker drones are the default TL4 workhorses of drone-kind and are
+    available on most modern worlds.
+  encumbrance: 2
+  fittings: 3
+  hp: 5
+  speed: 30
+  tl: 4
+  range: 2
+name: Stalker
+type: droneModel

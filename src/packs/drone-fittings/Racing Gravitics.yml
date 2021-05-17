@@ -1,0 +1,10 @@
+_id: G9tayKyTk8HULizE
+data:
+  cost: 2000
+  description: >-
+    The drone is tuned for extra speed. Its flight endurance is halved, but it
+    can now move up to 60 meters per combat round and fly at up to 200 kph out
+    of combat.
+  tl: 4
+name: Racing Gravitics
+type: droneFitting

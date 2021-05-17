@@ -1,0 +1,11 @@
+_id: PCcpZzldIfKL2Kvw
+data:
+  cost: 1000
+  description: >-
+    The drone does not need to be constantly controlled; when the operator does
+    not spend a Main Action to pilot it, it simply remains stationary. If
+    equipped with an Observation Suite, it can ping the operator if any
+    anomalous reading is obtained.
+  tl: 4
+name: Stationkeeping
+type: droneFitting

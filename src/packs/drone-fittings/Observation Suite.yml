@@ -1,0 +1,12 @@
+_id: zhvuANlaTd2bggZ3
+data:
+  cost: 250
+  description: >-
+    All drones are wired for basic camera and sound, but this suite contains a
+    full-spectrum UV/IR visual package, remote sound sensors, and
+    radiation/chemical detectors. The drone can focus on conversations or facial
+    expressions from up to 2 kilometers away and can operate even in the
+    complete absence of visible light.
+  tl: 3
+name: Observation Suite
+type: droneFitting
