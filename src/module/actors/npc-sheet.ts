@@ -1,4 +1,5 @@
 import { SWNRNPCData } from "../types";
+import { SWNRDroneActor } from "./drone";
 import { SWNRNPCActor } from "./npc";
 import { SWNRWeapon } from "../items/weapon";
 
@@ -91,7 +92,14 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       const damageBonus = this.actor.data.data.attacks.bonusDamage;
       console.log({ skill, modifier, burstMode, attackBonus, damageBonus });
 
-      await weapon.rollAttack(damageBonus, 0, skill, modifier, burstMode);
+      await weapon.rollAttack(
+        attackBonus,
+        damageBonus,
+        0,
+        skill,
+        modifier,
+        burstMode
+      );
     };
     this.popUpDialog?.close();
     this.popUpDialog = new Dialog(
@@ -256,6 +264,29 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
         this.actor.updateEmbeddedEntity("OwnedItem", element);
       }
     }
+  }
+
+  /** @override */
+  async _onDropItemCreate(
+    itemData: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    // reject drone fittings
+    if (itemData["type"] == "droneFitting") return false;
+    else return super._onDropItemCreate(itemData);
+  }
+
+  /** @override */
+  async _onDropActor(
+    event: Event,
+    data: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    const actor = game.actors.get(data["id"] as string);
+    if ((await super._onDropActor(event, data)) == false) return false;
+    else if (actor.data.type == "drone")
+      return Promise.all([
+        this.actor.createOwnedItem(SWNRDroneActor.makeDroneItem(actor)),
+        this.actor.createOwnedItem(SWNRDroneActor.makeDroneControlUnit(actor)),
+      ]);
   }
 }
 

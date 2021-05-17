@@ -9,12 +9,14 @@ declare interface SWNRStat {
   total: number;
 }
 declare type SWNRItemTypes = "";
-declare interface SWNRLiving {
+declare interface SWNRCombatantData {
   health: {
     value: number;
     max: number;
   };
   baseAc: number;
+}
+declare interface SWNRLiving extends SWNRCombatantData {
   ab: number;
   systemStrain: {
     value: number;
@@ -66,6 +68,31 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   stats: { [key in SWNRStats]: SWNRStat };
 }
 
+declare interface SWNRDroneData extends SWNRCombatantData {
+  model:
+    | "primitiveDrone"
+    | "voidHawk"
+    | "stalker"
+    | "cuttlefish"
+    | "ghostwalker"
+    | "sleeper"
+    | "pax"
+    | "alecto"
+    | "other";
+  operator: string;
+  fittings: number;
+  speed: number;
+  cost: number;
+  encumbrance: number;
+  range: number;
+  tl: number;
+  description: string;
+  itemTypes: {
+    droneWeapon: SWNRBaseItem<SWNRDroneWeaponData>[];
+    droneFitting: SWNRBaseItem<SWNRDroneFittingData>[];
+  };
+}
+
 declare interface SWNRNPCData extends SWNRLiving {
   armorType: "powered" | "combat" | "street" | "primitive";
   skillBonus: number;
@@ -99,13 +126,20 @@ declare interface SWNRDecData {
   description: string;
 }
 
-declare interface SWNRBaseItemData extends SWNRDecData {
-  encumbrance: number;
+declare interface SWNRMinimalItemData extends SWNRDecData {
   cost: number;
   tl: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+declare interface SWNRBaseItemData extends SWNRMinimalItemData {
+  encumbrance: number;
+}
+
+declare interface SWNRCharacterItemData extends SWNRBaseItemData {
   location: "readied" | "stowed" | "other";
   quality: "stock" | "masterwork" | "makeshift";
 }
+
 declare interface SWNRSkillData extends SWNRDecData {
   pool: "ask" | "2d6" | "3d6kh2" | "4d6kh2";
   rank: -1 | 0 | 1 | 2 | 3 | 4;
@@ -113,7 +147,7 @@ declare interface SWNRSkillData extends SWNRDecData {
   source: string;
 }
 
-declare interface SWNRItemData extends SWNRBaseItemData {
+declare interface SWNRItemData extends SWNRCharacterItemData {
   quantity: number;
   bundle: {
     bundled: boolean;
@@ -121,16 +155,9 @@ declare interface SWNRItemData extends SWNRBaseItemData {
   };
 }
 
-interface SWNRWeaponData extends SWNRBaseItemData {
-  stat: SWNRStats;
-  secondStat: "none" | SWNRStats;
-  skill: "";
-  skillBoostsDamage: boolean;
-  shock: {
-    dmg: 0;
-    ac: 15;
-  };
-  ab: 0;
+declare interface SWNRBaseWeaponData {
+  skill: string;
+  ab: number;
   ammo: {
     longReload: boolean;
     suppress: boolean;
@@ -146,13 +173,31 @@ interface SWNRWeaponData extends SWNRBaseItemData {
   damage: string;
 }
 
-declare interface SWNRArmorData extends SWNRBaseItemData {
+declare interface SWNRWeaponData
+  extends SWNRCharacterItemData,
+    SWNRBaseWeaponData {
+  stat: SWNRStats;
+  secondStat: "none" | SWNRStats;
+  skillBoostsDamage: boolean;
+  shock: {
+    dmg: number;
+    ac: number;
+  };
+}
+
+declare interface SWNRArmorData extends SWNRCharacterItemData {
   ac: number;
   shield: boolean;
   use: boolean;
 }
 
+declare type SWNRDroneFittingData = SWNRMinimalItemData;
+
+declare interface SWNRDroneWeaponData
+  extends SWNRBaseItemData,
+    SWNRBaseWeaponData {}
+
 declare type SWNRInventoryItemData =
-  | SWNRBaseItemData
+  | SWNRItemData
   | SWNRWeaponData
   | SWNRArmorData;

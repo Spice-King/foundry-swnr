@@ -1,6 +1,6 @@
 _id: TBWC7vnGuziN2Icf
 data:
-  ab: 0
+  ab: 1
   ammo:
     burst: true
     longReload: false
@@ -8,9 +8,6 @@ data:
     suppress: false
     type: typeAPower
     value: 20
-  bundle:
-    amount: 1
-    bundled: false
   cost: 300
   damage: 1d10
   description: >-

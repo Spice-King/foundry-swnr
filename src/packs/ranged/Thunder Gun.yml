@@ -1,6 +1,6 @@
 _id: bfAf7GaaEuZf0k9t
 data:
-  ab: 0
+  ab: 1
   ammo:
     burst: false
     longReload: false
@@ -8,9 +8,6 @@ data:
     suppress: false
     type: typeAPower
     value: 6
-  bundle:
-    amount: 1
-    bundled: false
   cost: 1000
   damage: '(@hitRoll>15?3:2)d10'
   description: >-

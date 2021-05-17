@@ -9,7 +9,7 @@
     "build:watch": "gulp link watch",
     "clean": "gulp clean && gulp link --clean",
     "foundry": "node foundry/resources/app/main.js --noupnp --dataPath=./data",
-    "update": "npm install --save-dev gitlab:spice_king/foundry-pc-types"
+    "update": "npm install --save-dev gitlab:a.drone.enthusiast/foundry-pc-types"
   },
   "engines": {
     "node": ">=12",
@@ -36,7 +36,7 @@
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.2.0",
-    "foundry-pc-types": "gitlab:spice_king/foundry-pc-types",
+    "foundry-pc-types": "gitlab:a.drone.enthusiast/foundry-pc-types",
     "fs-extra": "^9.0.1",
     "gulp": "^4.0.2",
     "gulp-append-prepend": "^1.0.8",

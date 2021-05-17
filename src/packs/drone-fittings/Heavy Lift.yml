@@ -1,0 +1,8 @@
+_id: n1EsV6neP875dgJO
+data:
+  cost: 2000
+  description: >-
+    While most drones can lift no more than a kilogram of excess weight, the drone's gravitic units have been upgraded to carry up to twenty kilos of cargo. This can be fitted multiple times.
+  tl: 4
+name: Heavy Lift
+type: droneFitting

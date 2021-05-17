@@ -1,0 +1,8 @@
+_id: S0z72bgx3iMwE7vK
+data:
+  cost: 5000
+  description: >-
+    The drone is sheathed in anti-radar composites. Ordinary sensors will not detect it at observation range, and high-end military sensors can spot it only on an Int/Program check at difficulty 9.
+  tl: 4
+name: Sensor Transparency
+type: droneFitting

@@ -50,6 +50,8 @@ TL;DR: You mod it and share it, you send the changes. No ifs, ands, or butts.
 
 The contents of `src/packs/` are mostly text from [SWN Revised Edition (Free Version)](https://www.drivethrurpg.com/product/230009/Stars-Without-Number-Revised-Edition-Free-Version) with slight alterations to better fit with Foundry VTT. All rights for the included content belong wto Kevin Crawford. I've followed what Kevin Crawford has said on Reddit. [[1]](https://www.reddit.com/r/SWN/comments/8g9lsp/is_there_a_standing_policy_on_selling_content/dy9vf8q/) [[2]](https://www.reddit.com/r/SWN/comments/cj1b7n/could_someone_explain_how_ogl_works_with_regards/)
 
+The contents of `src/assets/icons/game-icons.net` are [Kevlar vest icon by Skoll](https://game-icons.net/1x1/skoll/kevlar-vest.html), [Autogun icon by Lorc](https://game-icons.net/1x1/lorc/autogun.html), [Delivery drone icon by Delapouite](https://game-icons.net/1x1/delapouite/delivery-drone.html), [Artificial intelligence icon by Lord Berandas](https://game-icons.net/1x1/lord-berandas/artificial-intelligence.html), [Swap bag icon by Lorc](https://game-icons.net/1x1/lorc/swap-bag.html), [Uncertainty icon by Lorc](https://game-icons.net/1x1/lorc/uncertainty.html) and [Saber and pistol icon by Delapouite](https://game-icons.net/1x1/delapouite/saber-and-pistol.html) licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
 ## Abandonment
 
 TBD. I'll figure out the exact wording and times later, but I do want to make a proper note about it, since I'm aware that modules and systems not getting updates is a bad time for all users.

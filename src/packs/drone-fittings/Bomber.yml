@@ -1,0 +1,8 @@
+_id: M9Ac9Mq2okkEyTuS
+data:
+  cost: 500
+  description: >-
+    The drone is fitted to drop up to two grenade-sized explosives, one or both in lieu of a different weapon attack. Dropping a grenade from more than 30 meters up automatically causes the grenade to scatter from its intended target point.
+  tl: 3
+name: Bomber
+type: droneFitting

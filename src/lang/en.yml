@@ -430,6 +430,9 @@ swnr:
     attackRoll: "{actorName} attacking with {weaponName}?"
     add-skills: Add Skills
     add-bulk-skills: Add Bulk Skills to {actor}
+    cancel: Cancel
+    reconfigureDroneModel: Reconfigure model for {actor}?
+    ok: Ok
   roll:
     skillNeeded: Hey! You need to pick a skill!
   armor:
@@ -442,6 +445,82 @@ swnr:
     innateArmorClass: Innate Armor Class
     equipped: Equipped
     shield: Counts as a shield
+  drone:
+    model:
+      primitiveDrone:
+        name: Primitive Drone
+        text: >-
+          Primitive drones represent the best flying portable drone technology
+          for TL3 worlds. While fragile, weak, and short-ranged, they are also
+          relatively cheap.
+      voidHawk:
+        name: Void Hawk
+        text: >-
+          Void Hawks are unique in being built specifically for deep-space use.
+          Unlike other drones, they can operate perfectly well in space, though
+          they only have the range to reach relatively adjacent ships or
+          objects.
+      stalker:
+        name: Stalker
+        text: >-
+          Stalker drones are the default TL4 workhorses of drone-kind and are
+          available on most modern worlds.
+      cuttlefish:
+        name: Cuttlefish
+        text: >-
+          Cuttlefish are specifically designed for aqueous use, and function
+          only in a liquid medium. The support of the liquid allows them to
+          carry significantly more fittings, but the need for a sonar-based
+          navigation system limits their available range.
+      ghostwalker:
+        name: Ghostwalker
+        text: >-
+          Ghostwalkers are stealth drones, fabricated from radar-transparent
+          materials. They have an integral Sensor Transparency fitting and the
+          sensor difficulty to spot them is 11 instead of 9.
+      sleeper:
+        name: Sleeper
+        text: >-
+          Sleeper drones are built to tarry on station for long periods. They
+          have the Stationkeeping fitting as an integral part of their design,
+          and when hovering their power use slows to a trickle. One day of
+          hovering draws only five minutes worth of power from its cell.
+      pax:
+        name: Pax
+        text: >-
+          Pax drones are some of the most common pretech drones remaining in
+          existence, as they were favored by the Mandate Fleet for pacifying
+          troublesome worlds that lacked quantum ECM. While primitive by
+          pretech standards, they still far excel most modern drones.
+      alecto:
+        name: Alecto
+        text: >-
+          The Alecto model of drone examples one way that pretech scientists
+          attempted to sidestep the limits of quantum ECM on the modern
+          battlefield. Every Alecto is a full-fledged VI, an expert system so
+          sophisticated as to seem almost sentient. Its self-reinforcing
+          cognition allows it to operate even when cut off from external
+          signals by quantum ECM. Salvaged Alectos have all exhibited "female"
+          personalities.
+      other:
+        name: Other
+    operator:
+      expertSystem: Expert System
+      vi: VI (Alecto, etc)
+      unknown: Unknown
+    fittings: Fittings
+    operational: Operational
+    cost: Cost
+    encumbrance: Encumbrance
+    range: Range
+    tl: TL
+    weapons: Weapons
+    drone: Drone
+    control-unit:
+      name: Drone Control Unit
+      text: >-
+        A handheld control unit that comes with a drone.
+    operator-skill: Operator Skill
   npc:
     reaction:
       unknown: Unknown

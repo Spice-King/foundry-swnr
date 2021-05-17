@@ -8,9 +8,6 @@ data:
     suppress: false
     type: special
     value: 1
-  bundle:
-    amount: 1
-    bundled: false
   cost: 4000
   damage: 3d10
   description: >-

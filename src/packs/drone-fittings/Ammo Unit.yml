@@ -1,0 +1,8 @@
+_id: PfVX3EVSAf9zLJms
+data:
+  cost: 250
+  description: >-
+    The drone carries one power cell or magazine worth of ammunition for each of its onboard weapons, whether single or multiple. The operator can reload an ammo unit as a Main Action.
+  tl: 4
+name: Ammo Unit
+type: droneFitting

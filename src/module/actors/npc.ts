@@ -12,7 +12,7 @@ export class SWNRNPCActor extends Actor<SWNRNPCData> {
     userId: string
   ): void {
     super._onCreate(data, options, userId);
-    if ((this.data as any).items.length || game.userId !== userId) return;
+    if (this.data["items"]["length"] || game.userId !== userId) return;
 
     this.createOwnedItem({
       name: game.i18n.localize("swnr.npc.unarmed"),

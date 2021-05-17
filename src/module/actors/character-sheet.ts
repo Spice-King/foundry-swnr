@@ -1,11 +1,12 @@
 import { SWNRCharacterActor } from "./character";
+import { SWNRDroneActor } from "./drone";
 import {
   calculateStats,
   combineRolls,
   initSkills,
   limitConcurrency,
 } from "../utils";
-import { ValidatedDialog, ButtonData } from "../ValidatedDialog";
+import { ValidatedDialog } from "../ValidatedDialog";
 import {
   SWNRCharacterData,
   SWNRSkillData,
@@ -247,7 +248,7 @@ export class CharacterActorSheet extends ActorSheet<
 
     this.popUpDialog = new ValidatedDialog(
       {
-        failCallback: (button: ButtonData): void => {
+        failCallback: (): void => {
           ui.notifications.error(game.i18n.localize("swnr.roll.skillNeeded"));
         },
         title: title,
@@ -571,6 +572,29 @@ export class CharacterActorSheet extends ActorSheet<
       }
     }
   }
+
+  /** @override */
+  async _onDropItemCreate(
+    itemData: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    // reject drone fittings
+    if (itemData.type == "droneFitting") return false;
+    else return super._onDropItemCreate(itemData);
+  }
+
+  /** @override */
+  async _onDropActor(
+    event: Event,
+    data: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    const actor = game.actors.get(data.id as string);
+    if ((await super._onDropActor(event, data)) == false) return false;
+    else if (actor.data.type == "drone")
+      return Promise.all([
+        this.actor.createOwnedItem(SWNRDroneActor.makeDroneItem(actor)),
+        this.actor.createOwnedItem(SWNRDroneActor.makeDroneControlUnit(actor)),
+      ]);
+  }
 }
 Hooks.on(
   "renderChatMessage",
@@ -580,7 +604,7 @@ Hooks.on(
     );
     if (statApplyButton) {
       // fix later
-      const actor = game.actors.get((<any>message.data).speaker.actor);
+      const actor = game.actors.get(message.data["speaker"]["actor"]);
 
       if (
         message.getFlag("swnr", "alreadyDone") ||

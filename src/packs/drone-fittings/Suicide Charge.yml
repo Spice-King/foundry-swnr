@@ -1,0 +1,8 @@
+_id: xtzHdffbVswCfl5z
+data:
+  cost: 250
+  description: >-
+    The drone is loaded with a demo charge as per page 69. The operator can trigger it as an attack, but unless they can move the drone in by surprise, the approach will always give onlookers a chance to spot it before it gets within range.
+  tl: 3
+name: Suicide Charge
+type: droneFitting

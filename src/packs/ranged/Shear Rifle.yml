@@ -1,6 +1,6 @@
 _id: YpribJStVIy5gPRG
 data:
-  ab: 0
+  ab: 1
   ammo:
     burst: true
     longReload: false
@@ -8,9 +8,6 @@ data:
     suppress: false
     type: ammo
     value: 10
-  bundle:
-    amount: 1
-    bundled: false
   cost: 600
   damage: 2d8
   description: >-

@@ -1,0 +1,8 @@
+_id: o9MfxEJym3oLV0Go
+data:
+  cost: 250
+  description: >-
+    The drone can now carry a second type A cell to fuel its flight. This fitting can be taken multiple times to further extend its range.
+  tl: 3
+name: Extended Flight
+type: droneFitting

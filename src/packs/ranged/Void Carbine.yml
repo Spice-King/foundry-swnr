@@ -8,9 +8,6 @@ data:
     suppress: false
     type: typeAPower
     value: 10
-  bundle:
-    amount: 1
-    bundled: false
   cost: 400
   damage: 2d6
   description: >-

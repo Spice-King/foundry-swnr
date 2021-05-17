@@ -8,9 +8,6 @@ data:
     suppress: false
     type: ammo
     value: 15
-  bundle:
-    amount: 1
-    bundled: false
   cost: 600
   damage: 3d8
   description: >-

@@ -5,12 +5,48 @@ export default function registerHelpers(): void {
   Handlebars.registerHelper("debug", function () {
     return JSON.stringify(this, null, 2);
   });
-  Handlebars.registerHelper("stringify", function (obj) {
-    return JSON.stringify(obj, null, 2);
-  });
-  Handlebars.registerHelper("concat", function (a, b) {
+  Handlebars.registerHelper(
+    "stringify",
+    function (obj: Record<string, unknown>) {
+      return JSON.stringify(obj, null, 2);
+    }
+  );
+  Handlebars.registerHelper("concat", function (a: string, b: string) {
     return a + b;
   });
+  Handlebars.registerHelper("game", function (prop: string) {
+    return game[prop];
+  });
+  Handlebars.registerHelper("getActor", function (id: string) {
+    return game.actors.get(id);
+  });
+  Handlebars.registerHelper(
+    "getActorProp",
+    function (id: string, prop: string) {
+      if (game.actors.get(id))
+        return prop
+          .split(".")
+          .reduce((acc, elem) => acc[elem], game.actors.get(id));
+      else return false;
+    }
+  );
+  Handlebars.registerHelper(
+    "filterLength",
+    function (a: Array<Record<string, unknown>>, s: string, sub: string) {
+      return a.filter((elem) => elem[sub] == s).length;
+    }
+  );
+  Handlebars.registerHelper(
+    "reduceNum",
+    function (a: Array<Record<string, unknown>>, sub: string) {
+      return a.reduce(
+        (acc, elem) =>
+          acc +
+          (sub.split(".").reduce((sAcc, sElem) => sAcc[sElem], elem) as number),
+        0
+      );
+    }
+  );
   Handlebars.registerHelper("zeroWidthBreaker", (message: string) => {
     return new Handlebars.SafeString(
       message.replace(

@@ -2,6 +2,7 @@
 Actor:
   types:
     - character
+    - drone
     - npc
   templates:
     living:
@@ -72,6 +73,18 @@ Actor:
       debt: 0
       balance: 0
       owed: 0
+  drone:
+    templates:
+      - living
+    model: "primitiveDrone"
+    operator: "expertSystem"
+    fittings: 0
+    speed: 0
+    cost: 0
+    encumbrance: 0
+    range: 0
+    tl: 0
+    description: ""
   npc:
     templates:
       - living
@@ -100,6 +113,8 @@ Item:
   types:
     - class
     - armor
+    - droneFitting
+    - droneWeapon
     - weapon
     # - background
     - power
@@ -113,7 +128,14 @@ Item:
       pretech:
         cost: 0
         perHull: false
+    minimalItem:
+      cost: 0
+      tl: 4
     baseItem:
+      encumbrance: 0
+      cost: 0
+      tl: 4
+    characterItem:
       encumbrance: 0
       cost: 0
       tl: 4
@@ -126,15 +148,19 @@ Item:
       - description
   armor:
     templates:
-      - baseItem
+      - characterItem
       - description
     ac: 10
     type: street
     use: false
     shield: false
+  droneFitting:
+    templates:
+      - minimalItem
+      - description
   weapon:
     templates:
-      - baseItem
+      - characterItem
       - description
     stat: dex
     secondStat: none
@@ -155,6 +181,23 @@ Item:
       normal: 1
       max: 2
     damage: d4
+  droneWeapon:
+    templates:
+      - baseItem
+      - description
+    skill: ""
+    ab: 0
+    ammo:
+      longReload: false
+      suppress: false
+      type: none
+      max: 0
+      value: 0
+      burst: false
+    range:
+      normal: 1
+      max: 2
+    damage: d4
   power:
     templates:
       - description
@@ -162,7 +205,7 @@ Item:
     level: 0
   item:
     templates:
-      - baseItem
+      - characterItem
       - description
     bundle:
       amount: 1

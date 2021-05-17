@@ -1,0 +1,8 @@
+_id: UzZJyhJE66nCpff3
+data:
+  cost: 4000
+  description: >-
+    The drone draws operating power from sunlight or thermal variances. It can operate indefinitely so long as it can draw power from its environment.
+  tl: 4
+name: Environmental Power
+type: droneFitting
