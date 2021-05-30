@@ -130,8 +130,11 @@ export class CharacterActorSheet extends ActorSheet<
       });
     });
     if (!performDelete) return;
-    this.actor.deleteOwnedItem(li.data("itemId"));
-    li.slideUp(200, () => this.render(false));
+    li.slideUp(200, () => {
+      requestAnimationFrame(() => {
+        this.actor.deleteOwnedItem(li.data("itemId"));
+      });
+    });
   }
   async _onWeaponRoll(
     event: JQuery.ClickEvent<HTMLElement>
