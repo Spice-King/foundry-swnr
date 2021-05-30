@@ -178,7 +178,11 @@ export class CharacterActorSheet extends ActorSheet<
       ).roll();
       rollData.hitRoll = hitRoll.dice[0].total;
       const damageRoll = new Roll(
-        weapon.data.data.damage + " + @burstFire + @stat.mod",
+        weapon.data.data.damage +
+          " + @burstFire + @stat.mod" +
+          (weapon.data.data.skillBoostsDamage
+            ? ` + ${skill.data.data.rank}`
+            : ""),
         rollData
       ).roll();
       const diceTooltip = {
