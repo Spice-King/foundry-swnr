@@ -481,3 +481,5 @@ swnr:
     debts: Debts
     balance: Balance
     owed: Owed
+  deleteTitle: Delete {name}?
+  deleteContent: Are you sure you want to delete {name} from the actor {actor}?

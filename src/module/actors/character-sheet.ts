@@ -112,10 +112,24 @@ export class CharacterActorSheet extends ActorSheet<
     const item = this.actor.getOwnedItem(wrapper.data("itemId"));
     item?.sheet.render(true);
   }
-  _onItemDelete(event: JQuery.ClickEvent): void {
+  async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.getOwnedItem(li.data("itemId"));
+    if (!item) return;
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: game.i18n.format("swnr.deleteTitle", { name: item.name }),
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: game.i18n.format("swnr.deleteContent", {
+          name: item.name,
+          actor: this.actor.name,
+        }),
+      });
+    });
+    if (!performDelete) return;
     this.actor.deleteOwnedItem(li.data("itemId"));
     li.slideUp(200, () => this.render(false));
   }
