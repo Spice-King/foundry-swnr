@@ -216,7 +216,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
   _onSkill(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
-    const trained = event.target.dataset.skillType === "trained";
+    const trained = event.currentTarget.dataset.skillType === "trained";
     const skill = trained ? this.actor.data.data.skillBonus : 0;
 
     const roll = new Roll("2d6 + @skill", { skill }).roll();
