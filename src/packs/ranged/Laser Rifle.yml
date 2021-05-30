@@ -8,9 +8,6 @@ data:
     suppress: false
     type: typeAPower
     value: 20
-  bundle:
-    amount: 1
-    bundled: false
   cost: 300
   damage: 1d10
   description: >-
@@ -25,7 +22,6 @@ data:
   encumbrance: 2
   location: other
   quality: stock
-  quantity: 1
   range:
     max: 500
     normal: 300

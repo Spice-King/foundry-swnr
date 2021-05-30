@@ -8,9 +8,6 @@ data:
     suppress: false
     type: ammo
     value: 1
-  bundle:
-    amount: 1
-    bundled: false
   cost: 15
   damage: 1d6
   description: >-
@@ -22,7 +19,6 @@ data:
   encumbrance: 2
   location: other
   quality: stock
-  quantity: 1
   range:
     max: 75
     normal: 50

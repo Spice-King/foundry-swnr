@@ -8,9 +8,6 @@ data:
     suppress: false
     type: special
     value: 1
-  bundle:
-    amount: 1
-    bundled: false
   cost: 4000
   damage: 3d10
   description: >-
@@ -23,7 +20,6 @@ data:
   encumbrance: 2
   location: other
   quality: stock
-  quantity: 1
   range:
     max: 4000
     normal: 2000

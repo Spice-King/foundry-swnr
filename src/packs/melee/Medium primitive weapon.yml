@@ -8,9 +8,6 @@ data:
     suppress: false
     type: none
     value: 0
-  bundle:
-    amount: 1
-    bundled: false
   cost: 20
   damage: 1d6+1
   description: >-
@@ -25,7 +22,6 @@ data:
   encumbrance: 1
   location: other
   quality: stock
-  quantity: 1
   range:
     max: 0
     normal: 0

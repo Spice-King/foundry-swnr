@@ -8,9 +8,6 @@ data:
     suppress: false
     type: special
     value: 5
-  bundle:
-    amount: 1
-    bundled: false
   cost: 75000
   damage: 5d12
   description: >-
@@ -21,7 +18,6 @@ data:
   encumbrance: 0
   location: other
   quality: stock
-  quantity: 1
   range:
     max: 2000
     normal: 1000

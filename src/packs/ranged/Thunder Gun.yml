@@ -8,9 +8,6 @@ data:
     suppress: false
     type: typeAPower
     value: 6
-  bundle:
-    amount: 1
-    bundled: false
   cost: 1000
   damage: '(@hitRoll>15?3:2)d10'
   description: >-
@@ -24,7 +21,6 @@ data:
   encumbrance: 2
   location: other
   quality: stock
-  quantity: 1
   range:
     max: 300
     normal: 100
