@@ -1,6 +1,9 @@
-name: Tsunami
-type: item
+_id: YTP3HNLC347yARt4
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 50
   description: >-
     Tsunami (Heal-1): An emergency combat stim used to juice certain expendable
     soldiers before an assault, Tsunami fills them with a reckless disregard for
@@ -10,11 +13,9 @@ data:
     the end of the duration, they immediately lose those 10 hit points, which
     may leave them mortally wounded. Each application adds 2 System Strain to
     the target.
-  cost: 50
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Tsunami
+type: item

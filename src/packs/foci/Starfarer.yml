@@ -1,7 +1,4 @@
-name: Starfarer
-permission:
-  default: 0
-type: focus
+_id: 6Gm2v3qW7lVXkArk
 data:
   description: >-
     You are an expert in the plotting and execution of interstellar spike
@@ -18,4 +15,7 @@ data:
     you personally oversee take only half the time they would otherwise require.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: 6Gm2v3qW7lVXkArk
+name: Starfarer
+permission:
+  default: 0
+type: focus

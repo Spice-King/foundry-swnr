@@ -15,11 +15,12 @@ import {
 } from "../types";
 import { SWNRBaseItem } from "../base-item";
 
-interface CharacterActorSheetData extends ActorSheetData {
+interface CharacterActorSheetData extends ActorSheet.Data<SWNRCharacterData> {
   weapons?: Item[];
   armor?: Item[];
   gear?: Item[];
   skills?: Item[];
+  useHomebrewLuckSave: boolean;
   itemTypes: { [type: string]: Item[] };
 }
 export class CharacterActorSheet extends ActorSheet<
@@ -30,7 +31,15 @@ export class CharacterActorSheet extends ActorSheet<
   constructor(...args: unknown[]) {
     super(...args);
   }
-  static get defaultOptions(): FormApplicationOptions {
+
+  _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
+    html
+      .find(".window-content")
+      .addClass(["cq", "overflow-y-scroll", "relative"]);
+    super._injectHTML(html, options);
+  }
+
+  static get defaultOptions(): FormApplication.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "character", "test broken"],
       template: "systems/swnr/templates/actors/character-sheet.html",
@@ -38,7 +47,7 @@ export class CharacterActorSheet extends ActorSheet<
       height: 600,
       tabs: [
         {
-          navSelector: ".sheet-tabs",
+          navSelector: ".pc-sheet-tabs",
           contentSelector: ".sheet-body",
           initial: "biography",
         },
@@ -67,7 +76,9 @@ export class CharacterActorSheet extends ActorSheet<
       const skillList = <HTMLInputElement>(
         form.querySelector('[name="skillList"]:checked')
       );
-      const extra = <HTMLInputElement>form.querySelector('[name=extra]:checked');
+      const extra = <HTMLInputElement>(
+        form.querySelector("[name=extra]:checked")
+      );
       initSkills(this.actor, <"revised" | "classic" | "none">skillList.value);
       initSkills(this.actor, <"spaceMagic" | "psionic" | "none">extra.value);
       return;
@@ -76,19 +87,22 @@ export class CharacterActorSheet extends ActorSheet<
     const html = await renderTemplate(template, {});
     this.popUpDialog?.close();
 
-    this.popUpDialog = new Dialog({
-      title: game.i18n.format("swnr.dialog.add-bulk-skills", {
-        actor: this.actor.name,
-      }),
-      content: html,
-      default: "addSkills",
-      buttons: {
-        addSkills: {
-          label: game.i18n.localize("swnr.dialog.add-skills"),
-          callback: _addSkills,
+    this.popUpDialog = new Dialog(
+      {
+        title: game.i18n.format("swnr.dialog.add-bulk-skills", {
+          actor: this.actor.name,
+        }),
+        content: html,
+        default: "addSkills",
+        buttons: {
+          addSkills: {
+            label: game.i18n.localize("swnr.dialog.add-skills"),
+            callback: _addSkills,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
   _onItemEdit(event: JQuery.ClickEvent): void {
@@ -96,18 +110,35 @@ export class CharacterActorSheet extends ActorSheet<
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getOwnedItem(wrapper.data("itemId"));
-    item.sheet.render(true);
+    item?.sheet.render(true);
   }
-  _onItemDelete(event: JQuery.ClickEvent): void {
+  async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const li = $(event.currentTarget).parents(".item");
-    this.actor.deleteOwnedItem(li.data("itemId"));
-    li.slideUp(200, () => this.render(false));
+    const item = this.actor.getOwnedItem(li.data("itemId"));
+    if (!item) return;
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: game.i18n.format("swnr.deleteTitle", { name: item.name }),
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: game.i18n.format("swnr.deleteContent", {
+          name: item.name,
+          actor: this.actor.name,
+        }),
+      });
+    });
+    if (!performDelete) return;
+    li.slideUp(200, () => {
+      requestAnimationFrame(() => {
+        this.actor.deleteOwnedItem(li.data("itemId"));
+      });
+    });
   }
   async _onWeaponRoll(
     event: JQuery.ClickEvent<HTMLElement>
-  ): Promise<Application> {
+  ): Promise<Application | undefined> {
     event.preventDefault();
     const itemId = event.currentTarget.parentElement.dataset.itemId;
     const weapon = <SWNRBaseItem<SWNRWeaponData>>(
@@ -135,7 +166,9 @@ export class CharacterActorSheet extends ActorSheet<
       const skillId =
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         weapon.data.data.skill;
-      const skill = this.actor.getOwnedItem(skillId);
+      const skill = this.actor.getOwnedItem(
+        skillId
+      ) as SWNRBaseItem<SWNRSkillData>;
       const stat = this.actor.data.data.stats[weapon.data.data.stat] || {
         mod: 0,
       };
@@ -150,7 +183,7 @@ export class CharacterActorSheet extends ActorSheet<
         weapon: weapon.data.data,
         stat,
         skill: skill,
-        hitRoll: <number>undefined,
+        hitRoll: <number | undefined>undefined,
         burstFire,
         modifier,
         effectiveSkillRank:
@@ -162,7 +195,11 @@ export class CharacterActorSheet extends ActorSheet<
       ).roll();
       rollData.hitRoll = hitRoll.dice[0].total;
       const damageRoll = new Roll(
-        weapon.data.data.damage + " + @burstFire + @stat.mod",
+        weapon.data.data.damage +
+          " + @burstFire + @stat.mod" +
+          (weapon.data.data.skillBoostsDamage
+            ? ` + ${skill.data.data.rank}`
+            : ""),
         rollData
       ).roll();
       const diceTooltip = {
@@ -229,27 +266,33 @@ export class CharacterActorSheet extends ActorSheet<
     const html = await renderTemplate(template, dialogData);
     this.popUpDialog?.close();
 
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: (button: ButtonData): void => {
-        ui.notifications.error(game.i18n.localize("swnr.roll.skillNeeded"));
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: (button: ButtonData): void => {
+          ui.notifications.error(game.i18n.localize("swnr.roll.skillNeeded"));
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
-  async _onSaveThrow(event: JQuery.ClickEvent): Promise<Application> {
+  async _onSaveThrow(
+    event: JQuery.ClickEvent
+  ): Promise<Application | undefined> {
     event.preventDefault();
     console.log(event);
     const e = <HTMLDivElement>event.currentTarget;
-    const save = e.className.replace("save ", "");
+    const save = e.dataset.saveType;
+    if (!save) return;
     const target = <number>this.actor.data.data.save[save];
     const template = "systems/swnr/templates/dialogs/roll-save.html";
     const title = game.i18n.format("swnr.titles.savingThrow", {
@@ -280,20 +323,23 @@ export class CharacterActorSheet extends ActorSheet<
       return roll;
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: () => {
-        return;
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: () => {
+          return;
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
   async _onStatsRoll(event: JQuery.ClickEvent): Promise<Application> {
@@ -364,20 +410,23 @@ export class CharacterActorSheet extends ActorSheet<
       return roll;
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: () => {
-        return;
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: () => {
+          return;
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     return this.popUpDialog.render(true);
   }
   async _onHpRoll(event: JQuery.ClickEvent): Promise<Application> {
@@ -438,7 +487,7 @@ export class CharacterActorSheet extends ActorSheet<
     const target = <HTMLElement>event.currentTarget;
     const dataset = target.dataset;
     const template = "systems/swnr/templates/dialogs/roll-skill.html";
-    const skillID = dataset.itemId;
+    const skillID = dataset.itemId as string;
     const skill = <SWNRBaseItem<SWNRSkillData>>this.actor.getOwnedItem(skillID);
     const skillData = skill.data.data;
     const skillName = skill.name;
@@ -486,31 +535,34 @@ export class CharacterActorSheet extends ActorSheet<
       return roll;
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new ValidatedDialog({
-      failCallback: () => {
-        return;
-      },
-      title: title,
-      content: html,
-      default: "roll",
-      buttons: {
-        roll: {
-          label: game.i18n.localize("swnr.chat.roll"),
-          callback: _doRoll,
+    this.popUpDialog = new ValidatedDialog(
+      {
+        failCallback: () => {
+          return;
+        },
+        title: title,
+        content: html,
+        default: "roll",
+        buttons: {
+          roll: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _doRoll,
+          },
         },
       },
-    });
+      {
+        classes: ["swnr"],
+      }
+    );
     return this.popUpDialog.render(true);
   }
   /** @override */
-  getData(): ActorSheetData {
-    const sheetData = <CharacterActorSheetData>super.getData();
-    sheetData["useHomebrewLuckSave"] = game.settings.get(
-      "swnr",
-      "useHomebrewLuckSave"
-    );
-    sheetData.itemTypes = this.actor.itemTypes;
-    return sheetData;
+  getData(): CharacterActorSheetData {
+    return {
+      ...super.getData(),
+      useHomebrewLuckSave: !!game.settings.get("swnr", "useHomebrewLuckSave"),
+      itemTypes: this.actor.itemTypes,
+    };
   }
   /** @override */
   async _updateObject(

@@ -1,5 +1,4 @@
-name: Concert of Minds
-type: power
+_id: fOoiiNQecbsiptcT
 data:
   description: >-
     <p>As an On Turn action, the metapsion may Commit Effort and form a psychic
@@ -16,3 +15,5 @@ data:
     the scene.</p>
   level: 3
   source: metapsionics
+name: Concert of Minds
+type: power

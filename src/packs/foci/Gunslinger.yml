@@ -1,7 +1,4 @@
-name: Gunslinger
-permission:
-  default: 0
-type: focus
+_id: dcgtsg42tK7Q2l3u
 data:
   description: >-
     You have a gift with a gun. While this talent most commonly applies to
@@ -19,4 +16,7 @@ data:
     you do an unmodified 1d4 damage.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: dcgtsg42tK7Q2l3u
+name: Gunslinger
+permission:
+  default: 0
+type: focus

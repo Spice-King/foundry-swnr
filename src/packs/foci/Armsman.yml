@@ -1,7 +1,4 @@
-name: Armsman
-permission:
-  default: 0
-type: focus
+_id: INfI0jt2727si9px
 data:
   description: >-
     You have an unusual competence with thrown weapons and melee attacks. This
@@ -20,4 +17,7 @@ data:
     damage doesn’t apply to thrown weapons or attacks that use the Punch skill.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: INfI0jt2727si9px
+name: Armsman
+permission:
+  default: 0
+type: focus

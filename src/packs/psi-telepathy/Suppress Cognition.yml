@@ -1,5 +1,4 @@
-name: Suppress Cognition
-type: power
+_id: vFSm7Ji4TcocqJvD
 data:
   description: >-
     <p>Through intense focus, the telepath can make the target of a
@@ -17,3 +16,5 @@ data:
     attention somehow.</p>
   level: 2
   source: telepathy
+name: Suppress Cognition
+type: power

@@ -31,6 +31,8 @@ jobs:
       id: set-version
       run: echo "::set-output name=version::$(node .github/workflows/set-version.js ${{ github.ref }})"
     - run: npx gulp --series build package
+      env:
+        NODE_ENV: production
     - name: Create Release
       id: create_versioned_release
       uses: ncipollo/release-action@v1

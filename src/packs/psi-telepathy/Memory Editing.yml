@@ -1,5 +1,4 @@
-name: Memory Editing
-type: power
+_id: mNP64VDFs28Uk6Uc
 data:
   description: >-
     <p>The telepath can make simple edits to the memory of a target currently
@@ -15,3 +14,5 @@ data:
     given a reason to recollect them.</p>
   level: 4
   source: telepathy
+name: Memory Editing
+type: power

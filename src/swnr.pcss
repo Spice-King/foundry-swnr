@@ -1,0 +1,134 @@
+.swnr .window-content {
+  /* &,
+  *:not(.far, .fa, .fas, option) {
+    all: initial;
+  }
+  all: initial; */
+  @tailwind base;
+}
+section.window-content {
+  @apply bg-white;
+}
+input[type="text"], input[type="number"], input[type="password"], input[type="date"], input[type="time"], select, textarea { 
+  @appy focus:shadow-none focus:outline-none;
+}
+input, select, textarea {
+  @apply bg-white rounded-none placeholder-gray-500 focus:shadow-none;
+}
+:-moz-focusring {
+  @apply outline-none;
+}
+a:hover {
+  text-shadow: unset;
+}
+.tabs .item {
+  @apply transition-text-shadow text-shadow text-shadow-transparent hover:text-shadow-gray-600;
+}
+.tabs .item.active {
+  @apply text-shadow-gray-600;
+}
+div.editor .editor-content{
+  min-height: 200px;
+}
+.window-app.swnr {
+  @tailwind components;
+
+  @tailwind utilities;
+}
+.dieRoll {
+  list-style-type: none;
+  margin: 0px;
+  .die {
+    display: inline;
+  }
+  padding: 0px;
+  .die.flop {
+    text-decoration: line-through #00000098;
+    color: slategrey;
+  }
+  .die.good {
+    color: green;
+  }
+  .die.bad {
+    color: red;
+  } 
+}
+.hpRoll {
+  .status {
+    div {
+      display: inline;
+    }
+  }
+}
+/* .tab.skills ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  li.item.skill {
+    width: calc(100% / 6);
+    margin-bottom: 1em;
+  }
+} */
+.failed-validation {
+  color: red;
+  select,
+  input,
+  textarea {
+    color: red;
+  }
+}
+$highColor: white;
+$shadowColor: black;
+@keyframes lowAmmoFlash {
+  $glowColor: red;
+  $glowSize: 6px;
+  0% {
+    text-shadow: 0 -1px $shadowColor, -1px 0 $shadowColor, 1px 0 $shadowColor,
+      0 1px $shadowColor, 0 0 0px $glowColor;
+  }
+  20% {
+    text-shadow: 0 -1px $shadowColor, -1px 0 $shadowColor, 1px 0 $shadowColor,
+      0 1px $shadowColor, 0 0 $glowSize $glowColor;
+  }
+  100% {
+    text-shadow: 0 -1px $shadowColor, -1px 0 $shadowColor, 1px 0 $shadowColor,
+      0 1px $shadowColor, 0 0 0px $glowColor;
+  }
+}
+
+.dialog-buttons {
+  @apply -m-2 p-2 mt-0 pt-0 bg-gray-200;
+}
+
+button {
+  @apply border border-gray-700 rounded-md p-1 bg-gray-300;
+}
+
+@for $i from 0 to 20 {
+  .ammo-$i {
+    text-shadow: 0 -1px $shadowColor, -1px 0 $shadowColor, 1px 0 $shadowColor,
+      0 1px $shadowColor;
+    @if $i <= 3 {
+      $time: math(($i + 1) * 0.2);
+      color: #ff0000;
+      animation-name: lowAmmoFlash;
+      animation-duration: $(time) s;
+      animation-iteration-count: math(round(15 / $time));
+    }
+    @if $i >= 3 and $i <= 5 {
+      $mix: percentage(($i - 2)/4);
+      color: mix(#ffc000, #ff0000, $mix);
+    }
+    @if $i >= 6 and $i <= 10 {
+      $mix: percentage(($i - 5)/5);
+      color: mix(#cccf36, #ffc000, $mix);
+    }
+    @if $i >= 11 and $i <=16 {
+      $mix: percentage(($i - 10)/6);
+      color: mix($highColor, #cccf36, $mix);
+    }
+    @if $i >= 17 {
+      color: $highColor;
+    }
+  }
+}

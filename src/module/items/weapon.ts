@@ -21,6 +21,11 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
     modifier: number,
     useBurst: boolean
   ): Promise<void> {
+    if (!this.actor) {
+      const message = `Called rollAttack on item without an actor.`;
+      ui.notifications.error(message);
+      throw new Error(message);
+    }
     if (!this.hasAmmo) {
       ui.notifications.error(`Your ${this.name} is out of ammo!`);
       return;
@@ -39,7 +44,7 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
     const rollData = {
       actor: this.actor.getRollData(),
       weapon: this.data.data,
-      hitRoll: <number>undefined,
+      hitRoll: <number | undefined>undefined,
       stat,
       burstFire,
       modifier,
@@ -96,7 +101,7 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
     promise.then(() => {
       CONFIG.ChatMessage.entityClass.create(
         {
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          speaker: ChatMessage.getSpeaker({ actor: this.actor ?? undefined }),
           // roll: roll,
           content: chatContent,
         },

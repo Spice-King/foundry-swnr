@@ -1,6 +1,9 @@
-name: Pretech Cosmetic
-type: item
+_id: vrH3UrD4aeVws9SZ
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 1000
   description: >-
     Psych (None): A military drug duplicated in rougher form by many street
     chemists, Psych fills the user with an intense sense of confidence and
@@ -10,11 +13,9 @@ data:
     cannot decide not to attempt a skill check after learning its difficulty.
     The effect lasts fifteen minutes, adds 1 System Strain to the user, and is
     highly psychologically addictive.
-  cost: 1000
   encumbrance: 0
-  tl: 5
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 5
+name: Pretech Cosmetic
+type: item

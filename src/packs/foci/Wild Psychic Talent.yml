@@ -1,7 +1,4 @@
-name: Wild Psychic Talent
-permission:
-  default: 0
-type: focus
+_id: xc3MyY5vSvEgStR1
 data:
   description: >-
     Some men and women are born with a very limited form of MES, the mental
@@ -33,4 +30,7 @@ data:
     level-0.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: xc3MyY5vSvEgStR1
+name: Wild Psychic Talent
+permission:
+  default: 0
+type: focus

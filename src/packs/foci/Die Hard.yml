@@ -1,7 +1,4 @@
-name: Die Hard
-permission:
-  default: 0
-type: focus
+_id: SKRN1njmQNpQ8wdW
 data:
   description: >-
     You are surprisingly hard to kill. You can survive injuries or bear up under
@@ -16,4 +13,7 @@ data:
     save you from Heavy weapons or similar trauma.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: SKRN1njmQNpQ8wdW
+name: Die Hard
+permission:
+  default: 0
+type: focus

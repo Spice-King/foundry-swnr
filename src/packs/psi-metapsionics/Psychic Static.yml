@@ -1,5 +1,4 @@
-name: Psychic Static
-type: power
+_id: gXejkTv8HjOrlCe7
 data:
   description: >-
     <p>As an Instant action, the metapsion may Commit Effort for the day to
@@ -14,3 +13,5 @@ data:
     any obvious way of identifying the metapsion.</p>
   level: 2
   source: metapsionics
+name: Psychic Static
+type: power

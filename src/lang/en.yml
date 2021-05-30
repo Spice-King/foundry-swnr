@@ -347,6 +347,7 @@ swnr:
       armor: Armor
       foci: Foci
       powers: Powers
+      combat: Combat
     xp: XP
     delete-item: Delete Item
     edit-item: Edit Item
@@ -415,6 +416,7 @@ swnr:
     ammo: Ammo
     noSetSkill: No Skill Set
     burst: Use Burst Fire
+    skillAddDamage: Skill adds to damage
   titles:
     savingThrow: "{throwType} Saving Throw"
   effort:
@@ -464,8 +466,20 @@ swnr:
       trained: "{actor} uses their trained skill."
       untrained: "{actor} uses their untrained skill."
     unarmed: Unarmed
+    saving:
+      failure: "{actor} failed their saving throw."
+      success: "{actor} succeded at their saving throw."
   migration:
     start: >-
       SWNR: Starting migration from {oldVersion} to {newVersion}. Please let
       this finish before closing.
     done: "SWNR: Done Migration to {newVersion}"
+    needsGM: >-
+      SWNR: A GM needs to log in to do run {count} migrations from {oldVersion}
+      to {newVersion}!
+  credits:
+    debts: Debts
+    balance: Balance
+    owed: Owed
+  deleteTitle: Delete {name}?
+  deleteContent: Are you sure you want to delete {name} from the actor {actor}?

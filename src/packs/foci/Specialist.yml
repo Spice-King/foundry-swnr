@@ -1,7 +1,4 @@
-name: Specialist
-permission:
-  default: 0
-type: focus
+_id: IAQTaOK2WdOD7Waw
 data:
   description: >-
     You are remarkably talented at a particular skill. Whether a marvelous cat
@@ -14,4 +11,7 @@ data:
   level2: Roll 4d6 and drop the two lowest dice for all skill checks in this skill.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: IAQTaOK2WdOD7Waw
+name: Specialist
+permission:
+  default: 0
+type: focus

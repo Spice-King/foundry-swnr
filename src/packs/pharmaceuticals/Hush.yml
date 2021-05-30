@@ -1,6 +1,9 @@
-name: Hush
-type: item
+_id: fBM4dM4qlnaaBcKh
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 200
   description: >-
     Hush (Heal-0): An extremely heavy neurotranquilizer, Hush leaves the subject
     awake and responsive to simple, untaxing commands. They cannot fight or
@@ -10,11 +13,9 @@ data:
     and the subject retains no memories while under the effect. A subject must
     be immobilized or willing to be affected by Hush; violent physical movement
     immediately after application disrupts the neurological effects.
-  cost: 200
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Hush
+type: item

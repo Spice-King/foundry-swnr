@@ -1,30 +1,39 @@
-name: Laser Pistol
-type: weapon
+_id: S69XOZtM17punHP7
 data:
-  description: Laser pistols and laser rifles are the most common type of energy weapon, though pistols are considerably less energy-efficient. Depending on the tech used in the sector, they might produce silent, invisible beams of death or noisy, brightly-colored streaks of lethal light. The phased multifrequency beam is capable of penetrating any ordinary mist or haze, but a thick cloud of thermally-resistant particulate matter such as ash or sand can seriously degrade the beam, applying up to a -4 penalty to hit and cutting ranges in half.
   ab: 0
   ammo:
     burst: false
-    value: 10
-    max: 10
     longReload: false
-    type: typeAPower
+    max: 10
     suppress: false
+    type: typeAPower
+    value: 10
   bundle:
     amount: 1
     bundled: false
   cost: 200
   damage: 1d6
+  description: >-
+    Laser pistols and laser rifles are the most common type of energy weapon,
+    though pistols are considerably less energy-efficient. Depending on the tech
+    used in the sector, they might produce silent, invisible beams of death or
+    noisy, brightly-colored streaks of lethal light. The phased multifrequency
+    beam is capable of penetrating any ordinary mist or haze, but a thick cloud
+    of thermally-resistant particulate matter such as ash or sand can seriously
+    degrade the beam, applying up to a -4 penalty to hit and cutting ranges in
+    half.
   encumbrance: 1
-  range:
-    normal: 100
-    max: 300
-  stat: dex
-  tl: 4
-  shock:
-    ac: 15
-    dmg: 0
   location: other
   quality: stock
   quantity: 1
-  skill: ""
+  range:
+    max: 300
+    normal: 100
+  shock:
+    ac: 15
+    dmg: 0
+  skill: ''
+  stat: dex
+  tl: 4
+name: Laser Pistol
+type: weapon

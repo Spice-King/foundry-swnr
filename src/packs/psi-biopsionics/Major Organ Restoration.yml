@@ -1,5 +1,4 @@
-name: Major Organ Restoration
-type: power
+_id: 6kKt893GmMJIKXbn
 data:
   description: >-
     <p>The biopsion’s <em>Psychic Succor</em> can now cure congenital birth
@@ -11,3 +10,5 @@ data:
     further hit points can be healed by Biopsionics, stims, or natural rest.</p>
   level: 2
   source: biopsionics
+name: Major Organ Restoration
+type: power

@@ -1,6 +1,7 @@
-name: "Leather jacks, thick hides, quilted armor"
-type: armor
+_id: C2MVd1p0yHwZweNw
 data:
+  ac: 13
+  cost: 10
   description: >-
     Primitive armor is a catch-all covering all armor technology that lacks
     access to advanced materials and processes. While such armor can be very
@@ -9,11 +10,11 @@ data:
     it is treated as AC 10. Note that some planets have native flora or fauna
     capable of naturally producing extremely effective armor materials, ones not
     susceptible to this limitation
-  cost: 10
   encumbrance: 1
-  tl: 0
   location: other
   quality: stock
-  ac: 13
   shield: false
+  tl: 0
   use: false
+name: 'Leather jacks, thick hides, quilted armor'
+type: armor

@@ -1,15 +1,16 @@
-name: Deflector Array
-type: armor
+_id: XzLiy8ea5FNFlJID
 data:
+  ac: 18
+  cost: 30000
   description: >-
     A force pavis is more effective shield, being a small pretech force disc
     projector that can absorb all manner of small arms fire. All shields require
     one free hand to use effectively.
-  cost: 30000
   encumbrance: 0
-  tl: 5
   location: other
   quality: stock
-  ac: 18
   shield: false
+  tl: 5
   use: false
+name: Deflector Array
+type: armor

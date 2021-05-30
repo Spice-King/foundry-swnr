@@ -1,15 +1,16 @@
-name: Binoculars (TL 4)
-type: item
+_id: Nmb2XkY1n0ywihF5
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 20
   description: >-
     Binoculars (TL 4): This TL4 version are available that have integral
     low-light optics and up to 25x150 power. TL 4 binocs cost 200 credits and
     require a type A power cell for up to a week of regular usage.
-  cost: 20
   encumbrance: 1
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Binoculars (TL 4)
+type: item

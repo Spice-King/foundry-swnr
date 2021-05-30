@@ -1,6 +1,9 @@
-name: Line shunt
-type: item
+_id: 8d3TIOYtaXrIzvl3
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
   description: >-
     Line shunt: These palm-sized discs are roughly one centimeter in thickness,
     with an adhesive side that will stick to virtually anything and a
@@ -10,11 +13,9 @@ data:
     computerized systems. Shunts employ phased energy manipulation tech, and so
     do not need to be directly in contact with a data line but only within a few
     centimeters. Line shunts are single-use, and keep functioning until removed.
-  cost: 100
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Line shunt
+type: item

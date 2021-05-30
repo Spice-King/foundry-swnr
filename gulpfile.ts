@@ -9,8 +9,7 @@ import * as typescript from "typescript";
 import * as os from "os";
 
 import * as ts from "gulp-typescript";
-import * as less from "gulp-less";
-import * as sass from "gulp-sass";
+import * as postcss from "gulp-postcss";
 import * as gyaml from "gulp-yaml";
 import * as filelist from "gulp-filelist";
 import * as rename from "gulp-rename";
@@ -20,7 +19,7 @@ import * as concat from "gulp-concat";
 import * as yaml from "js-yaml";
 
 import * as through2 from "through2";
-import * as debug from "gulp-debug";
+// import * as debug from "gulp-debug";
 import * as yargs from "yargs";
 
 import * as glob from "glob";
@@ -32,9 +31,6 @@ const argv = yargs.options("clean", {
   default: false,
 }).argv;
 
-import * as sassComp from "sass";
-(<{ compiler: unknown }>(<never>sass)).compiler = sassComp;
-
 function getConfig() {
   const configPath = path.resolve(process.cwd(), "foundryconfig.json");
   let config: { dataPath: string };
@@ -43,7 +39,7 @@ function getConfig() {
     config = fs.readJSONSync(configPath);
     return config;
   } else {
-    return;
+    throw new Error("foundryconfig.json file missing.");
   }
 }
 
@@ -68,7 +64,7 @@ function getManifest() {
     file = yaml.load(fs.readFileSync(systemPath, "utf-8"));
     name = "system.yml";
   } else {
-    return;
+    throw new Error("Can't find package file.");
   }
 
   return { name, file, root };
@@ -138,7 +134,7 @@ function createTransformer(): typescript.TransformerFactory<typescript.SourceFil
   return importTransformer;
 }
 
-const tsConfig = ts.createProject("tsconfig.json", {
+const tsConfig = ts.createProject("src/tsconfig.json", {
   sourceMap: true,
   getCustomTransformers: () => ({
     after: [createTransformer()],
@@ -176,7 +172,7 @@ function buildPack() {
           (
             file: { contents: Buffer | Uint8Array },
             enc: unknown,
-            cb: (arg0: any, arg1: { contents: Buffer | Uint8Array }) => void
+            cb: (arg0: unknown, arg1: { contents: Buffer | Uint8Array }) => void
           ) => {
             file.contents = Buffer.concat([
               Buffer.from(`_id: ${makeId(16)}\n`),
@@ -213,8 +209,8 @@ function buildTS() {
  */
 async function buildEntities(cb: () => void) {
   glob("src/module/{actor,item}s/**/*.ts", (e, fileNames) => {
-    const imports = [];
-    const adds = [];
+    const imports = [] as string[];
+    const adds = [] as string[];
     fileNames
       .map((e) => {
         const filePath = path.posix.relative("./src/module", "./" + e);
@@ -225,35 +221,56 @@ async function buildEntities(cb: () => void) {
           relative: path.dirname(filePath),
           type: type.charAt(0).toUpperCase() + type.slice(1, -1),
           sheet: name.endsWith("-sheet"),
-          hashedName: "_" + createHash("md4").update(e).digest("hex"),
+          hashedName:
+            "_" + createHash("md4").update(e).digest("hex").slice(0, 16),
         };
       })
       .forEach((e) => {
         imports.push(
-          `import * as ${e.hashedName} from './${e.relative}/${e.name}'`
+          `import * as ${e.hashedName} from "./${e.relative}/${e.name}";`
         );
         adds.push(
           e.sheet
-            ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, { makeDefault: true, types: ${e.hashedName}.types });`
+            ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, {\n  makeDefault: true,\n  types: ${e.hashedName}.types,\n});`
             : `${e.type.toLowerCase()}s[${e.hashedName}.name] = ${
                 e.hashedName
-              }.entity as typeof ${e.type}`
+              }.entity as typeof ${e.type};`
         );
       });
     const mids = [
       "//This file is auto generated, leave it alone!",
-      "import proxy from './proxy'",
-      "const items = <Record<string, typeof Item>>{}",
-      "const actors = <Record<string, typeof Actor>>{}",
+      'import proxy from "./proxy";',
+      "const items = <Record<string, typeof Item>>{};",
+      "const actors = <Record<string, typeof Actor>>{};",
     ];
     const ends = [
-      "export const SWNRItem = proxy(items, Item) as typeof Item",
-      "export const SWNRActor = proxy(actors, Actor) as typeof Actor",
+      "export const SWNRItem = proxy(items, Item) as typeof Item;",
+      "export const SWNRActor = proxy(actors, Actor) as typeof Actor;",
       "",
     ];
     const out = imports.concat(mids, adds, ends).join("\n");
     // console.log(out);
     fs.writeFile("src/module/entities.ts", out, cb);
+  });
+}
+
+/**
+ * Build Migration list
+ */
+function buildMigrationList(cb: (error: unknown) => void) {
+  glob("src/migrations/**/*.ts", (e, fileNames) => {
+    const out = JSON.stringify(
+      fileNames.map((f) => {
+        const filename = path.posix.relative("./src", "./" + f);
+        const name = path.basename(filename, ".ts") + ".js";
+        const dirname = path.dirname(filename);
+        return "./" + path.join(dirname, name);
+      })
+    );
+    fs.mkdir("dist", { recursive: true }, (error) => {
+      if (error) return cb(error);
+      fs.writeFile("dist/migrations.json", out, cb);
+    });
   });
 }
 
@@ -266,12 +283,7 @@ function buildYaml() {
     .pipe(gyaml({ space: 2, safe: true }))
     .pipe(gulp.dest("dist"));
 }
-/**
- * Build Less
- */
-function buildLess() {
-  return gulp.src("src/**/*.less").pipe(less()).pipe(gulp.dest("dist"));
-}
+
 /**
  * Build template list
  */
@@ -289,17 +301,16 @@ function buildTemplateList() {
     .pipe(gulp.dest("dist"));
 }
 
-/**
- * Build SASS
- */
-function buildSASS() {
+function buildPostCSS() {
   return gulp
-    .src("src/*.scss")
-    .pipe(gulp.dest("dist"))
-    .pipe(sourcemaps.init())
-    .pipe(sass().on("error", sass.logError))
-    .pipe(sourcemaps.write(".", { sourceRoot: ".", includeContent: false }))
-    .pipe(gulp.dest("dist"));
+    .src("./src/*.pcss")
+    .pipe(postcss())
+    .pipe(
+      rename({
+        extname: ".css",
+      })
+    )
+    .pipe(gulp.dest("./dist"));
 }
 
 /**
@@ -329,8 +340,11 @@ function buildWatch() {
     buildEntities
   );
   gulp.watch("src/**/*.ts", { ignoreInitial: false }, buildTS);
-  gulp.watch("src/**/*.less", { ignoreInitial: false }, buildLess);
-  gulp.watch("src/**/*.scss", { ignoreInitial: false }, buildSASS);
+  gulp.watch(
+    ["src/**/*.pcss", "/tailwind.config.js", "tailwind/**/*.js"],
+    { ignoreInitial: false },
+    buildPostCSS
+  );
   gulp.watch(
     ["src/**/*.yml", "!src/packs/**/*.yml"],
     { ignoreInitial: false },
@@ -343,6 +357,11 @@ function buildWatch() {
     copyFiles
   );
   gulp.watch("src/**/*.html", { ignoreInitial: false }, buildTemplateList);
+  gulp.watch(
+    "src/migrations/**/*.ts",
+    { ignoreInitial: false },
+    buildMigrationList
+  );
 }
 
 /********************/
@@ -355,7 +374,7 @@ function buildWatch() {
  */
 async function clean() {
   const name = getManifest().file.name;
-  const files = [];
+  const files = [] as string[];
 
   // If the project uses TypeScript
   if (fs.existsSync(path.join("src", `${name}.ts`))) {
@@ -455,7 +474,7 @@ async function linkUserData() {
       await fs.symlink(
         path.resolve("./dist"),
         linkDir,
-        os.platform() === "win32" ? "junction" : null
+        os.platform() === "win32" ? "junction" : undefined
       );
     }
     return Promise.resolve();
@@ -516,11 +535,11 @@ async function packageBuild() {
 const execBuild = gulp.series(
   buildEntities,
   gulp.parallel(
-    buildLess,
-    buildSASS,
+    buildPostCSS,
     buildYaml,
     copyFiles,
     buildTemplateList,
+    buildMigrationList,
     buildPack
   ),
   buildTS

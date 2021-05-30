@@ -1,5 +1,4 @@
-name: Offensive Apportation
-type: power
+_id: Dr4NInE4JuAVizqX
 data:
   description: >-
     <p>The psychic can use <em>Personal Apportation</em> as a Main Action to
@@ -19,3 +18,5 @@ data:
     hits or not.</p>
   level: 4
   source: teleportation
+name: Offensive Apportation
+type: power

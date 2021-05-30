@@ -1,6 +1,18 @@
-name: Medium advanced weapon
-type: weapon
+_id: SvnWOBf8fFcI020s
 data:
+  ab: 0
+  ammo:
+    burst: false
+    longReload: false
+    max: 0
+    suppress: false
+    type: none
+    value: 0
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 60
+  damage: 1d8+1
   description: >-
     Medium weapons are one-handed swords, axes, spears, or other obvious
     implements of war. While they can’t be effectively concealed in anything
@@ -11,30 +23,19 @@ data:
     given a monoblade edge, kinetic sheathing, thermal wires, a chainsaw blade,
     or some other TL4 touch. Advanced weapons can ignore primitive plate and
     hide protections.
-  ab: 0
-  ammo:
-    burst: false
-    value: 0
-    max: 0
-    longReload: false
-    type: none
-    suppress: false
-  bundle:
-    amount: 1
-    bundled: false
-  cost: 60
-  damage: 1d8+1
   encumbrance: 1
-  range:
-    normal: 0
-    max: 0
-  stat: str
-  secondStat: dex
-  tl: 4
-  shock:
-    dmg: 2
-    ac: 13
   location: other
   quality: stock
   quantity: 1
-  skill: ""
+  range:
+    max: 0
+    normal: 0
+  secondStat: dex
+  shock:
+    ac: 13
+    dmg: 2
+  skill: ''
+  stat: str
+  tl: 4
+name: Medium advanced weapon
+type: weapon

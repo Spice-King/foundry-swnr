@@ -4,7 +4,15 @@ import { SWNRWeapon } from "../items/weapon";
 
 export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
   popUpDialog?: Dialog;
-  getData(): ActorSheetData<SWNRNPCData> {
+
+  _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
+    html
+      .find(".window-content")
+      .addClass(["cq", "overflow-y-scroll", "relative"]);
+    super._injectHTML(html, options);
+  }
+
+  getData(): ActorSheet.Data<SWNRNPCData> {
     const data = super.getData();
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
@@ -16,7 +24,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       ),
     } as never);
   }
-  static get defaultOptions(): FormApplicationOptions {
+  static get defaultOptions(): FormApplication.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "npc"],
       template: "systems/swnr/templates/actors/npc-sheet.html",
@@ -35,6 +43,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     html.find(".reaction").on("click", this._onReaction.bind(this));
     html.find(".morale").on("click", this._onMorale.bind(this));
     html.find(".skill").on("click", this._onSkill.bind(this));
+    html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {
@@ -42,12 +51,26 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
     const item = this.actor.getOwnedItem(wrapper.data("itemId"));
-    item.sheet.render(true);
+    item?.sheet.render(true);
   }
-  _onItemDelete(event: JQuery.ClickEvent): void {
+  async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.getOwnedItem(li.data("itemId"));
+    if (!item) return;
+    const performDelete: boolean = await new Promise((resolve) => {
+      Dialog.confirm({
+        title: game.i18n.format("swnr.deleteTitle", { name: item.name }),
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        content: game.i18n.format("swnr.deleteContent", {
+          name: item.name,
+          actor: this.actor.name,
+        }),
+      });
+    });
+    if (!performDelete) return;
     li.slideUp(200, () => {
       requestAnimationFrame(() => {
         this.actor.deleteOwnedItem(li.data("itemId"));
@@ -72,12 +95,12 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       { actor: this.actor.data, weapon, burstFireHasAmmo: weapon.canBurstFire }
     );
     const doRoll = async (html: JQuery<HTMLElement>) => {
-      const skill =
-        html.find('[name="skilled"]').val() === "on"
-          ? this.actor.data.data.skillBonus
-          : 0;
+      const skill = html.find('[name="skilled"]').prop("checked")
+        ? this.actor.data.data.skillBonus
+        : 0;
       const modifier = parseInt(html.find('[name="modifier"]').val() as string);
-      const burstMode = html.find('[name="burstFire"]')?.val() == "on" ?? false;
+      const burstMode =
+        html.find('[name="burstFire"]')?.prop("checked") ?? false;
       const attackBonus = this.actor.data.data.ab;
       const damageBonus = this.actor.data.data.attacks.bonusDamage;
       console.log({ skill, modifier, burstMode, attackBonus, damageBonus });
@@ -85,20 +108,23 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       await weapon.rollAttack(damageBonus, 0, skill, modifier, burstMode);
     };
     this.popUpDialog?.close();
-    this.popUpDialog = new Dialog({
-      title: game.i18n.format("swnr.dialog.attackRoll", {
-        actorName: this.actor.name,
-        weaponName: weapon.name,
-      }),
-      content: template,
-      buttons: {
-        roll: {
-          label: "Roll",
-          icon: '<i class="fa fa-dice-d20"></i>',
-          callback: doRoll,
+    this.popUpDialog = new Dialog(
+      {
+        title: game.i18n.format("swnr.dialog.attackRoll", {
+          actorName: this.actor.name,
+          weaponName: weapon.name,
+        }),
+        content: template,
+        buttons: {
+          roll: {
+            label: "Roll",
+            icon: '<i class="fa fa-dice-d20"></i>',
+            callback: doRoll,
+          },
         },
       },
-    });
+      { classes: ["swnr"] }
+    );
     this.popUpDialog.render(true);
   }
 
@@ -186,10 +212,25 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
   }
 
+  _onSavingThrow(event: JQuery.ClickEvent): void {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const roll = new Roll("1d20").roll();
+    const flavor = game.i18n.format(
+      parseInt(roll.result) >= this.actor.data.data.saves
+        ? game.i18n.localize("swnr.npc.saving.success")
+        : game.i18n.localize("swnr.npc.saving.failure"),
+      { actor: this.actor.name }
+    );
+
+    roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
+  }
+
   _onSkill(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
-    const trained = event.target.dataset.skillType === "trained";
+    const trained = event.currentTarget.dataset.skillType === "trained";
     const skill = trained ? this.actor.data.data.skillBonus : 0;
 
     const roll = new Roll("2d6 + @skill", { skill }).roll();

@@ -1,5 +1,4 @@
-name: Telepathic Assault
-type: power
+_id: NR8PAzOgSIPPlt9x
 data:
   description: >-
     <p>The telepath Commits Effort for the day as a Main Action to force a wave
@@ -12,3 +11,5 @@ data:
     per scene.</p>
   level: 3
   source: telepathy
+name: Telepathic Assault
+type: power

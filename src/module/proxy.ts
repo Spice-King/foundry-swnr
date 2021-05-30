@@ -16,7 +16,10 @@ export default function proxy(
       switch (prop) {
         case "create":
           //Calling the class' create() static function
-          return function (data: EntityData | EntityData[], options: unknown) {
+          return function (
+            data: Entity.Data | Entity.Data[],
+            options: unknown
+          ) {
             const entitiesData = data instanceof Array ? data : [data];
             const results = entitiesData.map((data) => {
               const constructor = entities[data.type];

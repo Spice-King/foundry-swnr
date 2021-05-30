@@ -1,6 +1,18 @@
-name: Rocket Launcher
-type: weapon
+_id: 70abOvLk8p40YnHc
 data:
+  ab: 0
+  ammo:
+    burst: false
+    longReload: false
+    max: 1
+    suppress: false
+    type: special
+    value: 1
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 4000
+  damage: 3d10
   description: >-
     Rocket launchers cover a wide variety of man-portable missile launchers of
     varying degrees of sophistication. The weapons are usually equipped with
@@ -8,30 +20,19 @@ data:
     targets. Rocket launchers take a 04 hit penalty against targets of human
     size or smaller. Unlike most Heavy weapons, rocket launchers can be
     shoulder-fired without a prepared emplacement to support them.
-  ab: 0
-  ammo:
-    burst: false
-    value: 1
-    max: 1
-    longReload: false
-    type: special
-    suppress: false
-  bundle:
-    amount: 1
-    bundled: false
-  cost: 4000
-  damage: 3d10
   encumbrance: 2
-  range:
-    normal: 2000
-    max: 4000
-  stat: dex
-  secondStat: none
-  tl: 3
-  shock:
-    ac: 15
-    dmg: 0
   location: other
   quality: stock
   quantity: 1
-  skill: ""
+  range:
+    max: 4000
+    normal: 2000
+  secondStat: none
+  shock:
+    ac: 15
+    dmg: 0
+  skill: ''
+  stat: dex
+  tl: 3
+name: Rocket Launcher
+type: weapon

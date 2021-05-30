@@ -1,5 +1,4 @@
-name: Flawless Mastery
-type: power
+_id: 5MwTz3ocaZDvcPUA
 data:
   description: >-
     <p>When this technique is learned, the adept may choose one technique from
@@ -13,3 +12,5 @@ data:
     practice.</p>
   level: 4
   source: metapsionics
+name: Flawless Mastery
+type: power

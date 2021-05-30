@@ -1,5 +1,4 @@
-name: Teratic Overload
-type: power
+_id: F1yiQCBuxXSuyXg5
 data:
   description: >-
     <p>This use of biopsionics inflicts potentially-lethal damage on a touched
@@ -17,3 +16,5 @@ data:
     more than once per scene.</p>
   level: 3
   source: biopsionics
+name: Teratic Overload
+type: power

@@ -1,6 +1,8 @@
-<form>
+<form class="-m-2 p-2 pb-4 bg-gray-300">
   <div>
-    <select name="statpool" id="statpool">
+    <label for="statpool">{{localize "swnr.chat.dicepool"}}: </label>
+    <select name="statpool" id="statpool"
+                class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md">
       {{#each diceOptions}}
       <option value="{{this}}">{{this}}</option>
       {{/each}}

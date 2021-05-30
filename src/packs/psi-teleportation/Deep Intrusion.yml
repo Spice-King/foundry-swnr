@@ -1,5 +1,4 @@
-name: Deep Intrusion
-type: power
+_id: KkdVQtcR8zH0AvVe
 data:
   description: >-
     <p>The adept can use <em>Personal Apportation</em> to blind-teleport into a
@@ -12,3 +11,5 @@ data:
     point for the day.</p>
   level: 4
   source: teleportation
+name: Deep Intrusion
+type: power

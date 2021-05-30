@@ -1,20 +1,59 @@
-<li class="item weapon" data-item-id="{{item._id}}">
-  <a class="item-name">
-    {{item.name}}
-    <i class="fas fa-dice-d20"></i>
+<div
+  class="flex gap-1 items-baseline group item weapon"
+  data-item-id="{{item._id}}"
+>
+  <a
+    class="item-name items-center group flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+  >
+    <div>{{item.name}}</div>
+    <div class="flex flex-col relative items-center">
+      <i class="fas fa-dice-d20"></i>
+      <div
+        class="absolute pointer-events-none w-32 --mt-24 --right-3 -top-1.5 --w-full flex justify-around transform --translate-x-1/2 -translate-y-full z-10 --bg-gray-300"
+      >
+        <div
+          class="transition-opacity opacity-0 group-hover:opacity-100 border-2 border-trueGray-600 bg-trueGray-700 --mt-5 p-1 --z-10 relative rounded-md text-trueGray-200"
+        >
+          <div>
+            Hit: {{numberFormat (concat damageBonus item.data.data.ab)
+            sign=true}}
+          </div>
+          <div>
+            Damage: {{item.data.data.damage}}{{numberFormat
+            damageBonus sign=true}}
+          </div>
+          {{#if (ne item.data.data.ammo.type "none")}}
+          <div>
+            Ammo: {{item.data.data.ammo.value}}/{{item.data.data.ammo.max}}
+          </div>
+          {{/if}}
+          <div class="w-full absolute -left-0 -bottom-4 flex justify-around">
+            <svg
+              class="text-trueGray-600 h-4"
+              x="0px"
+              y="0px"
+              viewBox="0 0 255 255"
+              xml:space="preserve"
+            >
+              <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
   </a>
-  <div class="item-controls">
+  <div class="item-controls flex gap-1">
     <a
-      class="item-control item-edit"
+      class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors"
       title="{{localize 'swnr.sheet.edit-item'}}"
     >
       <i class="fas fa-edit"></i>
     </a>
     <a
-      class="item-control item-delete"
+      class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors"
       title="{{localize 'swnr.sheet.delete-item'}}"
     >
       <i class="fas fa-trash"></i>
     </a>
   </div>
-</li>
+</div>

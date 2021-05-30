@@ -1,6 +1,9 @@
-name: Vacc skin
-type: item
+_id: 2CBbiwqq0wWQACPV
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 1000
   description: >-
     Vacc suit: The standard TL4 vacc suit is designed to allow the wearer to
     survive in both hard vacuum and on most inhospitable planetary surfaces. The
@@ -19,11 +22,9 @@ data:
     edged weapon, there is a 50% chance the suit is torn. Suits are equipped
     with emergency repair patches, but it requires a Main Action to apply one.
     Exposure to vacuum is described on page 58.
-  cost: 1000
   encumbrance: 1
-  tl: 5
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 5
+name: Vacc skin
+type: item

@@ -1,6 +1,9 @@
-name: Vacc suit
-type: item
+_id: wXAqbLF2a15jE84P
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 100
   description: >-
     Vacc skin: A more advanced TL5 version of the vacc suit, this skin-tight
     suit can be worn as a readied item in conjunction with armor, though it
@@ -10,11 +13,9 @@ data:
     skins apply no penalty to hit rolls or skill checks for wearers. It suffers
     tears in the same way as a normal vacc suit, and requires a type A power
     cell for each 24 hours of operation.
-  cost: 100
   encumbrance: 2
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Vacc suit
+type: item

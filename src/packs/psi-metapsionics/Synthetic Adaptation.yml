@@ -1,5 +1,4 @@
-name: Synthetic Adaptation
-type: power
+_id: FsW1F2ITirWmLvG6
 data:
   description: >-
     <p>This is a particularly esoteric technique, one that requires the adept to
@@ -12,3 +11,5 @@ data:
     might inflict must be paid by the adept rather than the target.</p>
   level: 1
   source: metapsionics
+name: Synthetic Adaptation
+type: power

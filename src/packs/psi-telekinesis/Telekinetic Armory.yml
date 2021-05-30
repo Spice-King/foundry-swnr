@@ -1,5 +1,4 @@
-name: Telekinetic Armory
-type: power
+_id: Suvq2iFRrSPnrxsZ
 data:
   description: >-
     <p>The adept may Commit Effort as an On Turn action to create both weapons
@@ -14,3 +13,5 @@ data:
     invisible or visible at the psychic’s discretion.</p>
   level: 1
   source: telekInesIs
+name: Telekinetic Armory
+type: power

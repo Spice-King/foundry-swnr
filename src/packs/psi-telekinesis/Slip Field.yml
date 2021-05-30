@@ -1,5 +1,4 @@
-name: Slip Field
-type: power
+_id: 27gmvEL6gequOYwB
 data:
   description: >-
     <p>As a Main Action, the psychic Commits Effort for the scene and decreases
@@ -13,3 +12,5 @@ data:
     Targets who save are immune to this technique for the scene.</p>
   level: 2
   source: telekInesIs
+name: Slip Field
+type: power

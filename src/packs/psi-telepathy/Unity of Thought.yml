@@ -1,5 +1,4 @@
-name: Unity of Thought
-type: power
+_id: Bye8GcXdz42EwxWN
 data:
   description: >-
     <p>The telepath becomes exceptionally skilled at weaving together multiple
@@ -19,3 +18,5 @@ data:
     extends to any point within a solar system.</p>
   level: 4
   source: telepathy
+name: Unity of Thought
+type: power

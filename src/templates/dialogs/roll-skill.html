@@ -1,9 +1,17 @@
-<form>
+<form class="-m-2 p-2 pb-4 bg-gray-300 space-y-2">
   <div>
     {{! dice }}
     <label for="">{{localize 'swnr.chat.dicepool'}}: </label>
-    <select name="dicepool" {{#if (ne skill.dice 'ask')}} disabled{{/if}}>
-      {{#select skill.pool}}
+    <select
+      name="dicepool"
+      {{#if (eq skill.data.data.pool 'ask')}}
+        class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      {{else}}
+        class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md opacity-50"
+        disabled
+      {{/if}}
+    >
+      {{#select skill.data.data.pool}}
       <option value="2d6">2D6</option>
       <option value="3d6kh2">3D6</option>
       <option value="4d6kh2">4D6</option>
@@ -13,13 +21,22 @@
   <div>
     {{! mod }}
     <label for="modifier">{{localize 'swnr.chat.modifier'}}: </label>
-    <input name="modifier" type="number" step="1" value="0" />
+    <input name="modifier" type="number" step="1" value="0" class="w-16 px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"/>
   </div>
   <div>
     {{! stat}}
     <label for="stat">{{localize 'swnr.sheet.stats'}}: </label>
-    <select name="stat">
-      {{#select skill.defaultStat}} {{#each data.data.stats as |box name |}}
+    <select
+      name="stat"
+      {{#if (eq skill.data.data.defaultStat 'ask')}}
+        class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+      {{else}}
+        class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md opacity-50"
+        disabled
+      {{/if}}
+    >
+      {{#select skill.data.data.defaultStat}}
+      {{#each data.data.stats as |box name |}}
       <option value="{{name}}">
         {{localize (concat "swnr.stat.long." name)}}: 
         {{numberFormat box.mod decimals=0 sign=true}}

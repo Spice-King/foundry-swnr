@@ -1,5 +1,4 @@
-name: Intuitive Response
-type: power
+_id: Qv8aO1LaZpqHYIDX
 data:
   description: >-
     <p>As an Instant action, the precog can Commit Effort for the scene just
@@ -11,3 +10,5 @@ data:
     surprised.</p>
   level: 1
   source: precognition
+name: Intuitive Response
+type: power

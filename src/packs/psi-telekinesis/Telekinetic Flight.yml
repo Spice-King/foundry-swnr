@@ -1,5 +1,4 @@
-name: Telekinetic Flight
-type: power
+_id: 8WkV1rpMN6N7fhGN
 data:
   description: >-
     <p>As an Instant action, the telekinetic can Commit Effort to begin flying,
@@ -14,3 +13,5 @@ data:
     lasts for as long as the Effort remains Committed.</p>
   level: 4
   source: telekInesIs
+name: Telekinetic Flight
+type: power

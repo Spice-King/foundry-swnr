@@ -1,5 +1,4 @@
-name: Remote Repair
-type: power
+_id: 7g0cg7bXWFFYhGvZ
 data:
   description: >-
     <p><em>Psychic Succor</em> and other biopsionic techniques that normally
@@ -9,3 +8,5 @@ data:
     this technique is used, Effort must be Committed for the scene.</p>
   level: 1
   source: biopsionics
+name: Remote Repair
+type: power

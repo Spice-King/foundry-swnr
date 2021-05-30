@@ -1,26 +1,38 @@
-<form class="{{cssClass}}">
-  {{> "systems/swnr/templates/items/fragments/desc.html"}} \
+<form class="{{cssClass}} -m-2 p-2 bg-gray-200">
+  {{> "systems/swnr/templates/items/fragments/desc.html"}}
   {{> "systems/swnr/templates/items/fragments/item-base.html"}}
-  {{localize 'swnr.sheet.armor-class'}}:
-  <input
-    type="number"
-    step="1"
-    name="data.ac"
-    min="0"
-    data-dtype="Number"
-    value="{{data.ac}}"
-  />
-  {{localize 'swnr.armor.type.label'}}:
-  <select name="data.type">
-    {{#select data.type}}
-    <option value="primitive">{{localize 'swnr.armor.type.primitive'}}</option>
-    <option value="street">{{localize 'swnr.armor.type.street'}}</option>
-    <option value="combat">{{localize 'swnr.armor.type.combat'}}</option>
-    <option value="powered">{{localize 'swnr.armor.type.powered'}}</option>
-    {{/select}}
-  </select>
-  <label>
-    <input type="checkbox" name="data.shield" {{#if
-    data.shield}}checked{{/if}}>{{localize 'swnr.armor.shield'}}</label
-  >
+  <div class="flex gap-1 justify-between">
+    <div>
+      <div>{{localize 'swnr.sheet.armor-class'}}:</div>
+      <input
+        type="number"
+        class="px-1 w-10 text-center text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        step="1"
+        name="data.ac"
+        min="0"
+        data-dtype="Number"
+        value="{{data.ac}}"
+      />
+    </div>
+    <div>
+      <div>{{localize 'swnr.armor.type.label'}}:</div>
+      <select
+        name="data.type"
+        class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+      >
+        {{#select data.type}}
+        <option value="primitive">
+          {{localize 'swnr.armor.type.primitive'}}
+        </option>
+        <option value="street">{{localize 'swnr.armor.type.street'}}</option>
+        <option value="combat">{{localize 'swnr.armor.type.combat'}}</option>
+        <option value="powered">{{localize 'swnr.armor.type.powered'}}</option>
+        {{/select}}
+      </select>
+    </div>
+    <label class="flex gap-1">
+      <input type="checkbox" name="data.shield" {{checked data.shield}} />
+      {{localize 'swnr.armor.shield'}}
+    </label>
+  </div>
 </form>

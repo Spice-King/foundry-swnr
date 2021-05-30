@@ -1,5 +1,4 @@
-name: Thermokinesis
-type: power
+_id: vsnVbAIxFkJlXKLa
 data:
   description: >-
     <p>Telekinetic power involves kinetic energy, but a sufficiently
@@ -15,3 +14,5 @@ data:
     technique is applied to them.</p>
   level: 2
   source: telekInesIs
+name: Thermokinesis
+type: power

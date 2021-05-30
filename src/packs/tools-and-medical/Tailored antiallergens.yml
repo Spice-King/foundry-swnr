@@ -1,6 +1,9 @@
-name: Tailored antiallergens
-type: item
+_id: tnTSw1soUoZgFZBM
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 5
   description: >-
     Tailored Antiallergens: A dose of tailored antiallergens can be used to
     render a local world’s organics largely edible by humans and its atmosphere
@@ -8,11 +11,9 @@ data:
     seeded with Terran life forms or have produced organics that are edible by
     humans, others are toxic without the appropriate chemical augmentation. A
     dose of these antiallergens lasts for twenty-four hours.
-  cost: 5
   encumbrance: 0
-  tl: 4
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 4
+name: Tailored antiallergens
+type: item

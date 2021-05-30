@@ -1,5 +1,4 @@
-name: Telekinetic Ram
-type: power
+_id: yWAjIwWpBwEKXo5C
 data:
   description: >-
     <p>As a Main Action, the psychic can Commit Effort for the scene to target a
@@ -15,3 +14,5 @@ data:
     were struck by a Heavy weapon.</p>
   level: 3
   source: telekInesIs
+name: Telekinetic Ram
+type: power

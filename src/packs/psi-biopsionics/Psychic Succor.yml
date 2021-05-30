@@ -1,5 +1,4 @@
-name: Psychic Succor
-type: power
+_id: CSqYtbQAdNw0V3ot
 data:
   description: >-
     <p>The adept’s touch stabilizes critically-wounded organisms. More
@@ -23,3 +22,5 @@ data:
     instead.</p>
   level: 0
   source: biopsionics
+name: Psychic Succor
+type: power

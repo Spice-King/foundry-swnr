@@ -1,5 +1,4 @@
-name: Anguished Vision
-type: power
+_id: jbyv0pUjme2V71uG
 data:
   description: >-
     <p>The adept’s precognition is sophisticated enough to clearly foresee
@@ -12,3 +11,5 @@ data:
     per day.</p>
   level: 3
   source: precognition
+name: Anguished Vision
+type: power

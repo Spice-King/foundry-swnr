@@ -1,7 +1,4 @@
-name: Assassin
-permission:
-  default: 0
-type: focus
+_id: zQ0ZpwHAKi7vwrc3
 data:
   description: >-
     You are practiced at sudden murder, and have certain advantages in carrying
@@ -21,4 +18,7 @@ data:
     physical wall of meat between you and your prey.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: zQ0ZpwHAKi7vwrc3
+name: Assassin
+permission:
+  default: 0
+type: focus

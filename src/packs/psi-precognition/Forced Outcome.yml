@@ -1,5 +1,4 @@
-name: Forced Outcome
-type: power
+_id: rBpSMjrGVOB7iJ3C
 data:
   description: >-
     <p>Through careful manipulation of probability, the adept can influence
@@ -14,3 +13,5 @@ data:
     chance per scene is likely impossible to produce.</p>
   level: 3
   source: precognition
+name: Forced Outcome
+type: power

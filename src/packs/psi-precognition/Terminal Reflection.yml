@@ -1,5 +1,4 @@
-name: Terminal Reflection
-type: power
+_id: 1HMbXVMjSa7m95Mq
 data:
   description: >-
     <p>The psychic’s <em>Oracle</em> power automatically triggers as an Instant
@@ -11,3 +10,5 @@ data:
     day.</p>
   level: 1
   source: precognition
+name: Terminal Reflection
+type: power

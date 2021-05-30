@@ -1,5 +1,4 @@
-name: Burdened Apportation
-type: power
+_id: QBcJc9HtQbR55wuT
 data:
   description: >-
     <p>The psychic can carry willing companions with them when using
@@ -14,3 +13,5 @@ data:
     Committed for the day.</p>
   level: 2
   source: teleportation
+name: Burdened Apportation
+type: power

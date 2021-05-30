@@ -1,5 +1,4 @@
-name: Metadimensional Friction
-type: power
+_id: qgS0IXYxko6igfYr
 data:
   description: >-
     <p>As a Main Action, the metapsion Commits Effort for the scene to create
@@ -11,3 +10,5 @@ data:
     Only one application of this friction can affect a target at once.</p>
   level: 3
   source: metapsionics
+name: Metadimensional Friction
+type: power

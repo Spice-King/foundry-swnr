@@ -1,5 +1,4 @@
-name: Psychic Tutelage
-type: power
+_id: d48otbULmSbqlTOg
 data:
   description: >-
     <p>An expert metapsion can modulate and temper the metadimensional energy
@@ -17,3 +16,5 @@ data:
     the metapsion in the training process.</p>
   level: 3
   source: metapsionics
+name: Psychic Tutelage
+type: power

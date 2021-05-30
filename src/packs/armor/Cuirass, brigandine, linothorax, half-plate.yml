@@ -1,6 +1,7 @@
-name: "Cuirass, brigandine, linothorax, half-plate"
-type: armor
+_id: TLueYtc5h2OZnTyJ
 data:
+  ac: 15
+  cost: 50
   description: >-
     Primitive armor is a catch-all covering all armor technology that lacks
     access to advanced materials and processes. While such armor can be very
@@ -9,11 +10,11 @@ data:
     it is treated as AC 10. Note that some planets have native flora or fauna
     capable of naturally producing extremely effective armor materials, ones not
     susceptible to this limitation
-  cost: 50
   encumbrance: 1
-  tl: 1
   location: other
   quality: stock
-  ac: 15
   shield: false
+  tl: 1
   use: false
+name: 'Cuirass, brigandine, linothorax, half-plate'
+type: armor

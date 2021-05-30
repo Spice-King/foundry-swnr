@@ -1,5 +1,4 @@
-name: Mindtracing
-type: power
+_id: vqRyWOouGjIM4wLo
 data:
   description: >-
     <p>The metapsion can trace back the use of psionic powers they’ve noticed in
@@ -15,3 +14,5 @@ data:
     for only one round and do not interfere with the adept’s other actions.</p>
   level: 1
   source: metapsionics
+name: Mindtracing
+type: power

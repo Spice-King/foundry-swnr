@@ -1,6 +1,9 @@
-name: Brainwave
-type: item
+_id: pEZY231GB4jWPa0x
 data:
+  bundle:
+    amount: 1
+    bundled: false
+  cost: 1000
   description: >-
     Brainwave (Heal-2): This psitech drug requires advanced TL5 facilities to
     compound, and the few remaining doses from pre-Silence periods are rarely
@@ -8,11 +11,9 @@ data:
     extra maximum Effort for one hour. At the end of that hour, they suffer 4
     points of System Strain. If their Strain is maximized by this, they go
     unconscious for one hour. Only one dose can be active at a time.
-  cost: 1000
   encumbrance: 0
-  tl: 5
   location: other
   quality: stock
-  bundle:
-    bundled: false
-    amount: 1
+  tl: 5
+name: Brainwave
+type: item

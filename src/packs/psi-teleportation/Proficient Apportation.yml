@@ -1,5 +1,4 @@
-name: Proficient Apportation
-type: power
+_id: XqZJet2USvrJTjLA
 data:
   description: >-
     <p><em>Personal Apportation</em> now counts as a Move action, though it
@@ -8,3 +7,5 @@ data:
     technique must still be paid for normally.</p>
   level: 1
   source: teleportation
+name: Proficient Apportation
+type: power

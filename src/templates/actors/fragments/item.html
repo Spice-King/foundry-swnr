@@ -1,11 +1,12 @@
-<li class="item" data-item-id="{{item._id}}">
+<div class="item flex gap-1 flex-wrap items-center" data-item-id="{{item._id}}">
+  <img class="w-5 h-5" src="systems/swnr/assets/icons/game-icons.net/item-icons/{{item.type}}.svg"/>
   <div class="item-name">{{item.name}}</div>
-  <div>{{item.type}}</div>
-  <div style="display: flex">
+  <div class="flex gap-1 items-baseline">
     {{#if (eq item.type "item")}}
     <div>
       <input
         type="number"
+        class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         name="items.{{item._id}}.data.quantity"
         min="0"
         step="1"
@@ -14,7 +15,7 @@
     </div>
     {{/if}} {{#if (eq type 'character')}}
     <div>
-      <select name="items.{{item._id}}.data.location">
+      <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="items.{{item._id}}.data.location">
         {{#select item.data.data.location}}
         <option value="readied">
           {{localize 'swnr.item.locationReadied'}}
@@ -25,19 +26,19 @@
       </select>
     </div>
     {{/if}}
-    <div class="item-controls">
+    <div class="flex gap-1.5">
       <a
-        class="item-control item-edit"
+        class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors"
         title="{{localize 'swnr.sheet.edit-item'}}"
       >
         <i class="fas fa-edit"></i>
       </a>
       <a
-        class="item-control item-delete"
+        class="item-control item-delete text-gray-600 hover:text-red-600 transition-colors"
         title="{{localize 'swnr.sheet.delete-item'}}"
       >
         <i class="fas fa-trash"></i>
       </a>
     </div>
   </div>
-</li>
+</div>

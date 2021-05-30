@@ -1,5 +1,4 @@
-name: Psychic Refinement
-type: power
+_id: lZwNVL87zeJX3qKB
 data:
   description: >-
     <p>The metapsion gains improved mastery over their own powers and an innate
@@ -22,3 +21,5 @@ data:
     technique drops her to zero hit points.</p>
   level: 0
   source: metapsionics
+name: Psychic Refinement
+type: power

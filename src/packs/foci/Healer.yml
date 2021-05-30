@@ -1,7 +1,4 @@
-name: Healer
-permission:
-  default: 0
-type: focus
+_id: ErzrLWznshhAzt6v
 data:
   description: >-
     Healing comes naturally to you, and you’re particularly gifted at preventing
@@ -18,4 +15,7 @@ data:
     be applied to a given target only once per day.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: ErzrLWznshhAzt6v
+name: Healer
+permission:
+  default: 0
+type: focus

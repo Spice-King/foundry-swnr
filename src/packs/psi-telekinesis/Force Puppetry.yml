@@ -1,5 +1,4 @@
-name: Force Puppetry
-type: power
+_id: sX1Vb5vMqygI4kId
 data:
   description: >-
     <p>As a Main Action, the telekinetic can Commit Effort for the day to suborn
@@ -19,3 +18,5 @@ data:
     silent.</p>
   level: 4
   source: telekInesIs
+name: Force Puppetry
+type: power

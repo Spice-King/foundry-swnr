@@ -1,15 +1,16 @@
-name: Force Pavis
-type: armor
+_id: AaqIKMgSlsZaj0PB
 data:
+  ac: 15
+  cost: 10000
   description: >-
     Security armor is the ordinary working uniform of most law enforcement
     officials and security personnel. Various rigid plates and anti-ballistic
     panels provide protection for the wearer at minimal extra weight.
-  cost: 10000
   encumbrance: 1
-  tl: 5
   location: other
   quality: stock
-  ac: 15
   shield: true
+  tl: 5
   use: false
+name: Force Pavis
+type: armor

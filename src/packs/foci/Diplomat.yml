@@ -1,7 +1,4 @@
-name: Diplomat
-permission:
-  default: 0
-type: focus
+_id: 6YemCPRQC6XB5jn8
 data:
   description: >-
     You know how to get your way in personal negotiations, and can manipulate
@@ -18,4 +15,7 @@ data:
     closer to friendly if you can talk to them for at least thirty seconds.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: 6YemCPRQC6XB5jn8
+name: Diplomat
+permission:
+  default: 0
+type: focus

@@ -1,5 +1,4 @@
-name: Accelerated Succor
-type: power
+_id: rTdFHAZ8xz6AMJqP
 data:
   description: >-
     <p>The biopsion’s <em>Psychic Succor</em> now can be used as an On Turn
@@ -9,3 +8,5 @@ data:
     succor apply normally, such as with <em>Tissue Integrity Field</em>.</p>
   level: 3
   source: biopsionics
+name: Accelerated Succor
+type: power

@@ -1,7 +1,4 @@
-name: Henchkeeper
-permission:
-  default: 0
-type: focus
+_id: crSYSK7H5Ml86lHN
 data:
   description: >-
     You have an distinct knack for picking up lost souls who willingly do your
@@ -31,4 +28,7 @@ data:
     favor or help that would reasonably earn such fierce loyalty.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: crSYSK7H5Ml86lHN
+name: Henchkeeper
+permission:
+  default: 0
+type: focus

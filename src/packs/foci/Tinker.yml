@@ -1,7 +1,4 @@
-name: Tinker
-permission:
-  default: 0
-type: focus
+_id: U7YHhUbksQY6f1G4
 data:
   description: >-
     You have a natural knack for modifying and improving equipment, as given in
@@ -16,4 +13,7 @@ data:
     require one fewer pretech salvage part to make, down to a minimum of zero.
 flags: {}
 img: icons/svg/mystery-man.svg
-_id: U7YHhUbksQY6f1G4
+name: Tinker
+permission:
+  default: 0
+type: focus

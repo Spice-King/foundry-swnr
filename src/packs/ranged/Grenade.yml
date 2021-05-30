@@ -1,30 +1,37 @@
-name: Grenade
-type: weapon
+_id: GQfiji0YsuTXtx8J
 data:
-  description: Grenade users always roll to attack AC 10. On a miss, the grenade lands 1d10 meters away from the target in a random direction. Hit or miss, the grenade then explodes for 2d6 damage to all targets within 5 meters. Victims are allowed an Evasion save for half damage. Targets take 1 less point of damage for each point of AC above 14. Grenades can be thrown with the Exert skill instead of Shoot, if desired.
   ab: 0
   ammo:
     burst: false
-    value: 0
-    max: 0
     longReload: false
-    type: special
+    max: 0
     suppress: false
+    type: special
+    value: 0
   bundle:
     amount: 1
     bundled: false
   cost: 25
   damage: 2d6
+  description: >-
+    Grenade users always roll to attack AC 10. On a miss, the grenade lands 1d10
+    meters away from the target in a random direction. Hit or miss, the grenade
+    then explodes for 2d6 damage to all targets within 5 meters. Victims are
+    allowed an Evasion save for half damage. Targets take 1 less point of damage
+    for each point of AC above 14. Grenades can be thrown with the Exert skill
+    instead of Shoot, if desired.
   encumbrance: 1
-  range:
-    normal: 10
-    max: 30
-  stat: dex
-  tl: 3
-  shock:
-    ac: 15
-    dmg: 0
   location: other
   quality: stock
   quantity: 1
-  skill: ""
+  range:
+    max: 30
+    normal: 10
+  shock:
+    ac: 15
+    dmg: 0
+  skill: ''
+  stat: dex
+  tl: 3
+name: Grenade
+type: weapon

@@ -12,9 +12,11 @@
 
 // Import TypeScript modules
 import { registerSettings } from "./module/settings";
-import migrations from "./migrations/index";
+import migrations from "./migration";
 import { preloadTemplates } from "./module/preloadTemplates";
 import { SWNRActor, SWNRItem } from "./module/entities";
+import "./module/containerQueries";
+import registerHelpers from "./module/handlebar-helpers";
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -35,16 +37,7 @@ Hooks.once("init", async function () {
   // Remove stock sheets
   Actors.unregisterSheet("core", ActorSheet);
   Items.unregisterSheet("core", ItemSheet);
-
-  Handlebars.registerHelper("debug", function () {
-    return JSON.stringify(this, null, 2);
-  });
-  Handlebars.registerHelper("stringify", function (obj) {
-    return JSON.stringify(obj, null, 2);
-  });
-  Handlebars.registerHelper("concat", function (a, b) {
-    return a + b;
-  });
+  registerHelpers();
 });
 declare let _templateCache: {
   [key: string]: (data: Record<string, unknown>) => string;
@@ -88,34 +81,3 @@ Hooks.once("ready", function () {
   // packImport();
   migrations();
 });
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function packImport() {
-  const moduleName = "swnr";
-  const packName = "base-foci";
-  // Add any additional hooks if necessary
-  const pack: Compendium = game.packs.filter(
-    (p) => p.collection === `${moduleName}.${packName}`
-  )[0];
-
-  // Load an external JSON data file which contains data for import
-  const response = await fetch("systems/swnr/game-data/foci.json");
-  const content = await response.json();
-  content.forEach((element) => {
-    element.type = "focus";
-    element.data = {
-      description: element.description,
-      level1: element.level1,
-      level2: element.level2,
-    };
-  });
-  // Create temporary Actor entities which impose structure on the imported data
-  const actors = Item.createMany(content, { temporary: true });
-
-  // Save each temporary Actor into the Compendium pack
-  for (const a of await actors) {
-    await pack.importEntity(a);
-    console.log(
-      `Imported Actor ${a.name} into Compendium pack ${pack.collection}`
-    );
-  }
-}

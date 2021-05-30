@@ -1,5 +1,4 @@
-name: Rift Reduplication
-type: power
+_id: GTKGOyODCdPa3UaU
 data:
   description: >-
     <p>Expert teleporters can be infuriatingly difficult to pin down. By
@@ -18,3 +17,5 @@ data:
     to count as an Execution Attack as described on page 52.</p>
   level: 3
   source: teleportation
+name: Rift Reduplication
+type: power

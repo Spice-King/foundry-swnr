@@ -1,16 +1,17 @@
-name: Armored Vacc Suit
-type: armor
+_id: U0FuiXlGgfhSh7M6
 data:
+  ac: 13
+  cost: 400
   description: >-
     A deflector array consists of several force field nodes worn beneath
     ordinary clothing. The invisible shield it produces flares only when
     dangerous energies or impact is impending, glowing a brief, bright blue as
     it deflects the attack.
-  cost: 400
   encumbrance: 2
-  tl: 4
   location: other
   quality: stock
-  ac: 13
   shield: false
+  tl: 4
   use: false
+name: Armored Vacc Suit
+type: armor

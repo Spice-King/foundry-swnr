@@ -1,5 +1,4 @@
-name: Prophecy
-type: power
+_id: FzurGieQKVHK3FnN
 data:
   description: >-
     <p>The power of the precog extends to dictating future events that directly
@@ -14,3 +13,5 @@ data:
     time.</p>
   level: 4
   source: precognition
+name: Prophecy
+type: power

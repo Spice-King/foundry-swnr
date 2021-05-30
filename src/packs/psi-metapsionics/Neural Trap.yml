@@ -1,5 +1,4 @@
-name: Neural Trap
-type: power
+_id: i8ITvcTP9tMp8s54
 data:
   description: >-
     <p>The metapsion allows a hostile psychic into their mental sanctum in order
@@ -12,3 +11,5 @@ data:
     only one <em>Neural Trap</em> from a given psychic at a time</p>
   level: 2
   source: metapsionics
+name: Neural Trap
+type: power

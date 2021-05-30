@@ -1,5 +1,4 @@
-name: Tissue Integrity Field
-type: power
+_id: DamTA6zQnHiTyvs1
 data:
   description: >-
     <p>The biopsion’s <em>Psychic Succor</em> may now also affect all allies
@@ -9,3 +8,5 @@ data:
     in addition to the cost of the <em>Psychic Succor</em>.</p>
   level: 2
   source: biopsionics
+name: Tissue Integrity Field
+type: power
