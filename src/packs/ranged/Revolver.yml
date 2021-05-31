@@ -11,11 +11,8 @@ data:
   cost: 50
   damage: 1d8
   description: >-
-    Crude pistols and muskets represent the rawest and most primitive forms of
-    gunpowder weaponry, usually makeshift weapons improvised by criminals or the
-    desperate. Reloading a crude pistol or a musket requires two rounds instead
-    of one. Revolvers are quite popular on frontier worlds, as the weapons are
-    extremely reliable and can be repaired and manufactured even by primitive
+    Revolvers are quite popular on frontier worlds, as the weapons are extremely
+    reliable and can be repaired and manufactured even by primitive
     metallurgists. Some revolver variants are specially built to handle
     atmospheres that would destroy more fragile weapons.
   encumbrance: 1
