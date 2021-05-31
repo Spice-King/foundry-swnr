@@ -12,18 +12,6 @@ esmodules:
 styles:
   - swnr.css
 packs:
-  - name: foci
-    label: Foci
-    system: swnr
-    module: swnr
-    path: packs/foci.db
-    entity: Item
-  - name: ranged
-    label: Ranged Weapons
-    system: swnr
-    module: swnr
-    path: packs/ranged.db
-    entity: Item
   - name: ammo-and-power
     label: Ammo and Power
     system: swnr
@@ -35,6 +23,12 @@ packs:
     system: swnr
     module: swnr
     path: packs/armor.db
+    entity: Item
+  - name: psi-biopsionics
+    label: Biopsionics
+    system: swnr
+    module: swnr
+    path: packs/psi-biopsionics.db
     entity: Item
   - name: communications
     label: Communications
@@ -54,6 +48,12 @@ packs:
     module: swnr
     path: packs/field-equipment.db
     entity: Item
+  - name: foci
+    label: Foci
+    system: swnr
+    module: swnr
+    path: packs/foci.db
+    entity: Item
   - name: heavy
     label: Heavy Weapons
     system: swnr
@@ -66,47 +66,29 @@ packs:
     module: swnr
     path: packs/melee.db
     entity: Item
-  - name: pharmaceuticals
-    label: Pharmaceuticals
-    system: swnr
-    module: swnr
-    path: packs/pharmaceuticals.db
-    entity: Item
-  - name: ranged
-    label: Ranged Weapons
-    system: swnr
-    module: swnr
-    path: packs/ranged.db
-    entity: Item
-  - name: ranged
-    label: Ranged Weapons
-    system: swnr
-    module: swnr
-    path: packs/ranged.db
-    entity: Item
-  - name: tools-and-medical
-    label: Tools And Medical
-    system: swnr
-    module: swnr
-    path: packs/tools-and-medical.db
-    entity: Item
-  - name: psi-biopsionics
-    label: Biopsionics
-    system: swnr
-    module: swnr
-    path: packs/psi-biopsionics.db
-    entity: Item
   - name: psi-metapsionics
     label: Metapsionics
     system: swnr
     module: swnr
     path: packs/psi-metapsionics.db
     entity: Item
+  - name: pharmaceuticals
+    label: Pharmaceuticals
+    system: swnr
+    module: swnr
+    path: packs/pharmaceuticals.db
+    entity: Item
   - name: psi-precognition
     label: Precognition
     system: swnr
     module: swnr
     path: packs/psi-precognition.db
+    entity: Item
+  - name: ranged
+    label: Ranged Weapons
+    system: swnr
+    module: swnr
+    path: packs/ranged.db
     entity: Item
   - name: psi-telekinesis
     label: Telekinesis
@@ -125,6 +107,12 @@ packs:
     system: swnr
     module: swnr
     path: packs/psi-teleportation.db
+    entity: Item
+  - name: tools-and-medical
+    label: Tools And Medical
+    system: swnr
+    module: swnr
+    path: packs/tools-and-medical.db
     entity: Item
 languages:
   - lang: en
