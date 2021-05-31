@@ -5,7 +5,7 @@ import {
   initSkills,
   limitConcurrency,
 } from "../utils";
-import { ValidatedDialog, ButtonData } from "../ValidatedDialog";
+import { ValidatedDialog } from "../ValidatedDialog";
 import {
   SWNRCharacterData,
   SWNRSkillData,
@@ -268,7 +268,7 @@ export class CharacterActorSheet extends ActorSheet<
 
     this.popUpDialog = new ValidatedDialog(
       {
-        failCallback: (button: ButtonData): void => {
+        failCallback: (): void => {
           ui.notifications.error(game.i18n.localize("swnr.roll.skillNeeded"));
         },
         title: title,
@@ -601,7 +601,7 @@ Hooks.on(
     );
     if (statApplyButton) {
       // fix later
-      const actor = game.actors.get((<any>message.data).speaker.actor);
+      const actor = game.actors.get(message.data["speaker"]["actor"]);
 
       if (
         message.getFlag("swnr", "alreadyDone") ||

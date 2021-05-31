@@ -9,8 +9,8 @@ import {
 import { SWNRBaseItem } from "../base-item";
 
 export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
-  getRollData(): Record<string, any> {
-    const data = super.getRollData() as Record<string, any>;
+  getRollData(): Record<string, unknown> {
+    const data = super.getRollData() as Record<string, unknown>;
     data.itemTypes = <SWNRCharacterData["itemTypes"]>this.itemTypes;
     return data;
   }

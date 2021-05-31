@@ -1,3 +1,9 @@
+interface EditorOptions {
+  target: Record<string, unknown>;
+  height: number;
+  save_onsavecallback: () => Promise<void>;
+}
+
 export class BaseSheet extends ItemSheet {
   static get defaultOptions(): FormApplication.Options {
     return mergeObject(super.defaultOptions, {
@@ -15,12 +21,16 @@ export class BaseSheet extends ItemSheet {
     super._injectHTML(html, options);
   }
 
-  _createEditor(target, editorOptions, initialContent): void {
+  _createEditor(
+    target: string,
+    editorOptions: EditorOptions,
+    initialContent: string
+  ): void {
     editorOptions.height = Math.max(editorOptions.height, 100);
     TextEditor.create(editorOptions, initialContent).then((mce) => {
       const editor = mce[0];
       editor.focus(false);
-      editor.on("change", (ev) => (this.editors[target].changed = true));
+      editor.on("change", () => (this.editors[target].changed = true));
     });
   }
   /**
@@ -29,9 +39,9 @@ export class BaseSheet extends ItemSheet {
   get template(): string {
     return `systems/swnr/templates/items/${this.item.data.type}-sheet.html`;
   }
-  getData() {
-    const data = super.getData();
-    (<any>data).actor = this.actor;
+  getData(): Record<string, unknown> {
+    const data = super.getData() as Record<string, unknown>;
+    data.actor = this.actor;
     return data;
   }
 }
