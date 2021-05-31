@@ -22,14 +22,13 @@ export class ValidatedDialog extends Dialog {
     super(dialogData, options);
     this.failCallback = dialogData.failCallback;
   }
-  validate(button: ButtonData): boolean {
+  validate(): boolean {
     const innerHTML = (<JQuery<HTMLElement>>this.element)
       .find(".window-content")
       .children();
     const elementsToCheck = <InputElements[]>(
       Array.from(innerHTML.find("select,input,textarea"))
     );
-    const problems = [];
     const good = elementsToCheck
       .map((e) => {
         const markedRequired = e.getAttribute("required") == null;
@@ -51,7 +50,7 @@ export class ValidatedDialog extends Dialog {
     return good;
   }
   submit(button: ButtonData): void {
-    if (this.validate(button)) {
+    if (this.validate()) {
       return super.submit(button);
     } else {
       this.failCallback(button);
