@@ -18,7 +18,7 @@ config.theme.cq = Object.keys(config.theme.screens);
 
 const myPlugin = ({ addVariant, theme, postcss, e }) => {
   const fixes = theme("cq");
-  if (fixes === false) return;
+  if (!fixes) return;
   const selectorPrefix = usePrefix ? `` : "";
   const out = new Map();
   fixes.forEach((e) => out.set(e, []));
