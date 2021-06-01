@@ -12,8 +12,8 @@
     "update": "npm install --save-dev gitlab:spice_king/foundry-pc-types"
   },
   "engines": {
-    "node": ">=12",
-    "npm": ">=6.14"
+    "node": ">=14",
+    "npm": ">=7.6"
   },
   "author": "",
   "license": "",
