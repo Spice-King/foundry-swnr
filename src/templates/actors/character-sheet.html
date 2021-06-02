@@ -50,7 +50,7 @@
         >
           <div
             data-save-type="physical"
-            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            class="save sheet-button gap-2"
           >
             v{{actor.data.save.physical}} {{localize
             'swnr.sheet.saves.physical'}}
@@ -58,14 +58,14 @@
           </div>
           <div
             data-save-type="evasion"
-            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            class="save sheet-button gap-2"
           >
             v{{actor.data.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
             <i class="fas fa-dice-d20"></i>
           </div>
           <div
             data-save-type="mental"
-            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            class="save sheet-button gap-2"
           >
             v{{actor.data.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
             <i class="fas fa-dice-d20"></i>
@@ -73,7 +73,7 @@
           {{#if useHomebrewLuckSave}}
           <div
             data-save-type="luck"
-            class="save flex gap-2 rounded-lg px-1.5 py-1 border border-warmGray-900 bg-warmGray-700 hover:bg-warmGray-500 hover:border-warmGray-700 text-warmGray-200 hover:text-black transition-colors"
+            class="save sheet-button gap-2"
           >
             v{{actor.data.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
             <i class="fas fa-dice-d20"></i>
