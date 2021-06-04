@@ -1,0 +1,13 @@
+_id: nmTKcUIsMy5Q8lnY
+data:
+  cost: 10000
+  description: >-
+    Not so much a single implant as a series of complex surgeries, body
+    sculpting is available on many TL4 worlds with fairly advanced medical
+    services. After a week of alterations and treatments a subject's external
+    appearance can be set within any human or near-human range, including full
+    retinal and fingerprint matching to a desired target.
+  strain: 1
+  tl: 4
+name: Body Sculpting
+type: cyberware

@@ -1,0 +1,18 @@
+_id: BCjQ0U3FJaQnAGul
+data:
+  cost: 100000
+  description: >-
+    Not so much a single implant as a series of complex surgeries, body
+    sculpting is available on many TL4 worlds with fairly advanced medical
+    services. After a week of alterations and treatments a subject's external
+    appearance can be set within any human or near-human range, including full
+    retinal and fingerprint matching to a desired target. The TL5 version of
+    this treatment can involve extensive DNA reprogramming to change the
+    subject at a genetic level, making their alterations heritable and allowing
+    female-targeted shapes to bear offspring. This TL5 treatment is not
+    reversible, and any further major alterations to the subject require
+    further permanent System Strain.
+  strain: 1
+  tl: 5
+name: Body Sculpting (TL5)
+type: cyberware

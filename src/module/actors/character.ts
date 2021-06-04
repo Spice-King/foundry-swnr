@@ -1,6 +1,7 @@
 import { calculateStats } from "../utils";
 import {
   SWNRCharacterData,
+  SWNRCyberwareData,
   SWNRSkillData,
   SWNRInventoryItemData,
   SWNRItemData,
@@ -18,8 +19,6 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
   prepareBaseData(): void {
     const data = this.data.data;
     calculateStats(data.stats);
-    data.systemStrain.max =
-      data.stats.con.base + data.stats.con.boost - data.systemStrain.permanent;
     if (!data.save) data.save = {};
     const save = data.save;
     const base = 16 - data.level.value;
@@ -39,6 +38,16 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
   }
   prepareDerivedData(): void {
     const data = this.data.data;
+    // System Strain
+    data.systemStrain.cyberware = (<Item<SWNRCyberwareData>[]>(
+      this.items.filter((i) => i.type === "cyberware")
+    )).reduce((total, cyberware) => total + cyberware.data.data.strain, 0);
+    data.systemStrain.max =
+      data.stats.con.base +
+      data.stats.con.boost -
+      data.systemStrain.permanent -
+      data.systemStrain.cyberware;
+
     // AC
     const armor = <Item<SWNRArmorData>[]>(
       this.items.filter(

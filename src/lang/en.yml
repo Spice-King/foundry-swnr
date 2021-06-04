@@ -338,6 +338,8 @@ swnr:
     permanent-strain: Permanent strain
     attack-bonus: Attack Bonus
     system-strain: System Strain
+    cyberware-strain: Permanent System Strain from Cyberware
+    cyberware-strain-abbreviated: Permanent Cyber Strain
     tabs:
       biography: Biography
       debug: Sheet Debug
@@ -348,6 +350,7 @@ swnr:
       foci: Foci
       powers: Powers
       combat: Combat
+      cyberware: Cyberware
     xp: XP
     delete-item: Delete Item
     edit-item: Edit Item
@@ -406,6 +409,7 @@ swnr:
     locationOther: Other
     locationStowed: Stowed
     locationReadied: Readied
+    strain: Strain
   weapon:
     shock:
       label: Shock Damage
