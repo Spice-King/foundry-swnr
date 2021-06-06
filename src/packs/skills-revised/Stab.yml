@@ -1,0 +1,12 @@
+_id: qfBvKhFtQLkg9sQr
+data:
+  description: >-
+    Use it as a combat skill when wielding melee weapons, whether primitive or
+    complex.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Stab
+type: skill

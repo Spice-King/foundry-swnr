@@ -1,0 +1,12 @@
+_id: 7ZJnzykp5UWhmFwi
+data:
+  description: >-
+    Move without drawing notice. Roll it for stealth, disguise, infiltration,
+    manual legerdemain, pickpocketing, and the defeat of security measures.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Sneak
+type: skill

@@ -1,0 +1,13 @@
+_id: lzXddKmtLeMoXDqh
+data:
+  description: >-
+    Repairing and building technology that interfaces with a psychic's psionic
+    powers. This tech is almost unknown in the present day, and normally found
+    only in the form of recovered artifacts.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Tech/Psitech
+type: skill

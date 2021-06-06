@@ -46,104 +46,32 @@ export function combineRolls(arr: Roll[]): Roll {
   });
 }
 
-export function initSkills(
+export async function initSkills(
   actor: SWNRCharacterActor,
-  skillSet: keyof typeof skills
-): void {
-  const items = skills[skillSet].map((element) => {
-    const skillRoot = `swnr.skills.${skillSet}.${element}.`;
-    return {
-      type: "skill",
-      name: game.i18n.localize(skillRoot + "name"),
-      data: {
-        rank: -1,
-        pool: "ask",
-        description: game.i18n.localize(skillRoot + "text"),
-        source: game.i18n.localize("swnr.skills.labels." + skillSet),
-        dice: "2d6",
-      },
-    };
-  });
-  actor.createEmbeddedEntity("OwnedItem", items);
+  skillSet: string
+): Promise<void> {
+  if (skillSet === "spaceMagic")
+    actor.createEmbeddedEntity(
+      "OwnedItem",
+      ["knowMagic", "useMagic", "sunblade", "fight"].map((element) => {
+        const skillRoot = `swnr.skills.${skillSet}.${element}.`;
+        return {
+          type: "skill",
+          name: game.i18n.localize(skillRoot + "name"),
+          data: {
+            rank: -1,
+            pool: "ask",
+            description: "",
+            source: game.i18n.localize("swnr.skills.labels." + skillSet),
+            dice: "2d6",
+            psychic: false,
+          },
+        };
+      })
+    );
+  else if (skillSet !== "none")
+    actor.createEmbeddedEntity(
+      "OwnedItem",
+      await game.packs.get(`swnr.skills-${skillSet}`).getContent()
+    );
 }
-const skills = {
-  none: <Array<string>>[],
-  spaceMagic: ["knowMagic", "useMagic", "sunblade", "fight"],
-  classic: [
-    "artist",
-    "athletics",
-    "bureaucracy",
-    "business",
-    "combat-energy",
-    "combat-gunnery",
-    "combat-primitive",
-    "combat-projectile",
-    "combat-psitech",
-    "combat-unarmed",
-    "computer",
-    "culture-alien",
-    "culture-criminal",
-    "culture-spacer",
-    "culture-traveller",
-    "culture",
-    "culture",
-    "culture",
-    "exosuit",
-    "gambling",
-    "history",
-    "instructor",
-    "language",
-    "leadership",
-    "navigation",
-    "perception",
-    "persuade",
-    "profession",
-    "religion",
-    "science",
-    "security",
-    "stealth",
-    "steward",
-    "survival",
-    "tactics",
-    "tech-astronautic",
-    "tech-maltech",
-    "tech-medical",
-    "tech-postech",
-    "tech-pretech",
-    "tech-psitech",
-    "vehicle-air",
-    "vehicle-grav",
-    "vehicle-land",
-    "vehicle-space",
-    "vehicle-water",
-  ],
-  revised: [
-    "administer",
-    "connect",
-    "exert",
-    "fix",
-    "heal",
-    "know",
-    "lead",
-    "notice",
-    "perform",
-    "pilot",
-    "program",
-    "punch",
-    "shoot",
-    "sneak",
-    "stab",
-    "survive",
-    "talk",
-    "trade",
-    "work",
-  ],
-  psionic: [
-    "biopsionics",
-    "metapsionics",
-    "precognition",
-    "telekinesis",
-    "telepathy",
-    "teleportation",
-  ],
-};

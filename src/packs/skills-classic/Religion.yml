@@ -1,0 +1,12 @@
+_id: nMv5wWdFpBkSN6F9
+data:
+  description: >-
+    The character is trained in theology and familiar with the more common or
+    notorious religious sects on the surrounding worlds.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Religion
+type: skill

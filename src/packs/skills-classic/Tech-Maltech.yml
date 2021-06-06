@@ -1,0 +1,12 @@
+_id: FAqt5yvQUbddNVgO
+data:
+  description: >-
+    Building or repairing forbidden technology such as bio- or nano-warfare
+    tech, unbraked AI development, or weapons of planetary destruction.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Tech/Maltech
+type: skill

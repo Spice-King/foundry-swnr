@@ -1,0 +1,12 @@
+_id: vkGuXtaooGQDFkCz
+data:
+  description: >-
+    Use of psitech weaponry. This skill is usually useless to non-psychics, as
+    almost all psitech weaponry requires some psionic talent to use.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Combat/Psitech
+type: skill

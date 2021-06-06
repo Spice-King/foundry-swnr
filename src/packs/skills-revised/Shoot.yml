@@ -1,0 +1,12 @@
+_id: d5BqREySDEiyFRSm
+data:
+  description: >-
+    Use it as a combat skill when using ranged weaponry, whether hurled rocks,
+    bows, laser pistols, combat rifles, or ship's gunnery.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Shoot
+type: skill

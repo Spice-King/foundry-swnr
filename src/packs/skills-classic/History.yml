@@ -1,0 +1,12 @@
+_id: CHL64BLo3lAbKEg9
+data:
+  description: >-
+    The character has training in galactic history and can identify worlds,
+    events, and people of historical importance.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: History
+type: skill

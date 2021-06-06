@@ -1,0 +1,12 @@
+_id: EgyJZoNZQqXivauM
+data:
+  description: >-
+    The character has keen senses, and is often able to notice details or hidden
+    objects that elude other people.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Perception
+type: skill

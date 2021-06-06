@@ -1,0 +1,12 @@
+_id: OQQdsM96Uz7mQwsq
+data:
+  description: >-
+    Exhibit some performative skill. Roll it to dance, sing, orate, act, or
+    otherwise put on a convincing or emotionally moving performance.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Perform
+type: skill

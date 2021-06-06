@@ -1,0 +1,13 @@
+_id: Z0ejEx1bmGj7Y1YT
+data:
+  description: >-
+    Building or reparing of advanced technology dating from before the Scream,
+    often requiring manufacturing techniques that are no longer available on the
+    frontier.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Tech/Pretech
+type: skill

@@ -1,0 +1,14 @@
+_id: CYjlbCB5txkfp0ki
+data:
+  description: >-
+    This skill must be taken in a particular specialty related to the
+    character's profession, and is intended to cover those jobs that don't
+    already have applicable skills on this list. A doctor would take
+    Tech/Medical, for example, while a lawyer would take Profession/Lawyer.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Profession/
+type: skill

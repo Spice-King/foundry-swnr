@@ -1,0 +1,14 @@
+_id: BTlAYK22hP9keQga
+data:
+  description: >-
+    The character is familiar with a particular alien race, knowing their
+    traditions, physiology, and psychology. They can also speak and understand
+    the aliens' language, assuming it is physically possible for a human to do
+    so.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Culture/Alien/
+type: skill

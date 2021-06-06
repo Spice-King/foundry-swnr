@@ -1,0 +1,11 @@
+_id: C4QBYJ2sqMXBq8SU
+data:
+  description: >-
+    Flight of atmospheric planes, zeppelins, or helicopters.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Vehicle/Air
+type: skill

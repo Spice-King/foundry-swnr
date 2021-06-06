@@ -1,0 +1,12 @@
+_id: wYTxrEkfibbt4ZPg
+data:
+  description: >-
+    Running, jumping, climbing, swimming, and other feats of athletics or
+    acrobatics are covered by this skill.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Athletics
+type: skill

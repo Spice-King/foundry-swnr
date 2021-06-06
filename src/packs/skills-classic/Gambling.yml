@@ -1,0 +1,12 @@
+_id: 3qNjVCM4zsa9U3Oq
+data:
+  description: >-
+    The character knows numerous games of chance and has a better than usual
+    chance of winning them.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Gambling
+type: skill

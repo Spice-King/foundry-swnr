@@ -1,0 +1,12 @@
+_id: e5Z2iY1BrPZywQ35
+data:
+  description: >-
+    The character is skilled at operating and programming computers, as well as
+    operating most advanced communications systems.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Computer
+type: skill

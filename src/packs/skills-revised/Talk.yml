@@ -1,0 +1,13 @@
+_id: VMBQNoOvYU5ot1gU
+data:
+  description: >-
+    Convince other people of the facts you want them to believe. What they do
+    with that conviction may not be completely predictable. Roll it to persuade,
+    charm, or deceive others in conversation.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Talk
+type: skill

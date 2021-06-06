@@ -1,0 +1,15 @@
+_id: cEv73uOWVgNxT4yR
+data:
+  description: >-
+    Create and repair devices both simple and complex. How complex will depend
+    on your character's background; a lostworlder blacksmith is going to need
+    some study time before he's ready to fix that broken fusion reactor, though
+    he can do it eventually. Roll it to fix things, build things, and identify
+    what something is supposed to do.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Fix
+type: skill

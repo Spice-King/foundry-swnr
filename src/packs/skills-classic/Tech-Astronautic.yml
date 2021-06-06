@@ -1,0 +1,12 @@
+_id: hJPULNQ8KIvObxIk
+data:
+  description: >-
+    Repairing and building anything on or related to spacecraft, including spike
+    drives, life support systems, and ship gunnery.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Tech/Astronautic
+type: skill

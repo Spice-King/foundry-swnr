@@ -1,0 +1,12 @@
+_id: woe2kIPLGUJzYHu5
+data:
+  description: >-
+    Use of high-tech weaponry that relies on energy emissions such as lasers or
+    plasma.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Combat/Energy
+type: skill

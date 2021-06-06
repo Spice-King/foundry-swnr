@@ -1,0 +1,13 @@
+_id: 7N0Rpb5Gm1SCucdP
+data:
+  description: >-
+    The character is trained in leading others in high-stress situations.
+    Characters with this skill can keep the obedience of subordinates even in
+    dangerous situations or when giving hazardous orders.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Leadership
+type: skill

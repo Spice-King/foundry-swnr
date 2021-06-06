@@ -1,0 +1,14 @@
+_id: nO121Mtu9u4Ascz2
+data:
+  description: >-
+    The character is trained in survival techniques for subsisting in hostile
+    environments with minimal supplies. Assuming that the world itself isn't
+    inimical to human life, they can usually find food and water even in harsh
+    conditions.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Survival
+type: skill

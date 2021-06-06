@@ -1,0 +1,11 @@
+_id: qwNFVkLOFqiqo1lh
+data:
+  description: >-
+    Operation of ships, boats, and other seagoing craft.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Vehicle/Water
+type: skill

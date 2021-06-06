@@ -1,0 +1,11 @@
+_id: CW2PgaweSUWhNf97
+data:
+  description: >-
+    Master the reading and influencing of other sapient minds.
+  pool: ask
+  psychic: true
+  rank: -1
+  source: Revised
+  stat: ask
+name: Telepathy
+type: skill

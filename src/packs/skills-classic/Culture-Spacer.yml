@@ -1,0 +1,13 @@
+_id: VMj1znrKVsyLf6Te
+data:
+  description: >-
+    The character knows the traditions and customs of interstellar spacefarers
+    and deep-space colonists. They are comfortable in zero-g environments, and
+    can identify ships and astronautic equipment.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Culture/Spacer
+type: skill
