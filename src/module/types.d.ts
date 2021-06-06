@@ -111,6 +111,7 @@ declare interface SWNRSkillData extends SWNRDecData {
   rank: -1 | 0 | 1 | 2 | 3 | 4;
   defaultStat: "ask" | SWNRStats;
   source: string;
+  psychic: boolean;
 }
 
 declare interface SWNRItemData extends SWNRBaseItemData {
