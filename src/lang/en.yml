@@ -366,6 +366,7 @@ swnr:
     base-ac: Base AC
     vs: vs
     rollables: Rollables
+    psychic: Psychic
   settings:
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck

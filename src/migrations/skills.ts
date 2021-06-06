@@ -8,3 +8,11 @@ registerMigration(SWNRBaseItem, "0.4.0", 0, (item: Skill, pastUpdates) => {
     pastUpdates["data.source"] = "Psionic";
   return pastUpdates;
 });
+
+registerMigration(SWNRBaseItem, "0.4.2", 0, (item: Skill, pastUpdates) => {
+  if (item.type === "skill" && item.data.data.source === "Psionic") {
+    pastUpdates["data.source"] = "Revised";
+    pastUpdates["data.psychic"] = true;
+  }
+  return pastUpdates;
+});

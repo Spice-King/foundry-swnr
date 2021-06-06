@@ -188,3 +188,4 @@ Item:
     defaultStat: ask
     pool: 2D6
     source: ""
+    psychic: false

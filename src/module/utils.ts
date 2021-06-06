@@ -61,6 +61,7 @@ export function initSkills(
         description: game.i18n.localize(skillRoot + "text"),
         source: game.i18n.localize("swnr.skills.labels." + skillSet),
         dice: "2d6",
+        psychic: skillSet === "psionic",
       },
     };
   });
