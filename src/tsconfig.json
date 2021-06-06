@@ -6,7 +6,7 @@
 			"DOM"
 		],
 		"types": [
-			"foundry-pc-types"
+			"@league-of-foundry-developers/foundry-vtt-types"
 		],
 		"sourceMap": true,
 		"strictNullChecks": true,

@@ -9,7 +9,7 @@
     "build:watch": "gulp link watch",
     "clean": "gulp clean && gulp link --clean",
     "foundry": "node foundry/resources/app/main.js --noupnp --dataPath=./data",
-    "update": "npm install --save-dev gitlab:spice_king/foundry-pc-types"
+    "update": "npm install --save-dev github:Spice-King/foundry-vtt-types#husky-fix"
   },
   "engines": {
     "node": ">=14",
@@ -18,6 +18,7 @@
   "author": "",
   "license": "",
   "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "github:Spice-King/foundry-vtt-types#husky-fix",
     "@types/archiver": "^3.1.1",
     "@types/fs-extra": "^9.0.2",
     "@types/gulp": "^4.0.7",
@@ -36,7 +37,6 @@
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.2.0",
-    "foundry-pc-types": "gitlab:spice_king/foundry-pc-types",
     "fs-extra": "^9.0.1",
     "gulp": "^4.0.2",
     "gulp-append-prepend": "^1.0.8",
