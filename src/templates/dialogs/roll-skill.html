@@ -4,14 +4,14 @@
     <label for="">{{localize 'swnr.chat.dicepool'}}: </label>
     <select
       name="dicepool"
-      {{#if (eq skill.data.data.pool 'ask')}}
+      {{#if (eq skill.pool 'ask')}}
         class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       {{else}}
         class="w-16 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md opacity-50"
         disabled
       {{/if}}
     >
-      {{#select skill.data.data.pool}}
+      {{#select skill.pool}}
       <option value="2d6">2D6</option>
       <option value="3d6kh2">3D6</option>
       <option value="4d6kh2">4D6</option>
@@ -28,14 +28,14 @@
     <label for="stat">{{localize 'swnr.sheet.stats'}}: </label>
     <select
       name="stat"
-      {{#if (eq skill.data.data.defaultStat 'ask')}}
+      {{#if (eq skill.defaultStat 'ask')}}
         class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
       {{else}}
         class="w-32 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md opacity-50"
         disabled
       {{/if}}
     >
-      {{#select skill.data.data.defaultStat}}
+      {{#select skill.defaultStat}}
       {{#each data.data.stats as |box name |}}
       <option value="{{name}}">
         {{localize (concat "swnr.stat.long." name)}}: 
