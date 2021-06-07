@@ -1,0 +1,15 @@
+_id: sdNkVXDsUWl8HlNQ
+data:
+  description: >-
+    Weaponless combat techniques. Unlike other forms of weaponry, a practitioner
+    of unarmed combat can add their Combat/Unarmed skill to the damage roll as
+    well as the hit roll. Characters with Unarmed-2 expertise are so good that
+    they can even injure targets in powered armor and other gear that would
+    otherwise prevent effective Unarmed attacks.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Combat/Unarmed
+type: skill

@@ -1,0 +1,14 @@
+_id: Iss7ao4KhWiSJIdF
+data:
+  description: >-
+    The character is a trained scientist and capable of operating laboratory
+    equipment, conducting research, and developing new technology. This skill
+    covers all conventional scientific applications, but actually building or
+    repairing objects requires the Tech skill.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Science
+type: skill

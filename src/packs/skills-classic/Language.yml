@@ -1,0 +1,14 @@
+_id: 4BZgR5fWvwG0zUFY
+data:
+  description: >-
+    The character speaks additional languages. At each level, the character
+    learns a number of new languages equal to the skill's level plus one. Thus,
+    at level 0, they learn one new language, at level 1, they learn two new
+    languages, and so forth.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Language
+type: skill

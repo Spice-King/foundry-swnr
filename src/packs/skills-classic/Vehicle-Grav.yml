@@ -1,0 +1,11 @@
+_id: wChE4QpHly6fLLCf
+data:
+  description: >-
+    Operation of Antigrav vehicles such as are found on most modern frontier worlds.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Vehicle/Grav
+type: skill

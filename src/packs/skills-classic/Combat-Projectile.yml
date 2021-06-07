@@ -1,0 +1,12 @@
+_id: sTickBfOCwViL7VM
+data:
+  description: >-
+    Use of mechanically-powered weaponry such as crossbows, pistols, rifles, and
+    the like.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Combat/Projectile
+type: skill

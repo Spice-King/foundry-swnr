@@ -1,0 +1,14 @@
+_id: Iqy3jGwJPBZgL9io
+data:
+  description: >-
+    The character is familiar with primitive and modern security systems, both
+    in setting them up and defeating them. The character can pick a lock, defeat
+    a retinal scanner, circumvent a pressure sensor, and otherwise attempt to
+    overcome security measures.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Security
+type: skill

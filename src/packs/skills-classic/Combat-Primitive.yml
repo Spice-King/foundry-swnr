@@ -1,0 +1,13 @@
+_id: oiOPIMGMAx8YRzDZ
+data:
+  description: >-
+    Use of muscle-powered weapons such as knives, bows, or clubs, as well as
+    thrown weapons such as grenades. This includes high-tech versions of these
+    weapons.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Combat/Primitive
+type: skill

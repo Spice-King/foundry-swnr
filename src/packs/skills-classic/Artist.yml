@@ -1,0 +1,12 @@
+_id: Tj5GvKpK55WImAcL
+data:
+  description: >-
+    The character is trained or gifted in a particular type of art. The character
+    should select a specific medium when this skill is gained.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Artist
+type: skill

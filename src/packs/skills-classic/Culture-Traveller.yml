@@ -1,0 +1,15 @@
+_id: iprUjfcsmSeXnWlj
+data:
+  description: >-
+    This skill is unique in that it can only be taken at level 0 and cannot be
+    raised. It can substitute for any other planet's Culture skill, however, and
+    represents a casual, basic knowledge of many different worlds. This skill is
+    useless on worlds that have been completely cut off from interstellar
+    contact. Traveller skill grants no linguistic proficiency.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Culture/Traveller
+type: skill

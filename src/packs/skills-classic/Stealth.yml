@@ -1,0 +1,12 @@
+_id: 8x3jlJU5cNgKZzE4
+data:
+  description: >-
+    The character knows how to move silently, conceal their presence in shadows,
+    and avoid notice.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Stealth
+type: skill

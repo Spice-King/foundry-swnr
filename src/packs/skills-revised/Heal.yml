@@ -1,0 +1,13 @@
+_id: moGKaYvzY0C1lJy7
+data:
+  description: >-
+    Employ medical and psychological treatment for the injured or disturbed.
+    Roll it to cure diseases, stabilize the critically injured, treat
+    psychological disorders, or diagnose illnesses.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Heal
+type: skill

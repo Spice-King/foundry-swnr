@@ -1,0 +1,14 @@
+_id: 01j9xE0ygtiGzF1v
+data:
+  description: >-
+    The character is trained in managing wealth and property efficiently.
+    Business skill makes money, but the Steward skill keeps it and grows it.
+    Lack of this skill can result in large fortunes becoming small ones through
+    taxes, petty theft, and chicanery.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Steward
+type: skill

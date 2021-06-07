@@ -90,6 +90,24 @@ packs:
     module: swnr
     path: packs/ranged.db
     entity: Item
+  - name: skills-classic
+    label: Skills (Classic)
+    system: swnr
+    module: swnr
+    path: packs/skills-classic.db
+    entity: Item
+  - name: skills-psychic
+    label: Skills (Psychic)
+    system: swnr
+    module: swnr
+    path: packs/skills-psychic.db
+    entity: Item
+  - name: skills-revised
+    label: Skills (Revised)
+    system: swnr
+    module: swnr
+    path: packs/skills-revised.db
+    entity: Item
   - name: psi-telekinesis
     label: Telekinesis
     system: swnr

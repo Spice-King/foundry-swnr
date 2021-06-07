@@ -1,0 +1,12 @@
+_id: DjcV5UfxG9LVmgHx
+data:
+  description: >-
+    Use of heavy vehicle-mounted weapons or fixed guns, whether on spacecraft or
+    planetary vehicles.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Combat/Gunnery
+type: skill

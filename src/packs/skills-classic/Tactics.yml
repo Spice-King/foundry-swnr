@@ -1,0 +1,14 @@
+_id: pAPCVIGiFnLSaicu
+data:
+  description: >-
+    The character is familiar with small unit tactics. They can set up and
+    recognize ambushes, maneuver troops effectively in combat, and set up
+    fighting positions sensibly. In the absence of Tactics skill, Leadership
+    skill tends to produce only glorious defeats.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Tactics
+type: skill

@@ -1,0 +1,14 @@
+_id: LGIPcAc7C4pzPYQS
+data:
+  description: >-
+    This specialty must be taken individually for each specific world, and
+    relates to knowledge of that world's society, government, tech level, and
+    laws. Level 0 in this skill also grants basic proficiency in that world's
+    most common language if the character is not already proficient in it.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Culture/
+type: skill

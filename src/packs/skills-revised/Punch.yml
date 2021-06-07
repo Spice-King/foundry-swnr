@@ -1,0 +1,13 @@
+_id: ZVzlDgD6VbyJ9cfe
+data:
+  description: >-
+    Use it as a combat skill when fighting unarmed. If your PC means to make a
+    habit of this rather than as a recourse of desperation, you should take the
+    Unarmed Combatant focus.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Punch
+type: skill

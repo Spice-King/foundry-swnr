@@ -1,0 +1,13 @@
+_id: e00xWmIDRmVBsID7
+data:
+  description: >-
+    The character is trained in the use of powered exosuits. These forms of
+    heavy armor are often used in dangerous environments ranging from asteroid
+    mining to shock trooper assaults on enemy positions.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Exosuit
+type: skill

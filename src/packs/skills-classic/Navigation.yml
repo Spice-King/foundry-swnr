@@ -1,0 +1,14 @@
+_id: SXuAwXTQ62Ony1kJ
+data:
+  description: >-
+    The character can navigate using compasses, astronomic readings, dead
+    reckoning, or other tools. At level 0, this skill is sufficient to navigate
+    on a planet's surface, but at least level 1 is required in order to navigate
+    a starship through a successful spike drive drill.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Navigation
+type: skill

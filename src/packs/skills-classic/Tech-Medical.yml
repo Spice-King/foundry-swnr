@@ -1,0 +1,12 @@
+_id: 8RKkYhYBltUK52Xj
+data:
+  description: >-
+    Implementing surgery, first aid, disease treatment. Bulding or repairing
+    cybernetics, and biological utility organisms.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Tech/Medical
+type: skill

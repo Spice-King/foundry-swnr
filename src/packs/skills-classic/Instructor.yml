@@ -1,0 +1,14 @@
+_id: iIpsNJpX9M9ofCqL
+data:
+  description: >-
+    The character knows how to teach the skills they possess. A psychic must
+    have at least level 3 in this skill in order to safely train an unskilled
+    psychic, and must have received the special instruction required for a
+    psionic mentor.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Instructor
+type: skill

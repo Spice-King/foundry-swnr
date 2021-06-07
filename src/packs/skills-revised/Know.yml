@@ -1,0 +1,13 @@
+_id: 1S7zyFKKVSfBVA2I
+data:
+  description: >-
+    Know facts about academic or scientific fields. Roll it to understand
+    planetary ecologies, remember relevant history, solve science mysteries, and
+    know the basic facts about rare or esoteric topics.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Know
+type: skill

@@ -1,0 +1,12 @@
+_id: cetZBox4s1W0XEne
+data:
+  description: >-
+    A skilled bureaucrat knows how to deal with complex legal and administrative
+    systems, and how to find files or records quickly.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Classic
+  stat: ask
+name: Bureaucracy
+type: skill

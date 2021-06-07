@@ -1,0 +1,12 @@
+_id: P88KzMcYE1ES9DsT
+data:
+  description: >-
+    Master powers that nullify, boost, and shape the use of other psychic
+    abilities.
+  pool: ask
+  psychic: true
+  rank: -1
+  source: Revised
+  stat: ask
+name: Metapsionics
+type: skill

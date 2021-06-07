@@ -1,0 +1,12 @@
+_id: zIev4IlOl3y2lw6R
+data:
+  description: >-
+    This is a catch-all skill for professions not represented by other skills.
+    Roll it to work at a particular profession, art, or trade.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Work
+type: skill

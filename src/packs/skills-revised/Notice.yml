@@ -1,0 +1,13 @@
+_id: FCNQOga2ZX97fZTG
+data:
+  description: >-
+    Spot anomalies or interesting facts about your environment. Roll it for
+    searching places, detecting ambushes, spotting things, and reading the
+    emotional state of other people.
+  pool: ask
+  psychic: false
+  rank: -1
+  source: Revised
+  stat: ask
+name: Notice
+type: skill
