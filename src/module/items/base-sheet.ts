@@ -47,3 +47,4 @@ export class BaseSheet extends ItemSheet {
 }
 export const sheet = BaseSheet;
 export const types = [];
+export const isDefault = false;

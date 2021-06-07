@@ -1,5 +1,20 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
-  {{> "systems/swnr/templates/items/fragments/name.html"}}
-  {{> "systems/swnr/templates/fragments/desc.html"}}
-  <pre>{{stringify item}}</pre>
+  <nav class="class-sheet-tabs tabs py-1 flex flex-wrap gap-2 border-t border-b border-trueGray-500 border1 mb-1" data-group="primary">
+    <a class="item" data-tab="full">
+      {{localize "swnr.sheet.tabs.full"}}
+    </a>
+    <a class="item" data-tab="partial">
+      {{localize "swnr.sheet.tabs.partial"}}
+    </a>
+  </nav>
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="full">
+      {{> "systems/swnr/templates/items/fragments/class-variation.html"
+        type="full" item=item classData=data.fullClassData}}
+    </div>
+    <div class="tab" data-group="primary" data-tab="partial">
+      {{> "systems/swnr/templates/items/fragments/class-variation.html"
+        type="partial" item=item classData=data.partialClassData}}
+    </div>
+  </section>
 </form>
