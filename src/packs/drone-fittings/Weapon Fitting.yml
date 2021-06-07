@@ -1,0 +1,11 @@
+_id: kUHs0hzIUdx1wiZ5
+data:
+  cost: 1000
+  description: >-
+    The drone can be mounted with 1 encumbrance worth of ranged weaponry, which
+    must be purchased separately. This fitting may be taken more than once to
+    mount more weapons or heavier weapons. The weapon requires one or more ammo
+    units to feed it.
+  tl: 4
+name: Weapon Fitting
+type: droneFitting

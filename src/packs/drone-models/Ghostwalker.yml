@@ -1,0 +1,16 @@
+_id: dU7b6RfrcHxdCVvH
+data:
+  ac: 15
+  cost: 4000
+  description: >-
+    Ghostwalkers are stealth drones, fabricated from radar-transparent
+    materials. They have an integral Sensor Transparency fitting and the sensor
+    difficulty to spot them is 11 instead of 9.
+  encumbrance: 3
+  fittings: 2
+  hp: 1
+  speed: 30
+  tl: 4
+  range: 5
+name: Ghostwalker
+type: droneModel

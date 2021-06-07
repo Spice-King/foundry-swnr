@@ -1,0 +1,17 @@
+_id: ZuSuSU5pmFHkGxRz
+data:
+  ac: 16
+  cost: 10000
+  description: >-
+    Pax drones are some of the most common pretech drones remaining in
+    existence, as they were favored by the Mandate Fleet for pacifying
+    troublesome worlds that lacked quantum ECM. While primitive by pretech
+    standards, they still far excel most modern drones.
+  encumbrance: 4
+  fittings: 4
+  hp: 20
+  speed: 30
+  tl: 5
+  range: 100
+name: Pax
+type: droneModel

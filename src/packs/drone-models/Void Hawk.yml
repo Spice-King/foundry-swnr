@@ -1,0 +1,16 @@
+_id: 8yeZG6U8u6bmV9OW
+data:
+  ac: 14
+  cost: 5000
+  description: >-
+    Void Hawks are unique in being built specifically for deep-space use. Unlike
+    other drones, they can operate perfectly well in space, though they only
+    have the range to reach relatively adjacent ships or objects.
+  encumbrance: 6
+  fittings: 4
+  hp: 15
+  speed: 30
+  tl: 4
+  range: 100
+name: Void Hawk
+type: droneModel

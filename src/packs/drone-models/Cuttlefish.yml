@@ -1,0 +1,17 @@
+_id: HwC3NcjORVr2fAQ6
+data:
+  ac: 13
+  cost: 2000
+  description: >-
+    Cuttlefish are specifically designed for aqueous use, and function only in a
+    liquid medium. The support of the liquid allows them to carry significantly
+    more fittings, but the need for a sonar-based navigation system limits their
+    available range.
+  encumbrance: 2
+  fittings: 5
+  hp: 10
+  speed: 30
+  tl: 4
+  range: 1
+name: Cuttlefish
+type: droneModel

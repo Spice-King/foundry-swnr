@@ -44,6 +44,7 @@
     </div>
   </div>
   {{/if}}
+  {{#unless base}}
   <div>
     {{localize 'swnr.item.location'}}:
     <select
@@ -57,6 +58,7 @@
       {{/select}}
     </select>
   </div>
+  {{/unless}}
   <div class="flex flex-col items-center">
     {{localize 'swnr.item.techlevel'}}:
     <input
@@ -81,6 +83,7 @@
       value="{{data.cost}}"
     />
   </div>
+  {{#unless base}}
   <div>
     {{localize 'swnr.item.quality.label'}}:
     <select
@@ -98,4 +101,5 @@
       {{/select}}
     </select>
   </div>
+  {{/unless}}
 </div>
