@@ -42,6 +42,12 @@ packs:
     module: swnr
     path: packs/computing-gear.db
     entity: Item
+  - name: cyberware
+    label: Cyberware
+    system: swnr
+    module: swnr
+    path: packs/cyberware.db
+    entity: Item
   - name: field-equipment
     label: Field Equipment
     system: swnr

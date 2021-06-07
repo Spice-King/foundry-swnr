@@ -46,6 +46,7 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   itemTypes: {
     // class: SWNRBaseItem<any>[];
     armor: SWNRBaseItem<SWNRArmorData>[];
+    cyberware: SWNRBaseItem<SWNRCyberwareData>[];
     weapon: SWNRBaseItem<SWNRWeaponData>[];
     // background: SWNRBaseItem<any>[];
     // power: SWNRBaseItem<any>[];
@@ -62,6 +63,9 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
     luck?: number;
   };
   ac: number;
+  systemStrain: SWNRLiving["systemStrain"] & {
+    cyberware: number;
+  };
   level: { value: number };
   stats: { [key in SWNRStats]: SWNRStat };
 }
@@ -150,6 +154,10 @@ declare interface SWNRArmorData extends SWNRBaseItemData {
   ac: number;
   shield: boolean;
   use: boolean;
+}
+
+declare interface SWNRCyberwareData extends SWNRBaseItemData {
+  strain: number;
 }
 
 declare type SWNRInventoryItemData =

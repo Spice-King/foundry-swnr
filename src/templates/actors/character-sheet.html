@@ -378,6 +378,9 @@
           {{localize 'swnr.sheet.tabs.skills'}}
         </a>
         <a class="item" data-tab="foci">{{localize 'swnr.sheet.tabs.foci'}}</a>
+        <a class="item" data-tab="cyberware">
+            {{localize 'swnr.sheet.tabs.cyberware'}}
+        </a>
       </nav>
       <section class="sheet-body">
         <div
@@ -524,6 +527,70 @@
             {{#each itemTypes.focus as |item id|}} {{>
             "systems/swnr/templates/actors/fragments/focus.html" item=item
             type=actor.data.type}} {{/each}}
+          </div>
+        </div>
+        <div class="tab cyberware" data-group="primary" data-tab="cyberware">
+          <div class="flex">
+            <div class="flex-grow w-32">
+              <div class="xl:flex hidden justify-center pr-0.5 text-base text-lg">
+                <h4 class="whitespace-nowrap">
+                  {{localize 'swnr.sheet.cyberware-strain'}}: {{data.systemStrain.cyberware}}
+                </h4>
+              </div>
+              <div class="md:flex hidden xl:hidden justify-center pr-0.5 text-base">
+                <h4 class="whitespace-nowrap">
+                  {{localize 'swnr.sheet.cyberware-strain-abbreviated'}}: {{data.systemStrain.cyberware}}
+                </h4>
+              </div>
+              <div class="flex md:hidden justify-center pr-0.5 text-base">
+                <h4 class="whitespace-nowrap">
+                  {{localize 'swnr.item.strain'}}: {{data.systemStrain.cyberware}}
+                </h4>
+              </div>
+              <div class="flex flex-wrap gap-1">
+                <div class="flex-grow w-32">
+                  <h4 class="text-2xl underline text-center">
+                    +1
+                  </h4>
+                  <div class="space-y2">
+                    {{#each itemTypes.cyberware as |item id|}}
+                    {{#if (lte item.data.data.strain 1)}}
+                    {{> "systems/swnr/templates/actors/fragments/cyberware.html" item=item
+                      type=actor.data.type}}
+                    {{/if}}
+                    {{/each}}
+                  </div>
+                </div>
+                <div class="flex-grow w-32">
+                  <h4 class="text-2xl underline text-center">
+                    +2
+                  </h4>
+                  <div class="space-y2">
+                    {{#each itemTypes.cyberware as |item id|}}
+                    {{#if (and (gt item.data.data.strain 1)
+                      (lt item.data.data.strain 3))}}
+                    {{> "systems/swnr/templates/actors/fragments/cyberware.html" item=item
+                      type=actor.data.type}}
+                    {{/if}}
+                    {{/each}}
+                  </div>
+                </div>
+                <div class="flex-grow w-32">
+                  <h4 class="text-2xl text-center">
+                    <span class="underline">+3</span>
+                    <sup>+</sup>
+                  </h4>
+                  <div class="space-y2">
+                    {{#each itemTypes.cyberware as |item id|}}
+                    {{#if (gte item.data.data.strain 3)}}
+                    {{> "systems/swnr/templates/actors/fragments/cyberware.html" item=item
+                      type=actor.data.type}}
+                    {{/if}}
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

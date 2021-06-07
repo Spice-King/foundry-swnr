@@ -1,0 +1,15 @@
+_id: XDm0h0SztRP9LFxi
+data:
+  cost: 2500
+  description: >-
+    Hands, feet, arms, legs, eyes, and numerous internal organs can be
+    replicated by postech medical science. These prosthetics can provide a good
+    approximation of the sense of touch, and are usually impossible to
+    distinguish from ordinary limbs without close inspection. Pretech-level
+    worlds tend to prefer actually regenerating lost limbs, but those with
+    access only to ordinary frontier levels of tech have reason to be grateful
+    to prosthetics.
+  strain: 1
+  tl: 4
+name: Prosthetic Limb
+type: cyberware

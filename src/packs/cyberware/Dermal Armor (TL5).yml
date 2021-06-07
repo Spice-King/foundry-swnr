@@ -1,0 +1,14 @@
+_id: x3EWfy0vKqdT5SfR
+data:
+  cost: 100000
+  description: >-
+    A fine subcutaneous reinforcement mesh provides significant protection
+    against impacts and cuts while remaining imperceptible to anything short of
+    a medical examination. Someone with the implant has AC 16 and is immune to
+    Shock damage inflicted by primitive melee weapons. The TL5 version of this
+    implant grants even more protection, rendering the subject wholly immune to
+    primitive weapons as if they were wearing powered armor.
+  strain: 2
+  tl: 5
+name: Dermal Armor (TL5)
+type: cyberware

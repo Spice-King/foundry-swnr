@@ -99,6 +99,7 @@ Actor:
 Item:
   types:
     - class
+    - cyberware
     - armor
     - weapon
     # - background
@@ -113,6 +114,9 @@ Item:
       pretech:
         cost: 0
         perHull: false
+    minimalItem:
+      cost: 0
+      tl: 4
     baseItem:
       encumbrance: 0
       cost: 0
@@ -124,6 +128,11 @@ Item:
   class:
     templates:
       - description
+  cyberware:
+    templates:
+      - minimalItem
+      - description
+    strain: 0
   armor:
     templates:
       - baseItem
