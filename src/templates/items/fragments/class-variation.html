@@ -1,7 +1,7 @@
 <div class="flex flex-row items-center gap-2">
   {{#if (eq type "full")}}
-  <div class="p-1.5 border bg-{{item.data.color}}-200 bg-opacity-75 rounded-full">
-    <img class="w-12 h-12" src={{item.img}}/>
+  <div class="p-1.5 bg-{{item.data.color}}-{{#unless (eq item.data.color "gray")}}200{{else}}300{{/unless}} bg-opacity-75 rounded-full">
+    <img class="classImg w-12 h-12" src={{item.img}}/>
   </div>
     <input
       class="text-lg h-full col-span-3 px-1.5 py-3.5 dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -11,8 +11,8 @@
       placeholder="{{localize 'swnr.sheet.name'}}"
     />
   {{else}}
-  <div class="p-1.5 border bg-{{item.data.color}}-200 bg-opacity-75 rounded-l-full">
-    <img class="w-12 h-12" src={{item.img}}/>
+  <div class="p-1.5 bg-{{item.data.color}}-{{#unless (eq item.data.color "gray")}}200{{else}}300{{/unless}} bg-opacity-75 rounded-l-full">
+    <img class="classImg w-12 h-12" src={{item.img}}/>
   </div>
     <div class="text-lg w-full px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md">
       {{localize "swnr.sheet.adventurer.name"}} ({{localize "swnr.sheet.partial"}} {{item.name}})
@@ -26,20 +26,22 @@
     {{> "systems/swnr/templates/fragments/text-area.html" uneditable="swnr.sheet.adventurer.description"}}
   {{/if}}
   <div>
-    {{> "systems/swnr/templates/fragments/text-area.html" content=classData.abilitiesDescription target="classData.abilitiesDescription" label="swnr.sheet.classAbilities"}}
+    {{> "systems/swnr/templates/fragments/text-area.html" content=classData.abilitiesDescription target=(concat classDataName ".abilitiesDescription") label="swnr.sheet.classAbilities"}}
     <div class="flex flex-col gap-1">
       <div>
-        <input type="checkbox" name="hasEffort" id="hasEffort"
-          {{#if classData.trackedAbility}} checked {{/if}}
+        <input class="trackedAbilityToggle {{type}}" type="checkbox" id="trackedAbility"
+          {{#if (or classData.trackedAbility (eq classData.trackedAbility ""))}} checked {{/if}}
         />
-        {{localize "swnr.sheet.trackedAbility"}}:
+        <label for="trackedAbility">
+          {{localize "swnr.sheet.trackedAbility"}}:
+        <label>
         <input
-          class="px-1.5 py-3.5 w-auto dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md {{#unless classData.trackedAbility}} hidden {{/unless}}"
-          name="trackedAbility"
+          class="px-1.5 py-3.5 sm:w-56 dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md {{#unless (or classData.trackedAbility (eq classData.trackedAbility ""))}} hidden {{/unless}}"
+          name="{{#if (or classData.trackedAbility (eq classData.trackedAbility ""))}}{{classDataName}}.trackedAbility{{/if}}"
           type="text"
           value="{{classData.trackedAbility}}"
         />
-        <span class="{{#if classData.trackedAbility}} hidden {{/if}}">
+        <span class="{{#if (or classData.trackedAbility (eq classData.trackedAbility ""))}} hidden {{/if}}">
           {{localize "swnr.sheet.none"}}
         </span>
       </div>
@@ -49,8 +51,8 @@
         </label>
         <select
           class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
-          name="classdata.enablesPsychDisciplines"
-          id="enablesPsychDisciplines"
+          name="{{classDataName}}.enablesPsychicDisciplines"
+          id="enablesPsychicDisciplines"
         >
           {{#select classData.enablesPsychicDisciplines}}
           <option value="none">{{localize 'swnr.sheet.none'}}</option>
@@ -60,7 +62,7 @@
         </select>
       </div>
       <div>
-        <input type="checkbox" name="hasEffort" id="hasEffort"
+          <input type="checkbox" name="{{classDataName}}.hasEffort" id="hasEffort"
           {{checked classData.hasEffort}}
         />
         <label class="m-auto" for="hasEffort">{{localize 'swnr.sheet.hasEffort'}}</label>
@@ -80,7 +82,7 @@
           id="generalFoci"
           type="number"
           min="0"
-          name="generalFoci"
+          name="{{classDataName}}.freeAtCreation.generalFoci"
           value="{{classData.freeAtCreation.generalFoci}}"
         />
         <label for="generalFoci">{{localize "swnr.sheet.generalFoci"}}</label>
@@ -91,7 +93,7 @@
           id="combatFoci"
           type="number"
           min="0"
-          name="combatFoci"
+          name="{{classDataName}}.freeAtCreation.combatFoci"
           value="{{classData.freeAtCreation.combatFoci}}"
         />
         <label for="combatFoci">{{localize "swnr.sheet.combatFoci"}}</label>
@@ -102,7 +104,7 @@
           id="psychicSkills"
           type="number"
           min="0"
-          name="psychicSkills"
+          name="{{classDataName}}.freeAtCreation.psychicSkills"
           value="{{classData.freeAtCreation.psychicSkills}}"
         />
         <label for="psychicSkills">{{localize "swnr.sheet.psychicSkills"}}</label>
@@ -118,13 +120,13 @@
       <div class="flex flex-col items-center">
         <input
           class="attackBonus w-6 text-center x-1.5 py-3.5 dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          id="{{concat attackBonus (plus @key 1)}}"
+          id="attackBonus{{plus @index 1}}"
           type="number"
           min="0"
-          name="attackBonus"
+          name="{{../classDataName}}.abAtLevel.[{{@index}}]"
           value="{{this}}"
         />
-        <label for="{{concat attackBonus (plus @key 1)}}">{{plus @key 1}}<label>
+        <label for="attackBonus{{plus @index 1}}">{{plus @index 1}}<label>
       </div>
       {{/each}}
     </div>
@@ -140,7 +142,7 @@
           id="bonusHpPerLevel"
           type="number"
           min="0"
-          name="bonusHpPerLevel"
+          name="{{classDataName}}.perLevel.bonusHp"
           value="{{classData.perLevel.bonusHp}}"
         />
         <label for="bonusHpPerLevel">{{localize "swnr.sheet.bonusHp"}}</label>
@@ -158,7 +160,7 @@
           id="generalSkillPointsOnLevelUp"
           type="number"
           min="0"
-          name="generalSkillPointsOnLevelUp"
+          name="{{classDataName}}.onLevelUp.bonusGeneralSkillPoints"
           value="{{classData.onLevelUp.bonusGeneralSkillPoints}}"
         />
         <label for="generalSkillPointsOnLevelUp">{{localize "swnr.sheet.bonusGeneralSkillPoints"}}</label>
