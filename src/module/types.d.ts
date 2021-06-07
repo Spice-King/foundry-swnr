@@ -63,6 +63,7 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   };
   ac: number;
   level: { value: number };
+  multiclass: boolean;
   stats: { [key in SWNRStats]: SWNRStat };
 }
 
@@ -100,7 +101,9 @@ declare interface SWNRDecData {
 }
 
 declare interface ClassVariationData {
-  abAtLevel: number[];
+  // TODO: Foundry currently converts this to an object when it is edited so we
+  // need the second type in the union
+  abAtLevel: number[] | Record<number, number>;
   abilitiesDescription: string;
   onLevelUp: {
     bonusGeneralSkillPoints: number;
