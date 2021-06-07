@@ -50,8 +50,7 @@ TL;DR: You mod it and share it, you send the changes. No ifs, ands, or butts.
 
 The contents of `src/packs/` are mostly text from [SWN Revised Edition (Free Version)](https://www.drivethrurpg.com/product/230009/Stars-Without-Number-Revised-Edition-Free-Version) with slight alterations to better fit with Foundry VTT. All rights for the included content belong wto Kevin Crawford. I've followed what Kevin Crawford has said on Reddit. [[1]](https://www.reddit.com/r/SWN/comments/8g9lsp/is_there_a_standing_policy_on_selling_content/dy9vf8q/) [[2]](https://www.reddit.com/r/SWN/comments/cj1b7n/could_someone_explain_how_ogl_works_with_regards/)
 
-The contents of `src/assets/icons/class-icons.net` are [Monkey wrench icon
-by Delapouite](https://game-icons.net/1x1/delapouite/monkey-wrench.html), [Rolling energy icon by Lorc](https://game-icons.net/1x1/lorc/rolling-energy.html) and [Ray gun icon by Lorc](https://game-icons.net/1x1/lorc/ray-gun.html) licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+The contents of `src/assets/icons/class-icons.net` are [Monkey wrench icon by Delapouite](https://game-icons.net/1x1/delapouite/monkey-wrench.html), [Cancel icon by sbed](https://game-icons.net/1x1/sbed/cancel.html) [Rolling energy icon by Lorc](https://game-icons.net/1x1/lorc/rolling-energy.html) and [Ray gun icon by Lorc](https://game-icons.net/1x1/lorc/ray-gun.html) licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
 ## Abandonment
 

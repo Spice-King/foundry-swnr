@@ -366,9 +366,14 @@ swnr:
       combat: Combat
       full: Full
       partial: Partial
+      active: Active
+      inactive: Inactive
     xp: XP
     delete-item: Delete Item
+    delete-class: Delete Class
     edit-item: Edit Item
+    setImage: Set Image
+    setBackgroundColor: Set Image Background Color
     ask: Ask
     description: "Description:"
     ammoType: Ammo Type
@@ -518,3 +523,12 @@ swnr:
     owed: Owed
   deleteTitle: Delete {name}?
   deleteContent: Are you sure you want to delete {name} from the actor {actor}?
+  color:
+    gray: Gray
+    red: Red
+    yellow: Yellow
+    green: Green
+    blue: Blue
+    indigo: Indigo
+    purple: Purple
+    pink: Pink

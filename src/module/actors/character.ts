@@ -58,6 +58,9 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
 
     data.ac = baseAc + data.stats.dex.mod;
 
+    // class
+    data.multiclass = this.itemTypes["class"].length > 1;
+
     // effort
     const psychicSkills = <Item<SWNRSkillData>[]>(
       this.items.filter(

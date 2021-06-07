@@ -56,6 +56,7 @@ export class CharacterActorSheet extends ActorSheet<
   }
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
+    html.find(".class-edit").on("click", this._onClassEdit.bind(this));
     html.find(".statRoll").on("click", this._onStatsRoll.bind(this));
     html.find(".skill").on("click", this._onSkillRoll.bind(this));
     html.find(".save").on("click", this._onSaveThrow.bind(this));
@@ -104,6 +105,13 @@ export class CharacterActorSheet extends ActorSheet<
       { classes: ["swnr"] }
     );
     return this.popUpDialog.render(true);
+  }
+  _onClassEdit(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    if ($(event.currentTarget).hasClass("right-class"))
+      this.actor.itemTypes["class"][1]?.sheet.render(true);
+    else this.actor.itemTypes["class"][0]?.sheet.render(true);
   }
   _onItemEdit(event: JQuery.ClickEvent): void {
     event.preventDefault();
@@ -591,6 +599,16 @@ export class CharacterActorSheet extends ActorSheet<
         this.actor.updateEmbeddedEntity("OwnedItem", element);
       }
     }
+  }
+
+  /** @override */
+  async _onDropItemCreate(
+    itemData: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    // allow only two classes
+    if (itemData.type === "class" && this.actor.itemTypes["class"].length > 1)
+      return false;
+    else return super._onDropItemCreate(itemData);
   }
 }
 Hooks.on(
