@@ -631,3 +631,4 @@ Hooks.on(
 );
 export const sheet = CharacterActorSheet;
 export const types = ["character"];
+export const isDefault = true;
