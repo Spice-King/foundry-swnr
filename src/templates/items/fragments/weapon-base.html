@@ -16,7 +16,7 @@
         {{!-- <div>{{localize 'swnr.weapon.damageFormula'}}:</div> --}}
         <div>Formula:</div>
         <input
-          class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-32 text-center px-1.5 py-3 dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="text"
           name="data.damage"
           value="{{data.damage}}"
@@ -26,7 +26,7 @@
         <div>{{localize 'swnr.weapon.attackBonus'}}:</div>
         <input
           type="number"
-          class="w-10 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-10 text-center px-1.5 py-3 dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.ab"
           step="1"
           data-dtype="Number"
@@ -42,7 +42,7 @@
         <div>{{localize 'swnr.weapon.shock.damage'}}:</div>
         <input
           type="number"
-          class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          class="w-8 text-center px-1.5 py-3 dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.shock.dmg"
           value="{{data.shock.dmg}}"
           min="0"
@@ -51,7 +51,7 @@
       </div>
       <div>
         <div>{{localize 'swnr.weapon.shock.ac'}}:</div>
-        <input class="w-8 text-center px-1.5 py-3 border border-gray-800
+        <input class="w-8 text-center px-1.5 py-3 dontOverrideBorder border-gray-800
         bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75
         rounded-md" type="number" name="data.shock.ac" value="{{data.shock.ac}}"
         min="10" step="1" {{#if (lte data.shock.dmg 0)}} disabled {{/if}}>
