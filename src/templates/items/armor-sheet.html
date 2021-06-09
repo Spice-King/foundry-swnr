@@ -1,12 +1,13 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
-  {{> "systems/swnr/templates/items/fragments/desc.html"}}
+  {{> "systems/swnr/templates/items/fragments/name.html"}}
+  {{> "systems/swnr/templates/fragments/desc.html"}}
   {{> "systems/swnr/templates/items/fragments/item-base.html"}}
   <div class="flex gap-1 justify-between">
     <div>
       <div>{{localize 'swnr.sheet.armor-class'}}:</div>
       <input
         type="number"
-        class="px-1 w-10 text-center text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
+        class="px-1 w-10 text-center text-black dontOverrideBorder border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         step="1"
         name="data.ac"
         min="0"

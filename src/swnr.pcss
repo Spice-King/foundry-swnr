@@ -36,6 +36,13 @@ div.editor .editor-content{
 
   @tailwind utilities;
 }
+/* this is neccesary as a replacment for border in sheets that might be rendered
+ * from the compendium since the default css removes borders when inputs are
+ * hovered-over */
+.dontOverrideBorder {
+  border: solid !important;
+  border-width: 1px !important;
+}
 .dieRoll {
   list-style-type: none;
   margin: 0px;
