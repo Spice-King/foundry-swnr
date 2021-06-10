@@ -1,18 +1,16 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
   {{> "systems/swnr/templates/items/fragments/name.html"}}
   {{> "systems/swnr/templates/fragments/desc.html"}}
-  <div class="border border-black rounded-md bg-gray-300 mb-2">
-    <h3 class="text-base p-1">{{localize 'swnr.foci.level1'}}</h3>
-    <div class="p-1 border-t border-black">
-      {{editor content=data.level1 target="data.level1" button=true owner=owner
-      editable=editable }}
-    </div>
-  </div>
-  <div class="border border-black rounded-md bg-gray-300">
-    <h3 class="text-base p-1">{{localize 'swnr.foci.level2'}}</h3>
-    <div class="p-1 border-t border-black">
-      {{editor content=data.level2 target="data.level2" button=true owner=owner
-      editable=editable }}
-    </div>
-  </div>
+  {{>
+    "systems/swnr/templates/fragments/text-area.html"
+    content=data.level1
+    target="data.level1"
+    label="swnr.foci.level1"
+  }}
+  {{>
+    "systems/swnr/templates/fragments/text-area.html"
+    content=data.level2
+    target="data.level2"
+    label="swnr.foci.level2"
+  }}
 </form>
