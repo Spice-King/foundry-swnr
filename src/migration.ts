@@ -119,7 +119,9 @@ async function applyMigration(migration: MigrationData<Entity<unknown>>) {
   for await (const type of collections) {
     for await (const entity of type.values()) {
       try {
-        await applyMigrationTo(entity, undefined, migration);
+        const update = await applyMigrationTo(entity, undefined, migration);
+        if (Object.keys(update).length > 1)
+            entity.update(update);
       } catch (e) {
         errors.push({
           type: type.constructor.name,
