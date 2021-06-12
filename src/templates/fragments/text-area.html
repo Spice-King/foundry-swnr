@@ -1,0 +1,25 @@
+<div>
+  <div class="border border-gray-600 rounded-md my-2 bg-gray-300">
+    {{#unless label}}
+    <h2 class="text-base p-1">{{localize "swnr.sheet.description"}}</h2>
+    {{else}}
+    <h2 class="text-base p-1">{{localize label}}</h2>
+    {{/unless}}
+    {{#unless uneditable}}
+    <div class="p-1 border-t border-black">
+      {{!-- TODO: fix is for wrapping around text, because this is a little fixed --}}
+      {{
+        editor
+        content=content
+        target=target
+        button=true
+        owner=owner
+        editable=editable
+      }}
+    {{else}}
+    <div class="p-1 border-t border-black">
+      {{{localize uneditable}}}
+    {{/unless}}
+    </div>
+  </div>
+</div>

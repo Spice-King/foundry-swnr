@@ -44,7 +44,7 @@ declare interface SWNREncumbrance {
 }
 declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   itemTypes: {
-    // class: SWNRBaseItem<any>[];
+    class: SWNRBaseItem<SWNRClassData>[];
     armor: SWNRBaseItem<SWNRArmorData>[];
     weapon: SWNRBaseItem<SWNRWeaponData>[];
     // background: SWNRBaseItem<any>[];
@@ -97,6 +97,31 @@ declare interface SWNRNPCData extends SWNRLiving {
 
 declare interface SWNRDecData {
   description: string;
+}
+
+declare interface ClassVariationData {
+  abAtLevel: number[];
+  abilitiesDescription: string;
+  onLevelUp: {
+    bonusGeneralSkillPoints: number;
+  };
+  enablesPsychicDisciplines: string;
+  freeAtCreation: {
+    generalFoci: number;
+    combatFoci: number;
+    psychicSkills: number;
+  };
+  hasEffort: boolean;
+  perLevel: {
+    bonusHp: number;
+  };
+  trackedAbility: string | null;
+}
+
+declare interface SWNRClassData extends SWNRDecData {
+  color: string;
+  partialClassData: ClassVariationData;
+  fullClassData: ClassVariationData;
 }
 
 declare interface SWNRBaseItemData extends SWNRDecData {

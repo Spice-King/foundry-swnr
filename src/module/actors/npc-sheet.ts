@@ -275,3 +275,4 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
 
 export const sheet = NPCActorSheet;
 export const types = ["npc"];
+export const isDefault = true;
