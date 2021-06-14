@@ -70,15 +70,18 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
             game.i18n.localize("swnr.skills.labels.psionic").toLocaleLowerCase()
       )
     );
-    const effort = data.effort;
-    effort.max =
-      Math.max(
-        1,
-        1 +
-          Math.max(data.stats.con.mod, data.stats.wis.mod) +
-          Math.max(0, ...psychicSkills.map((i) => i.data.data.rank))
-      ) + effort.bonus;
-    effort.value = effort.max - effort.current - effort.scene - effort.day;
+    const effortPrepare = (effort) => {
+      effort.max =
+        Math.max(
+          1,
+          1 +
+            Math.max(data.stats.con.mod, data.stats.wis.mod) +
+            Math.max(0, ...psychicSkills.map((i) => i.data.data.rank))
+        ) + effort.bonus;
+      effort.value = effort.max - effort.current - effort.scene - effort.day;
+    };
+    effortPrepare(data.effort);
+    effortPrepare(data.effort2);
 
     //encumbrance
     if (!data.encumbrance)
@@ -117,6 +120,41 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
       .filter((i) => i.data.data.location === "stowed")
       .map(itemInvCost)
       .reduce((i, n) => i + n, 0);
+  }
+
+  /** @override */
+  _onDeleteEmbeddedEntity(): void {
+    const args = arguments; // eslint-disable-line prefer-rest-params
+    // @ts-expect-error Typescript signature is wrong for this function
+    super._onDeleteEmbeddedEntity(...args);
+    if (args[1]["type"] === "class") {
+      if (this.itemTypes["class"].length > 0)
+        this.update({
+          data: {
+            effort:
+              this.itemTypes["class"][0]["data"]["sort"] > args[1]["sort"]
+                ? this.data.data.effort2
+                : this.data.data.effort,
+            effort2: {
+              bonus: 0,
+              current: 0,
+              day: 0,
+              scene: 0,
+            },
+          },
+        });
+      else
+        this.update({
+          data: {
+            effort: {
+              bonus: 0,
+              current: 0,
+              day: 0,
+              scene: 0,
+            },
+          },
+        });
+    }
   }
 }
 

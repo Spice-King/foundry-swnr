@@ -10,6 +10,13 @@ registerMigration(
       pastUpdates["name"] = char.name + " (" + char.data.data["class"] + ")";
     if (char.data.data["class"] || char.data.data["class"] === "")
       pastUpdates["data.class"] = null;
+    if (!char.data.data["effort2"]?.bonus)
+      pastUpdates["data.effort2.bonus"] = 0;
+    if (!char.data.data["effort2"]?.current)
+      pastUpdates["data.effort2.current"] = 0;
+    if (!char.data.data["effort2"]?.day) pastUpdates["data.effort2.day"] = 0;
+    if (!char.data.data["effort2"]?.scene)
+      pastUpdates["data.effort2.scene"] = 0;
     return pastUpdates;
   }
 );

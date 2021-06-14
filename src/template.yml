@@ -71,6 +71,11 @@ Actor:
       debt: 0
       balance: 0
       owed: 0
+    effort2:
+      bonus: 0
+      current: 0
+      scene: 0
+      day: 0
   npc:
     templates:
       - living

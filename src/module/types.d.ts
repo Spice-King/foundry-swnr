@@ -9,6 +9,14 @@ declare interface SWNRStat {
   total: number;
 }
 declare type SWNRItemTypes = "";
+declare interface SWNREffort {
+  bonus: number;
+  current: number;
+  scene: number;
+  day: number;
+  max: number;
+  value: number;
+}
 declare interface SWNRLiving {
   health: {
     value: number;
@@ -21,14 +29,7 @@ declare interface SWNRLiving {
     max: number;
     permanent: number;
   };
-  effort: {
-    bonus: number;
-    current: number;
-    scene: number;
-    day: number;
-    max: number;
-    value: number;
-  };
+  effort: SWNREffort;
 }
 declare interface SWNREncumbrance {
   encumbrance: {
@@ -64,6 +65,7 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   ac: number;
   level: { value: number };
   multiclass: boolean;
+  effort2: SWNREffort;
   stats: { [key in SWNRStats]: SWNRStat };
 }
 

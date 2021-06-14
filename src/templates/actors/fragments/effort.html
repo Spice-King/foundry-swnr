@@ -1,0 +1,80 @@
+<div class="flex-col flex gap-1">
+  <h4 class="text-base">
+    {{type}} {{localize 'swnr.effort.title'}}
+  </h4>
+  <div class="flex flex-col lg:flex-row gap-1">
+    <div>
+      <label for="{{dataName}}.bonus">
+        {{localize 'swnr.effort.bonus'}}:
+      </label>
+      <input
+        class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number"
+        step="1"
+        name="{{dataName}}.bonus"
+        id="{{dataName}}.bonus"
+        value="{{bonus}}"
+        data-dtype="Number"
+      />
+    </div>
+    <div>
+      <label for="{{dataName}}.current">
+        {{localize 'swnr.effort.current'}}:
+      </label>
+      <input
+        class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number"
+        min="0"
+        step="1"
+        max="{{concat current value}}"
+        name="{{dataName}}.current"
+        id="{{dataName}}.current"
+        value="{{current}}"
+        data-dtype="Number"
+      />
+    </div>
+    <div>
+      <label for="{{dataName}}.scene">
+        {{localize 'swnr.effort.scene'}}:
+      </label>
+      <input
+        class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number"
+        min="0"
+        step="1"
+        max="{{concat scene value}}"
+        name="{{dataName}}.scene"
+        id="{{dataName}}.scene"
+        value="{{scene}}"
+        data-dtype="Number"
+      />
+    </div>
+    <div>
+      <label for="{{dataName}}.day"
+        >{{localize 'swnr.effort.day'}}:
+      </label>
+      <input
+        class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+        type="number"
+        min="0"
+        step="1"
+        max="{{concat day value}}"
+        name="{{dataName}}.day"
+        id="{{dataName}}.day"
+        value="{{day}}"
+        data-dtype="Number"
+      />
+    </div>
+  </div>
+  <div class="flex gap-2 items-center">
+    <div>{{value}}/{{max}}</div>
+    <div
+        class="bg-{{color}}-300 border border-{{color}}-900 w-full rounded-full h-4 overflow-hidden"
+    >
+      <div
+        class="bg-{{color}}-500 h-full rounded-full"
+        style="width: min(calc(100% * {{value}}/{{max}}));"
+      ></div>
+    </div>
+  </div>
+</div>

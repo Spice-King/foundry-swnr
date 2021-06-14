@@ -344,80 +344,28 @@
         </div>
         <div></div>
       </div>
-      <div class="flex-col flex gap-1">
-        <h3>{{localize 'swnr.effort.title'}}</h3>
-        <div class="flex flex-col lg:flex-row gap-1">
-          <div>
-            <label for="data.effort.bonus">
-              {{localize 'swnr.effort.bonus'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              step="1"
-              name="data.effort.bonus"
-              value="{{data.effort.bonus}}"
-              data-dtype="Number"
-            />
-          </div>
-          <div>
-            <label for="data.effort.current">
-              {{localize 'swnr.effort.current'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              min="0"
-              step="1"
-              max="{{concat data.effort.current data.effort.value}}"
-              name="data.effort.current"
-              value="{{data.effort.current}}"
-              data-dtype="Number"
-            />
-          </div>
-          <div>
-            <label for="data.effort.scene">
-              {{localize 'swnr.effort.scene'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              min="0"
-              step="1"
-              max="{{concat data.effort.scene data.effort.value}}"
-              name="data.effort.scene"
-              value="{{data.effort.scene}}"
-              data-dtype="Number"
-            />
-          </div>
-          <div>
-            <label for="data.effort.day"
-              >{{localize 'swnr.effort.day'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              min="0"
-              step="1"
-              max="{{concat data.effort.day data.effort.value}}"
-              name="data.effort.day"
-              value="{{data.effort.day}}"
-              data-dtype="Number"
-            />
-          </div>
-        </div>
-        <div class="flex gap-2 items-center">
-          <div>{{data.effort.value}}/{{data.effort.max}}</div>
-          <div
-            class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
-          >
-            <div
-              class="bg-purple-500 h-full rounded-full"
-              style="width: min(calc(100% * {{data.effort.value}}/{{data.effort.max}}));"
-            ></div>
-          </div>
-        </div>
-      </div>
+      {{#with itemTypes.class.[0] as | leftClass |}}
+      {{#with ../itemTypes.class.[1] as | rightClass |}}
+      {{#if leftClass.data.data.partialClassData.hasEffort}}
+      {{> "systems/swnr/templates/actors/fragments/effort.html"
+        ../../data.effort dataName="data.effort" type=leftClass.data.name
+        color="purple"
+      }}
+      {{/if}}
+      {{#if rightClass.data.data.partialClassData.hasEffort}}
+      {{> "systems/swnr/templates/actors/fragments/effort.html"
+        ../../data.effort2 dataName="data.effort2" type=rightClass.data.name
+        color="indigo"
+      }}
+      {{/if}}
+      {{else}}
+      {{#if leftClass.data.data.fullClassData.hasEffort}}
+      {{> "systems/swnr/templates/actors/fragments/effort.html" ../data.effort
+        dataName="data.effort" type=leftClass.data.name color="purple"
+      }}
+      {{/if}}
+      {{/with}}
+      {{/with}}
     </div>
     <div class="w-full">
       <nav
