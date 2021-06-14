@@ -44,7 +44,7 @@ declare interface SWNREncumbrance {
 }
 declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   itemTypes: {
-    // class: SWNRBaseItem<any>[];
+    class: SWNRBaseItem<SWNRClassData>[];
     armor: SWNRBaseItem<SWNRArmorData>[];
     weapon: SWNRBaseItem<SWNRWeaponData>[];
     // background: SWNRBaseItem<any>[];
@@ -63,6 +63,7 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   };
   ac: number;
   level: { value: number };
+  multiclass: boolean;
   stats: { [key in SWNRStats]: SWNRStat };
 }
 
@@ -97,6 +98,33 @@ declare interface SWNRNPCData extends SWNRLiving {
 
 declare interface SWNRDecData {
   description: string;
+}
+
+declare interface ClassVariationData {
+  // TODO: Foundry currently converts this to an object when it is edited so we
+  // need the second type in the union
+  abAtLevel: number[] | Record<number, number>;
+  abilitiesDescription: string;
+  onLevelUp: {
+    bonusGeneralSkillPoints: number;
+  };
+  enablesPsychicDisciplines: string;
+  freeAtCreation: {
+    generalFoci: number;
+    combatFoci: number;
+    psychicSkills: number;
+  };
+  hasEffort: boolean;
+  perLevel: {
+    bonusHp: number;
+  };
+  trackedAbility: string | null;
+}
+
+declare interface SWNRClassData extends SWNRDecData {
+  color: string;
+  partialClassData: ClassVariationData;
+  fullClassData: ClassVariationData;
 }
 
 declare interface SWNRBaseItemData extends SWNRDecData {

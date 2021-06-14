@@ -1,4 +1,78 @@
 <form class="{{cssClass}} -m-2 p-2 bg-gray-200">
-  {{> "systems/swnr/templates/items/fragments/desc.html"}}
-  <pre>{{stringify item}}</pre>
+  <div class="flex gap-2">
+    {{#if editable}}
+    <div class="flex m-auto flex-wrap gap-2 place-content-end">
+    <a
+      class="backgroundColorSet m-auto text-gray-600 hover:text-red-600 transition-colors"
+      title="{{localize "swnr.sheet.setBackgroundColor"}}"
+    >
+      <select
+        class="px-1 py-2 text-black bg-gray-400 h-4 w-4 absolute cursor-pointer opacity-0"
+        name="data.color"
+      >
+        {{#select item.data.color}}
+        <option value="gray">{{localize "swnr.color.gray"}}</option>
+        <option value="red">{{localize "swnr.color.red"}}</option>
+        <option value="yellow">{{localize "swnr.color.yellow"}}</option>
+        <option value="green">{{localize "swnr.color.green"}}</option>
+        <option value="blue">{{localize "swnr.color.blue"}}</option>
+        <option value="indigo">{{localize "swnr.color.indigo"}}</option>
+        <option value="purple">{{localize "swnr.color.purple"}}</option>
+        <option value="pink">{{localize "swnr.color.pink"}}</option>
+        {{/select}}
+      </select>
+      <i class="fas fa-paint-roller"></i>
+    </a>
+    <a
+      class="imageSet m-auto text-gray-600 hover:text-red-600 transition-colors"
+      title="{{localize "swnr.sheet.setImage"}}"
+    >
+      <i class="fas fa-paint-brush"></i>
+    </a>
+    </div>
+    {{/if}}
+    <nav class="class-sheet-tabs tabs py-1 flex-grow flex flex-wrap gap-2 border-t border-b border-trueGray-500 border1 mb-1" data-group="primary">
+      <a class="item" data-tab="full">
+        {{localize "swnr.sheet.tabs.full"}}
+        {{#if actor}}
+          {{#unless actor.data.data.multiclass}}
+          ({{localize "swnr.sheet.tabs.active"}})
+          {{else}}
+          ({{localize "swnr.sheet.tabs.inactive"}})
+          {{/unless}}
+        {{/if}}
+      </a>
+      <a class="item" data-tab="partial">
+        {{localize "swnr.sheet.tabs.partial"}}
+        {{#if actor}}
+          {{#if actor.data.data.multiclass}}
+          ({{localize "swnr.sheet.tabs.active"}})
+          {{else}}
+          ({{localize "swnr.sheet.tabs.inactive"}})
+          {{/if}}
+        {{/if}}
+      </a>
+      </a>
+    </nav>
+    {{#if editable}}
+    <a
+      class="classDelete m-auto text-gray-600 hover:text-red-600 transition-colors"
+      title="{{localize "swnr.sheet.delete-class"}}"
+    >
+      <i class="fas fa-trash"></i>
+    </a>
+    {{/if}}
+  </div>
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="full">
+      {{> "systems/swnr/templates/items/fragments/class-variation.html"
+        type="full" item=item classData=data.fullClassData
+        classDataName="data.fullClassData"}}
+    </div>
+    <div class="tab" data-group="primary" data-tab="partial">
+      {{> "systems/swnr/templates/items/fragments/class-variation.html"
+        type="partial" item=item classData=data.partialClassData
+        classDataName="data.partialClassData"}}
+    </div>
+  </section>
 </form>
