@@ -58,6 +58,9 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
 
     data.ac = baseAc + data.stats.dex.mod;
 
+    // class
+    data.multiclass = this.itemTypes["class"].length > 1;
+
     // effort
     const psychicSkills = <Item<SWNRSkillData>[]>(
       this.items.filter(
@@ -114,6 +117,31 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
       .filter((i) => i.data.data.location === "stowed")
       .map(itemInvCost)
       .reduce((i, n) => i + n, 0);
+  }
+
+  /** @override */
+  _onDeleteEmbeddedEntity(): void {
+    const args = arguments; // eslint-disable-line prefer-rest-params
+    // @ts-expect-error Typescript signature is wrong for this function
+    super._onDeleteEmbeddedEntity(...args);
+    if (args[1]["type"] === "class") {
+      if (this.itemTypes["class"].length > 0)
+        this.update({
+          data: {
+            trackedAbility:
+              this.itemTypes["class"][0]["data"]["sort"] > args[1]["sort"]
+                ? this.data.data.trackedAbility2
+                : this.data.data.trackedAbility,
+            trackedAbility2: true,
+          },
+        });
+      else
+        this.update({
+          data: {
+            trackedAbility: true,
+          },
+        });
+    }
   }
 }
 

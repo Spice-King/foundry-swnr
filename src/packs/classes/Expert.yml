@@ -1,0 +1,89 @@
+_id: IeNWpQNkHdvLUxlC
+data:
+  color: blue
+  description: >-
+    Your hero is exceptionally good at a useful skill. Doctors, cat burglars,
+    starship pilots, grifters, technicians, or any other concept that focuses on
+    expertise in a non-combat skill should pick the Expert class. Experts are
+    the best at such skills and gain more of them than other classes
+    do.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Just as a Warrior can be relied upon to make
+    a shot when the chips are down, an Expert has a knack for succeeding at the
+    moments of greatest importance. Once per scene, an Expert can reroll a
+    failed skill check, taking the new result if it's better. This benefit can
+    be applied to any skill check, even those that the Expert isn't specially
+    focused in. Their natural talent bleeds over into everything they
+    do.<br/>&nbsp;&nbsp;&nbsp;&nbsp;In their chosen field, however, the Expert
+    is exceptionally gifted. Aside from the free focus level that all PCs get at
+    the start of the game, an Expert can choose an additional level in a
+    non-combat focus related to their background. They can spend both of these
+    levels on the same focus if they wish, thus starting the game with level 2
+    in that particular knack.
+  partialClassData:
+    abAtLevel:
+      - 0
+      - .5
+      - .5
+      - 1
+      - 1
+      - 1.5
+      - 1.5
+      - 2
+      - 2
+      - 2.5
+    abilitiesDescription: >-
+      You gain a free level in a non-combat focus related to your background.
+      Most concepts will take <i>Specialist,</i> though <i>Diplomat, Starfarer,
+      Healer,</i> or some other focus might suit better. Gain an extra skill
+      point every time you gain a character level which can be spent on any
+      non-psychic, non-combat skill.
+    onLevelUp:
+      bonusGeneralSkillPoints: 1
+    enablesPsychicDisciplines: "none"
+    freeAtCreation:
+      generalFoci: 1
+      combatFoci: 0
+      psychicSkills: 0
+    hasEffort: false
+    perLevel:
+      bonusHp: 0
+    trackedAbility: ~
+  fullClassData:
+    abAtLevel:
+      - 0
+      - 1
+      - 1
+      - 2
+      - 2
+      - 3
+      - 3
+      - 4
+      - 4
+      - 5
+    abilitiesDescription: >-
+      Every Expert PC has certain special
+      abilities.<br/>&nbsp;&nbsp;&nbsp;&nbsp;You gain a free level in a
+      non-combat focus related to your background. Most concepts will take
+      <i>Specialist</i> in their main skill, though <i>Diplomat, Starfarer,
+      Healer,</i> or some other focus might suit better. You may not take a
+      combat-oriented focus with this perk. In case of uncertainty, the GM
+      decides whether or not a focus is
+      permitted.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Once per scene, you can reroll a
+      failed skill check, taking the new roll if it's
+      better.<br/>&nbsp;&nbsp;&nbsp;&nbsp;When you advance an experience level,
+      you gain a bonus skill point that can be spent on any non-combat,
+      non-psychic skill. You can save this point to spend later if you wish.
+    onLevelUp:
+      bonusGeneralSkillPoints: 1
+    enablesPsychicDisciplines: "none"
+    freeAtCreation:
+      generalFoci: 1
+      combatFoci: 0
+      psychicSkills: 0
+    hasEffort: false
+    perLevel:
+      bonusHp: 0
+    hpBonusPerLevel: 0
+    trackedAbility: Natural Talent
+img: systems/swnr/assets/icons/game-icons.net/class-icons/expert.svg
+name: Expert
+type: class
