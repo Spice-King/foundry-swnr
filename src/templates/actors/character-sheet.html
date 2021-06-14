@@ -344,6 +344,43 @@
         </div>
         <div></div>
       </div>
+      <div class="flex flex-col">
+        {{#with itemTypes.class.[0] as | leftClass |}}
+        {{#with ../itemTypes.class.[1] as | rightClass |}}
+        {{#with leftClass.data.data.partialClassData.trackedAbility as | ability |}}
+        <div>
+          <label for="{{localize "swnr.sheet.trackedAbility"}} {{ability}}">
+            {{ability}}:&nbsp;
+          </label>
+          <input type="checkbox" name="data.trackedAbility" id="{{localize "swnr.sheet.trackedAbility"}} {{ability}}"
+            {{checked ../../../data.trackedAbility}}
+          />
+        </div>
+        {{/with}}
+        {{#with rightClass.data.data.partialClassData.trackedAbility as | ability |}}
+        <div>
+          <label for="{{localize "swnr.sheet.trackedAbility"}}2 {{ability}}">
+            {{ability}}:&nbsp;
+          </label>
+          <input type="checkbox" name="data.trackedAbility2" id="{{localize "swnr.sheet.trackedAbility"}}2 {{ability}}"
+            {{checked ../../../data.trackedAbility2}}
+          />
+        </div>
+        {{/with}}
+        {{else}}
+        {{#with leftClass.data.data.fullClassData.trackedAbility as | ability |}}
+        <div>
+          <label for="{{localize "swnr.sheet.trackedAbility"}} {{ability}}">
+            {{ability}}:&nbsp;
+          </label>
+          <input type="checkbox" name="data.trackedAbility" id="{{localize "swnr.sheet.trackedAbility"}} {{ability}}"
+            {{checked ../../data.trackedAbility}}
+          />
+        </div>
+        {{/with}}
+        {{/with}}
+        {{/with}}
+      </div>
       <div class="flex-col flex gap-1">
         <h3>{{localize 'swnr.effort.title'}}</h3>
         <div class="flex flex-col lg:flex-row gap-1">

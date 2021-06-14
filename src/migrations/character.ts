@@ -10,6 +10,10 @@ registerMigration(
       pastUpdates["name"] = char.name + " (" + char.data.data["class"] + ")";
     if (char.data.data["class"] || char.data.data["class"] === "")
       pastUpdates["data.class"] = null;
+    if (!char.data.data["trackedAbility"])
+      pastUpdates["data.trackedAbility"] = true;
+    if (!char.data.data["trackedAbility2"])
+      pastUpdates["data.trackedAbility2"] = true;
     return pastUpdates;
   }
 );

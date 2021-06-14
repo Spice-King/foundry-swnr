@@ -65,6 +65,8 @@ declare interface SWNRCharacterData extends SWNRLiving, SWNREncumbrance {
   level: { value: number };
   multiclass: boolean;
   stats: { [key in SWNRStats]: SWNRStat };
+  trackedAbility: boolean;
+  trackedAbility2: boolean;
 }
 
 declare interface SWNRNPCData extends SWNRLiving {

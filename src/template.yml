@@ -67,6 +67,8 @@ Actor:
     background: ""
     employer: ""
     biography: ""
+    trackedAbility: true
+    trackedAbility2: true
     credits:
       debt: 0
       balance: 0
