@@ -297,16 +297,7 @@
           <label>{{localize 'swnr.sheet.armor-class'}}</label>
         </div>
         <div class="ab flex flex-col justify-around items-center">
-          <input
-            class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-            type="number"
-            step="1"
-            name="data.ab"
-            min="-9"
-            max="99"
-            data-dtype="Number"
-            value="{{data.ab}}"
-          />
+          <div>{{data.ab}}</div>
           <label>{{localize 'swnr.sheet.attack-bonus'}}</label>
         </div>
         <div class="flex flex-col items-center">
@@ -479,6 +470,19 @@
                 {{localize 'swnr.sheet.tabs.weapons'}}
               </h4>
               <div class="space-y-2">
+                <li class="item armor text-center flex items-center gap-1">
+                  <h4>{{localize 'swnr.sheet.temporaryAttackBonus'}}</h4>
+                  <input
+                    class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+                    type="number"
+                    step="1"
+                    name="data.temporaryAb"
+                    min="-9"
+                    max="99"
+                    data-dtype="Number"
+                    value="{{data.temporaryAb}}"
+                  />
+                </li>
                 {{#each itemTypes.weapon as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
                 damageBonus=(concat actor.data.data.ab (getPCStatModForWeapon

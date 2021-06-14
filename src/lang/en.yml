@@ -353,6 +353,7 @@ swnr:
     hp: HP
     permanent-strain: Permanent strain
     attack-bonus: Attack Bonus
+    temporaryAttackBonus: Temporary Attack Bonus
     system-strain: System Strain
     tabs:
       biography: Biography

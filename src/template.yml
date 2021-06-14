@@ -9,7 +9,6 @@ Actor:
         value: 10
         max: 10
       baseAc: 10
-      ab: 0
       systemStrain:
         value: 0
         permanent: 0
@@ -71,9 +70,11 @@ Actor:
       debt: 0
       balance: 0
       owed: 0
+    temporaryAb: 0
   npc:
     templates:
       - living
+    ab: 0
     skillBonus: 0
     attacks:
       bonusDamage: 0
