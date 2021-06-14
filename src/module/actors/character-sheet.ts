@@ -14,6 +14,7 @@ import {
   SWNRStat,
 } from "../types";
 import { SWNRBaseItem } from "../base-item";
+import { SWNRClass } from "../items/class";
 
 interface CharacterActorSheetData extends ActorSheet.Data<SWNRCharacterData> {
   weapons?: Item[];
@@ -445,8 +446,16 @@ export class CharacterActorSheet extends ActorSheet<
     // currentLevel === 1 ? 0 : this.actor.getFlag("swnr", "lastHpLevel");
     const health = this.actor.data.data.health;
     const currentHp = health.max;
-    //todo: sort out health boosts from classes.
-    const boosts = 0 * currentLevel;
+    const perLevelHp =
+      this.actor.itemTypes["class"].length == 1
+        ? (this.actor.itemTypes["class"][0] as SWNRClass).data.data
+            .fullClassData.perLevel.bonusHp
+        : this.actor.itemTypes["class"].reduce(
+            (t, c) =>
+              t + (c as SWNRClass).data.data.partialClassData.perLevel.bonusHp,
+            0
+          );
+    const boosts = perLevelHp * currentLevel;
     const formula = `{${currentLevel}d6 + ${boosts},${currentHp + 1}}kh`;
     const roll = new Roll(formula).roll();
     const newHP = roll.total;
