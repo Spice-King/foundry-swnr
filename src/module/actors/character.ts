@@ -7,6 +7,7 @@ import {
   SWNRArmorData,
 } from "../types";
 import { SWNRBaseItem } from "../base-item";
+import { SWNRClass } from "../items/class";
 
 export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
   getRollData(): Record<string, unknown> {
@@ -39,6 +40,31 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
   }
   prepareDerivedData(): void {
     const data = this.data.data;
+
+    // AB
+    const sanitizedLevelIndex =
+      (Math.abs(Math.round(data.level.value)) - 1) % 10;
+    // TODO: undo adaptation for strange Foundry HTML array -> object behavior
+    const accessElementAt = (s, index) =>
+      Array.isArray(s) ? s[index] : s[`[${index}]`];
+    data.ab =
+      data.temporaryAb +
+      (this.itemTypes["class"].length == 1
+        ? accessElementAt(
+            (this.itemTypes["class"][0] as SWNRClass).data.data.fullClassData
+              .abAtLevel,
+            sanitizedLevelIndex
+          )
+        : this.itemTypes["class"].reduce(
+            (t, c) =>
+              t +
+              accessElementAt(
+                (c as SWNRClass).data.data.partialClassData.abAtLevel,
+                sanitizedLevelIndex
+              ),
+            0
+          ));
+
     // AC
     const armor = <Item<SWNRArmorData>[]>(
       this.items.filter(
@@ -57,6 +83,9 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
     );
 
     data.ac = baseAc + data.stats.dex.mod;
+
+    // class
+    data.multiclass = this.itemTypes["class"].length > 1;
 
     // effort
     const psychicSkills = <Item<SWNRSkillData>[]>(

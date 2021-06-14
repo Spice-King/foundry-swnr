@@ -24,6 +24,12 @@ packs:
     module: swnr
     path: packs/armor.db
     entity: Item
+  - name: classes
+    label: Classes
+    system: swnr
+    module: swnr
+    path: packs/classes.db
+    entity: Item
   - name: psi-biopsionics
     label: Biopsionics
     system: swnr

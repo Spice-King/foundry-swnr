@@ -231,7 +231,7 @@ async function buildEntities(cb: () => void) {
         );
         adds.push(
           e.sheet
-            ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, {\n  makeDefault: true,\n  types: ${e.hashedName}.types,\n});`
+            ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, {\n  makeDefault: ${e.hashedName}.isDefault,\n  types: ${e.hashedName}.types,\n});`
             : `${e.type.toLowerCase()}s[${e.hashedName}.name] = ${
                 e.hashedName
               }.entity as typeof ${e.type};`
