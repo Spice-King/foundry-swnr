@@ -317,6 +317,22 @@ swnr:
       revised: Revised
       psionic: Psionic
   sheet:
+    adventurer:
+      name: Adventurer
+      description: >-
+        The Adventurer class is the catch-all for heroes who don't fit so neatly
+        into the other three categories. Perhaps your mercenary spent her
+        girlhood at a psychic academy, or maybe your combat medic knows more
+        about using a laser rifle than most physicians do. You can use the
+        Adventurer class to customize your hero's abilities, trading focus for
+        wider versatility.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Adventurers split their
+        focus between different spheres, gaining weaker versions of each class'
+        benefits. For example, an Adventurer who is a psionic warrior-adept
+        might have considerable powers of telekinetic force and a brutal
+        expertise at bare-handed combat, but they won't have access to the wider
+        psionic potential of an unrestricted Psychic or the death-defying combat
+        luck of a hardened Warrior.<br/>&nbsp;&nbsp;&nbsp;&nbsp;An adventurer's
+        abilities are defined by two partial classes.
     background: Background
     class: Class
     homeworld: Home world
@@ -348,9 +364,16 @@ swnr:
       foci: Foci
       powers: Powers
       combat: Combat
+      full: Full
+      partial: Partial
+      active: Active
+      inactive: Inactive
     xp: XP
     delete-item: Delete Item
+    delete-class: Delete Class
     edit-item: Edit Item
+    setImage: Set Image
+    setBackgroundColor: Set Image Background Color
     ask: Ask
     description: "Description:"
     ammoType: Ammo Type
@@ -366,6 +389,23 @@ swnr:
     base-ac: Base AC
     vs: vs
     rollables: Rollables
+    partial: Partial
+    classAbilities: "Class Abilities:"
+    trackedAbility: Tracked Ability
+    enablesPsychicDisciplines: Enables Psychic Disciplines
+    hasEffort: Has Effort
+    none: None
+    oneDiscipline: One Discipline
+    allDisciplines: All Disciplines
+    freeAtCreation: Free At Creation
+    generalFoci: General Foci
+    combatFoci: Combat Foci
+    psychicSkills: Psychic Skills
+    attackBonusAtLevel: Attack Bonus At Level
+    perLevel: Per Level
+    bonusHp: Bonus HP
+    onLevelUp: On Level Up
+    bonusGeneralSkillPoints: Bonus General Skill Points
   settings:
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck
@@ -483,3 +523,12 @@ swnr:
     owed: Owed
   deleteTitle: Delete {name}?
   deleteContent: Are you sure you want to delete {name} from the actor {actor}?
+  color:
+    gray: Gray
+    red: Red
+    yellow: Yellow
+    green: Green
+    blue: Blue
+    indigo: Indigo
+    purple: Purple
+    pink: Pink

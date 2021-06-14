@@ -14,6 +14,7 @@ import {
   SWNRStat,
 } from "../types";
 import { SWNRBaseItem } from "../base-item";
+import { SWNRClass } from "../items/class";
 
 interface CharacterActorSheetData extends ActorSheet.Data<SWNRCharacterData> {
   weapons?: Item[];
@@ -56,6 +57,7 @@ export class CharacterActorSheet extends ActorSheet<
   }
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
+    html.find(".class-edit").on("click", this._onClassEdit.bind(this));
     html.find(".statRoll").on("click", this._onStatsRoll.bind(this));
     html.find(".skill").on("click", this._onSkillRoll.bind(this));
     html.find(".save").on("click", this._onSaveThrow.bind(this));
@@ -104,6 +106,13 @@ export class CharacterActorSheet extends ActorSheet<
       { classes: ["swnr"] }
     );
     return this.popUpDialog.render(true);
+  }
+  _onClassEdit(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    if ($(event.currentTarget).hasClass("right-class"))
+      this.actor.itemTypes["class"][1]?.sheet.render(true);
+    else this.actor.itemTypes["class"][0]?.sheet.render(true);
   }
   _onItemEdit(event: JQuery.ClickEvent): void {
     event.preventDefault();
@@ -437,8 +446,16 @@ export class CharacterActorSheet extends ActorSheet<
     // currentLevel === 1 ? 0 : this.actor.getFlag("swnr", "lastHpLevel");
     const health = this.actor.data.data.health;
     const currentHp = health.max;
-    //todo: sort out health boosts from classes.
-    const boosts = 0 * currentLevel;
+    const perLevelHp =
+      this.actor.itemTypes["class"].length == 1
+        ? (this.actor.itemTypes["class"][0] as SWNRClass).data.data
+            .fullClassData.perLevel.bonusHp
+        : this.actor.itemTypes["class"].reduce(
+            (t, c) =>
+              t + (c as SWNRClass).data.data.partialClassData.perLevel.bonusHp,
+            0
+          );
+    const boosts = perLevelHp * currentLevel;
     const formula = `{${currentLevel}d6 + ${boosts},${currentHp + 1}}kh`;
     const roll = new Roll(formula).roll();
     const newHP = roll.total;
@@ -592,6 +609,16 @@ export class CharacterActorSheet extends ActorSheet<
       }
     }
   }
+
+  /** @override */
+  async _onDropItemCreate(
+    itemData: Record<string, unknown>
+  ): Promise<boolean | unknown> {
+    // allow only two classes
+    if (itemData.type === "class" && this.actor.itemTypes["class"].length > 1)
+      return false;
+    else return super._onDropItemCreate(itemData);
+  }
 }
 Hooks.on(
   "renderChatMessage",
@@ -631,3 +658,4 @@ Hooks.on(
 );
 export const sheet = CharacterActorSheet;
 export const types = ["character"];
+export const isDefault = true;
