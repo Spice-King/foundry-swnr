@@ -1,0 +1,91 @@
+_id: hWVK6s5hjrSljdIV
+data:
+  color: purple
+  description: >-
+    Your hero has received training in controlling their natural Metadimensional
+    Extroversion Syndrome, and can wield the psychic powers that come from that
+    strange affliction. Controlling and developing psychic abilities is an
+    extremely demanding process but allows for feats wholly impossible to
+    ordinary men and women.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Psychics are extremely
+    rare in the general population. Averages vary with worlds, but most range
+    from one in ten thousand to one in a hundred thousand who have the MES
+    condition that make them amenable to psychic training. Some of these go
+    their entire lives without realizing their capabilities. Others end up
+    exploiting their native abilities without training, almost inevitably ending
+    up seriously brain-damaged or crazed by the effects of unmediated
+    metadimensional energy.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Your hero has been
+    fortunate enough to find a psychic academy or other training institution
+    capable of molding and directing these abilities. They may have come to this
+    later in life, or been recruited young by a society that carefully watches
+    for MES symptoms.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Some societies deal with their
+    psychics more generously than others. On some worlds, psychic powers are
+    accepted and their possessors can look forward to lucrative and respected
+    employment. On others, fear of these uncanny powers and memories of the
+    horrors of the Scream lead to less welcoming treatment.
+  partialClassData:
+    abAtLevel:
+      - 0
+      - .5
+      - .5
+      - 1
+      - 1
+      - 1.5
+      - 1.5
+      - 2
+      - 2
+      - 2.5
+    abilitiesDescription: >-
+      You are a restricted psychic. Pick one psychic discipline as a bonus skill
+      at level-0. You can improve this skill with foci or skill points gained
+      from advancing a level, but you cannot learn or improve any other psychic
+      skill. Your maximum Effort equals 1 plus this psychic skill's level plus
+      the best of your Wisdom or Constitution modifiers, down to a minimum of 1.
+    onLevelUp:
+      bonusGeneralSkillPoints: 0
+    enablesPsychicDisciplines: "one"
+    freeAtCreation:
+      generalFoci: 0
+      combatFoci: 0
+      psychicSkills: 1
+    hasEffort: true
+    perLevel:
+      bonusHp: 0
+    trackedAbility: ~
+  fullClassData:
+    abAtLevel:
+      - 0
+      - 1
+      - 1
+      - 2
+      - 2
+      - 3
+      - 3
+      - 4
+      - 4
+      - 5
+    abilitiesDescription: >-
+      Every Psychic PC has certain special
+      abilities.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unlike Warriors or Experts, you are
+      capable of learning psychic disciplines and their associated techniques,
+      as described starting on page 28.<br/>&nbsp;&nbsp;&nbsp;&nbsp;When you
+      pick this class, choose any two psychic skills as bonus skills. You can
+      pick the same one twice to obtain level-1 proficiency in it and a free
+      level-1 technique from that discipline.<br/>&nbsp;&nbsp;&nbsp;&nbsp;You
+      have an Effort score, which can be used to fuel psychic abilities. Your
+      maximum Effort is equal to 1 plus your highest psychic skill plus the
+      better of your Wisdom or Constitution modifiers. Even with a penalty, your
+      maximum Effort cannot be lower than 1.
+    onLevelUp:
+      bonusGeneralSkillPoints: 0
+    enablesPsychicDisciplines: "all"
+    freeAtCreation:
+      generalFoci: 0
+      combatFoci: 0
+      psychicSkills: 2
+    hasEffort: true
+    perLevel:
+      bonusHp: 0
+    trackedAbility: ~
+img: systems/swnr/assets/icons/game-icons.net/class-icons/psychic.svg
+name: Psychic
+type: class

@@ -7,46 +7,105 @@
         title="{{actor.name}}"
         data-edit="img"
       />
-      <div class="flex-grow grid grid-cols-3 items-center gap-1">
-        <input
-          name="name"
-          class="text-2xl col-span-3 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="text"
-          value="{{actor.name}}"
-          placeholder="{{localize 'swnr.sheet.name'}}"
-        />
-        <input
-          class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          name="data.class"
-          value="{{actor.data.class}}"
-          placeholder="{{localize 'swnr.sheet.class'}}"
-          type="text"
-        />
-        <input
-          class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          name="data.species"
-          type="text"
-          value="{{actor.data.species}}"
-          placeholder="{{localize 'swnr.sheet.species'}}"
-        />
-        <div class="pr-0.5 text-lg">
-          <div
-            class="gap-1 pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
-          >
-            <label>{{localize 'swnr.sheet.level'}}</label>
+      <div class="flex flex-col flex-grow">
+        <div class="flex gap-2">
+          <div class="flex-grow grid grid-cols-2 items-center gap-1">
             <input
-              type="number"
-              class="bg-transparent flex-shrink w-full"
-              min="1"
-              step="1"
-              name="data.level.value"
-              value="{{actor.data.level.value}}"
-              data-dtype="Number"
+              name="name"
+              class="text-2xl col-span-2 px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="text"
+              value="{{actor.name}}"
+              placeholder="{{localize 'swnr.sheet.name'}}"
             />
+            <input
+              class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              name="data.species"
+              type="text"
+              value="{{actor.data.species}}"
+              placeholder="{{localize 'swnr.sheet.species'}}"
+            />
+            <div class="pr-0.5 text-lg">
+              <div
+                class="gap-1 pl-1 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md flex items-center"
+              >
+                <label>{{localize 'swnr.sheet.level'}}</label>
+                <input
+                  type="number"
+                  class="bg-transparent flex-shrink w-full"
+                  min="1"
+                  step="1"
+                  name="data.level.value"
+                  value="{{actor.data.level.value}}"
+                  data-dtype="Number"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="group flex relative">
+            {{#with itemTypes.class.[0] as | leftClass |}}
+            {{#with ../itemTypes.class.[1] as | rightClass |}}
+            <div class="left-class class-edit p-2 bg-{{leftClass.data.data.color}}-{{#unless (eq leftClass.data.data.color "gray")}}200{{else}}300{{/unless}} bg-opacity-75 rounded-l-full">
+              <img class="w-12 h-12" src={{leftClass.img}}/>
+            </div>
+            <div class="right-class class-edit p-2 bg-{{rightClass.data.data.color}}-{{#unless (eq rightClass.data.data.color "gray")}}200{{else}}300{{/unless}} bg-opacity-75 rounded-r-full">
+              <img class="w-12 h-12" src={{rightClass.img}}/>
+            </div>
+            {{else}}
+            <div class="class class-edit p-2 bg-{{leftClass.data.data.color}}-{{#unless (eq leftClass.data.data.color "gray")}}200{{else}}300{{/unless}} bg-opacity-75 rounded-full">
+              <img class="w-12 h-12" src={{leftClass.img}}/>
+            </div>
+            {{/with}}
+            {{else}}
+            <div class="p-2 bg-gray-50 bg-opacity-75 rounded-full">
+              <img class="w-12 h-12" src="systems/swnr/assets/icons/game-icons.net/class-icons/none.svg">
+            </div>
+            {{/with}}
+
+            <div
+              class="absolute pointer-events-none w-32 -left-32 md:w-96 md:-left-96 top-4 flex justify-end z-10"
+            >
+              <div
+                class="transition-opacity opacity-0 group-hover:opacity-100 border-2 border-trueGray-600 bg-trueGray-700 p-1 relative rounded-md text-trueGray-200"
+              >
+                <div>
+                  {{localize "swnr.sheet.class"}}:
+                  {{#with itemTypes.class.[0] as | leftClass |}}
+                  {{#with ../itemTypes.class.[1] as | rightClass |}}
+                  {{localize "swnr.sheet.adventurer.name"}}
+                  ({{localize "swnr.sheet.partial"}}
+                  {{leftClass.name}}
+                  &amp;
+                  {{localize "swnr.sheet.partial"}}
+                  {{rightClass.name}})
+                  {{else}}
+                  {{leftClass.name}}
+                  {{/with}}
+                  {{else}}
+                  {{localize "swnr.sheet.none"}}
+                  {{/with}}
+                </div>
+                {{#if itemTypes.class.[1]}}
+                <div class="absolute -right-4 transform -translate-y-12 md:-translate-y-4">
+                {{else}}
+                <div class="absolute -right-4 transform -translate-y-4">
+                {{/if}}
+
+                  <svg
+                    class="text-trueGray-600 h-4"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 255 255"
+                    xml:space="preserve"
+                  >
+                    <polygon class="fill-current" points="0,0 127.5,127.5 0,255" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
-          class="saves col-span-3 flex-shrink-0 flex flex-row justify-between py-1 flex-wrap gap-2"
+          class="saves flex-grow flex-shrink-0 flex flex-row justify-between py-1 flex-wrap gap-2"
         >
           <div
             data-save-type="physical"
@@ -285,80 +344,28 @@
         </div>
         <div></div>
       </div>
-      <div class="flex-col flex gap-1">
-        <h3>{{localize 'swnr.effort.title'}}</h3>
-        <div class="flex flex-col lg:flex-row gap-1">
-          <div>
-            <label for="data.effort.bonus">
-              {{localize 'swnr.effort.bonus'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              step="1"
-              name="data.effort.bonus"
-              value="{{data.effort.bonus}}"
-              data-dtype="Number"
-            />
-          </div>
-          <div>
-            <label for="data.effort.current">
-              {{localize 'swnr.effort.current'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              min="0"
-              step="1"
-              max="{{concat data.effort.current data.effort.value}}"
-              name="data.effort.current"
-              value="{{data.effort.current}}"
-              data-dtype="Number"
-            />
-          </div>
-          <div>
-            <label for="data.effort.scene">
-              {{localize 'swnr.effort.scene'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              min="0"
-              step="1"
-              max="{{concat data.effort.scene data.effort.value}}"
-              name="data.effort.scene"
-              value="{{data.effort.scene}}"
-              data-dtype="Number"
-            />
-          </div>
-          <div>
-            <label for="data.effort.day"
-              >{{localize 'swnr.effort.day'}}:
-            </label>
-            <input
-              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-              type="number"
-              min="0"
-              step="1"
-              max="{{concat data.effort.day data.effort.value}}"
-              name="data.effort.day"
-              value="{{data.effort.day}}"
-              data-dtype="Number"
-            />
-          </div>
-        </div>
-        <div class="flex gap-2 items-center">
-          <div>{{data.effort.value}}/{{data.effort.max}}</div>
-          <div
-            class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
-          >
-            <div
-              class="bg-purple-500 h-full rounded-full"
-              style="width: min(calc(100% * {{data.effort.value}}/{{data.effort.max}}));"
-            ></div>
-          </div>
-        </div>
-      </div>
+      {{#with itemTypes.class.[0] as | leftClass |}}
+      {{#with ../itemTypes.class.[1] as | rightClass |}}
+      {{#if leftClass.data.data.partialClassData.hasEffort}}
+      {{> "systems/swnr/templates/actors/fragments/effort.html"
+        ../../data.effort dataName="data.effort" type=leftClass.data.name
+        color="purple"
+      }}
+      {{/if}}
+      {{#if rightClass.data.data.partialClassData.hasEffort}}
+      {{> "systems/swnr/templates/actors/fragments/effort.html"
+        ../../data.effort2 dataName="data.effort2" type=rightClass.data.name
+        color="indigo"
+      }}
+      {{/if}}
+      {{else}}
+      {{#if leftClass.data.data.fullClassData.hasEffort}}
+      {{> "systems/swnr/templates/actors/fragments/effort.html" ../data.effort
+        dataName="data.effort" type=leftClass.data.name color="purple"
+      }}
+      {{/if}}
+      {{/with}}
+      {{/with}}
     </div>
     <div class="w-full">
       <nav

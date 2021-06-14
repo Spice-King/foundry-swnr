@@ -62,7 +62,6 @@ Actor:
       exp: 0
       expToLevel: 3
     goals: []
-    class: ""
     species: ""
     homeworld: ""
     background: ""
@@ -72,6 +71,11 @@ Actor:
       debt: 0
       balance: 0
       owed: 0
+    effort2:
+      bonus: 0
+      current: 0
+      scene: 0
+      day: 0
   npc:
     templates:
       - living
@@ -124,6 +128,55 @@ Item:
   class:
     templates:
       - description
+    color: "gray"
+    partialClassData:
+      abAtLevel:
+        - 0
+        - 1
+        - 1
+        - 2
+        - 2
+        - 3
+        - 3
+        - 4
+        - 4
+        - 5
+      abilitiesDescription: ""
+      onLevelUp:
+        bonusGeneralSkillPoints: 0
+      enablesPsychicDisciplines: false
+      freeAtCreation:
+        generalFoci: 0
+        combatFoci: 0
+        psychicSkills: 0
+      hasEffort: false
+      perLevel:
+        bonusHp: 0
+      trackedAbility: null
+    fullClassData:
+      abAtLevel:
+        - 0
+        - 1
+        - 1
+        - 2
+        - 2
+        - 3
+        - 3
+        - 4
+        - 4
+        - 5
+      abilitiesDescription: ""
+      onLevelUp:
+        bonusGeneralSkillPoints: 0
+      enablesPsychicDisciplines: false
+      freeAtCreation:
+        generalFoci: 0
+        combatFoci: 0
+        psychicSkills: 0
+      hasEffort: false
+      perLevel:
+        bonusHp: 0
+      trackedAbility: null
   armor:
     templates:
       - baseItem
