@@ -3,10 +3,11 @@ data:
   ac: 13
   cost: 400
   description: >-
-    A deflector array consists of several force field nodes worn beneath
-    ordinary clothing. The invisible shield it produces flares only when
-    dangerous energies or impact is impending, glowing a brief, bright blue as
-    it deflects the attack.
+    An armored vacc suit has traded off some comfort and flexibility for
+    additional protective thickness. Aside from functioning as a normal vacc
+    suit, it has only half the usual chance to tear when hit by an edged weapon
+    or suit ripper. The choice between armored or standard suits is a common
+    debate in spacer bars.
   encumbrance: 2
   location: other
   quality: stock
