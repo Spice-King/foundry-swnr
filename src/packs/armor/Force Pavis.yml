@@ -3,9 +3,9 @@ data:
   ac: 15
   cost: 10000
   description: >-
-    Security armor is the ordinary working uniform of most law enforcement
-    officials and security personnel. Various rigid plates and anti-ballistic
-    panels provide protection for the wearer at minimal extra weight.
+    A force pavis is more effective shield, being a small pretech force disc
+    projector that can absorb all manner of small arms fire. All shields require
+    one free hand to use effectively.
   encumbrance: 1
   location: other
   quality: stock

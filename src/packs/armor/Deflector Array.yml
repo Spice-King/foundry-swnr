@@ -3,9 +3,10 @@ data:
   ac: 18
   cost: 30000
   description: >-
-    A force pavis is more effective shield, being a small pretech force disc
-    projector that can absorb all manner of small arms fire. All shields require
-    one free hand to use effectively.
+    A deflector array consists of several force field nodes worn beneath
+    ordinary clothing. The invisible shield it produces flares only when
+    dangerous energies or impact is impending, glowing a brief, bright blue as
+    it deflects the attack.
   encumbrance: 0
   location: other
   quality: stock
