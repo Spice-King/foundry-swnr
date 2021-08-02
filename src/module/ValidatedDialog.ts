@@ -2,25 +2,17 @@ export type ButtonData = {
   label: string;
   callback: (html: JQuery<HTMLElement>) => void;
 };
-interface ValidatedDialogData extends DialogData {
+interface ValidatedDialogData extends Dialog.Options {
   failCallback: (button: ButtonData) => void;
 }
 
-// TODO: fling into upstream TS package
-declare class Dialog extends Application {
-  static confirm(
-    { title, content, yes, no, defaultYes }?: ConfirmDialog,
-    options?: Application.Options
-  ): Promise<void>;
-  constructor(dialogData: DialogData, options?: Application.Options);
-  submit(button);
-}
 type InputElements = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-export class ValidatedDialog extends Dialog {
-  failCallback: ValidatedDialogData["failCallback"];
-  constructor(dialogData: ValidatedDialogData, options?: Application.Options) {
+export class ValidatedDialog extends Dialog<ValidatedDialogData> {
+  constructor(
+    dialogData: Dialog.Data,
+    options: Partial<ValidatedDialogData> | undefined
+  ) {
     super(dialogData, options);
-    this.failCallback = dialogData.failCallback;
   }
   validate(): boolean {
     const innerHTML = (<JQuery<HTMLElement>>this.element)
@@ -53,7 +45,7 @@ export class ValidatedDialog extends Dialog {
     if (this.validate()) {
       return super.submit(button);
     } else {
-      this.failCallback(button);
+      this.options.failCallback?.(button);
     }
   }
 }
