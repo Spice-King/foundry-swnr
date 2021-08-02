@@ -222,7 +222,13 @@ async function buildEntities(cb: () => void) {
           type: type.charAt(0).toUpperCase() + type.slice(1, -1),
           sheet: name.endsWith("-sheet"),
           hashedName:
-            "_" + createHash("md4").update(e).digest("hex").slice(0, 16),
+            "_" +
+            createHash("md4")
+              .update(e)
+              .digest("base64")
+              .slice(0, 16)
+              .replace(/\+/g, "$")
+              .replace(/\//g, "_"),
         };
       })
       .forEach((e) => {
