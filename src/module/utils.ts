@@ -1,7 +1,12 @@
+import {
+  SWNRCharacterBaseData,
+  SWNRCharacterComputedData,
+} from "./actor-types";
 import { SWNRCharacterActor } from "./actors/character";
-import { SWNRCharacterData } from "./types";
 
-export function calculateStats(stats: SWNRCharacterData["stats"]): void {
+export function calculateStats(
+  stats: Merge<SWNRCharacterBaseData, SWNRCharacterComputedData>["stats"]
+): void {
   for (const stat of Object.values(stats)) {
     stat.total = stat.base + stat.boost;
     const v = (stat.total - 10.5) / 3.5;
@@ -64,7 +69,7 @@ export function initSkills(
       },
     };
   });
-  actor.createEmbeddedEntity("OwnedItem", items);
+  actor.createEmbeddedDocuments("Item", items);
 }
 const skills = {
   none: <Array<string>>[],

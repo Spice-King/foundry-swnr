@@ -9,7 +9,7 @@ export const registerSettings = function (): void {
     scope: "world",
     config: false,
     type: String,
-    default: "",
+    default: "0.0",
   });
 
   game.settings.register("swnr", "useHomebrewLuckSave", {

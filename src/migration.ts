@@ -1,29 +1,40 @@
+import { ClientDocumentMixin as ClientDocumentMixinType } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/clientDocumentMixin";
+
 export type VersionString = `${number}.${number}${"" | number}${
   | ""
   | `-${string}`}`;
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Constructor<T> = Function & { prototype: T };
-type MidMigrationError = { type: string; entity: string; error: unknown };
+type MidMigrationError = { type: string; document: string; error: unknown };
 export type UpdateData = { _id: string; [index: string]: unknown };
-export type MigrationFunction<T extends Entity<unknown>> = (
-  entity: T,
+export type MigrationFunction<T> = (
+  document: T,
   pastUpdates: UpdateData
 ) => UpdateData;
-type MigrationData<T extends Entity<unknown>> = {
+type MigrationData<T extends BaseClientDocCons> = {
   type: Constructor<T>;
   version: VersionString;
   sort: number;
-  func: MigrationFunction<T>;
+  func: MigrationFunction<InstanceType<T>>;
 };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type BaseClientDocCons = ConstructorOf<foundry.abstract.Document<any, any>>;
+type ClientDocumentConstructor<
+  T extends BaseClientDocCons = BaseClientDocCons
+> = Pick<T, keyof T> &
+  Pick<typeof ClientDocumentMixin, keyof typeof ClientDocumentMixin> & {
+    new (...args: ConstructorParameters<T>): InstanceType<T> &
+      ClientDocumentMixinType<InstanceType<T>>;
+  };
 
 const VERSION_KEY = "systemMigrationVersion";
 let newVersion: VersionString = "0.0";
-Hooks.on("init", () => (newVersion = game.system.data.version));
-const _allMigrations = new Array<MigrationData<Entity<unknown>>>();
+Hooks.on("init", () => (newVersion = game.system.data.version as never));
+const _allMigrations = new Array<MigrationData<ClientDocumentConstructor>>();
 
 class MigrationError extends Error {
   constructor(
-    public migration: MigrationData<Entity<unknown>>,
+    public migration: MigrationData<ClientDocumentConstructor>,
     public capturedErrors: MidMigrationError[]
   ) {
     super(
@@ -40,7 +51,7 @@ function getCurrentVersion(): VersionString {
 }
 
 async function setCurrentVersion() {
-  if (game.user.isGM) await game.settings.set("swnr", VERSION_KEY, newVersion);
+  if (game.user?.isGM) await game.settings.set("swnr", VERSION_KEY, newVersion);
 }
 
 export default async function checkAndRunMigrations(): Promise<void> {
@@ -50,15 +61,15 @@ export default async function checkAndRunMigrations(): Promise<void> {
   );
   if (migrations.length === 0) return await setCurrentVersion();
   const oldVersion = await getCurrentVersion();
-  if (!game.user.isGM)
-    return ui.notifications.error(
+  if (!game.user?.isGM)
+    return ui.notifications?.error(
       game.i18n.format(game.i18n.localize("swnr.migration.needsGM"), {
         count: migrations.length,
         oldVersion,
         newVersion,
       })
     );
-  ui.notifications.warn(
+  ui.notifications?.warn(
     game.i18n.format(game.i18n.localize("swnr.migration.start"), {
       oldVersion,
       newVersion,
@@ -68,33 +79,37 @@ export default async function checkAndRunMigrations(): Promise<void> {
     const errors = await applyMigration(migration);
     if (errors.length > 0) {
       const error = new MigrationError(migration, errors);
-      ui.notifications.error(error.message);
+      ui.notifications?.error(error.message);
       console.error(error);
     }
   }
   await setCurrentVersion();
-  ui.notifications.info(
+  ui.notifications?.info(
     game.i18n.format(game.i18n.localize("swnr.migration.done"), { newVersion })
   );
 }
-
 export async function loadMigrations(): Promise<void> {
-  const files = await (await fetch("systems/swnr/migrations.json")).json();
+  const files: string[] = await (
+    await fetch("systems/swnr/migrations.json")
+  ).json();
   await Promise.all(files.map((f) => import(f)));
 }
 
-export function registerMigration<T extends Entity<unknown>>(
-  type: Constructor<T>,
+export function registerMigration<Document extends ClientDocumentConstructor>(
+  type: Document,
   version: VersionString,
   sort: number,
-  func: MigrationFunction<T>
+  func: MigrationFunction<InstanceType<Document>>
 ): void {
-  if (!Object.prototype.isPrototypeOf.call(Entity, type))
-    throw new TypeError(`${type.name} is not a Entity of some sort!`);
+  if (
+    !type ||
+    !Object.prototype.isPrototypeOf.call(foundry.abstract.Document, type)
+  )
+    throw new TypeError(`${type.name} is not a Document of some sort!`);
   _allMigrations.push({ type, version, sort, func });
 }
 
-export function orderedMigrations(): readonly MigrationData<Entity<unknown>>[] {
+export function orderedMigrations(): readonly MigrationData<ClientDocumentConstructor>[] {
   return _allMigrations.sort((left, right) => {
     //Version sort, lowest first
     if (left.version !== right.version)
@@ -110,20 +125,22 @@ export function orderedMigrations(): readonly MigrationData<Entity<unknown>>[] {
   });
 }
 
-async function applyMigration(migration: MigrationData<Entity<unknown>>) {
+async function applyMigration(
+  migration: MigrationData<ClientDocumentConstructor>
+) {
   const collections = Object.values(game).filter(
     // Block compendiums for now.
     (v) => v instanceof Collection && v.constructor !== Collection
-  ) as Collection<Entity<unknown>>[];
+  ) as Collection<InstanceType<ClientDocumentConstructor>>[];
   const errors = [] as MidMigrationError[];
   for await (const type of collections) {
-    for await (const entity of type.values()) {
+    for await (const document of type.values()) {
       try {
-        await applyMigrationTo(entity, undefined, migration);
+        await applyMigrationTo(document, undefined, migration);
       } catch (e) {
         errors.push({
           type: type.constructor.name,
-          entity: entity.constructor.name,
+          document: document.constructor.name,
           error: e,
         });
       }
@@ -132,28 +149,36 @@ async function applyMigration(migration: MigrationData<Entity<unknown>>) {
   return errors;
 }
 
-async function applyMigrationTo(
-  target: Entity<unknown>,
-  updateData = { _id: target._id } as UpdateData,
-  migration: MigrationData<Entity<unknown>>
+function isClientDocument<T extends InstanceType<BaseClientDocCons>>(
+  arg: T
+): arg is ClientDocumentMixinType<T> & T {
+  return arg instanceof ClientDocumentMixin;
+}
+
+async function applyMigrationTo<
+  B extends InstanceType<ClientDocumentConstructor>
+>(
+  target: B,
+  updateData = { _id: target.id } as UpdateData,
+  migration: MigrationData<ClientDocumentConstructor>
 ) {
   if (target instanceof migration.type) {
     migration.func(target, updateData);
   }
-  if (!(target instanceof Entity)) {
-    return updateData;
-  }
-  const embeddedEntities =
-    (target.constructor as typeof Entity)?.config?.embeddedEntities ?? {};
-  for await (const [cName, location] of Object.entries(embeddedEntities)) {
+  const constructor: typeof foundry.abstract.Document = Object.getPrototypeOf(
+    target
+  );
+  const embeddedEntities = constructor.metadata.embedded ?? {};
+  for await (const [cName] of Object.entries(embeddedEntities)) {
     const updates = [] as UpdateData[];
-    const collection = target[location] ?? target.getEmbeddedCollection(cName);
+    const collection = target.getEmbeddedCollection(cName);
 
     for await (const embedded of collection) {
+      if (!isClientDocument(embedded)) continue;
       const eUpdate = await applyMigrationTo(embedded, undefined, migration);
       if (Object.keys(eUpdate).length > 1) updates.push(eUpdate);
     }
-    target.updateEmbeddedEntity(cName, updates);
+    target.updateEmbeddedDocuments(cName, updates);
   }
   return updateData;
 }

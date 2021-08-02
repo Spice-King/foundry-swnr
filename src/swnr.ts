@@ -28,8 +28,8 @@ Hooks.once("init", async function () {
 
   // Register custom system settings
   registerSettings();
-  CONFIG.Actor.entityClass = SWNRActor;
-  CONFIG.Item.entityClass = SWNRItem;
+  CONFIG.Actor.documentClass = SWNRActor;
+  CONFIG.Item.documentClass = SWNRItem;
   // Preload Handlebars templates
   await preloadTemplates();
   game.i18n.localize("swnr.title");
