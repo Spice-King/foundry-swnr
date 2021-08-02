@@ -110,7 +110,7 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
     });
   }
 }
-export const entity = SWNRWeapon;
+export const document = SWNRWeapon;
 export const name = "weapon";
 
 // export type DeepDotKey<T> = {

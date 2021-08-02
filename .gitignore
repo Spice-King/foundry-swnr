@@ -4,5 +4,6 @@ dist
 package/
 foundry/
 src/module/entities.ts
+src/module/documents.ts
 data/
 .vscode/launch.json

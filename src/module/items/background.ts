@@ -1,3 +1,3 @@
 import { SWNRBaseItem } from "./../base-item";
-export const entity = SWNRBaseItem;
+export const document = SWNRBaseItem;
 export const name = "background";

@@ -1,24 +1,29 @@
-export default function proxy(
-  entities: Record<string, typeof Entity>,
-  baseClass: typeof Entity
+import { SWNRBaseActor } from "./base-actor";
+import { SWNRBaseItem } from "./base-item";
+
+export default function proxy<
+  Type extends typeof SWNRBaseItem | typeof SWNRBaseActor
+>(
+  entities: Record<string, Type>,
+  baseClass: ReturnType<typeof ClientDocumentMixin>
 ): unknown {
   return new Proxy(baseClass, {
-    construct: function (target, args) {
-      const [data, options] = args;
+    construct: function (target, args: ConstructorParameters<Type>) {
+      const [data] = args;
+      if (!data) throw new Error();
       const constructor = entities[data.type];
-
       if (!constructor) {
-        throw new Error("Unsupported Entity type for create(): " + data.type);
+        throw new Error("Unsupported Document type for create(): " + data.type);
       }
-      return new constructor(data, options);
+      return new (constructor.bind.apply(constructor))(...args);
     },
     get: function (target, prop) {
       switch (prop) {
         case "create":
           //Calling the class' create() static function
           return function (
-            data: Entity.Data | Entity.Data[],
-            options: unknown
+            data: ConstructorParameters<Type>[0],
+            options: ConstructorParameters<Type>[1]
           ) {
             const entitiesData = data instanceof Array ? data : [data];
             const results = entitiesData.map((data) => {
@@ -28,7 +33,7 @@ export default function proxy(
                 console.log({ target, prop, data, options });
 
                 throw new Error(
-                  "Unsupported Entity type for create(): " + data.type
+                  "Unsupported Document type for create(): " + data.type
                 );
               }
               return constructor.create(data, <never>options);
@@ -38,8 +43,8 @@ export default function proxy(
 
         case Symbol.hasInstance:
           //Applying the "instanceof" operator on the instance object
-          return function (instance: Entity) {
-            const constr = entities[instance.data.type];
+          return function (instance: InstanceType<Type>) {
+            const constr = entities[instance.type];
             if (!constr) {
               return false;
             }

@@ -234,23 +234,25 @@ async function buildEntities(cb: () => void) {
             ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, {\n  makeDefault: true,\n  types: ${e.hashedName}.types,\n});`
             : `${e.type.toLowerCase()}s[${e.hashedName}.name] = ${
                 e.hashedName
-              }.entity as typeof ${e.type};`
+              }.document as never;` //\n// as typeof SWNRBase${e.type};`
         );
       });
     const mids = [
       "//This file is auto generated, leave it alone!",
+      `import { SWNRBaseItem } from "./base-item";`,
+      `import { SWNRBaseActor } from "./base-actor";`,
       'import proxy from "./proxy";',
-      "const items = <Record<string, typeof Item>>{};",
-      "const actors = <Record<string, typeof Actor>>{};",
+      "const items = <Record<string, typeof SWNRBaseItem>>{};",
+      "const actors = <Record<string, typeof SWNRBaseActor>>{};",
     ];
     const ends = [
-      "export const SWNRItem = proxy(items, Item) as typeof Item;",
-      "export const SWNRActor = proxy(actors, Actor) as typeof Actor;",
+      "export const SWNRItem = proxy(items, Item) as typeof SWNRBaseItem;",
+      "export const SWNRActor = proxy(actors, Actor) as typeof SWNRBaseActor;",
       "",
     ];
     const out = imports.concat(mids, adds, ends).join("\n");
     // console.log(out);
-    fs.writeFile("src/module/entities.ts", out, cb);
+    fs.writeFile("src/module/documents.ts", out, cb);
   });
 }
 

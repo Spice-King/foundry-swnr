@@ -28,5 +28,5 @@ export class SWNRNPCActor extends Actor<SWNRNPCData> {
   }
 }
 
-export const entity = SWNRNPCActor;
+export const document = SWNRNPCActor;
 export const name = "npc";

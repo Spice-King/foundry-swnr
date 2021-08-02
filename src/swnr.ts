@@ -14,7 +14,7 @@
 import { registerSettings } from "./module/settings";
 import migrations from "./migration";
 import { preloadTemplates } from "./module/preloadTemplates";
-import { SWNRActor, SWNRItem } from "./module/entities";
+import { SWNRActor, SWNRItem } from "./module/documents";
 import "./module/containerQueries";
 import registerHelpers from "./module/handlebar-helpers";
 

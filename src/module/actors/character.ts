@@ -118,5 +118,5 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
 }
 
 // canvas.tokens.controlled[0].actor.update({ data: { effort: { bonus: 0, value: 0, scene: 0, day: 0 } } })
-export const entity = SWNRCharacterActor;
+export const document = SWNRCharacterActor;
 export const name = "character";
