@@ -209,7 +209,7 @@ function buildTS() {
  */
 async function buildEntities(cb: () => void) {
   glob("src/module/{actor,item}s/**/*.ts", (e, fileNames) => {
-    const imports = [] as string[];
+    const imports = ["//This file is auto generated, leave it alone!"];
     const adds = [] as string[];
     fileNames
       .map((e) => {
@@ -238,7 +238,6 @@ async function buildEntities(cb: () => void) {
         );
       });
     const mids = [
-      "//This file is auto generated, leave it alone!",
       `import { SWNRBaseItem } from "./base-item";`,
       `import { SWNRBaseActor } from "./base-actor";`,
       'import proxy from "./proxy";',
