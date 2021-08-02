@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"target": "ES2019",
 		"lib": ["es2019", "DOM"],
-		"types": ["foundry-pc-types"],
+		"types": ["@league-of-foundry-developers/foundry-vtt-types"],
 		"module": "CommonJS",
 		"sourceMap": true,
 		"strictNullChecks": true,

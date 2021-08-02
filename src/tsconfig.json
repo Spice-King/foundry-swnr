@@ -2,12 +2,13 @@
 	"compilerOptions": {
 		"target": "ES2019",
 		"lib": [
-			"es2019",
+			"es2020",
 			"DOM"
 		],
 		"types": [
 			"@league-of-foundry-developers/foundry-vtt-types"
 		],
+		"moduleResolution": "node",
 		"sourceMap": true,
 		"strictNullChecks": true,
 		"module": "esnext",
