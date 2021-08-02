@@ -9,7 +9,7 @@
     "build:watch": "gulp link watch",
     "clean": "gulp clean && gulp link --clean",
     "foundry": "node foundry/resources/app/main.js --noupnp --dataPath=./data",
-    "update": "npm install --save-dev github:Spice-King/foundry-vtt-types#husky-fix"
+    "update": "npm install --save-dev github:Spice-King/foundry-vtt-types#foundry-0.8.x"
   },
   "engines": {
     "node": ">=14",
@@ -18,7 +18,7 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "github:Spice-King/foundry-vtt-types#husky-fix",
+    "@league-of-foundry-developers/foundry-vtt-types": "github:Spice-King/foundry-vtt-types#foundry-0.8.x",
     "@types/archiver": "^3.1.1",
     "@types/fs-extra": "^9.0.2",
     "@types/gulp": "^4.0.7",
