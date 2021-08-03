@@ -11,7 +11,7 @@
         name="data.ac"
         min="0"
         data-dtype="Number"
-        value="{{data.ac}}"
+        value="{{data.data.ac}}"
       />
     </div>
     <div>
@@ -20,7 +20,7 @@
         name="data.type"
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
       >
-        {{#select data.type}}
+        {{#select data.data.type}}
         <option value="primitive">
           {{localize 'swnr.armor.type.primitive'}}
         </option>
@@ -31,7 +31,7 @@
       </select>
     </div>
     <label class="flex gap-1">
-      <input type="checkbox" name="data.shield" {{checked data.shield}} />
+      <input type="checkbox" name="data.shield" {{checked data.data.shield}} />
       {{localize 'swnr.armor.shield'}}
     </label>
   </div>

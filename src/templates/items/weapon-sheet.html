@@ -18,7 +18,7 @@
           class="w-32 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="text"
           name="data.damage"
-          value="{{data.damage}}"
+          value="{{data.data.damage}}"
         />
       </div>
       <div>
@@ -29,7 +29,7 @@
           name="data.ab"
           step="1"
           data-dtype="Number"
-          value="{{data.ab}}"
+          value="{{data.data.ab}}"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@
           type="number"
           class="w-8 text-center px-1.5 py-3 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.shock.dmg"
-          value="{{data.shock.dmg}}"
+          value="{{data.data.shock.dmg}}"
           min="0"
           step="1"
         />
@@ -52,8 +52,8 @@
         <div>{{localize 'swnr.weapon.shock.ac'}}:</div>
         <input class="w-8 text-center px-1.5 py-3 border border-gray-800
         bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75
-        rounded-md" type="number" name="data.shock.ac" value="{{data.shock.ac}}"
-        min="10" step="1" {{#if (lte data.shock.dmg 0)}} disabled {{/if}}>
+        rounded-md" type="number" name="data.shock.ac" value="{{data.data.shock.ac}}"
+        min="10" step="1" {{#if (lte data.data.shock.dmg 0)}} disabled {{/if}}>
       </div>
     </div>
     <div>
@@ -62,7 +62,7 @@
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.stat"
       >
-        {{#select data.stat}}
+        {{#select data.data.stat}}
         <option value="str">{{localize 'swnr.stat.long.str'}}</option>
         <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
         <option value="con">{{localize 'swnr.stat.long.con'}}</option>
@@ -75,7 +75,7 @@
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.secondStat"
       >
-        {{#select data.secondStat}}
+        {{#select data.data.secondStat}}
         <option value="none">{{localize 'swnr.ammo.none'}}</option>
         <option value="str">{{localize 'swnr.stat.long.str'}}</option>
         <option value="dex">{{localize 'swnr.stat.long.dex'}}</option>
@@ -93,7 +93,7 @@
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
         name="data.skill"
       >
-        {{#select data.skill}}
+        {{#select data.data.skill}}
         <option value="">{{ localize 'swnr.weapon.noSetSkill'}}</option>
         {{#each actor.itemTypes.skill }}
         <option value="{{this.id}}">
@@ -126,7 +126,7 @@
           {{/select}}
         </select>
       </div>
-      {{#if (and (ne data.ammo.type "none") (ne data.ammo.type "infinite"))}}
+      {{#if (and (ne data.data.ammo.type "none") (ne data.data.ammo.type "infinite"))}}
       <div class="pl-2">
         {{localize 'swnr.sheet.magazine'}}:
         <div class="flex gap-1 items-center">
@@ -137,8 +137,8 @@
               type="number"
               class="w-10 text-right bg-transparent"
               name="data.ammo.value"
-              max="{{data.ammo.max}}"
-              value="{{data.ammo.value}}"
+              max="{{data.data.ammo.max}}"
+              value="{{data.data.ammo.value}}"
               data-dtype="Number"
               step="1"
               min="0"
@@ -148,7 +148,7 @@
               type="number"
               class="w-10 text-left bg-transparent"
               name="data.ammo.max"
-              value="{{data.ammo.max}}"
+              value="{{data.data.ammo.max}}"
               data-dtype="Number"
               step="1"
               min="0"
@@ -160,7 +160,7 @@
     </div>
     <div class="-flex grid grid-cols-2 flex-wrap gap-1">
       <div class="w-full text-base col-span-2">Quirks:</div>
-      {{#if (ne data.ammo.type "none")}}
+      {{#if (ne data.data.ammo.type "none")}}
       <label class="flex items-center gap-1">
         <input
           type="checkbox"

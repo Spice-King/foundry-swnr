@@ -18,7 +18,7 @@
         <input
           class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.class"
-          value="{{actor.data.class}}"
+          value="{{actor.data.data.class}}"
           placeholder="{{localize 'swnr.sheet.class'}}"
           type="text"
         />
@@ -26,7 +26,7 @@
           class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.species"
           type="text"
-          value="{{actor.data.species}}"
+          value="{{actor.data.data.species}}"
           placeholder="{{localize 'swnr.sheet.species'}}"
         />
         <div class="pr-0.5 text-lg">
@@ -40,7 +40,7 @@
               min="1"
               step="1"
               name="data.level.value"
-              value="{{actor.data.level.value}}"
+              value="{{actor.data.data.level.value}}"
               data-dtype="Number"
             />
           </div>
@@ -52,7 +52,7 @@
             data-save-type="physical"
             class="save sheet-button gap-2"
           >
-            v{{actor.data.save.physical}} {{localize
+            v{{actor.data.data.save.physical}} {{localize
             'swnr.sheet.saves.physical'}}
             <i class="fas fa-dice-d20"></i>
           </div>
@@ -60,14 +60,14 @@
             data-save-type="evasion"
             class="save sheet-button gap-2"
           >
-            v{{actor.data.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
+            v{{actor.data.data.save.evasion}} {{localize 'swnr.sheet.saves.evasion'}}
             <i class="fas fa-dice-d20"></i>
           </div>
           <div
             data-save-type="mental"
             class="save sheet-button gap-2"
           >
-            v{{actor.data.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
+            v{{actor.data.data.save.mental}} {{localize 'swnr.sheet.saves.mental'}}
             <i class="fas fa-dice-d20"></i>
           </div>
           {{#if useHomebrewLuckSave}}
@@ -75,7 +75,7 @@
             data-save-type="luck"
             class="save sheet-button gap-2"
           >
-            v{{actor.data.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
+            v{{actor.data.data.save.luck}} {{localize 'swnr.sheet.saves.luck'}}
             <i class="fas fa-dice-d20"></i>
           </div>
           {{/if}}
@@ -104,7 +104,7 @@
               <th class="px-1">{{localize 'swnr.sheet.modifier'}}</th>
             </tr>
           </thead>
-          {{#each actor.data.stats as |stat key|}}
+          {{#each actor.data.data.stats as |stat key|}}
           <tr>
             <td>
               <label for="data.stats.{{key}}.base" class="resource-label px-1">
@@ -164,7 +164,7 @@
               type="number"
               step="1"
               name="data.health.value"
-              value="{{data.health.value}}"
+              value="{{actor.data.data.health.value}}"
               data-dtype="Number"
               min="0"
             /><span>/</span
@@ -172,7 +172,7 @@
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number"
               name="data.health.max"
-              value="{{data.health.max}}"
+              value="{{actor.data.data.health.max}}"
               step="1"
               min="1"
               data-dtype="Number"
@@ -189,11 +189,11 @@
               class="w-8 text-right pl-1.5 py-3.5 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               type="number"
               name="data.systemStrain.value"
-              value="{{data.systemStrain.value}}"
+              value="{{actor.data.data.systemStrain.value}}"
               data-dtype="Number"
             />/<span
               class="inline-block text-left text-gray-700 cursor-not-allowed w-8"
-              >{{data.systemStrain.max}}</span
+              >{{actor.data.data.systemStrain.max}}</span
             >
           </div>
 
@@ -205,7 +205,7 @@
             type="number"
             min="0"
             name="data.systemStrain.permanent"
-            value="{{data.systemStrain.permanent}}"
+            value="{{actor.data.data.systemStrain.permanent}}"
           />
           <label>{{localize 'swnr.sheet.permanent-strain'}}</label>
         </div>
@@ -218,7 +218,7 @@
               name="data.level.exp"
               min="0"
               data-dtype="Number"
-              value="{{data.level.exp}}"
+              value="{{actor.data.data.level.exp}}"
             /><span>/</span
             ><input
               class="w-8 text-left pr-1.5 py-3.5 bg-opacity-75 bg-gray-400 placeholder-blue-800 placeholder-opacity-75 rounded-md"
@@ -227,14 +227,14 @@
               name="data.level.expToLevel"
               min="0"
               data-dtype="Number"
-              value="{{data.level.expToLevel}}"
+              value="{{actor.data.data.level.expToLevel}}"
             />
           </div>
 
           <label>{{localize 'swnr.sheet.xp'}}</label>
         </div>
         <div class="ac flex flex-col justify-around items-center">
-          <div>{{data.ac}}</div>
+          <div>{{actor.data.data.ac}}</div>
           <label>{{localize 'swnr.sheet.armor-class'}}</label>
         </div>
         <div class="ab flex flex-col justify-around items-center">
@@ -246,7 +246,7 @@
             min="-9"
             max="99"
             data-dtype="Number"
-            value="{{data.ab}}"
+            value="{{actor.data.data.ab}}"
           />
           <label>{{localize 'swnr.sheet.attack-bonus'}}</label>
         </div>
@@ -257,7 +257,7 @@
             step="1"
             name="data.credits.debt"
             data-dtype="Number"
-            value="{{data.credits.debt}}"
+            value="{{actor.data.data.credits.debt}}"
           />
           <label for="data.credits.debt">{{localize 'swnr.credits.debts'}}</label>
         </div>
@@ -268,7 +268,7 @@
             step="1"
             name="data.credits.balance"
             data-dtype="Number"
-            value="{{data.credits.balance}}"
+            value="{{actor.data.data.credits.balance}}"
           />
           <label for="data.credits.balance">{{localize "swnr.credits.balance"}}</label>
         </div>
@@ -279,7 +279,7 @@
             step="1"
             name="data.credits.owed"
             data-dtype="Number"
-            value="{{data.credits.owed}}"
+            value="{{actor.data.data.credits.owed}}"
           />
           <label for="data.credits.owed">{{localize "swnr.credits.owed"}}</label>
         </div>
@@ -297,7 +297,7 @@
               type="number"
               step="1"
               name="data.effort.bonus"
-              value="{{data.effort.bonus}}"
+              value="{{actor.data.data.effort.bonus}}"
               data-dtype="Number"
             />
           </div>
@@ -312,7 +312,7 @@
               step="1"
               max="{{concat data.effort.current data.effort.value}}"
               name="data.effort.current"
-              value="{{data.effort.current}}"
+              value="{{actor.data.data.effort.current}}"
               data-dtype="Number"
             />
           </div>
@@ -327,7 +327,7 @@
               step="1"
               max="{{concat data.effort.scene data.effort.value}}"
               name="data.effort.scene"
-              value="{{data.effort.scene}}"
+              value="{{actor.data.data.effort.scene}}"
               data-dtype="Number"
             />
           </div>
@@ -342,19 +342,19 @@
               step="1"
               max="{{concat data.effort.day data.effort.value}}"
               name="data.effort.day"
-              value="{{data.effort.day}}"
+              value="{{actor.data.data.effort.day}}"
               data-dtype="Number"
             />
           </div>
         </div>
         <div class="flex gap-2 items-center">
-          <div>{{data.effort.value}}/{{data.effort.max}}</div>
+          <div>{{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}</div>
           <div
             class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
           >
             <div
               class="bg-purple-500 h-full rounded-full"
-              style="width: min(calc(100% * {{data.effort.value}}/{{data.effort.max}}));"
+              style="width: min(calc(100% * {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}));"
             ></div>
           </div>
         </div>
@@ -389,21 +389,21 @@
             <input
               class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               name="data.homeworld"
-              value="{{actor.data.homeworld}}"
+              value="{{actor.data.data.homeworld}}"
               placeholder="{{localize 'swnr.sheet.homeworld'}}"
               type="text"
             />
             <input
               class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               name="data.background"
-              value="{{actor.data.background}}"
+              value="{{actor.data.data.background}}"
               placeholder="{{localize 'swnr.sheet.background'}}"
               type="text"
             />
             <input
               class="px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
               name="data.employer"
-              value="{{actor.data.employer}}"
+              value="{{actor.data.data.employer}}"
               placeholder="{{localize 'swnr.sheet.employer'}}"
               type="text"
             />
@@ -422,8 +422,8 @@
               <div class="space-y-2">
                 {{#each itemTypes.weapon as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/weapon.html" item=item
-                damageBonus=(concat actor.data.data.ab (getPCStatModForWeapon
-                actor item true)) type=actor.data.type actor=actor }} {{/each}}
+                damageBonus=(concat actor.data.data.data.ab (getPCStatModForWeapon
+                actor item true)) type=actor.data.data.type actor=actor }} {{/each}}
               </div>
             </div>
             <div class="flex-grow">
@@ -439,13 +439,13 @@
                     min="1"
                     step="1"
                     name="data.baseAc"
-                    value="{{actor.data.baseAc}}"
+                    value="{{actor.data.data.baseAc}}"
                     data-dtype="Number"
                   />
                 </li>
                 {{#each itemTypes.armor as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/armor.html" item=item
-                type=actor.data.type}} {{/each}}
+                type=actor.data.data.type}} {{/each}}
               </div>
             </div>
             <div class="flex-grow">
@@ -455,7 +455,7 @@
               <div class="flex gap-1 flex-col">
                 {{#each itemTypes.power as |item id|}} {{>
                 "systems/swnr/templates/actors/fragments/power.html" item=item
-                type=actor.data.type}} {{/each}}
+                type=actor.data.data.type}} {{/each}}
               </div>
             </div>
           </div>
@@ -464,26 +464,26 @@
           <div class="grid grid-cols-2 gap-1 p-1">
             <div class="text-center text-base">
               {{localize 'swnr.item.locationReadied'}}:
-              {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}
+              {{actor.data.data.encumbrance.ready.value}}/{{actor.data.data.encumbrance.ready.max}}
             </div>
             <div
               class="w-full border border-green-600 bg-green-200 rounded-full row-start-2"
             >
               <div
                 class="h-2 bg-green-400 rounded-full"
-                style="width: min(100%, calc(100% * {{data.encumbrance.ready.value}}/{{data.encumbrance.ready.max}}));"
+                style="width: min(100%, calc(100% * {{actor.data.data.encumbrance.ready.value}}/{{actor.data.data.encumbrance.ready.max}}));"
               ></div>
             </div>
             <div class="text-center text-base">
               {{localize 'swnr.item.locationStowed'}}:
-              {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}
+              {{actor.data.data.encumbrance.stowed.value}}/{{actor.data.data.encumbrance.stowed.max}}
             </div>
             <div
               class="w-full border border-yellow-600 bg-yellow-200 rounded-full"
             >
               <div
                 class="h-2 bg-yellow-400 rounded-full"
-                style="width: min(100%, calc(100% * {{data.encumbrance.stowed.value}}/{{data.encumbrance.stowed.max}}));"
+                style="width: min(100%, calc(100% * {{actor.data.data.encumbrance.stowed.value}}/{{actor.data.data.encumbrance.stowed.max}}));"
               ></div>
             </div>
           </div>
@@ -510,7 +510,7 @@
           <div class="flex gap-2 pt-1 flex-wrap">
             {{#each itemTypes.skill as |item id|}} {{>
             "systems/swnr/templates/actors/fragments/skill.html" item=item
-            type=actor.data.type}} {{/each}}
+            type=actor.data.data.type}} {{/each}}
           </div>
           {{else}}
           <button class="skill-load-button" style="margin-top: 3em"
@@ -523,7 +523,7 @@
           <div class="flex flex-wrap gap-2">
             {{#each itemTypes.focus as |item id|}} {{>
             "systems/swnr/templates/actors/fragments/focus.html" item=item
-            type=actor.data.type}} {{/each}}
+            type=actor.data.data.type}} {{/each}}
           </div>
         </div>
       </section>

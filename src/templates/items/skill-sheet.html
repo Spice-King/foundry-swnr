@@ -7,7 +7,7 @@
         name="data.defaultStat"
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
       >
-        {{#select data.defaultStat}}
+        {{#select data.data.defaultStat}}
         <option value="ask">{{localize 'swnr.sheet.ask'}}</option>
         {{#*inline "statline"}}
         <option value="{{name}}">
@@ -24,7 +24,7 @@
         name="data.pool"
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
       >
-        {{#select data.pool}}
+        {{#select data.data.pool}}
         <option value="ask">{{localize 'swnr.sheet.ask'}}</option>
         <option value="2d6">2D6</option>
         <option value="3d6kh2">3D6</option>
@@ -41,7 +41,7 @@
         min="-1"
         max="4"
         step="1"
-        value="{{data.rank}}"
+        value="{{data.data.rank}}"
       />
     </div>
     <div>
@@ -49,7 +49,7 @@
       <input
         type="text"
         name="data.source"
-        value="{{data.source}}"
+        value="{{data.data.source}}"
         class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
       />
     </div>

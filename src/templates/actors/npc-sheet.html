@@ -22,7 +22,7 @@
             class="flex-grow w-full border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
             name="data.reaction"
           >
-            {{#select actor.data.reaction}}
+            {{#select actor.data.data.reaction}}
             <option value="unknown">
               {{localize 'swnr.npc.reaction.unknown'}}
             </option>
@@ -51,20 +51,20 @@
           class="hidden sm:block col-span-2 border px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.species"
           type="text"
-          value="{{actor.data.species}}"
+          value="{{actor.data.data.species}}"
           placeholder="{{localize 'swnr.sheet.species'}}"
         />
         <input
           class="hidden sm:block col-span-2 border px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.homeworld"
-          value="{{actor.data.homeworld}}"
+          value="{{actor.data.data.homeworld}}"
           placeholder="{{localize 'swnr.sheet.homeworld'}}"
           type="text"
         />
         <input
           class="hidden sm:block col-span-2 border px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           name="data.faction"
-          value="{{actor.data.faction}}"
+          value="{{actor.data.data.faction}}"
           placeholder="{{localize 'swnr.sheet.faction'}}"
           type="text"
         />
@@ -84,14 +84,14 @@
           name="data.health.value"
           min="0"
           step="1"
-          value="{{data.health.value}}"
+          value="{{actor.data.data.health.value}}"
         />/<input
           class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
           type="number"
           name="data.health.max"
           min="0"
           step="1"
-          value="{{data.health.max}}"
+          value="{{actor.data.data.health.max}}"
         />
       </div>
       <div>
@@ -102,7 +102,7 @@
           name="data.baseAc"
           min="0"
           step="1"
-          value="{{data.baseAc}}"
+          value="{{actor.data.data.baseAc}}"
         />
       </div>
       <div>
@@ -132,7 +132,7 @@
             name="data.speed"
             min="0"
             step="1"
-            value="{{data.speed}}"
+            value="{{actor.data.data.speed}}"
           />
           <div
             class="border border-l-0 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-r-md text-base pl-0.5 pr-1"
@@ -156,7 +156,7 @@
           min="0"
           max="12"
           step="1"
-          value="{{data.moralScore}}"
+          value="{{actor.data.data.moralScore}}"
         />
       </div>
       <div>
@@ -177,7 +177,7 @@
           min="0"
           max="9"
           step="1"
-          value="{{data.skillBonus}}"
+          value="{{actor.data.data.skillBonus}}"
         />
       </div>
       <div class="saving-throw">
@@ -192,7 +192,7 @@
           min="1"
           max="19"
           step="1"
-          value="{{data.saves}}"
+          value="{{actor.data.data.saves}}"
         />
       </div>
     </div>
@@ -208,7 +208,7 @@
               name="data.effort.max"
               min="0"
               step="1"
-              value="{{data.effort.max}}"
+              value="{{actor.data.data.effort.max}}"
             />
           </div>
           <div class="flex-grow">
@@ -220,7 +220,7 @@
               min="0"
               step="1"
               max="{{concat data.effort.current data.effort.value}}"
-              value="{{data.effort.current}}"
+              value="{{actor.data.data.effort.current}}"
             />
           </div>
           <div class="flex-grow">
@@ -232,7 +232,7 @@
               min="0"
               step="1"
               max="{{concat data.effort.scene data.effort.value}}"
-              value="{{data.effort.scene}}"
+              value="{{actor.data.data.effort.scene}}"
             />
           </div>
           <div class="flex-grow">
@@ -244,18 +244,18 @@
               min="0"
               step="1"
               max="{{concat data.effort.day data.effort.value}}"
-              value="{{data.effort.day}}"
+              value="{{actor.data.data.effort.day}}"
             />
           </div>
         </div>
         <div class="flex gap-2 items-center">
-          <div>{{data.effort.value}}/{{data.effort.max}}</div>
+          <div>{{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}</div>
           <div
             class="bg-purple-300 border border-purple-900 w-full rounded-full h-full overflow-hidden"
           >
             <div
               class="bg-purple-500 h-full rounded-full"
-              style="width: min(calc(100% * {{data.effort.value}}/{{data.effort.max}}));"
+              style="width: min(calc(100% * {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}));"
             ></div>
           </div>
         </div>
@@ -275,7 +275,7 @@
           name="data.attacks.number"
           min="0"
           step="1"
-          value="{{data.attacks.number}}"
+          value="{{actor.data.data.attacks.number}}"
         />
       </div>
       <div>
@@ -286,7 +286,7 @@
           name="data.ab"
           min="0"
           step="1"
-          value="{{data.ab}}"
+          value="{{actor.data.data.ab}}"
         />
       </div>
       <div>
@@ -297,13 +297,13 @@
           name="data.attacks.bonusDamage"
           min="0"
           step="1"
-          value="{{data.attacks.bonusDamage}}"
+          value="{{actor.data.data.attacks.bonusDamage}}"
         />
       </div>
       <ul class="flex flex-col gap-1">
         {{#each itemTypes.weapon as |i|}} {{>
         "systems/swnr/templates/actors/fragments/weapon.html" item=i actor=actor damageBonus=actor.data.data.attacks.bonusDamage
-        type=actor.data.type}} {{/each}}
+        type=actor.data.data.type}} {{/each}}
       </ul>
     </div>
     <div class="flex flex-col flex-grow gap-1">
@@ -311,7 +311,7 @@
       <ul class="flex flex-col gap-0.5">
         {{#each abilities}} {{> (concat
         "systems/swnr/templates/actors/fragments/" (concat this.type '.html'))
-        item=this type=actor.data.type }} {{/each}}
+        item=this type=actor.data.data.type }} {{/each}}
       </ul>
     </div>
     <div class="flex flex-col flex-grow gap-1">
@@ -319,7 +319,7 @@
       <ul class="flex flex-col gap-0.5">
         {{#each equipment}} {{>
         "systems/swnr/templates/actors/fragments/item.html" item=this
-        type=actor.data.type }} {{/each}}
+        type=actor.data.data.type }} {{/each}}
       </ul>
     </div>
   </div>
@@ -329,7 +329,7 @@
         class="border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text"
         name="data.notes.left.label"
-        value="{{data.notes.left.label}}"
+        value="{{actor.data.data.notes.left.label}}"
       />
       <!-- prettier-ignore  -->
       <textarea
@@ -338,15 +338,15 @@
         id=""
         cols="30"
         rows="10"
-        placeholder="{{data.notes.left.label}}"
-      >{{data.notes.left.contents}}</textarea>
+        placeholder="{{actor.data.data.notes.left.label}}"
+      >{{actor.data.data.notes.left.contents}}</textarea>
     </div>
     <div class="flex-grow w-56 space-y-2">
       <input
         class="border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
         type="text"
         name="data.notes.right.label"
-        value="{{data.notes.right.label}}"
+        value="{{actor.data.data.notes.right.label}}"
       />
       <!-- prettier-ignore  -->
       <textarea
@@ -355,8 +355,8 @@
         id=""
         cols="30"
         rows="10"
-        placeholder="{{data.notes.right.label}}"
-      >{{data.notes.right.contents}}</textarea>
+        placeholder="{{actor.data.data.notes.right.label}}"
+      >{{actor.data.data.notes.right.contents}}</textarea>
     </div>
   </div>
 </form>
