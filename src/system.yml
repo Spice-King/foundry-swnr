@@ -121,7 +121,7 @@ languages:
 gridDistance: 2
 gridUnits: "m"
 minimumCoreVersion: 0.8.6
-compatibleCoreVersion: 0.8.6
+compatibleCoreVersion: 0.8.9
 url: "https://github.com/Spice-King/foundry-swnr"
 manifest: >-
   https://github.com/Spice-King/foundry-swnr/releases/latest/download/system.json
