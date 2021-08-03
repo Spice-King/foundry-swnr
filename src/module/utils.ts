@@ -30,27 +30,6 @@ export function limitConcurrency<Callback extends (...unknown) => unknown>(
   };
 }
 
-/*
-Combines an Array of Rolls
-*/
-export function combineRolls(arr: Roll[]): Roll {
-  return arr.reduce((acc, val, ind) => {
-    if (ind === 0) {
-      return val;
-    } else {
-      const returnVal = new Roll(`${acc._formula} + ${val._formula}`);
-
-      returnVal.data = {};
-      returnVal.results = [...acc.results, "+", ...val.results];
-      returnVal.terms = [...acc.terms, "+", ...val.terms];
-      returnVal._rolled = true;
-      returnVal._total = acc._total + val._total;
-
-      return returnVal;
-    }
-  });
-}
-
 export function initSkills(
   actor: SWNRCharacterActor,
   skillSet: keyof typeof skills
