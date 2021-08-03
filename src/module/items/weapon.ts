@@ -1,9 +1,7 @@
-import { SWNRWeaponData } from "../types";
-import { combineRolls } from "../utils";
 import { SWNRBaseItem } from "./../base-item";
 
-export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
-  get ammo(): SWNRWeaponData["ammo"] {
+export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
+  get ammo(): this["data"]["data"]["ammo"] {
     return this.data.data.ammo;
   }
 
@@ -23,11 +21,11 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
   ): Promise<void> {
     if (!this.actor) {
       const message = `Called rollAttack on item without an actor.`;
-      ui.notifications.error(message);
+      ui.notifications?.error(message);
       throw new Error(message);
     }
     if (!this.hasAmmo) {
-      ui.notifications.error(`Your ${this.name} is out of ammo!`);
+      ui.notifications?.error(`Your ${this.name} is out of ammo!`);
       return;
     }
 
@@ -57,7 +55,7 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
       "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
       rollData
     ).roll();
-    rollData.hitRoll = hitRoll.dice[0].total;
+    rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
     const damageRoll = new Roll(
       this.data.data.damage + " + @burstFire + @stat + @damageBonus",
       rollData
@@ -86,62 +84,31 @@ export class SWNRWeapon extends SWNRBaseItem<SWNRWeaponData> {
     // const dice = hitRoll.dice.concat(damageRoll.dice)
     // const formula = dice.map(d => (<any>d).formula).join(' + ');
     // const results = dice.reduce((a, b) => a.concat(b.results), [])
-    const diceData = combineRolls([hitRoll, damageRoll]);
+    const diceData = Roll.fromTerms([
+      PoolTerm.fromRolls([hitRoll, damageRoll]),
+    ]);
     if (this.data.data.ammo.type !== "none") {
       const newAmmoTotal = this.data.data.ammo.value - 1 - burstFire;
       await this.update({ "data.ammo.value": newAmmoTotal }, {});
       if (newAmmoTotal === 0)
-        ui.notifications.warn(`Your ${this.name} is now out of ammo!`);
+        ui.notifications?.warn(`Your ${this.name} is now out of ammo!`);
     }
     const chatContent = await renderTemplate(template, dialogData);
     // TODO: break up into two rolls and chain them?
-    const promise = game.dice3d
-      ? game.dice3d.showForRoll(diceData)
-      : Promise.resolve();
-    promise.then(() => {
-      CONFIG.ChatMessage.entityClass.create(
-        {
-          speaker: ChatMessage.getSpeaker({ actor: this.actor ?? undefined }),
-          // roll: roll,
-          content: chatContent,
-        },
-        { rollMode }
-      );
-    });
+    // const promise = game.dice3d
+    //   ? game.dice3d.showForRoll(diceData)
+    //   : Promise.resolve();
+    // promise.then(() => {
+    const chatData = {
+      speaker: ChatMessage.getSpeaker({ actor: this.actor ?? undefined }),
+      roll: JSON.stringify(diceData),
+      content: chatContent,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    };
+    getDocumentClass("ChatMessage").applyRollMode(chatData, rollMode);
+    getDocumentClass("ChatMessage").create(chatData);
+    // });
   }
 }
 export const document = SWNRWeapon;
 export const name = "weapon";
-
-// export type DeepDotKey<T> = {
-//   [P in keyof T]: DeepDotKey<T[P]>;
-// } &
-//   (() => string | number);
-
-// const test = { test: { deep: 34 } };
-// export function deepDotKey<T>(prev?: string | number): DeepDotKey<T> {
-//   return new Proxy<any>(() => prev, {
-//     get: (_, next) => {
-//       if (typeof next === "symbol") {
-//         throw new Error("Cannot use symbols with deepDotKey.");
-//       }
-//       return deepDotKey(prev ? `${prev}.${next}` : next);
-//     },
-//   });
-// }
-
-// type PropType<T, Path extends string> =
-//     string extends Path ? unknown :(
-//     Path extends keyof T ? T[Path] :
-//     (Path extends `${infer K}.${infer R}` ? K extends keyof T ? PropType<T[K], R> : unknown :
-//     unknown));
-
-// declare function getPropValue<T, P extends string>(obj: T, path: P): PropType<T, P>;
-// const testing = getPropValue({test: 43, help: { deep: 5 } }, 'test.deep');
-// type StringTest<A extends string, B extends string> = `${A}.${B}`
-// type Sane<A> =
-// (() => {
-//   const test = { test: { deep: 34 }, kds: 3 };
-//   type te = Pick<typeof test, 'kds'>;
-//   console.log('teve', deepDotKey<typeof test>());
-// })();

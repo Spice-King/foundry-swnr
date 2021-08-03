@@ -1,17 +1,12 @@
 import { calculateStats } from "../utils";
-import {
-  SWNRCharacterData,
-  SWNRSkillData,
-  SWNRInventoryItemData,
-  SWNRItemData,
-  SWNRArmorData,
-} from "../types";
 import { SWNRBaseItem } from "../base-item";
+import { SWNRBaseActor } from "../base-actor";
 
-export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
-  getRollData(): Record<string, unknown> {
-    const data = super.getRollData() as Record<string, unknown>;
-    data.itemTypes = <SWNRCharacterData["itemTypes"]>this.itemTypes;
+export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
+  getRollData(): this["data"]["data"] {
+    this.data._source.data;
+    const data = super.getRollData();
+    // data.itemTypes = <SWNRCharacterData["itemTypes"]>this.itemTypes;
     return data;
   }
 
@@ -40,13 +35,10 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
   prepareDerivedData(): void {
     const data = this.data.data;
     // AC
-    const armor = <Item<SWNRArmorData>[]>(
-      this.items.filter(
-        (i) => i.type === "armor" && (<Item<SWNRArmorData>>i).data.data.use
-      )
+    const armor = <SWNRBaseItem<"armor">[]>(
+      this.items.filter((i) => i.data.type === "armor" && i.data.data.use)
     );
     const shields = armor.filter((i) => i.data.data.shield);
-
     const baseAc = Math.max(
       data.baseAc,
       ...armor.map(
@@ -55,15 +47,13 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
           (shields.filter((s) => s.id !== i.id).length !== 0 ? 1 : 0)
       )
     );
-
     data.ac = baseAc + data.stats.dex.mod;
-
     // effort
-    const psychicSkills = <Item<SWNRSkillData>[]>(
+    const psychicSkills = <SWNRBaseItem<"skill">[]>(
       this.items.filter(
         (i) =>
-          i.type === "skill" &&
-          (<Item<SWNRSkillData>>i).data.data.source.toLocaleLowerCase() ===
+          i.data.type === "skill" &&
+          i.data.data.source.toLocaleLowerCase() ===
             game.i18n.localize("swnr.skills.labels.psionic").toLocaleLowerCase()
       )
     );
@@ -76,7 +66,6 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
           Math.max(0, ...psychicSkills.map((i) => i.data.data.rank))
       ) + effort.bonus;
     effort.value = effort.max - effort.current - effort.scene - effort.day;
-
     //encumbrance
     if (!data.encumbrance)
       data.encumbrance = {
@@ -86,19 +75,17 @@ export class SWNRCharacterActor extends Actor<SWNRCharacterData> {
     const encumbrance = data.encumbrance;
     encumbrance.ready.max = Math.floor(data.stats.str.total / 2);
     encumbrance.stowed.max = data.stats.str.total;
-
-    const inventory = <SWNRBaseItem<SWNRInventoryItemData>[]>(
+    const inventory = <SWNRBaseItem<"item" | "armor" | "weapon">[]>(
       this.items.filter(
         (i) => i.type === "item" || i.type === "weapon" || i.type === "armor"
       )
     );
-
     const itemInvCost = function (
-      i: SWNRBaseItem<SWNRInventoryItemData>
+      i: SWNRBaseItem<"item" | "armor" | "weapon">
     ): number {
       let itemSize = 1;
-      if (i.type === "item") {
-        const itemData = <SWNRItemData>i.data.data;
+      if (i.data.type === "item") {
+        const itemData = i.data.data;
         const bundle = itemData.bundle;
         itemSize = Math.ceil(
           itemData.quantity / (bundle.bundled ? bundle.amount : 1)
