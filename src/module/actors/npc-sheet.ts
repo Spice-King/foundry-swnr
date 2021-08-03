@@ -1,30 +1,49 @@
-import { SWNRNPCData } from "../types";
 import { SWNRNPCActor } from "./npc";
 import { SWNRWeapon } from "../items/weapon";
+import { SWNRBaseItem } from "../base-item";
+import { AllItemClasses } from "../item-types";
 
-export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
+interface NPCActorSheetData extends ActorSheet.Data {
+  itemTypes: SWNRNPCActor["itemTypes"];
+  abilities: AllItemClasses & { data: { type: "power" | "focus" } };
+  equipment: AllItemClasses & {
+    data: { type: "armor" | "item" | "weapon" };
+  };
+}
+export class NPCActorSheet extends ActorSheet<
+  ActorSheet.Options,
+  NPCActorSheetData
+> {
   popUpDialog?: Dialog;
+  get actor(): SWNRNPCActor {
+    if (super.actor.type !== "npc") throw Error;
+    return super.actor;
+  }
 
-  _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
+  _injectHTML(html: JQuery<HTMLElement>): void {
     html
       .find(".window-content")
       .addClass(["cq", "overflow-y-scroll", "relative"]);
-    super._injectHTML(html, options);
+    super._injectHTML(html);
   }
 
-  getData(): ActorSheet.Data<SWNRNPCData> {
-    const data = super.getData();
+  async getData(
+    options?: Application.RenderOptions
+  ): Promise<NPCActorSheetData> {
+    let data = super.getData(options);
+    if (data instanceof Promise) data = await data;
     return mergeObject(data, {
       itemTypes: this.actor.itemTypes,
       abilities: this.actor.items.filter(
-        (i: Item<unknown>) => ["power", "focus"].indexOf(i.type) !== -1
+        (i: SWNRBaseItem) => ["power", "focus"].indexOf(i.data.type) !== -1
       ),
       equipment: this.actor.items.filter(
-        (i: Item<unknown>) => ["armor", "item", "weapon"].indexOf(i.type) !== -1
+        (i: SWNRBaseItem) =>
+          ["armor", "item", "weapon"].indexOf(i.data.type) !== -1
       ),
-    } as never);
+    });
   }
-  static get defaultOptions(): FormApplication.Options {
+  static get defaultOptions(): ActorSheet.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "npc"],
       template: "systems/swnr/templates/actors/npc-sheet.html",
@@ -50,14 +69,15 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     event.preventDefault();
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
-    const item = this.actor.getOwnedItem(wrapper.data("itemId"));
-    item?.sheet.render(true);
+    const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+    if (item instanceof Item) item.sheet?.render(true);
   }
+
   async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const li = $(event.currentTarget).parents(".item");
-    const item = this.actor.getOwnedItem(li.data("itemId"));
+    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
     if (!item) return;
     const performDelete: boolean = await new Promise((resolve) => {
       Dialog.confirm({
@@ -73,7 +93,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     if (!performDelete) return;
     li.slideUp(200, () => {
       requestAnimationFrame(() => {
-        this.actor.deleteOwnedItem(li.data("itemId"));
+        this.actor.deleteEmbeddedDocuments("Item", li.data("itemId"));
       });
     });
   }
@@ -81,8 +101,8 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     event.preventDefault();
     event.stopPropagation();
     const id = event.currentTarget.parentElement.dataset.itemId;
-    const weapon = this.actor.getOwnedItem(id);
-    if (weapon === null) {
+    const weapon = this.actor.getEmbeddedDocument("Item", id);
+    if (!weapon) {
       console.error(`The item ID ${id} does not exist.`);
       return;
     } else if (!(weapon instanceof SWNRWeapon)) {
@@ -115,6 +135,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
           weaponName: weapon.name,
         }),
         content: template,
+        default: "roll",
         buttons: {
           roll: {
             label: "Roll",
@@ -140,14 +161,16 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       weight: number;
       range: [number, number];
       type: 0;
+      flags: { swnr: { type: string } };
       _id: string;
     } {
       return {
         text: game.i18n.localize("swnr.npc.reaction." + text),
         type: 0,
         range,
+        flags: { swnr: { type: text.toLocaleLowerCase() } },
         weight: 1 + range[1] - range[0],
-        _id: text.toLocaleLowerCase(),
+        _id: text.toLocaleLowerCase().padEnd(16, "0"),
       };
     }
     const tableResults = [
@@ -157,43 +180,22 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
       defineResult("positive", [9, 11]),
       defineResult("friendly", [12, 12]),
     ];
+
     const rollTable = (await RollTable.create(
       {
-        _id: "test",
         name: "NPC Reaction",
-        description: "",
-        type: "DEAD?",
+        description: " ", //todo: spice this up
         formula: "2d6",
         results: tableResults,
-      } as never,
+      },
       { temporary: true }
     )) as RollTable;
 
-    const { roll, results } = rollTable.roll();
-    const diceSoNiceDisableState = game.dice3d?.messageHookDisabled;
+    const { results } = await rollTable.draw();
 
-    if (game.dice3d) {
-      await game.dice3d.showForRoll(roll, game.user, false, [], false);
-      game.dice3d.messageHookDisabled = true;
-
-      Hooks.once("preCreateChatMessage", (chat) => {
-        console.log(chat);
-
-        if (
-          Object.keys(chat.flags).includes("core.RollTable") &&
-          chat.flags["core.RollTable"] === undefined
-        )
-          chat.sound = null;
-      });
-    }
-    await rollTable.draw({
-      roll: roll,
-      results: results,
-      rollMode: CONST.DICE_ROLL_MODES.PRIVATE,
+    await this.actor.update({
+      "data.reaction": results[0].id?.split("0")[0],
     });
-
-    if (game.dice3d) game.dice3d.messageHookDisabled = diceSoNiceDisableState;
-    await this.actor.update({ "data.reaction": results[0]._id });
 
     // force re-render
     this.render();
@@ -206,10 +208,10 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     const roll = new Roll("2d6").roll();
     console.log(roll);
     const flavor =
-      roll.results[0] > this.actor.data.data.moralScore
+      +(roll.terms[0]?.total ?? 0) > this.actor.data.data.moralScore
         ? game.i18n.localize("swnr.npc.morale.failure")
         : game.i18n.localize("swnr.npc.morale.success");
-    roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
+    roll.toMessage({ flavor, speaker: { actor: this.actor.id } });
   }
 
   _onSavingThrow(event: JQuery.ClickEvent): void {
@@ -247,9 +249,10 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
   async _updateObject(
     event: Event,
     formData: Record<string, number | string>
-  ): Promise<unknown> {
+  ): Promise<SWNRNPCActor> {
     this._itemEditHandler(formData);
-    return super._updateObject(event, formData);
+    super._updateObject(event, formData);
+    return this.actor;
   }
   _itemEditHandler(formData: Record<string, number | string>): void {
     const itemUpdates = {};
@@ -267,7 +270,7 @@ export class NPCActorSheet extends ActorSheet<SWNRNPCData, SWNRNPCActor> {
     for (const key in itemUpdates) {
       if (Object.prototype.hasOwnProperty.call(itemUpdates, key)) {
         const element = itemUpdates[key];
-        this.actor.updateEmbeddedEntity("OwnedItem", element);
+        this.actor.updateEmbeddedDocuments("Item", [element]);
       }
     }
   }

@@ -1,45 +1,33 @@
 import { SWNRCharacterActor } from "./character";
-import {
-  calculateStats,
-  combineRolls,
-  initSkills,
-  limitConcurrency,
-} from "../utils";
+import { calculateStats, initSkills, limitConcurrency } from "../utils";
 import { ValidatedDialog } from "../ValidatedDialog";
-import {
-  SWNRCharacterData,
-  SWNRSkillData,
-  SWNRWeaponData,
-  SWNRStats,
-  SWNRStat,
-} from "../types";
 import { SWNRBaseItem } from "../base-item";
+import { SWNRStats, SWNRStatBase, SWNRStatComputed } from "../actor-types";
 
-interface CharacterActorSheetData extends ActorSheet.Data<SWNRCharacterData> {
+interface CharacterActorSheetData extends ActorSheet.Data {
   weapons?: Item[];
   armor?: Item[];
   gear?: Item[];
   skills?: Item[];
   useHomebrewLuckSave: boolean;
-  itemTypes: { [type: string]: Item[] };
+  itemTypes: SWNRCharacterActor["itemTypes"];
 }
+// < SWNRCharacterData, SWNRCharacterActor>
 export class CharacterActorSheet extends ActorSheet<
-  SWNRCharacterData,
-  SWNRCharacterActor
+  ActorSheet.Options,
+  CharacterActorSheetData
 > {
   popUpDialog?: Dialog;
-  constructor(...args: unknown[]) {
-    super(...args);
-  }
+  object: SWNRCharacterActor;
 
-  _injectHTML(html: JQuery<HTMLElement>, options: unknown): void {
+  _injectHTML(html: JQuery<HTMLElement>): void {
     html
       .find(".window-content")
       .addClass(["cq", "overflow-y-scroll", "relative"]);
-    super._injectHTML(html, options);
+    super._injectHTML(html);
   }
 
-  static get defaultOptions(): FormApplication.Options {
+  static get defaultOptions(): ActorSheet.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "character", "test broken"],
       template: "systems/swnr/templates/actors/character-sheet.html",
@@ -69,7 +57,7 @@ export class CharacterActorSheet extends ActorSheet<
       .on("click", this._onWeaponRoll.bind(this));
     html.find(".skill-load-button").on("click", this._onLoadSkills.bind(this));
   }
-  async _onLoadSkills(event: JQuery.ClickEvent): Promise<Application> {
+  async _onLoadSkills(event: JQuery.ClickEvent): Promise<unknown> {
     event.preventDefault();
     const _addSkills = async (html: HTMLElement) => {
       const form: HTMLFormElement = html[0].querySelector("form");
@@ -103,20 +91,20 @@ export class CharacterActorSheet extends ActorSheet<
       },
       { classes: ["swnr"] }
     );
-    return this.popUpDialog.render(true);
+    return await this.popUpDialog.render(true);
   }
   _onItemEdit(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
     const wrapper = $(event.currentTarget).parents(".item");
-    const item = this.actor.getOwnedItem(wrapper.data("itemId"));
-    item?.sheet.render(true);
+    const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
+    if (item instanceof Item) item.sheet?.render(true);
   }
   async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const li = $(event.currentTarget).parents(".item");
-    const item = this.actor.getOwnedItem(li.data("itemId"));
+    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
     if (!item) return;
     const performDelete: boolean = await new Promise((resolve) => {
       Dialog.confirm({
@@ -132,7 +120,7 @@ export class CharacterActorSheet extends ActorSheet<
     if (!performDelete) return;
     li.slideUp(200, () => {
       requestAnimationFrame(() => {
-        this.actor.deleteOwnedItem(li.data("itemId"));
+        this.actor.deleteEmbeddedDocuments("Items", li.data("itemId"));
       });
     });
   }
@@ -141,14 +129,14 @@ export class CharacterActorSheet extends ActorSheet<
   ): Promise<Application | undefined> {
     event.preventDefault();
     const itemId = event.currentTarget.parentElement.dataset.itemId;
-    const weapon = <SWNRBaseItem<SWNRWeaponData>>(
-      this.actor.getOwnedItem(itemId)
+    const weapon = <SWNRBaseItem<"weapon">>(
+      this.actor.getEmbeddedDocument("Item", itemId)
     );
     const ammo = weapon.data.data.ammo;
     const burstFireHasAmmo =
       ammo.type !== "none" && ammo.burst && ammo.value >= 3;
     if (ammo.type !== "none" && ammo.value <= 0) {
-      ui.notifications.error(`Your ${weapon.name} is out of ammo!`);
+      ui.notifications?.error(`Your ${weapon.name} is out of ammo!`);
       return;
     }
     const _doRoll = async (html: HTMLFormElement) => {
@@ -166,9 +154,10 @@ export class CharacterActorSheet extends ActorSheet<
       const skillId =
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         weapon.data.data.skill;
-      const skill = this.actor.getOwnedItem(
+      const skill = this.actor.getEmbeddedDocument(
+        "Item",
         skillId
-      ) as SWNRBaseItem<SWNRSkillData>;
+      ) as SWNRBaseItem<"skill">;
       const stat = this.actor.data.data.stats[weapon.data.data.stat] || {
         mod: 0,
       };
@@ -193,7 +182,7 @@ export class CharacterActorSheet extends ActorSheet<
         "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank",
         rollData
       ).roll();
-      rollData.hitRoll = hitRoll.dice[0].total;
+      rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
       const damageRoll = new Roll(
         weapon.data.data.damage +
           " + @burstFire + @stat.mod" +
@@ -226,29 +215,28 @@ export class CharacterActorSheet extends ActorSheet<
         ),
       };
       const rollMode = game.settings.get("core", "rollMode");
-      const diceData = combineRolls([hitRoll, damageRoll]);
+      const diceData = Roll.fromTerms([
+        PoolTerm.fromRolls([hitRoll, damageRoll]),
+      ]);
       if (weapon.data.data.ammo.type !== "none") {
         const newAmmoTotal = weapon.data.data.ammo.value - 1 - burstFire;
         await weapon.update({ "data.ammo.value": newAmmoTotal }, {});
         if (newAmmoTotal === 0)
-          ui.notifications.warn(`Your ${weapon.name} is now out of ammo!`);
+          ui.notifications?.warn(`Your ${weapon.name} is now out of ammo!`);
       }
       const chatContent = await renderTemplate(template, dialogData);
-      // TODO: break up into two rolls and chain them?
-      const promise = game.dice3d
-        ? game.dice3d.showForRoll(diceData)
-        : Promise.resolve();
-      promise.then(() => {
-        CONFIG.ChatMessage.entityClass.create(
+      const chatMessage = getDocumentClass("ChatMessage");
+      chatMessage.create(
+        chatMessage.applyRollMode(
           {
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            // roll: roll,
+            roll: JSON.stringify(diceData),
             content: chatContent,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
           },
-          { rollMode }
-        );
-      });
-      // return roll;
+          rollMode
+        )
+      );
     };
     const title = game.i18n.format("swnr.dialog.attackRoll", {
       actorName: this.actor.name,
@@ -268,9 +256,6 @@ export class CharacterActorSheet extends ActorSheet<
 
     this.popUpDialog = new ValidatedDialog(
       {
-        failCallback: (): void => {
-          ui.notifications.error(game.i18n.localize("swnr.roll.skillNeeded"));
-        },
         title: title,
         content: html,
         default: "roll",
@@ -281,9 +266,16 @@ export class CharacterActorSheet extends ActorSheet<
           },
         },
       },
-      { classes: ["swnr"] }
+      {
+        failCallback: (): void => {
+          ui.notifications?.error(game.i18n.localize("swnr.roll.skillNeeded"));
+        },
+        classes: ["swnr"],
+      }
     );
-    return this.popUpDialog.render(true);
+    const s = this.popUpDialog.render(true);
+    if (s instanceof Promise) await s;
+    return this.popUpDialog;
   }
   async _onSaveThrow(
     event: JQuery.ClickEvent
@@ -325,9 +317,6 @@ export class CharacterActorSheet extends ActorSheet<
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(
       {
-        failCallback: () => {
-          return;
-        },
         title: title,
         content: html,
         default: "roll",
@@ -338,9 +327,16 @@ export class CharacterActorSheet extends ActorSheet<
           },
         },
       },
-      { classes: ["swnr"] }
+      {
+        failCallback: () => {
+          return;
+        },
+        classes: ["swnr"],
+      }
     );
-    return this.popUpDialog.render(true);
+    const s = this.popUpDialog.render(true);
+    if (s instanceof Promise) await s;
+    return this.popUpDialog;
   }
   async _onStatsRoll(event: JQuery.ClickEvent): Promise<Application> {
     event.preventDefault();
@@ -365,9 +361,9 @@ export class CharacterActorSheet extends ActorSheet<
       const roll = new Roll(formula);
       roll.roll();
       console.log(roll.result);
-      const stats: { [p in SWNRStats]: SWNRStat & { dice: number[] } } = <
-        never
-      >{};
+      const stats: {
+        [p in SWNRStats]: SWNRStatBase & SWNRStatComputed & { dice: number[] };
+      } = <never>{};
       ["str", "dex", "con", "int", "wis", "cha"].map((k, i) => {
         stats[k] = {
           dice: roll.dice[i].results,
@@ -390,31 +386,23 @@ export class CharacterActorSheet extends ActorSheet<
         "systems/swnr/templates/chat/stat-block.html",
         data
       );
-      // const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${game.i18n.localize("swnr.stat.short." + (<HTMLSelectElement>elements.querySelector('[name="stat"]')).value)}/${skillName}`
-      let promise;
-      if (game.dice3d) {
-        promise = game.dice3d.showForRoll(roll);
-      } else {
-        promise = Promise.resolve();
-      }
-      promise.then(() => {
-        CONFIG.ChatMessage.entityClass.create(
+      const chatMessage = getDocumentClass("ChatMessage");
+      chatMessage.create(
+        chatMessage.applyRollMode(
           {
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            roll: roll,
+            roll: JSON.stringify(roll.toJSON()),
             content: chatContent,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
           },
-          { rollMode }
-        );
-      });
+          rollMode
+        )
+      );
       return roll;
     };
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(
       {
-        failCallback: () => {
-          return;
-        },
         title: title,
         content: html,
         default: "roll",
@@ -425,9 +413,16 @@ export class CharacterActorSheet extends ActorSheet<
           },
         },
       },
-      { classes: ["swnr"] }
+      {
+        failCallback: () => {
+          return;
+        },
+        classes: ["swnr"],
+      }
     );
-    return this.popUpDialog.render(true);
+    const s = this.popUpDialog.render(true);
+    if (s instanceof Promise) await s;
+    return this.popUpDialog;
   }
   async _onHpRoll(event: JQuery.ClickEvent): Promise<Application> {
     event.preventDefault();
@@ -462,24 +457,19 @@ export class CharacterActorSheet extends ActorSheet<
       "systems/swnr/templates/chat/hp-roll.html",
       data
     );
-    const promise = game.dice3d
-      ? game.dice3d.showForRoll(roll)
-      : Promise.resolve();
-    promise.then(() => {
-      CONFIG.ChatMessage.entityClass.create(
-        {
-          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-          roll: roll,
-          content: chatContent,
-        },
-        { rollMode }
-      );
-      const update = { "data.health.max": newHP };
-      if (this.actor.data.data.health.value === currentHp)
-        update["data.health.value"] = newHP;
-      this.actor.update(update);
+
+    getDocumentClass("ChatMessage").create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      roll: JSON.stringify(roll),
+      blind: rollMode === "blindroll",
+      content: chatContent,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
     });
-    return promise;
+    const update = { "data.health.max": newHP };
+    if (this.actor.data.data.health.value === currentHp)
+      update["data.health.value"] = newHP;
+    this.actor.update(update);
+    return this;
   }
   async _onSkillRoll(event: JQuery.ClickEvent): Promise<Application> {
     event.preventDefault();
@@ -488,7 +478,9 @@ export class CharacterActorSheet extends ActorSheet<
     const dataset = target.dataset;
     const template = "systems/swnr/templates/dialogs/roll-skill.html";
     const skillID = dataset.itemId as string;
-    const skill = <SWNRBaseItem<SWNRSkillData>>this.actor.getOwnedItem(skillID);
+    const skill = <SWNRBaseItem<"skill">>(
+      this.actor.getEmbeddedDocument("Item", skillID)
+    );
     const skillData = skill.data.data;
     const skillName = skill.name;
     const title = `${game.i18n.localize("swnr.chat.skillCheck")}: ${skillName}`;
@@ -537,9 +529,6 @@ export class CharacterActorSheet extends ActorSheet<
     this.popUpDialog?.close();
     this.popUpDialog = new ValidatedDialog(
       {
-        failCallback: () => {
-          return;
-        },
         title: title,
         content: html,
         default: "roll",
@@ -551,15 +540,22 @@ export class CharacterActorSheet extends ActorSheet<
         },
       },
       {
+        failCallback: () => {
+          return;
+        },
         classes: ["swnr"],
       }
     );
-    return this.popUpDialog.render(true);
+    const s = this.popUpDialog.render(true);
+    if (s instanceof Promise) await s;
+    return this.popUpDialog;
   }
   /** @override */
-  getData(): CharacterActorSheetData {
+  async getData(): Promise<CharacterActorSheetData> {
+    let data = super.getData();
+    if (data instanceof Promise) data = await data;
     return {
-      ...super.getData(),
+      ...data,
       useHomebrewLuckSave: !!game.settings.get("swnr", "useHomebrewLuckSave"),
       itemTypes: this.actor.itemTypes,
     };
@@ -568,9 +564,10 @@ export class CharacterActorSheet extends ActorSheet<
   async _updateObject(
     event: Event,
     formData: Record<string, number | string>
-  ): Promise<unknown> {
+  ): Promise<SWNRCharacterActor | undefined> {
     this._itemEditHandler(formData);
-    return super._updateObject(event, formData);
+    super._updateObject(event, formData);
+    return this.actor;
   }
   _itemEditHandler(formData: Record<string, string | number>): void {
     const itemUpdates = {};
@@ -588,7 +585,7 @@ export class CharacterActorSheet extends ActorSheet<
     for (const key in itemUpdates) {
       if (Object.prototype.hasOwnProperty.call(itemUpdates, key)) {
         const element = itemUpdates[key];
-        this.actor.updateEmbeddedEntity("OwnedItem", element);
+        this.actor.updateEmbeddedDocuments("Item", [element]);
       }
     }
   }
@@ -599,13 +596,16 @@ Hooks.on(
     const statApplyButton = <JQuery<HTMLButtonElement>>(
       html.find(".statApplyButton button")
     );
-    if (statApplyButton) {
+    if (statApplyButton.length !== 0) {
       // fix later
-      const actor = game.actors.get(message.data["speaker"]["actor"]);
+      const actorId = message.data["speaker"]["actor"];
+      if (!actorId) throw new Error("no id");
+      const actor = game.actors?.get(actorId);
+      if (!actor) throw new Error("missing actor?");
 
       if (
         message.getFlag("swnr", "alreadyDone") ||
-        (!game.user.isGM && game.user.id === user.id)
+        (!game.user?.isGM && game.user?.id === user.id)
       ) {
         statApplyButton.prop("disabled", true);
       } else {
