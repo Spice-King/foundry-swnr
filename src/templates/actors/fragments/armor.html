@@ -1,8 +1,8 @@
-<div class="flex gap-1 items-baseline item armor" data-item-id="{{item._id}}">
+<div class="flex gap-1 items-baseline item armor" data-item-id="{{item.id}}">
   <label class="sheet-button items-center">
     <input
       type="checkbox"
-      name="items.{{item._id}}.data.use"
+      name="items.{{item.id}}.data.use"
       {{checked item.data.data.use}}
     />
     <span class="ml-1 item-name">{{item.name}}</span>

@@ -1,4 +1,4 @@
-<div class="item flex gap-1 flex-wrap items-center" data-item-id="{{item._id}}">
+<div class="item flex gap-1 flex-wrap items-center" data-item-id="{{item.id}}">
   <img class="w-5 h-5" src="systems/swnr/assets/icons/game-icons.net/item-icons/{{item.type}}.svg"/>
   <div class="item-name">{{item.name}}</div>
   <div class="flex gap-1 items-baseline">
@@ -7,7 +7,7 @@
       <input
         type="number"
         class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-        name="items.{{item._id}}.data.quantity"
+        name="items.{{item.id}}.data.quantity"
         min="0"
         step="1"
         value="{{item.data.data.quantity}}"
@@ -15,7 +15,7 @@
     </div>
     {{/if}} {{#if (eq type 'character')}}
     <div>
-      <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="items.{{item._id}}.data.location">
+      <select class="px-1.5 border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md" name="items.{{item.id}}.data.location">
         {{#select item.data.data.location}}
         <option value="readied">
           {{localize 'swnr.item.locationReadied'}}
