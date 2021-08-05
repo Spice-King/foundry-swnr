@@ -111,7 +111,7 @@
           class="px-1 text-black border border-gray-800 bg-gray-400 bg-opacity-75 rounded-md"
           name="data.ammo.type"
         >
-          {{#select data.ammo.type}}
+          {{#select data.data.ammo.type}}
           <option value="none">{{localize 'swnr.ammo.none'}}</option>
           <option value="typeAPower">
             {{localize 'swnr.ammo.typeAPower'}}
@@ -165,8 +165,7 @@
         <input
           type="checkbox"
           name="data.ammo.longReload"
-          {{checked
-          data.ammo.longReload}}
+          {{checked data.data.ammo.longReload}}
         />
         <div>{{localize 'swnr.sheet.longReload'}}</div>
       </label>
@@ -174,8 +173,7 @@
         <input
           type="checkbox"
           name="data.ammo.burst"
-          {{checked
-          data.ammo.burst}}
+          {{checked data.data.ammo.burst}}
         />
         <div>{{localize 'swnr.sheet.burst'}}</div>
       </label>
@@ -184,8 +182,7 @@
         <input
           type="checkbox"
           name="data.ammo.suppress"
-          {{checked
-          data.ammo.suppress}}
+          {{checked data.data.ammo.suppress}}
         />
         <div>{{localize 'swnr.sheet.suppress'}}</div>
       </label>
@@ -194,8 +191,7 @@
         <input
           type="checkbox"
           name="data.skillBoostsDamage"
-          {{checked
-          data.skillBoostsDamage}}
+          {{checked data.data.skillBoostsDamage}}
       />
         <div>{{localize 'swnr.weapon.skillAddDamage'}}</div>
       </label>
