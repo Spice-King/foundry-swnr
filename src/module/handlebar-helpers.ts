@@ -26,12 +26,24 @@ export default function registerHelpers(): void {
       weapon: SWNRWeapon,
       forDamage = false
     ): number => {
-      if (forDamage && weapon.data.data.skillBoostsDamage === false) return 0;
+      const skillID = weapon.data.data.skill;
+      let skillItem = actor.getEmbeddedDocument("Item", skillID) as
+        | (Item & { data: { type: "skill" } })
+        | undefined;
+      if (!skillItem || skillItem.data.type !== "skill") {
+        skillItem = undefined;
+      }
+      console.log({ skillID, skillItem });
+      const skillBonus: number =
+        forDamage && weapon.data.data.skillBoostsDamage
+          ? skillItem?.data.data.rank ?? -1
+          : 0;
+      const untrainedPenalty = skillBonus === -1 ? -1 : 0;
       const stats = actor.data.data.stats;
       const statsToCheck = [stats[weapon.data.data.stat].mod];
       if (weapon.data.data.secondStat !== "none")
         statsToCheck.push(stats[weapon.data.data.secondStat]?.mod || 0);
-      return Math.max(...statsToCheck);
+      return Math.max(...statsToCheck) + skillBonus + untrainedPenalty;
     }
   );
 }
