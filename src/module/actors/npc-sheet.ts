@@ -93,7 +93,7 @@ export class NPCActorSheet extends ActorSheet<
     if (!performDelete) return;
     li.slideUp(200, () => {
       requestAnimationFrame(() => {
-        this.actor.deleteEmbeddedDocuments("Item", li.data("itemId"));
+        this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
       });
     });
   }
