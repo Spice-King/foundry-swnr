@@ -302,7 +302,8 @@
       </div>
       <ul class="flex flex-col gap-1">
         {{#each itemTypes.weapon as |i|}} {{>
-        "systems/swnr/templates/actors/fragments/weapon.html" item=i actor=actor damageBonus=actor.data.data.attacks.bonusDamage
+        "systems/swnr/templates/actors/fragments/weapon.html" item=i actor=actor
+        damageBonus=actor.data.data.attacks.bonusDamage hitBonus=data.data.ab
         type=actor.data.data.type}} {{/each}}
       </ul>
     </div>
