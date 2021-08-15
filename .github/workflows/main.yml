@@ -24,8 +24,6 @@ jobs:
           ${{ runner.os }}-
     - name: npm install, build, and test
       run: npx npm@7 install
-    - name: fump
-      run: find node_modules/foundry-pc-types
     - name: Update Version
       shell: bash
       id: set-version
