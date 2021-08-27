@@ -95,6 +95,20 @@
         />
       </div>
       <div>
+        {{localize 'swnr.sheet.hit-dice'}}:
+        <input
+          class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number"
+          name="data.hitDice"
+          min="1"
+          step="1"
+          value="{{actor.data.data.hitDice}}"
+        />
+        <a class="hit-dice-roll">
+          <i class="fa fa-dice-d6"></i>
+        </a>
+      </div>        
+      <div>
         {{localize 'swnr.sheet.armor-class'}}:
         <input
           class="w-8 border text-center px-1 border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
