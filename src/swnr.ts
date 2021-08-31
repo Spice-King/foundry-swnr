@@ -17,6 +17,7 @@ import { preloadTemplates } from "./module/preloadTemplates";
 import { SWNRActor, SWNRItem } from "./module/documents";
 import "./module/containerQueries";
 import registerHelpers from "./module/handlebar-helpers";
+import { createSWNRMacro, rollItemMacro } from "./module/macro-bar";
 
 /* ------------------------------------ */
 /* Initialize system					*/
@@ -33,6 +34,9 @@ Hooks.once("init", async function () {
   // Preload Handlebars templates
   await preloadTemplates();
   game.i18n.localize("swnr.title");
+  game["swnr"] = {
+    rollItemMacro
+  };
 
   // Remove stock sheets
   Actors.unregisterSheet("core", ActorSheet);
@@ -80,4 +84,5 @@ Hooks.once("ready", function () {
   // Reference a Compendium pack by it's collection ID
   // packImport();
   migrations();
+  Hooks.on("hotbarDrop", (bar, data, slot) => createSWNRMacro(data, slot));
 });
