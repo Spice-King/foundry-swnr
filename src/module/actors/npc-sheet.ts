@@ -207,14 +207,7 @@ export class NPCActorSheet extends ActorSheet<
   _onHitDice(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
-    console.log(`Updating health using ${this.actor.data.data.hitDice} hit die `);
-    const roll = new Roll(`${this.actor.data.data.hitDice}d8`).roll();
-    if (roll != undefined && roll.total != undefined){
-      const newHealth = roll.total;
-      this.actor.update({"data.health.max": newHealth});
-      this.actor.update({"data.health.value": newHealth});
-    }
-    
+    this.actor.rollHitDice();
   }
 
   _onMorale(event: JQuery.ClickEvent): void {
@@ -290,7 +283,8 @@ export class NPCActorSheet extends ActorSheet<
       }
     }
   }
-}
 
+
+}
 export const sheet = NPCActorSheet;
 export const types = ["npc"];
