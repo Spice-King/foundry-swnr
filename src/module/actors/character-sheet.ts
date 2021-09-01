@@ -53,6 +53,7 @@ export class CharacterActorSheet extends ActorSheet<
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
+    html.find('[name="data.health.max"]').on("input", this._onHPMaxChange.bind(this));
     html
       .find(".item.weapon .item-name")
       .on("click", this._onWeaponRoll.bind(this));
@@ -70,6 +71,12 @@ export class CharacterActorSheet extends ActorSheet<
       });
     }
   }
+
+  async _onHPMaxChange(event: JQuery.ClickEvent): Promise<void> {
+    //console.log("Changing HP Max" , this.actor);
+    this.actor.update({"data.health_max_modified": this.actor.data.data.level.value});
+  }
+
   async _onLoadSkills(event: JQuery.ClickEvent): Promise<unknown> {
     event.preventDefault();
     const _addSkills = async (html: HTMLElement) => {
