@@ -110,6 +110,7 @@ declare interface SWNRNPCData extends SWNRLivingTemplateBase {
     bonusDamage: number;
     number: number;
   };
+  hitDice: number;
   saves: number;
   speed: number;
   moralScore: number;
