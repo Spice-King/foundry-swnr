@@ -49,6 +49,7 @@ export class CharacterActorSheet extends ActorSheet<
     html.find(".save").on("click", this._onSaveThrow.bind(this));
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
+    html.find(".item-reload").on("click", this._onItemReload.bind(this));
     html
       .find(".hp-label")
       .on("click", limitConcurrency(this._onHpRoll.bind(this)));
@@ -136,6 +137,29 @@ export class CharacterActorSheet extends ActorSheet<
       });
     });
   }
+  _onItemReload(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const li = $(event.currentTarget).parents(".item");
+    const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
+    if (!item) return;
+    let ammo_max = item.data.data.ammo?.max;
+    if (ammo_max != null) {
+      if (item.data.data.ammo.value < ammo_max){
+        console.log("Reloading", item);
+        item.update({"data.ammo.value": ammo_max})
+        let content = `<p> Reloaded ${item.name} </p>`
+        ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            content: content
+        });
+      } else {
+        ui.notifications?.info("Trying to reload a full item");
+      }
+    } else {
+      console.log("Unable to find ammo in item ", item.data.data);
+    }
+  }
   async _onWeaponRoll(
     event: JQuery.ClickEvent<HTMLElement>
   ): Promise<Application | undefined> {
@@ -189,6 +213,7 @@ export class CharacterActorSheet extends ActorSheet<
         modifier,
         effectiveSkillRank:
           skill.data.data.rank < 0 ? -2 : skill.data.data.rank,
+        shockDmg: weapon.data.data.shock?.dmg > 0 ? weapon.data.data.shock.dmg : 0
       };
       const hitRoll = new Roll(
         "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank",
@@ -249,7 +274,31 @@ export class CharacterActorSheet extends ActorSheet<
           rollMode
         )
       );
+
+      // Show shock damage
+      if (game.settings.get("swnr","addShockMessage")) {
+        if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
+          let shock_content = `${weapon.name} Shock Damage Base ${weapon.data.data.shock.dmg} \ AC ${weapon.data.data.shock.ac}`;
+          const shockRoll = new Roll(
+             "0" +
+               " + @shockDmg + @stat.mod " +
+               (weapon.data.data.skillBoostsDamage
+                 ? ` + ${skill.data.data.rank}`
+                 : ""),
+            rollData
+          ).roll();
+          ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            flavor: shock_content,
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            roll: JSON.stringify(shockRoll.toJSON()),
+          });
+        }
+      }
+
     };
+
+
     const title = game.i18n.format("swnr.dialog.attackRoll", {
       actorName: this.actor.name,
       weaponName: weapon.name,

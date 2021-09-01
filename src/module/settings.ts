@@ -20,4 +20,14 @@ export const registerSettings = function (): void {
     type: Boolean,
     default: false,
   });
+
+  game.settings.register("swnr", "addShockMessage", {
+    name: "swnr.settings.addShockMessage",
+    hint: "swnr.settings.addShockMessageHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
+
 };
