@@ -324,52 +324,104 @@ export class CharacterActorSheet extends ActorSheet<
     if (s instanceof Promise) await s;
     return this.popUpDialog;
   }
-  async _onHpRoll(event: JQuery.ClickEvent): Promise<Application> {
+  async _onHpRoll(event: JQuery.ClickEvent): Promise<void> {
+
+    // 2e warrior/partial : +2
+    // 1e psy 1d4, expert 1d6, warrior 1d8
+     
     event.preventDefault();
     const currentLevel = this.actor.data.data.level.value;
     const rollMode = game.settings.get("core", "rollMode");
+    const lastModified = this.actor.data.data["health_max_modified"];
+    if (currentLevel  == lastModified){
+      ui.notifications?.info("Not rolling hp: already rolled this level");
+    }
     // const lastLevel =
     // currentLevel === 1 ? 0 : this.actor.getFlag("swnr", "lastHpLevel");
     const health = this.actor.data.data.health;
     const currentHp = health.max;
     //todo: sort out health boosts from classes.
     const boosts = 0 * currentLevel;
-    const formula = `{${currentLevel}d6 + ${boosts},${currentHp + 1}}kh`;
-    const roll = new Roll(formula).roll();
-    const newHP = roll.total;
-    const data = {
-      oldHp: health.max,
-      newHp: newHP,
-      dice: roll.dice[0].results.map((die: { result: number }) => {
-        return {
-          roll: die.result,
-          classes: [
-            die.result === 6 ? "good" : null,
-            die.result === 1 ? "bad" : null,
-            "die",
-          ]
-            .filter((c) => c)
-            .join(" "),
-        };
-      }),
-    };
-    const chatContent = await renderTemplate(
-      "systems/swnr/templates/chat/hp-roll.html",
-      data
-    );
+    const constBonus = this.actor.data.data.stats.con.bonus * currentLevel;
 
-    getDocumentClass("ChatMessage").create({
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      roll: JSON.stringify(roll),
-      blind: rollMode === "blindroll",
-      content: chatContent,
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-    });
-    const update = { "data.health.max": newHP };
-    if (this.actor.data.data.health.value === currentHp)
-      update["data.health.value"] = newHP;
-    this.actor.update(update);
-    return this;
+
+    const _setAndRollHP = async (html: HTMLFormElement) => {  
+      console.log("Got form");
+      const form: HTMLFormElement | null = html[0].querySelector("form");
+      if (!form) {
+        console.log("Form missing");
+        return;
+      }
+      const hpBase = <HTMLInputElement>(
+        form.querySelector('[name="hpRoll"]:checked')
+      );
+      let formula = `${currentLevel}${hpBase.value} + ${constBonus}`
+      console.log(formula);
+      return;
+    }
+
+
+
+    const template = "systems/swnr/templates/dialogs/roll_hp.html";
+    const html = await renderTemplate(template, {});
+    this.popUpDialog?.close();
+
+    this.popUpDialog = new Dialog(
+      {
+        title: game.i18n.format("swnr.dialog.hp.text", {
+          actor: this.actor.name,
+        }),
+        content: html,
+        default: "rollHP",
+        buttons: {
+          rollHP: {
+            label: game.i18n.localize("swnr.chat.roll"),
+            callback: _setAndRollHP,
+          },
+        },
+      },
+      { classes: ["swnr"] }
+    );
+    await this.popUpDialog.render(true);
+
+
+    const formula = `{${currentLevel}d6 + ${boosts},${currentHp + 1}}kh`;
+    return;
+    // const roll = new Roll(formula).roll();
+    // const newHP = roll.total;
+    // const data = {
+    //   oldHp: health.max,
+    //   newHp: newHP,
+    //   dice: roll.dice[0].results.map((die: { result: number }) => {
+    //     return {
+    //       roll: die.result,
+    //       classes: [
+    //         die.result === 6 ? "good" : null,
+    //         die.result === 1 ? "bad" : null,
+    //         "die",
+    //       ]
+    //         .filter((c) => c)
+    //         .join(" "),
+    //     };
+    //   }),
+    // };
+    // const chatContent = await renderTemplate(
+    //   "systems/swnr/templates/chat/hp-roll.html",
+    //   data
+    // );
+
+    // getDocumentClass("ChatMessage").create({
+    //   speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    //   roll: JSON.stringify(roll),
+    //   blind: rollMode === "blindroll",
+    //   content: chatContent,
+    //   type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    // });
+    // const update = { "data.health.max": newHP };
+    // if (this.actor.data.data.health.value === currentHp)
+    //   update["data.health.value"] = newHP;
+    // this.actor.update(update);
+    //return this;
   }
   async _onSkillRoll(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
