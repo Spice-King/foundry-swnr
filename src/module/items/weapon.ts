@@ -35,6 +35,11 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       return;
     }
 
+    if (useBurst && this.ammo.value < 3) {
+      ui.notifications?.error(`Your ${this.name} is does not have enough ammo to burst!`);
+      return;
+
+    }
     //console.log({ skillMod, stat, modifier, useBurst, damageBonus });
     const template = "systems/swnr/templates/chat/attack-roll.html";
     const burstFire = useBurst ? 2 : 0;
