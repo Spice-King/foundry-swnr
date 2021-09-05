@@ -35,7 +35,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       return;
     }
 
-    console.log({ skillMod, modifier, useBurst, damageBonus });
+    //console.log({ skillMod, stat, modifier, useBurst, damageBonus });
     const template = "systems/swnr/templates/chat/attack-roll.html";
     const burstFire = useBurst ? 2 : 0;
 
@@ -124,7 +124,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       if (this.data.data.shock && this.data.data.shock.dmg > 0) {
         let shock_content = `${this.name} Shock Damage Base ${this.data.data.shock.dmg} \ AC ${this.data.data.shock.ac}`;
         const shockRoll = new Roll(
-          " @shockDmg + @stat.mod " +
+          " @shockDmg + @stat " +
           (damageBonus
             ? ` + ${damageBonus}`
             : ""),
@@ -160,11 +160,20 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
     const burstFireHasAmmo =
       ammo.type !== "none" && ammo.burst && ammo.value >= 3;
 
+
+    // for finesse weapons take the stat with the higher mod
+    let statName = this.data.data.stat;
+    const secStatName = this.data.data.secondStat;
+    // check if there is 2nd stat name and its mod is better
+    if (secStatName != null && secStatName != "none" && this.actor.data.data["stats"]?.[statName].mod < this.actor.data.data["stats"]?.[secStatName].mod){
+      statName = secStatName;
+    }
+
     const dialogData = {
       actor: this.actor.data,
       weapon: this.data.data,
       skills: this.actor.itemTypes.skill,
-      statName: this.data.data.stat,
+      statName: statName,
       skill: this.data.data.skill,
       burstFireHasAmmo,
     };
@@ -186,24 +195,24 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         (<HTMLSelectElement>form.querySelector('[name="skill"]'))?.value ||
         this.data.data.skill;
 
-      const actorId = (<HTMLSelectElement>form.querySelector('[name="actorId"]'))?.value;
-      const statName = (<HTMLSelectElement>form.querySelector('[name="statName"]'))?.value;
+      // const actorId = (<HTMLSelectElement>form.querySelector('[name="actorId"]'))?.value;
+      const formStatName = (<HTMLSelectElement>form.querySelector('[name="statName"]'))?.value;
 
-      const actor = game.actors?.get(actorId);
-      if (!actor) {
-        console.log("Error actor no longer exists ", actorId);
+      // const actor = game.actors?.get(actorId);
+      if (!this.actor) {
+        console.log("Error actor no longer exists ");
         return;
       }
       let skillMod = 0;
 
-      const skill = actor.getEmbeddedDocument(
+      const skill = this.actor.getEmbeddedDocument(
         "Item",
         skillId
       ) as SWNRBaseItem<"skill">;
 
       if (html.find('[name="skilled"]')) {
         let npcSkillMod = html.find('[name="skilled"]').prop("checked")
-          ? actor.data.data["skillBonus"]
+          ? this.actor.data.data["skillBonus"]
           : 0;
         if (!npcSkillMod) skillMod = npcSkillMod;
       } else {
@@ -212,10 +221,9 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
 
       }
 
-      const stat = actor.data.data["stats"]?.[statName] || {
+      const stat = this.actor.data.data["stats"]?.[formStatName] || {
         mod: 0
       };
-
       // 1d20 + attack bonus (PC plus weapon) + skill mod (-2 if untrained)
       // weapon dice + stat mod + skill if enabled or punch.
       // shock: damage + stat
@@ -224,6 +232,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       const dmgBonus = this.data.data.skillBoostsDamage
         ? skill.data.data.rank : 0;
       return this.rollAttack(dmgBonus, stat.mod, skillMod, modifier, burstFire);
+      // END roll form 
     }
 
 
@@ -247,7 +256,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
         classes: ["swnr"],
       }
     );
-    console.log("t1", this);
     const s = this.popUpDialog.render(true);
 
   }
