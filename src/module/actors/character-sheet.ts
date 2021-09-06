@@ -282,8 +282,6 @@ export class CharacterActorSheet extends ActorSheet<
         )
       );
     };
-
-
     const title = game.i18n.format("swnr.dialog.attackRoll", {
       actorName: this.actor.name,
       weaponName: weapon.name,
