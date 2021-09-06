@@ -220,6 +220,23 @@ export class CharacterActorSheet extends ActorSheet<
         hit: await hitRoll.render(),
         damage: await damageRoll.render(),
       };
+      // Placeholder for shock damage
+      let shock_content: string | null = null;
+      let shock_roll: string | null  = null;
+      // Show shock damage
+      if (game.settings.get("swnr","addShockMessage")) {
+        if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
+          shock_content = `Shock Damage  AC ${weapon.data.data.shock.ac}`;
+          const _shockRoll = new Roll(
+               " @shockDmg + @stat.mod " +
+               (weapon.data.data.skillBoostsDamage
+                 ? ` + ${skill.data.data.rank}`
+                 : ""),
+            rollData
+          ).roll();
+          shock_roll = await _shockRoll.render();
+        }
+      }
       const dialogData = {
         actor: this.actor,
         weapon: weapon,
@@ -238,6 +255,8 @@ export class CharacterActorSheet extends ActorSheet<
           0,
           20
         ),
+        shock_roll,
+        shock_content,
       };
       const rollMode = game.settings.get("core", "rollMode");
       const diceData = Roll.fromTerms([
@@ -262,28 +281,6 @@ export class CharacterActorSheet extends ActorSheet<
           rollMode
         )
       );
-
-      // Show shock damage
-      if (game.settings.get("swnr","addShockMessage")) {
-        if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
-          let shock_content = `${weapon.name} Shock Damage Base ${weapon.data.data.shock.dmg} \ AC ${weapon.data.data.shock.ac}`;
-          const shockRoll = new Roll(
-             "0" +
-               " + @shockDmg + @stat.mod " +
-               (weapon.data.data.skillBoostsDamage
-                 ? ` + ${skill.data.data.rank}`
-                 : ""),
-            rollData
-          ).roll();
-          ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            flavor: shock_content,
-            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-            roll: JSON.stringify(shockRoll.toJSON()),
-          });
-        }
-      }
-
     };
 
 
