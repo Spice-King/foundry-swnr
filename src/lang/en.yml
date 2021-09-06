@@ -368,6 +368,8 @@ swnr:
     rollables: Rollables
     hit-dice: Hit Dice
   settings:
+    useRollNPCHD: Use NPC HD on token create?
+    useRollNPCHDHint: When creating a npc token, if the HP or Hit Dice (HD) has not been rolled, it will roll d8 HD for health automatically.
     useHomebrewLuckSave: Use Homebrew Luck saves?
     useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck
   chat:

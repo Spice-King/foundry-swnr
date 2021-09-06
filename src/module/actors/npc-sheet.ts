@@ -202,7 +202,6 @@ export class NPCActorSheet extends ActorSheet<
     this.render();
   }
 
-
   // Set the max/value health based on D8 hit dice
   _onHitDice(event: JQuery.ClickEvent): void {
     event.preventDefault();
@@ -283,8 +282,6 @@ export class NPCActorSheet extends ActorSheet<
       }
     }
   }
-
-
 }
 export const sheet = NPCActorSheet;
 export const types = ["npc"];
