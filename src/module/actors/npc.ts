@@ -32,10 +32,6 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     super._onCreate(data, options, userId);
     if (this.data["items"]["length"] || game.userId !== userId) return;
 
-
-    this.data.data["hitDice"]=1;
-    // Can't figure out how to get this to work: this.actor.update({"data.hitDic": 1});
-
     this.createEmbeddedDocuments("Item", [
       {
         name: game.i18n.localize("swnr.npc.unarmed"),
