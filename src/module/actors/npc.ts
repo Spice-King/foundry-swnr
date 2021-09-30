@@ -10,7 +10,7 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   rollHitDice(): void {
     if (this.data.data.hitDice != null && this.data.data.hitDice > 0) {
       const roll = new Roll(`${this.data.data.hitDice}d8`).roll();
-      if (roll != undefined && roll.total != undefined){
+      if (roll != undefined && roll.total != undefined) {
         const newHealth = roll.total;
         this.update({
           "data.health.max": newHealth,
@@ -45,7 +45,7 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
 }
 
 Hooks.on("createToken", (document, options, userId) => {
-  if (game.settings.get("swnr","useRollNPCHD")) {
+  if (game.settings.get("swnr", "useRollNPCHD")) {
     if (document.actor?.type == "npc") {
       document.actor.rollHitDice();
     }
