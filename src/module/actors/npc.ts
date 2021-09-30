@@ -6,6 +6,22 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     e.value = e.max - e.current - e.scene - e.day;
   }
 
+  // Set the max/value health based on D8 hit dice
+  rollHitDice(): void {
+    if (this.data.data.hitDice != null && this.data.data.hitDice > 0) {
+      //For debug: console.log(`Updating health using ${this.data.data.hitDice} hit die `);
+      const roll = new Roll(`${this.data.data.hitDice}d8`).roll();
+      if (roll != undefined && roll.total != undefined){
+        const newHealth = roll.total;
+        this.update({"data.health.max": newHealth});
+        this.update({"data.health.value": newHealth});
+      }
+    }
+    else {
+      //For debug: console.log("NPC has no hit dice, not rolling health");
+    }
+  }
+
   _onCreate(
     data: Parameters<SWNRBaseActor["_onCreate"]>[0],
     options: Parameters<SWNRBaseActor["_onCreate"]>[1],
@@ -29,6 +45,14 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
     ]);
   }
 }
+
+Hooks.on("createToken", (document, options, userId) => {
+  if (game.settings.get("swnr","useRollNPCHD")) {
+    if (document.actor?.type == "npc") {
+      document.actor.rollHitDice();
+    }
+  }
+});
 
 export const document = SWNRNPCActor;
 export const name = "npc";

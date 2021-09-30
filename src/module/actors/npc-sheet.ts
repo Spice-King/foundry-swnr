@@ -63,6 +63,7 @@ export class NPCActorSheet extends ActorSheet<
     html.find(".morale").on("click", this._onMorale.bind(this));
     html.find(".skill").on("click", this._onSkill.bind(this));
     html.find(".saving-throw").on("click", this._onSavingThrow.bind(this));
+    html.find(".hit-dice-roll").on("click", this._onHitDice.bind(this));
   }
 
   _onItemEdit(event: JQuery.ClickEvent): void {
@@ -199,6 +200,13 @@ export class NPCActorSheet extends ActorSheet<
 
     // force re-render
     this.render();
+  }
+
+  // Set the max/value health based on D8 hit dice
+  _onHitDice(event: JQuery.ClickEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.actor.rollHitDice();
   }
 
   _onMorale(event: JQuery.ClickEvent): void {

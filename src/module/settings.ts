@@ -20,4 +20,13 @@ export const registerSettings = function (): void {
     type: Boolean,
     default: false,
   });
+
+  game.settings.register("swnr", "useRollNPCHD", {
+    name: "swnr.settings.useRollNPCHD",
+    hint: "swnr.settings.useRollNPCHDHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
 };
