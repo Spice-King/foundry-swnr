@@ -12,8 +12,10 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
       const roll = new Roll(`${this.data.data.hitDice}d8`).roll();
       if (roll != undefined && roll.total != undefined){
         const newHealth = roll.total;
-        this.update({"data.health.max": newHealth});
-        this.update({"data.health.value": newHealth});
+        this.update({
+          "data.health.max": newHealth,
+          "data.health.value": newHealth,
+        });
       }
     }
   }
