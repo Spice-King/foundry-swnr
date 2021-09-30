@@ -131,15 +131,15 @@ export class CharacterActorSheet extends ActorSheet<
     const li = $(event.currentTarget).parents(".item");
     const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
     if (!item) return;
-    let ammo_max = item.data.data.ammo?.max;
+    const ammo_max = item.data.data.ammo?.max;
     if (ammo_max != null) {
-      if (item.data.data.ammo.value < ammo_max){
+      if (item.data.data.ammo.value < ammo_max) {
         console.log("Reloading", item);
-        item.update({"data.ammo.value": ammo_max})
-        let content = `<p> Reloaded ${item.name} </p>`
+        item.update({ "data.ammo.value": ammo_max });
+        const content = `<p> Reloaded ${item.name} </p>`;
         ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            content: content
+          speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+          content: content,
         });
       } else {
         ui.notifications?.info("Trying to reload a full item");
@@ -201,7 +201,8 @@ export class CharacterActorSheet extends ActorSheet<
         modifier,
         effectiveSkillRank:
           skill.data.data.rank < 0 ? -2 : skill.data.data.rank,
-        shockDmg: weapon.data.data.shock?.dmg > 0 ? weapon.data.data.shock.dmg : 0
+        shockDmg:
+          weapon.data.data.shock?.dmg > 0 ? weapon.data.data.shock.dmg : 0,
       };
       const hitRoll = new Roll(
         "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank",
@@ -222,16 +223,16 @@ export class CharacterActorSheet extends ActorSheet<
       };
       // Placeholder for shock damage
       let shock_content: string | null = null;
-      let shock_roll: string | null  = null;
+      let shock_roll: string | null = null;
       // Show shock damage
-      if (game.settings.get("swnr","addShockMessage")) {
+      if (game.settings.get("swnr", "addShockMessage")) {
         if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
           shock_content = `Shock Damage  AC ${weapon.data.data.shock.ac}`;
           const _shockRoll = new Roll(
-               " @shockDmg + @stat.mod " +
-               (weapon.data.data.skillBoostsDamage
-                 ? ` + ${skill.data.data.rank}`
-                 : ""),
+            " @shockDmg + @stat.mod " +
+              (weapon.data.data.skillBoostsDamage
+                ? ` + ${skill.data.data.rank}`
+                : ""),
             rollData
           ).roll();
           shock_roll = await _shockRoll.render();
