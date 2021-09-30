@@ -29,7 +29,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       return;
     }
 
-    console.log({ skillMod, modifier, useBurst, damageBonus });
     const template = "systems/swnr/templates/chat/attack-roll.html";
     const burstFire = useBurst ? 2 : 0;
 
@@ -49,7 +48,6 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       damageBonus,
       effectiveSkillRank: skillMod < 0 ? -2 : skillMod,
     };
-    console.log(rollData);
 
     const hitRoll = new Roll(
       "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",

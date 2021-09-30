@@ -27,6 +27,16 @@
             Ammo: {{item.data.data.ammo.value}}/{{item.data.data.ammo.max}}
           </div>
           {{/if}}
+          {{#if item.data.data.shock.dmg}}
+          <div>
+            Shock: {{item.data.data.shock.dmg}}/{{item.data.data.shock.ac}}
+          </div>
+          {{/if}}
+          {{#if item.data.data.range.normal}}
+          <div>
+            Range: {{item.data.data.range.normal}}/{{item.data.data.range.max}}
+          </div>
+          {{/if}}
           <div class="w-full absolute -left-0 -bottom-4 flex justify-around">
             <svg
               class="text-trueGray-600 h-4"
@@ -43,6 +53,16 @@
     </div>
   </a>
   <div class="item-controls flex gap-1">
+          {{#if (ne item.data.data.ammo.type "none")}}
+
+              <a
+                class="item-control item-reload text-gray-600 hover:text-purple-800 transition-colors"
+                title="{{localize 'swnr.sheet.reload-item'}}"
+              >
+                <i class="fas fa-retweet"></i>
+              </a>
+          {{/if}}
+
     <a
       class="item-control item-edit text-gray-600 hover:text-purple-800 transition-colors"
       title="{{localize 'swnr.sheet.edit-item'}}"
