@@ -19,5 +19,7 @@ rules:
   semi:
     - error
     - always
+  no-console:
+    - warn
 ignorePatterns:
   - foundry/**/*.js
