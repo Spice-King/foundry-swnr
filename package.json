@@ -7,6 +7,8 @@
     "package": "gulp package",
     "build": "gulp build && gulp link",
     "build:watch": "gulp link watch",
+    "lint:fix": "eslint --fix .",
+    "lint:ci": "eslint .",
     "clean": "gulp clean && gulp link --clean",
     "foundry": "node foundry/resources/app/main.js --noupnp --dataPath=./data",
     "update": "npm install --save-dev github:Spice-King/foundry-vtt-types#foundry-0.8.x"
