@@ -19,5 +19,13 @@
         "psionic",
         "shapeshifting",
         "swnr"
+    ],
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+        "html",
+        "vue",
+        "markdown",
+        "yaml"
     ]
 }
