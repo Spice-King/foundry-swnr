@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable-next-line no-undef */
 const plugin = require("tailwindcss/plugin");
 
 // eslint-disable-next-line no-undef

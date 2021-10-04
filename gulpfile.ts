@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as gulp from "gulp";
@@ -264,7 +265,7 @@ async function buildEntities(cb: () => void) {
 /**
  * Build Migration list
  */
-function buildMigrationList(cb: (error: unknown) => void) {
+function buildMigrationList(cb: (error: Error | null | undefined) => void) {
   glob("src/migrations/**/*.ts", (e, fileNames) => {
     const out = JSON.stringify(
       fileNames.map((f) => {

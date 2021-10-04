@@ -6,7 +6,7 @@ let usePrefix = true;
 function inject(options = {}) {
   replace = !!options.replace;
   usePrefix = !replace || !!options.usePrefix;
-  Object.entries(config.variants).forEach(([k, v]) => {
+  Object.entries(config.variants).forEach(([_k, v]) => {
     const index = v.indexOf("responsive");
     if (index >= 0) {
       v.splice(index, replace ? 1 : 0, "cq");
@@ -19,7 +19,6 @@ config.theme.cq = Object.keys(config.theme.screens);
 const myPlugin = ({ addVariant, theme, postcss, e }) => {
   const fixes = theme("cq");
   if (!fixes) return;
-  const selectorPrefix = usePrefix ? `` : "";
   const out = new Map();
   fixes.forEach((e) => out.set(e, []));
 

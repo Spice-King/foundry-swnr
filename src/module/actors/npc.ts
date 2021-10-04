@@ -44,7 +44,7 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   }
 }
 
-Hooks.on("createToken", (document, options, userId) => {
+Hooks.on("createToken", (document, _options, _userId) => {
   if (game.settings.get("swnr", "useRollNPCHD")) {
     if (document.actor?.type == "npc") {
       document.actor.rollHitDice();
