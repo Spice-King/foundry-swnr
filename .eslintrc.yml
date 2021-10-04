@@ -33,3 +33,7 @@ rules:
   yml/sort-keys: warn
 ignorePatterns:
   - foundry/**/*.js
+  - src/module/documents.ts
+  - node_modules/**
+  - data/**
+  - dist/**
