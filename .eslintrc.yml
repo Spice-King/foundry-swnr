@@ -21,12 +21,35 @@ plugins:
   - '@typescript-eslint'
   - 'prettier'
 rules:
+  "@typescript-eslint/lines-between-class-members":
+    - warn
+  "@typescript-eslint/no-unused-vars":
+    - warn
+    - argsIgnorePattern: ^_
+  "@typescript-eslint/prefer-as-const":
+    - warn
+  "@typescript-eslint/space-before-function-paren":
+    - warn
+    - anonymous: always
+      asyncArrow: always
+      named: never
+  "@typescript-eslint/space-infix-ops":
+    - warn
+  eol-last:
+    - error
   linebreak-style:
     - error
     - unix
+  no-trailing-spaces:
+    - error
   semi:
     - error
     - always
+  spaced-comment:
+    - error
+    - always
+    - exceptions: ["-", "*"]
+      markers: [/]
   no-console:
     - warn
   yml/require-string-key: error
