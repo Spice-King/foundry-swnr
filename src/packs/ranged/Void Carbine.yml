@@ -22,7 +22,7 @@ data:
   shock:
     ac: 15
     dmg: 0
-  skill: ''
+  skill: ""
   stat: dex
   tl: 4
 name: Void Carbine

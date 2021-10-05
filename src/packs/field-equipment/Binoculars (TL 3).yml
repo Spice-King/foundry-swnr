@@ -4,7 +4,7 @@ data:
     amount: 1
     bundled: false
   cost: 20
-  description: 'Binoculars (TL 3): Standard 7x50 binoculars.'
+  description: "Binoculars (TL 3): Standard 7x50 binoculars."
   encumbrance: 1
   location: other
   quality: stock

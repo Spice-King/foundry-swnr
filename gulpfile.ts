@@ -241,7 +241,7 @@ async function buildEntities(cb: () => void) {
             ? `${e.type}s.registerSheet("swnr", ${e.hashedName}.sheet, {\n  makeDefault: true,\n  types: ${e.hashedName}.types,\n});`
             : `${e.type.toLowerCase()}s[${e.hashedName}.name] = ${
                 e.hashedName
-              }.document as never;` //\n// as typeof SWNRBase${e.type};`
+              }.document as never;` // \n// as typeof SWNRBase${e.type};`
         );
       });
     const mids = [

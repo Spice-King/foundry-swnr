@@ -18,12 +18,12 @@ declare interface SWNRLivingTemplateBase {
     value: number;
     max: number;
   };
-  baseAc: number; //computed-active effects needed
+  baseAc: number; // computed-active effects needed
   ac: number;
   ab: number;
   systemStrain: {
     value: number;
-    permanent: number; //computed-active effects needed
+    permanent: number; // computed-active effects needed
   };
   effort: {
     bonus: number;
@@ -33,7 +33,7 @@ declare interface SWNRLivingTemplateBase {
   };
 }
 declare interface SWNRLivingTemplateComputed {
-  baseAc: number; //computed-active effects needed
+  baseAc: number; // computed-active effects needed
   systemStrain: {
     max: number;
     permanent: number;
@@ -76,7 +76,7 @@ declare interface SWNRCharacterComputedData
   extends SWNRLivingTemplateComputed,
     SWNREncumbranceTemplateComputed {
   itemTypes: {
-    //todo: make a better type
+    // todo: make a better type
     [type in Exclude<ItemTypes, "modItem" | "modShip">]: (AllItemClasses & {
       type: type;
     })[];

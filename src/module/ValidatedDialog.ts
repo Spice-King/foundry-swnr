@@ -14,6 +14,7 @@ export class ValidatedDialog extends Dialog<ValidatedDialogData> {
   ) {
     super(dialogData, options);
   }
+
   validate(): boolean {
     const innerHTML = (<JQuery<HTMLElement>>this.element)
       .find(".window-content")
@@ -41,6 +42,7 @@ export class ValidatedDialog extends Dialog<ValidatedDialogData> {
 
     return good;
   }
+
   submit(button: ButtonData): void {
     if (this.validate()) {
       return super.submit(button);

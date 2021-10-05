@@ -1,38 +1,76 @@
 ---
 Actor:
-  types:
-    - character
-    - npc
+  character:
+    background: ""
+    biography: ""
+    class: ""
+    credits:
+      balance: 0
+      debt: 0
+      owed: 0
+    employer: ""
+    goals: []
+    homeworld: ""
+    level:
+      exp: 0
+      expToLevel: 3
+      value: 1
+    species: ""
+    templates:
+      - living
+      - stats
+      - encumbrance
+  npc:
+    armorType: street
+    attacks:
+      bonusDamage: 0
+      number: 1
+    effort:
+      max: 0
+      value: 0
+    faction: ""
+    hitDice: 0
+    homeworld: ""
+    moralScore: 6
+    notes:
+      left:
+        contents: ""
+        label: Goals
+      right:
+        contents: ""
+        label: Bio/Notes
+    reaction: unknown
+    saves: 15
+    skillBonus: 0
+    speed: 10
+    templates:
+      - living
   templates:
+    encumbrance:
+      encumbrance:
+        ready:
+          max: number
+          value: number
+        stowed:
+          max: number
+          value: number
     living:
-      health:
-        value: 10
-        max: 10
-      baseAc: 10
       ab: 0
-      systemStrain:
-        value: 0
-        permanent: 0
+      baseAc: 10
       effort:
         bonus: 0
         current: 0
-        scene: 0
         day: 0
-    encumbrance:
-      encumbrance:
-        stowed:
-          value: number
-          max: number
-        ready:
-          value: number
-          max: number
+        scene: 0
+      health:
+        max: 10
+        value: 10
+      systemStrain:
+        permanent: 0
+        value: 0
     stats:
       stats:
-        str:
-          base: 10
-          bonus: 0
-          boost: 0
-        dex:
+        cha:
           base: 10
           bonus: 0
           boost: 0
@@ -40,7 +78,15 @@ Actor:
           base: 10
           bonus: 0
           boost: 0
+        dex:
+          base: 10
+          bonus: 0
+          boost: 0
         int:
+          base: 10
+          bonus: 0
+          boost: 0
+        str:
           base: 10
           bonus: 0
           boost: 0
@@ -48,56 +94,67 @@ Actor:
           base: 10
           bonus: 0
           boost: 0
-        cha:
-          base: 10
-          bonus: 0
-          boost: 0
-  character:
-    templates:
-      - living
-      - stats
-      - encumbrance
-    level:
-      value: 1
-      exp: 0
-      expToLevel: 3
-    goals: []
-    class: ""
-    species: ""
-    homeworld: ""
-    background: ""
-    employer: ""
-    biography: ""
-    credits:
-      debt: 0
-      balance: 0
-      owed: 0
-  npc:
-    templates:
-      - living
-    skillBonus: 0
-    attacks:
-      bonusDamage: 0
-      number: 1
-    hitDice: 0
-    armorType: "street"
-    speed: 10
-    moralScore: 6
-    saves: 15
-    effort:
-      value: 0
-      max: 0
-    reaction: "unknown"
-    homeworld: ""
-    faction: ""
-    notes:
-      left:
-        label: Goals
-        contents: ""
-      right:
-        label: Bio/Notes
-        contents: ""
+  types:
+    - character
+    - npc
 Item:
+  armor:
+    ac: 10
+    shield: false
+    templates:
+      - baseItem
+      - description
+    type: street
+    use: false
+  class:
+    templates:
+      - description
+  focus:
+    level1: ""
+    level2: ""
+    templates:
+      - description
+  item:
+    bundle:
+      amount: 1
+      bundled: false
+    quantity: 1
+    templates:
+      - baseItem
+      - description
+  modItem:
+    templates:
+      - description
+      - modBase
+  modShip:
+    templates:
+      - description
+      - modBase
+  power:
+    level: 0
+    source: ""
+    templates:
+      - description
+  skill:
+    defaultStat: ask
+    pool: 2D6
+    rank: -1
+    source: ""
+    templates:
+      - description
+  templates:
+    baseItem:
+      cost: 0
+      encumbrance: 0
+      location: other
+      quality: stock
+      tl: 4
+    description:
+      description: ""
+    modBase:
+      pretech:
+        cost: 0
+        perHull: false
   types:
     - class
     - armor
@@ -109,83 +166,26 @@ Item:
     # - modItem
     # - modShip
     - skill
-  templates:
-    modBase:
-      pretech:
-        cost: 0
-        perHull: false
-    baseItem:
-      encumbrance: 0
-      cost: 0
-      tl: 4
-      quality: stock
-      location: other
-    description:
-      description: ""
-  class:
-    templates:
-      - description
-  armor:
-    templates:
-      - baseItem
-      - description
-    ac: 10
-    type: street
-    use: false
-    shield: false
   weapon:
-    templates:
-      - baseItem
-      - description
-    stat: dex
-    secondStat: none
-    skill: ""
-    skillBoostsDamage: false
-    shock:
-      dmg: 0
-      ac: 15
     ab: 0
     ammo:
+      burst: false
       longReload: false
+      max: 0
       suppress: false
       type: none
-      max: 0
       value: 0
-      burst: false
-    range:
-      normal: 1
-      max: 2
     damage: d4
-  power:
-    templates:
-      - description
-    source: ""
-    level: 0
-  item:
+    range:
+      max: 2
+      normal: 1
+    secondStat: none
+    shock:
+      ac: 15
+      dmg: 0
+    skill: ""
+    skillBoostsDamage: false
+    stat: dex
     templates:
       - baseItem
       - description
-    bundle:
-      amount: 1
-      bundled: false
-    quantity: 1
-  focus:
-    templates:
-      - description
-    level1: ""
-    level2: ""
-  modItem:
-    templates:
-      - description
-      - modBase
-  modShip:
-    templates:
-      - description
-      - modBase
-  skill:
-    templates:
-      - description
-    rank: -1
-    defaultStat: ask
-    pool: 2D6
-    source: ""

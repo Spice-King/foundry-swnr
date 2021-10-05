@@ -111,12 +111,12 @@ export function registerMigration<Document extends ClientDocumentConstructor>(
 
 export function orderedMigrations(): readonly MigrationData<ClientDocumentConstructor>[] {
   return _allMigrations.sort((left, right) => {
-    //Version sort, lowest first
+    // Version sort, lowest first
     if (left.version !== right.version)
       return isNewerVersion(left.version, right.version) ? 1 : -1;
-    //Sort No. order, lowest first
+    // Sort No. order, lowest first
     if (left.sort !== right.sort) return left.sort - right.sort;
-    //Prototype sort, if parent, sorted first.
+    // Prototype sort, if parent, sorted first.
     if (left.type !== right.type) {
       if (Object.prototype.isPrototypeOf.call(left.type, right.type)) return -1;
       if (Object.prototype.isPrototypeOf.call(right.type, left.type)) return 1;
@@ -165,9 +165,8 @@ async function applyMigrationTo<
   if (target instanceof migration.type) {
     migration.func(target, updateData);
   }
-  const constructor: typeof foundry.abstract.Document = Object.getPrototypeOf(
-    target
-  );
+  const constructor: typeof foundry.abstract.Document =
+    Object.getPrototypeOf(target);
   const embeddedEntities = constructor.metadata.embedded ?? {};
   for await (const [cName] of Object.entries(embeddedEntities)) {
     const updates = [] as UpdateData[];

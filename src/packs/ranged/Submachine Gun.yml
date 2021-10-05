@@ -22,7 +22,7 @@ data:
   shock:
     ac: 15
     dmg: 0
-  skill: ''
+  skill: ""
   stat: dex
   tl: 3
 name: Submachine Gun

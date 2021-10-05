@@ -28,7 +28,7 @@ data:
   shock:
     ac: 15
     dmg: 2
-  skill: ''
+  skill: ""
   stat: str
   tl: 4
 name: Large advanced weapon

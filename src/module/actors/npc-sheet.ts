@@ -15,6 +15,7 @@ export class NPCActorSheet extends ActorSheet<
   NPCActorSheetData
 > {
   popUpDialog?: Dialog;
+
   get actor(): SWNRNPCActor {
     if (super.actor.type !== "npc") throw Error;
     return super.actor;
@@ -43,6 +44,7 @@ export class NPCActorSheet extends ActorSheet<
       ),
     });
   }
+
   static get defaultOptions(): ActorSheet.Options {
     return mergeObject(super.defaultOptions, {
       classes: ["swnr", "sheet", "actor", "npc"],
@@ -98,6 +100,7 @@ export class NPCActorSheet extends ActorSheet<
       });
     });
   }
+
   async _onItemDamage(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
@@ -185,7 +188,7 @@ export class NPCActorSheet extends ActorSheet<
     const rollTable = (await RollTable.create(
       {
         name: "NPC Reaction",
-        description: " ", //todo: spice this up
+        description: " ", // todo: spice this up
         formula: "2d6",
         results: tableResults,
       },
@@ -262,6 +265,7 @@ export class NPCActorSheet extends ActorSheet<
     super._updateObject(event, formData);
     return this.actor;
   }
+
   _itemEditHandler(formData: Record<string, number | string>): void {
     const itemUpdates = {};
     Object.keys(formData)

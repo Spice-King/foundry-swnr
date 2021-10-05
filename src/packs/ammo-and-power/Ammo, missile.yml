@@ -13,5 +13,5 @@ data:
   location: other
   quality: stock
   tl: 3
-name: 'Ammo, missile'
+name: "Ammo, missile"
 type: item

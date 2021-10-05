@@ -30,7 +30,7 @@ data:
   shock:
     ac: 13
     dmg: 2
-  skill: ''
+  skill: ""
   stat: str
   tl: 4
 name: Medium advanced weapon

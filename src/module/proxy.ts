@@ -20,7 +20,7 @@ export default function proxy<
     get: function (target, prop) {
       switch (prop) {
         case "create":
-          //Calling the class' create() static function
+          // Calling the class' create() static function
           return function (
             data: ConstructorParameters<Type>[0],
             options: ConstructorParameters<Type>[1]
@@ -42,7 +42,7 @@ export default function proxy<
           };
 
         case Symbol.hasInstance:
-          //Applying the "instanceof" operator on the instance object
+          // Applying the "instanceof" operator on the instance object
           return function (instance: InstanceType<Type>) {
             const constr = entities[instance.type];
             if (!constr) {
@@ -51,7 +51,7 @@ export default function proxy<
             return instance instanceof constr;
           };
         default:
-          //Just forward any requested properties to the base Actor class
+          // Just forward any requested properties to the base Actor class
           return baseClass[prop];
       }
     },

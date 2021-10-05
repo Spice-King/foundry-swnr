@@ -12,6 +12,7 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
   get hasAmmo(): boolean {
     return this.ammo.type === "none" || this.ammo.value > 0;
   }
+
   async rollAttack(
     damageBonus: number,
     stat: number,

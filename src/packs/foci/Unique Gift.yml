@@ -17,8 +17,8 @@ data:
     spending a very limited resource when they make this focus pick, so what
     they get should be good enough that they can’t just duplicate it with a fat
     bank account.
-  level1: ''
-  level2: ''
+  level1: ""
+  level2: ""
 flags: {}
 img: icons/svg/mystery-man.svg
 name: Unique Gift

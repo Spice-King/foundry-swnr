@@ -1,22 +1,331 @@
 swnr:
-  title: "Stars Without Number: Revised"
   CharacterActorSheet: Basic Sheet
-  stat:
-    long:
-      str: Strength
-      dex: Dexterity
-      con: Constitution
-      int: Intelligence
-      wis: Wisdom
-      cha: Charisma
-    short:
-      str: STR
-      dex: DEX
-      con: CON
-      int: INT
-      wis: WIS
-      cha: CHA
+  ammo:
+    ammo: Standard Ammo
+    infinite: Infinite
+    missile: Missiles
+    none: None
+    special: Specialty
+    typeAPower: Type A Power Cell
+    typeBPower: Type B Power Cell
+  armor:
+    equipped: Equipped
+    innateArmorClass: Innate Armor Class
+    shield: Counts as a shield
+    type:
+      combat: Combat
+      label: Type
+      powered: Powered
+      primitive: Primitive
+      street: Street
+  chat:
+    cancel: Cancel
+    dicepool: Dice Pool
+    difficulty: Difficulty
+    modifier: Modifier
+    roll: Roll
+    savingThrow: Saving Throw
+    skillCheck: Skill Check
+    statApply: Apply stats to {name}
+    statRoll: Roll stats
+    totalModifier: Total Modifier
+  credits:
+    balance: Balance
+    debts: Debts
+    owed: Owed
+  deleteContent: Are you sure you want to delete {name} from the actor {actor}?
+  deleteTitle: Delete {name}?
+  dialog:
+    add-bulk-skills: Add Bulk Skills to {actor}
+    add-skills: Add Skills
+    attackRoll: "{actorName} attacking with {weaponName}?"
+  effort:
+    bonus: Bonus
+    current: Current
+    day: Day
+    max: Max
+    scene: Scene
+    title: Effort
+  foci:
+    level1: "Level 1:"
+    level2: "Level 2:"
+  item:
+    bundledCount: Bundle Count
+    cost: Cost
+    encumbrance: Encumbrance
+    location: Location
+    locationOther: Other
+    locationReadied: Readied
+    locationStowed: Stowed
+    quality:
+      juryRigged: Jury-rigged
+      label: Quality
+      mastercrafted: Mastercrafted
+      stock: Stock
+    quantity: Quantity
+    range: Range
+    techlevel: Tech Level
+  migration:
+    done: "SWNR: Done Migration to {newVersion}"
+    needsGM: >-
+      SWNR: A GM needs to log in to do run {count} migrations from {oldVersion}
+      to {newVersion}!
+    start: >-
+      SWNR: Starting migration from {oldVersion} to {newVersion}. Please let
+      this finish before closing.
+  npc:
+    abilities: Abilities
+    attack-bonus-damage: Attack Bonus Damage
+    attack-bonus-hit: Attack Bonus Hit
+    attacks-per-turn: Attacks Per Turn
+    combat: Combat
+    equipment: Equipment
+    morale:
+      failure: Fails their Moral Check!
+      success: Succeeds in their Moral Check!
+    morale-check: Morale Check
+    reaction:
+      friendly: Friendly
+      hostile: Hostile
+      negative: Negative
+      neutral: Neutral
+      positive: Positive
+      unknown: Unknown
+    saving:
+      failure: "{actor} failed their saving throw."
+      success: "{actor} succeded at their saving throw."
+    skill:
+      trained: "{actor} uses their trained skill."
+      untrained: "{actor} uses their untrained skill."
+    skilled-with-weapon: Skilled with Weapon
+    trained-skill: Trained Skill
+    unarmed: Unarmed
+  roll:
+    skillNeeded: Hey! You need to pick a skill!
+  settings:
+    addShockMessage: Add Shock Damage Message?
+    addShockMessageHint: When attacking this adds another roll for shock damage in the attack chat message.
+    useHomebrewLuckSave: Use Homebrew Luck saves?
+    useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck
+    useRollNPCHD: Use NPC HD on token create?
+    useRollNPCHDHint: When creating a npc token, if the HP or Hit Dice (HD) has not been rolled, it will roll d8 HD for health automatically.
+  sheet:
+    ammoType: Ammo Type
+    armor-class: Armor Class
+    ask: Ask
+    attack-bonus: Attack Bonus
+    background: Background
+    base: Base
+    base-ac: Base AC
+    bonus: Bonus
+    boosts: Boosts
+    burst: Burst Fire
+    class: Class
+    delete-item: Delete Item
+    description: "Description:"
+    edit-item: Edit Item
+    employer: Employer
+    faction: Faction
+    hit-dice: Hit Dice
+    homeworld: Home world
+    hp: HP
+    level: Level
+    longReload: Long Reload
+    magazine: Magazine
+    modifier: Modifier
+    movement: Movement
+    name: Name
+    permanent-strain: Permanent strain
+    reload-item: Reload Item
+    rollables: Rollables
+    saves:
+      evasion: Evasion
+      luck: Luck
+      mental: Mental
+      physical: Physical
+    skill: Skill
+    source: Source
+    species: Species/Gender
+    stats: Stats
+    suppress: Suppressive Fire
+    system-strain: System Strain
+    tabs:
+      armor: Armor
+      biography: Biography
+      combat: Combat
+      debug: Sheet Debug
+      foci: Foci
+      inventory: Inventory
+      powers: Powers
+      skills: Skills
+      weapons: Weapons
+    vs: vs
+    xp: XP
   skills:
+    classic:
+      artist:
+        name: Artist
+        text: ""
+      athletics:
+        name: Athletics
+        text: ""
+      bureaucracy:
+        name: Bureaucracy
+        text: ""
+      business:
+        name: Business
+        text: ""
+      combat-energy:
+        name: Combat/Energy
+        text: ""
+      combat-gunnery:
+        name: Combat/Gunnery
+        text: ""
+      combat-primitive:
+        name: Combat/Primitive
+        text: ""
+      combat-projectile:
+        name: Combat/Projectile
+        text: ""
+      combat-psitech:
+        name: Combat/Psitech
+        text: ""
+      combat-unarmed:
+        name: Combat/Unarmed
+        text: ""
+      computer:
+        name: Computer
+        text: ""
+      culture:
+        name: Culture/
+        text: ""
+      culture-alien:
+        name: Culture/Alien/
+        text: ""
+      culture-criminal:
+        name: Culture/Criminal
+        text: ""
+      culture-spacer:
+        name: Culture/Spacer
+        text: ""
+      culture-traveller:
+        name: Culture/Traveller
+        text: ""
+      exosuit:
+        name: Exosuit
+        text: ""
+      gambling:
+        name: Gambling
+        text: ""
+      history:
+        name: History
+        text: ""
+      instructor:
+        name: Instructor
+        text: ""
+      language:
+        name: Language
+        text: ""
+      leadership:
+        name: Leadership
+        text: ""
+      navigation:
+        name: Navigation
+        text: ""
+      perception:
+        name: Perception
+        text: ""
+      persuade:
+        name: Persuade
+        text: ""
+      profession:
+        name: Profession/
+        text: ""
+      religion:
+        name: Religion
+        text: ""
+      science:
+        name: Science
+        text: ""
+      security:
+        name: Security
+        text: ""
+      stealth:
+        name: Stealth
+        text: ""
+      steward:
+        name: Steward
+        text: ""
+      survival:
+        name: Survival
+        text: ""
+      tactics:
+        name: Tactics
+        text: ""
+      tech-astronautic:
+        name: Tech/Astronautic
+        text: ""
+      tech-maltech:
+        name: Tech/Maltech
+        text: ""
+      tech-medical:
+        name: Tech/Medical
+        text: ""
+      tech-postech:
+        name: Tech/Postech
+        text: ""
+      tech-pretech:
+        name: Tech/Pretech
+        text: ""
+      tech-psitech:
+        name: Tech/Psitech
+        text: ""
+      vehicle-air:
+        name: Vehicle/Air
+        text: ""
+      vehicle-grav:
+        name: Vehicle/Grav
+        text: ""
+      vehicle-land:
+        name: Vehicle/Land
+        text: ""
+      vehicle-space:
+        name: Vehicle/Space
+        text: ""
+      vehicle-water:
+        name: Vehicle/Water
+        text: ""
+    labels:
+      classic: Classic
+      psionic: Psionic
+      revised: Revised
+      spaceMagic: Space Magic
+    original: {}
+    psionic:
+      biopsionics:
+        name: Biopsionics
+        text: >-
+          Master powers of physical repair, body augmentation, and
+          shapeshifting.
+      metapsionics:
+        name: Metapsionics
+        text: >-
+          Master powers that nullify, boost, and shape the use of other psychic
+          abilities.
+      precognition:
+        name: Precognition
+        text: Master the ability to sense future events and control probability.
+      telekinesis:
+        name: Telekinesis
+        text: >-
+          Master the remote control of kinetic energy to move objects and
+          fabricate force constructs.
+      telepathy:
+        name: Telepathy
+        text: Master the reading and influencing of other sapient minds.
+      teleportation:
+        name: Teleportation
+        text: Master the arts of physical translocation of yourself and allies.
     revised:
       administer:
         name: Administer
@@ -140,353 +449,44 @@ swnr:
           This is a catch-all skill for professions not represented by other
           skills. Roll it to work at a particular profession, art, or trade
     spaceMagic:
+      fight:
+        name: Fight
+        text: ""
       knowMagic:
         name: Know Magic
-        text: ""
-      useMagic:
-        name: Use Magic
         text: ""
       sunblade:
         name: Sunblade
         text: ""
-      fight:
-        name: Fight
+      useMagic:
+        name: Use Magic
         text: ""
-    classic:
-      artist:
-        name: Artist
-        text: ""
-      athletics:
-        name: Athletics
-        text: ""
-      bureaucracy:
-        name: Bureaucracy
-        text: ""
-      business:
-        name: Business
-        text: ""
-      combat-energy:
-        name: Combat/Energy
-        text: ""
-      combat-gunnery:
-        name: Combat/Gunnery
-        text: ""
-      combat-primitive:
-        name: Combat/Primitive
-        text: ""
-      combat-projectile:
-        name: Combat/Projectile
-        text: ""
-      combat-psitech:
-        name: Combat/Psitech
-        text: ""
-      combat-unarmed:
-        name: Combat/Unarmed
-        text: ""
-      computer:
-        name: Computer
-        text: ""
-      culture-alien:
-        name: Culture/Alien/
-        text: ""
-      culture-criminal:
-        name: Culture/Criminal
-        text: ""
-      culture-spacer:
-        name: Culture/Spacer
-        text: ""
-      culture-traveller:
-        name: Culture/Traveller
-        text: ""
-      culture:
-        name: Culture/
-        text: ""
-      exosuit:
-        name: Exosuit
-        text: ""
-      gambling:
-        name: Gambling
-        text: ""
-      history:
-        name: History
-        text: ""
-      instructor:
-        name: Instructor
-        text: ""
-      language:
-        name: Language
-        text: ""
-      leadership:
-        name: Leadership
-        text: ""
-      navigation:
-        name: Navigation
-        text: ""
-      perception:
-        name: Perception
-        text: ""
-      persuade:
-        name: Persuade
-        text: ""
-      profession:
-        name: Profession/
-        text: ""
-      religion:
-        name: Religion
-        text: ""
-      science:
-        name: Science
-        text: ""
-      security:
-        name: Security
-        text: ""
-      stealth:
-        name: Stealth
-        text: ""
-      steward:
-        name: Steward
-        text: ""
-      survival:
-        name: Survival
-        text: ""
-      tactics:
-        name: Tactics
-        text: ""
-      tech-astronautic:
-        name: Tech/Astronautic
-        text: ""
-      tech-maltech:
-        name: Tech/Maltech
-        text: ""
-      tech-medical:
-        name: Tech/Medical
-        text: ""
-      tech-postech:
-        name: Tech/Postech
-        text: ""
-      tech-pretech:
-        name: Tech/Pretech
-        text: ""
-      tech-psitech:
-        name: Tech/Psitech
-        text: ""
-      vehicle-air:
-        name: Vehicle/Air
-        text: ""
-      vehicle-grav:
-        name: Vehicle/Grav
-        text: ""
-      vehicle-land:
-        name: Vehicle/Land
-        text: ""
-      vehicle-space:
-        name: Vehicle/Space
-        text: ""
-      vehicle-water:
-        name: Vehicle/Water
-        text: ""
-    psionic:
-      biopsionics:
-        name: Biopsionics
-        text: >-
-          Master powers of physical repair, body augmentation, and
-          shapeshifting.
-      metapsionics:
-        name: Metapsionics
-        text: >-
-          Master powers that nullify, boost, and shape the use of other psychic
-          abilities.
-      precognition:
-        name: Precognition
-        text: Master the ability to sense future events and control probability.
-      telekinesis:
-        name: Telekinesis
-        text: >-
-          Master the remote control of kinetic energy to move objects and
-          fabricate force constructs.
-      telepathy:
-        name: Telepathy
-        text: Master the reading and influencing of other sapient minds.
-      teleportation:
-        name: Teleportation
-        text: Master the arts of physical translocation of yourself and allies.
-    original: {}
-    labels:
-      spaceMagic: Space Magic
-      classic: Classic
-      revised: Revised
-      psionic: Psionic
-  sheet:
-    background: Background
-    class: Class
-    homeworld: Home world
-    species: Species/Gender
-    level: Level
-    stats: Stats
-    base: Base
-    boosts: Boosts
-    bonus: Bonus
-    modifier: Modifier
-    saves:
-      luck: Luck
-      physical: Physical
-      mental: Mental
-      evasion: Evasion
-    name: Name
-    armor-class: Armor Class
-    hp: HP
-    permanent-strain: Permanent strain
-    attack-bonus: Attack Bonus
-    system-strain: System Strain
-    tabs:
-      biography: Biography
-      debug: Sheet Debug
-      skills: Skills
-      weapons: Weapons
-      inventory: Inventory
-      armor: Armor
-      foci: Foci
-      powers: Powers
-      combat: Combat
-    xp: XP
-    delete-item: Delete Item
-    edit-item: Edit Item
-    reload-item: Reload Item
-    ask: Ask
-    description: "Description:"
-    ammoType: Ammo Type
-    longReload: Long Reload
-    burst: Burst Fire
-    magazine: Magazine
-    suppress: Suppressive Fire
-    skill: Skill
-    employer: Employer
-    source: Source
-    faction: Faction
-    movement: Movement
-    base-ac: Base AC
-    vs: vs
-    rollables: Rollables
-    hit-dice: Hit Dice
-  settings:
-    useRollNPCHD: Use NPC HD on token create?
-    useRollNPCHDHint: When creating a npc token, if the HP or Hit Dice (HD) has not been rolled, it will roll d8 HD for health automatically.
-    useHomebrewLuckSave: Use Homebrew Luck saves?
-    useHomebrewLuckSaveHint: Uses 16 - Level for the save, no modifiers, just pure luck
-    addShockMessage: Add Shock Damage Message?
-    addShockMessageHint: When attacking this adds another roll for shock damage in the attack chat message.
-  chat:
-    dicepool: Dice Pool
-    difficulty: Difficulty
-    modifier: Modifier
-    roll: Roll
-    cancel: Cancel
-    skillCheck: Skill Check
-    savingThrow: Saving Throw
-    statApply: Apply stats to {name}
-    totalModifier: Total Modifier
-    statRoll: Roll stats
-  ammo:
-    ammo: Standard Ammo
-    missile: Missiles
-    none: None
-    special: Specialty
-    typeAPower: Type A Power Cell
-    typeBPower: Type B Power Cell
-    infinite: Infinite
-  foci:
-    level2: "Level 2:"
-    level1: "Level 1:"
-  item:
-    bundledCount: Bundle Count
-    cost: Cost
-    encumbrance: Encumbrance
-    quality:
-      stock: Stock
-      label: Quality
-      juryRigged: Jury-rigged
-      mastercrafted: Mastercrafted
-    techlevel: Tech Level
-    quantity: Quantity
-    location: Location
-    locationOther: Other
-    locationStowed: Stowed
-    locationReadied: Readied
-    range: Range
-  weapon:
-    shock:
-      label: Shock Damage
-      damage: Damage
-      ac: AC
-    damageFormula: Damage Formula
-    attackBonus: Attack Bonus
-    ammo: Ammo
-    noSetSkill: No Skill Set
-    burst: Use Burst Fire
-    skillAddDamage: Skill adds to damage
+  stat:
+    long:
+      cha: Charisma
+      con: Constitution
+      dex: Dexterity
+      int: Intelligence
+      str: Strength
+      wis: Wisdom
+    short:
+      cha: CHA
+      con: CON
+      dex: DEX
+      int: INT
+      str: STR
+      wis: WIS
+  title: "Stars Without Number: Revised"
   titles:
     savingThrow: "{throwType} Saving Throw"
-  effort:
-    bonus: Bonus
-    current: Current
-    day: Day
-    scene: Scene
-    title: Effort
-    max: Max
-  dialog:
-    attackRoll: "{actorName} attacking with {weaponName}?"
-    add-skills: Add Skills
-    add-bulk-skills: Add Bulk Skills to {actor}
-  roll:
-    skillNeeded: Hey! You need to pick a skill!
-  armor:
-    type:
-      combat: Combat
-      label: Type
-      powered: Powered
-      primitive: Primitive
-      street: Street
-    innateArmorClass: Innate Armor Class
-    equipped: Equipped
-    shield: Counts as a shield
-  npc:
-    reaction:
-      unknown: Unknown
-      hostile: Hostile
-      negative: Negative
-      neutral: Neutral
-      positive: Positive
-      friendly: Friendly
-    morale-check: Morale Check
-    trained-skill: Trained Skill
-    attacks-per-turn: Attacks Per Turn
-    attack-bonus-hit: Attack Bonus Hit
-    attack-bonus-damage: Attack Bonus Damage
-    abilities: Abilities
-    combat: Combat
-    equipment: Equipment
-    skilled-with-weapon: Skilled with Weapon
-    morale:
-      failure: Fails their Moral Check!
-      success: Succeeds in their Moral Check!
-    skill:
-      trained: "{actor} uses their trained skill."
-      untrained: "{actor} uses their untrained skill."
-    unarmed: Unarmed
-    saving:
-      failure: "{actor} failed their saving throw."
-      success: "{actor} succeded at their saving throw."
-  migration:
-    start: >-
-      SWNR: Starting migration from {oldVersion} to {newVersion}. Please let
-      this finish before closing.
-    done: "SWNR: Done Migration to {newVersion}"
-    needsGM: >-
-      SWNR: A GM needs to log in to do run {count} migrations from {oldVersion}
-      to {newVersion}!
-  credits:
-    debts: Debts
-    balance: Balance
-    owed: Owed
-  deleteTitle: Delete {name}?
-  deleteContent: Are you sure you want to delete {name} from the actor {actor}?
+  weapon:
+    ammo: Ammo
+    attackBonus: Attack Bonus
+    burst: Use Burst Fire
+    damageFormula: Damage Formula
+    noSetSkill: No Skill Set
+    shock:
+      ac: AC
+      damage: Damage
+      label: Shock Damage
+    skillAddDamage: Skill adds to damage

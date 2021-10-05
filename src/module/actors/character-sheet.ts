@@ -18,6 +18,7 @@ export class CharacterActorSheet extends ActorSheet<
   CharacterActorSheetData
 > {
   popUpDialog?: Dialog;
+
   object: SWNRCharacterActor;
 
   _injectHTML(html: JQuery<HTMLElement>): void {
@@ -42,6 +43,7 @@ export class CharacterActorSheet extends ActorSheet<
       ],
     });
   }
+
   activateListeners(html: JQuery): void {
     super.activateListeners(html);
     html.find(".statRoll").on("click", this._onStatsRoll.bind(this));
@@ -58,6 +60,7 @@ export class CharacterActorSheet extends ActorSheet<
       .on("click", this._onWeaponRoll.bind(this));
     html.find(".skill-load-button").on("click", this._onLoadSkills.bind(this));
   }
+
   async _onLoadSkills(event: JQuery.ClickEvent): Promise<unknown> {
     event.preventDefault();
     const _addSkills = async (html: HTMLElement) => {
@@ -94,6 +97,7 @@ export class CharacterActorSheet extends ActorSheet<
     );
     return await this.popUpDialog.render(true);
   }
+
   _onItemEdit(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
@@ -101,6 +105,7 @@ export class CharacterActorSheet extends ActorSheet<
     const item = this.actor.getEmbeddedDocument("Item", wrapper.data("itemId"));
     if (item instanceof Item) item.sheet?.render(true);
   }
+
   async _onItemDelete(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
@@ -125,6 +130,7 @@ export class CharacterActorSheet extends ActorSheet<
       });
     });
   }
+
   _onItemReload(event: JQuery.ClickEvent): void {
     event.preventDefault();
     event.stopPropagation();
@@ -148,6 +154,7 @@ export class CharacterActorSheet extends ActorSheet<
       console.log("Unable to find ammo in item ", item.data.data);
     }
   }
+
   async _onWeaponRoll(
     event: JQuery.ClickEvent<HTMLElement>
   ): Promise<Application | undefined> {
@@ -322,6 +329,7 @@ export class CharacterActorSheet extends ActorSheet<
     if (s instanceof Promise) await s;
     return this.popUpDialog;
   }
+
   async _onSaveThrow(
     event: JQuery.ClickEvent
   ): Promise<Application | undefined> {
@@ -383,6 +391,7 @@ export class CharacterActorSheet extends ActorSheet<
     if (s instanceof Promise) await s;
     return this.popUpDialog;
   }
+
   async _onStatsRoll(event: JQuery.ClickEvent): Promise<Application> {
     event.preventDefault();
 
@@ -469,6 +478,7 @@ export class CharacterActorSheet extends ActorSheet<
     if (s instanceof Promise) await s;
     return this.popUpDialog;
   }
+
   async _onHpRoll(event: JQuery.ClickEvent): Promise<Application> {
     event.preventDefault();
     const currentLevel = this.actor.data.data.level.value;
@@ -477,7 +487,7 @@ export class CharacterActorSheet extends ActorSheet<
     // currentLevel === 1 ? 0 : this.actor.getFlag("swnr", "lastHpLevel");
     const health = this.actor.data.data.health;
     const currentHp = health.max;
-    //todo: sort out health boosts from classes.
+    // todo: sort out health boosts from classes.
     const boosts = 0 * currentLevel;
     const formula = `{${currentLevel}d6 + ${boosts},${currentHp + 1}}kh`;
     const roll = new Roll(formula).roll();
@@ -516,6 +526,7 @@ export class CharacterActorSheet extends ActorSheet<
     this.actor.update(update);
     return this;
   }
+
   async _onSkillRoll(event: JQuery.ClickEvent): Promise<Application> {
     event.preventDefault();
     console.log(event);
@@ -542,9 +553,10 @@ export class CharacterActorSheet extends ActorSheet<
       const form = <HTMLFormElement>html[0].querySelector("form");
       const dice = (<HTMLSelectElement>form.querySelector('[name="dicepool"]'))
         .value;
-      const stat = this.actor.data.data.stats[
-        (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
-      ];
+      const stat =
+        this.actor.data.data.stats[
+          (<HTMLSelectElement>form.querySelector('[name="stat"]')).value
+        ];
       const modifier = (<HTMLInputElement>(
         form.querySelector('[name="modifier"]')
       )).value;
@@ -595,6 +607,7 @@ export class CharacterActorSheet extends ActorSheet<
     if (s instanceof Promise) await s;
     return this.popUpDialog;
   }
+
   /** @override */
   async getData(): Promise<CharacterActorSheetData> {
     let data = super.getData();
@@ -605,6 +618,7 @@ export class CharacterActorSheet extends ActorSheet<
       itemTypes: this.actor.itemTypes,
     };
   }
+
   /** @override */
   async _updateObject(
     event: Event,
@@ -614,6 +628,7 @@ export class CharacterActorSheet extends ActorSheet<
     super._updateObject(event, formData);
     return this.actor;
   }
+
   _itemEditHandler(formData: Record<string, string | number>): void {
     const itemUpdates = {};
     Object.keys(formData)

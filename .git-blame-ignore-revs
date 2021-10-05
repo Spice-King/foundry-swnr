@@ -1,0 +1,15 @@
+# Git 2.23 (August 2019) added this feature to it's blame subcommand to 
+# ignore commits via a file and a config option to default which file to
+# use.
+#
+# This file will contain a list of commits that are probably not what is
+# being looked for in a blame, like mass renaming or reformatting. All
+# commit refs should have a comment above it describing what and why the
+# commit is in the list and a blank line between them. To save typing
+# out the flag, you can set the default file via the following command
+# for the repo.
+#
+# $ git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# mass reformat for inforcing base eslint/prettier rules.
+2bc7c6578d9b55b93cfe3a78a82984ba62652928

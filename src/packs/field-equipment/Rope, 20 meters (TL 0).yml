@@ -4,10 +4,10 @@ data:
     amount: 1
     bundled: false
   cost: 4
-  description: 'Rope: Light and sturdy. 40 meters in a bundle.'
+  description: "Rope: Light and sturdy. 40 meters in a bundle."
   encumbrance: 2
   location: other
   quality: stock
   tl: 0
-name: 'Rope, 20 meters (TL 0)'
+name: "Rope, 20 meters (TL 0)"
 type: item

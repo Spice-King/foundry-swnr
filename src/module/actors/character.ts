@@ -32,6 +32,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
     );
     save.luck = Math.max(1, base);
   }
+
   prepareDerivedData(): void {
     const data = this.data.data;
     // AC
@@ -66,7 +67,7 @@ export class SWNRCharacterActor extends SWNRBaseActor<"character"> {
           Math.max(0, ...psychicSkills.map((i) => i.data.data.rank))
       ) + effort.bonus;
     effort.value = effort.max - effort.current - effort.scene - effort.day;
-    //encumbrance
+    // encumbrance
     if (!data.encumbrance)
       data.encumbrance = {
         ready: { max: 0, value: 0 },

@@ -30,8 +30,8 @@ data:
   shock:
     ac: 15
     dmg: 0
-  skill: ''
-  stat: '-'
+  skill: ""
+  stat: "-"
   tl: 3
 name: Demo Charge
 type: weapon

@@ -16,5 +16,5 @@ data:
   shield: false
   tl: 1
   use: false
-name: 'Cuirass, brigandine, linothorax, half-plate'
+name: "Cuirass, brigandine, linothorax, half-plate"
 type: armor

@@ -39,6 +39,7 @@ export class BaseSheet extends ItemSheet<DocumentSheet.Options, BaseSheetData> {
       mce.on("change", () => (editor.changed = true));
     });
   }
+
   /**
    * @override
    */

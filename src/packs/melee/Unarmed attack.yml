@@ -27,7 +27,7 @@ data:
   shock:
     ac: 15
     dmg: 0
-  skill: ''
+  skill: ""
   stat: str
   tl: 0
 name: Unarmed attack

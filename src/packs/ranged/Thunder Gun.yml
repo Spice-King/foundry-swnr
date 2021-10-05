@@ -9,7 +9,7 @@ data:
     type: typeAPower
     value: 6
   cost: 1000
-  damage: '(@hitRoll>15?3:2)d10'
+  damage: "(@hitRoll>15?3:2)d10"
   description: >-
     Thunder guns are named for the basso vibrations caused by their operation, a
     sound that can be felt as far as thirty meters away from an operator. This
@@ -27,7 +27,7 @@ data:
   shock:
     ac: 15
     dmg: 0
-  skill: ''
+  skill: ""
   stat: dex
   tl: 5
 name: Thunder Gun
