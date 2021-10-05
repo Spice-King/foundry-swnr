@@ -1,5 +1,6 @@
 _id: wXAqbLF2a15jE84P
 data:
+  ac: 12
   bundle:
     amount: 1
     bundled: false
@@ -26,5 +27,6 @@ data:
   location: other
   quality: stock
   tl: 4
+  type: street
 name: Vacc suit
 type: item
