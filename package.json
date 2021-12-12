@@ -65,13 +65,12 @@
     "autoprefixer": "^10.2.3",
     "gulp-postcss": "^9.0.0",
     "postcss": "^8.2.4",
-    "postcss-color-mix": "^1.1.0",
+    "postcss-advanced-variables": "^3.0.1",
+    "postcss-color-function": "^4.1.0",
     "postcss-conditionals": "^2.1.0",
-    "postcss-for": "^2.1.1",
     "postcss-initial": "^4.0.0",
     "postcss-jsmath": "0.0.83",
     "postcss-nested": "^5.0.3",
-    "postcss-simple-vars": "^6.0.2",
     "tailwindcss": "^2.0.2"
   }
 }

@@ -119,20 +119,21 @@ button {
       $time: math(($i + 1) * 0.2);
       color: #ff0000;
       animation-name: lowAmmoFlash;
+      /* pretter-ignore */
       animation-duration: $(time) s;
-      animation-iteration-count: math(round(15 / $time));
+      animation-iteration-count: math(round(15 / ($time)));
     }
     @if $i >= 3 and $i <= 5 {
-      $mix: percentage(($i - 2)/4);
-      color: mix(#ffc000, #ff0000, $mix);
+      $mix: math(($(i)-2)/4);
+      color: color(#ff0000 blend(#ffc000 $mix));
     }
     @if $i >= 6 and $i <= 10 {
-      $mix: percentage(($i - 5)/5);
-      color: mix(#cccf36, #ffc000, $mix);
+      $mix: math(($(i)-5)/5 * 100);
+      color: color(#ffc000 blend(#cccf36 $mix));
     }
     @if $i >= 11 and $i <=16 {
-      $mix: percentage(($i - 10)/6);
-      color: mix($highColor, #cccf36, $mix);
+      $mix: math(($(i)-10)/6 * 100);
+      color: color(#cccf36 blend($highColor $mix));
     }
     @if $i >= 17 {
       color: $highColor;

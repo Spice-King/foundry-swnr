@@ -7,11 +7,9 @@ module.exports = {
     require("autoprefixer"),
     require("postcss-nested"),
     require("postcss-initial"),
-    require("postcss-for"),
-    require("postcss-simple-vars"),
-    require("postcss-color-mix"),
+    require("postcss-advanced-variables"),
     require("postcss-jsmath"),
-    require("postcss-conditionals"),
+    require("postcss-color-function"),
   ],
 };
 if (process.env.NODE_ENV?.toLocaleLowerCase() === "production")
