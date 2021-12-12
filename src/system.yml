@@ -123,6 +123,18 @@ packs:
     name: tools-and-medical
     path: packs/tools-and-medical.db
     system: swnr
+  - entity: RollTable
+    label: One Roll Tables
+    module: swnr
+    name: one-roll-tables
+    path: packs/one-roll-tables.db
+    system: swnr
+  - entity: RollTable
+    label: One Roll Tables - backing
+    module: swnr
+    name: one-roll-backing
+    path: packs/one-roll-backing.db
+    system: swnr
 readme: ""
 scripts: []
 styles:
