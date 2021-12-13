@@ -1,7 +1,7 @@
 author: Spice_King
 bugs: "https://github.com/Spice-King/foundry-swnr/issues"
 changelog: ""
-compatibleCoreVersion: 0.8.9
+compatibleCoreVersion: 9.235
 description: >-
   BETA: Stars Without Number: Revised system. Early work with plans for full
   coverage.
