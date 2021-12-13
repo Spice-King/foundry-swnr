@@ -211,19 +211,19 @@ export class CharacterActorSheet extends ActorSheet<
         shockDmg:
           weapon.data.data.shock?.dmg > 0 ? weapon.data.data.shock.dmg : 0,
       };
-      const hitRoll = new Roll(
+      const hitRoll = await new Roll(
         "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat.mod + @effectiveSkillRank",
         rollData
-      ).roll();
+      ).roll({ async: true });
       rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
-      const damageRoll = new Roll(
+      const damageRoll = await new Roll(
         weapon.data.data.damage +
           " + @burstFire + @stat.mod" +
           (weapon.data.data.skillBoostsDamage
             ? ` + ${skill.data.data.rank}`
             : ""),
         rollData
-      ).roll();
+      ).roll({ async: true });
       const diceTooltip = {
         hit: await hitRoll.render(),
         damage: await damageRoll.render(),
@@ -235,13 +235,13 @@ export class CharacterActorSheet extends ActorSheet<
       if (game.settings.get("swnr", "addShockMessage")) {
         if (weapon.data.data.shock && weapon.data.data.shock.dmg > 0) {
           shock_content = `Shock Damage  AC ${weapon.data.data.shock.ac}`;
-          const _shockRoll = new Roll(
+          const _shockRoll = await new Roll(
             " @shockDmg + @stat.mod " +
               (weapon.data.data.skillBoostsDamage
                 ? ` + ${skill.data.data.rank}`
                 : ""),
             rollData
-          ).roll();
+          ).roll({ async: true });
           shock_roll = await _shockRoll.render();
         }
       }
@@ -345,7 +345,7 @@ export class CharacterActorSheet extends ActorSheet<
     });
     const dialogData = {};
     const html = await renderTemplate(template, dialogData);
-    const _doRoll = (html: HTMLFormElement) => {
+    const _doRoll = async (html: HTMLFormElement) => {
       console.log(html);
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
@@ -356,7 +356,7 @@ export class CharacterActorSheet extends ActorSheet<
         ),
         target: target,
       });
-      roll.roll();
+      await roll.roll({ async: true });
       console.log(roll.result);
       roll.toMessage(
         {
@@ -413,7 +413,7 @@ export class CharacterActorSheet extends ActorSheet<
       )).value;
       const formula = new Array(6).fill(dice).join("+");
       const roll = new Roll(formula);
-      roll.roll();
+      await roll.roll({ async: true });
       console.log(roll.result);
       const stats: {
         [p in SWNRStats]: SWNRStatBase & SWNRStatComputed & { dice: number[] };
@@ -490,7 +490,7 @@ export class CharacterActorSheet extends ActorSheet<
     // todo: sort out health boosts from classes.
     const boosts = 0 * currentLevel;
     const formula = `{${currentLevel}d6 + ${boosts},${currentHp + 1}}kh`;
-    const roll = new Roll(formula).roll();
+    const roll = await new Roll(formula).roll({ async: true });
     const newHP = roll.total;
     const data = {
       oldHp: health.max,
@@ -547,7 +547,7 @@ export class CharacterActorSheet extends ActorSheet<
       data: this.actor.data,
     };
     const html = await renderTemplate(template, dialogData);
-    const _doRoll = (html: HTMLFormElement) => {
+    const _doRoll = async (html: HTMLFormElement) => {
       console.log(html);
       const rollMode = game.settings.get("core", "rollMode");
       const form = <HTMLFormElement>html[0].querySelector("form");
@@ -566,7 +566,7 @@ export class CharacterActorSheet extends ActorSheet<
         modifier: modifier,
         stat: stat.mod,
       });
-      roll.roll();
+      await roll.roll({ async: true });
       console.log(roll.result);
       const title = `${game.i18n.localize(
         "swnr.chat.skillCheck"

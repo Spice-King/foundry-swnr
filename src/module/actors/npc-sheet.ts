@@ -212,11 +212,11 @@ export class NPCActorSheet extends ActorSheet<
     this.actor.rollHitDice();
   }
 
-  _onMorale(event: JQuery.ClickEvent): void {
+  async _onMorale(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
 
-    const roll = new Roll("2d6").roll();
+    const roll = await new Roll("2d6").roll({ async: true });
     console.log(roll);
     const flavor =
       +(roll.terms[0]?.total ?? 0) > this.actor.data.data.moralScore
@@ -225,11 +225,11 @@ export class NPCActorSheet extends ActorSheet<
     roll.toMessage({ flavor, speaker: { actor: this.actor.id } });
   }
 
-  _onSavingThrow(event: JQuery.ClickEvent): void {
+  async _onSavingThrow(event: JQuery.ClickEvent): Promise<void> {
     event.stopPropagation();
     event.preventDefault();
 
-    const roll = new Roll("1d20").roll();
+    const roll = await new Roll("1d20").roll({ async: true });
     const flavor = game.i18n.format(
       parseInt(roll.result) >= this.actor.data.data.saves
         ? game.i18n.localize("swnr.npc.saving.success")
@@ -237,16 +237,18 @@ export class NPCActorSheet extends ActorSheet<
       { actor: this.actor.name }
     );
 
-    roll.toMessage({ flavor, speaker: { actor: this.actor._id } });
+    roll.toMessage({ flavor, speaker: { actor: this.actor.id } });
   }
 
-  _onSkill(event: JQuery.ClickEvent): void {
+  async _onSkill(event: JQuery.ClickEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     const trained = event.currentTarget.dataset.skillType === "trained";
     const skill = trained ? this.actor.data.data.skillBonus : 0;
 
-    const roll = new Roll("2d6 + @skill", { skill }).roll();
+    const roll = await new Roll("2d6 + @skill", { skill }).roll({
+      async: true,
+    });
     const flavor = game.i18n.format(
       trained
         ? game.i18n.localize("swnr.npc.skill.trained")

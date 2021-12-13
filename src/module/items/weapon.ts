@@ -50,15 +50,15 @@ export class SWNRWeapon extends SWNRBaseItem<"weapon"> {
       effectiveSkillRank: skillMod < 0 ? -2 : skillMod,
     };
 
-    const hitRoll = new Roll(
+    const hitRoll = await new Roll(
       "1d20 + @burstFire + @modifier + @actor.ab + @weapon.ab + @stat + @effectiveSkillRank",
       rollData
-    ).roll();
+    ).roll({ async: true });
     rollData.hitRoll = +(hitRoll.dice[0].total?.toString() ?? 0);
-    const damageRoll = new Roll(
+    const damageRoll = await new Roll(
       this.data.data.damage + " + @burstFire + @stat + @damageBonus",
       rollData
-    ).roll();
+    ).roll({ async: true });
     const diceTooltip = {
       hit: await hitRoll.render(),
       damage: await damageRoll.render(),

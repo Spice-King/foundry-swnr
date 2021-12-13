@@ -7,9 +7,11 @@ export class SWNRNPCActor extends SWNRBaseActor<"npc"> {
   }
 
   // Set the max/value health based on D8 hit dice
-  rollHitDice(): void {
+  async rollHitDice(): Promise<void> {
     if (this.data.data.hitDice != null && this.data.data.hitDice > 0) {
-      const roll = new Roll(`${this.data.data.hitDice}d8`).roll();
+      const roll = await new Roll(`${this.data.data.hitDice}d8`).roll({
+        async: true,
+      });
       if (roll != undefined && roll.total != undefined) {
         const newHealth = roll.total;
         this.update({
