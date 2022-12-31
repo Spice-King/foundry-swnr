@@ -1,4 +1,5 @@
-author: Spice_King
+authors: 
+  - "name": "Spice_King"
 bugs: "https://github.com/Spice-King/foundry-swnr/issues"
 changelog: ""
 compatibleCoreVersion: 9.235
