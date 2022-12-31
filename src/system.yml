@@ -1,7 +1,12 @@
-author: Spice_King
+authors: 
+  - "name": "Spice_King"
 bugs: "https://github.com/Spice-King/foundry-swnr/issues"
 changelog: ""
 compatibleCoreVersion: 9.235
+compatibility: 
+  - "coreVersion": "10"
+    "minimumVersion": "9.235"
+    "verified": "10"
 description: >-
   BETA: Stars Without Number: Revised system. Early work with plans for full
   coverage.
@@ -21,115 +26,115 @@ manifest: >-
 minimumCoreVersion: 0.8.6
 name: swnr
 packs:
-  - entity: Item
+  - type: Item
     label: Ammo and Power
     module: swnr
     name: ammo-and-power
     path: packs/ammo-and-power.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Armor
     module: swnr
     name: armor
     path: packs/armor.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Biopsionics
     module: swnr
     name: psi-biopsionics
     path: packs/psi-biopsionics.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Communications
     module: swnr
     name: communications
     path: packs/communications.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Computing Gear
     module: swnr
     name: computing-gear
     path: packs/computing-gear.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Field Equipment
     module: swnr
     name: field-equipment
     path: packs/field-equipment.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Foci
     module: swnr
     name: foci
     path: packs/foci.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Heavy Weapons
     module: swnr
     name: heavy
     path: packs/heavy.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Melee Weapons
     module: swnr
     name: melee
     path: packs/melee.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Metapsionics
     module: swnr
     name: psi-metapsionics
     path: packs/psi-metapsionics.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Pharmaceuticals
     module: swnr
     name: pharmaceuticals
     path: packs/pharmaceuticals.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Precognition
     module: swnr
     name: psi-precognition
     path: packs/psi-precognition.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Ranged Weapons
     module: swnr
     name: ranged
     path: packs/ranged.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Telekinesis
     module: swnr
     name: psi-telekinesis
     path: packs/psi-telekinesis.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Telepathy
     module: swnr
     name: psi-telepathy
     path: packs/psi-telepathy.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Teleportation
     module: swnr
     name: psi-teleportation
     path: packs/psi-teleportation.db
     system: swnr
-  - entity: Item
+  - type: Item
     label: Tools And Medical
     module: swnr
     name: tools-and-medical
     path: packs/tools-and-medical.db
     system: swnr
-  - entity: RollTable
+  - type: RollTable
     label: One Roll Tables
     module: swnr
     name: one-roll-tables
     path: packs/one-roll-tables.db
     system: swnr
-  - entity: RollTable
+  - type: RollTable
     label: One Roll Tables - backing
     module: swnr
     name: one-roll-backing
