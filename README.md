@@ -1,3 +1,7 @@
+# Archived
+
+I don't have time to work on it anymore, and frankly better of not lying to my self that I still do.
+
 # Stars Without Number: Revised
 
 _The year is 3200 and mankind's empire lies in ashes._
